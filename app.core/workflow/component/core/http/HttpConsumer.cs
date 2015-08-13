@@ -71,7 +71,6 @@ namespace app.core.workflow.component.core.http
             var exchange = passData.Exchange;
             var client = listener.EndGetContext(res);
             var body = new StreamReader(client.Request.InputStream).ReadToEnd();
-
             BuildRequestMessage(client, exchange, body);
 
             exchange.InMessage.Body = body;
@@ -87,13 +86,11 @@ namespace app.core.workflow.component.core.http
                 {
                     client.Response.Headers.Add(headers.Key, WebUtility.HtmlEncode(headers.Value.ToString()));
                 }
-                catch
+                catch (Exception exception)
                 {
-                    
+                    exchange.Exception.Push(exception);
                 }
             }
-
-
 
             client.Response.ContentLength64 = b.Length;
             var output = client.Response.OutputStream;
