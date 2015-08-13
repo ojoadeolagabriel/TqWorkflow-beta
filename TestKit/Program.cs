@@ -20,6 +20,7 @@ namespace TestKit
     {
         public const string Data = "The_OtherGirl!";
 
+
         public static string GetPropertyName<T>(Expression<Func<T>> propertyLambda)
         {
             switch (propertyLambda.Body.NodeType)
@@ -59,12 +60,12 @@ namespace TestKit
                 Console.WriteLine("Invalid token!");
             }
 
-            const string camelFile = @"C:\Users\ADEOLA.OJO\Documents\Projects\TqWorkflow\TqWorkflow\app.core\workflow\resource\core-route.xml";
-            const string altFile = @"C:\Users\ADEOLA.OJO\Documents\Projects\TqWorkflow\TqWorkflow\app.core\workflow\resource\alt-route.xml";
+            const string camelFile = @"C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\workflow\resource\core-route.xml";
+            //const string altFile = @"C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\workflow\resource\alt-route.xml";
             Camel.InitDependencyLibs(new List<string> { "app.core.workflow.component.core" });
 
             RoutePipelineEngine.Initialize(camelFile);
-            RoutePipelineEngine.Initialize(altFile);
+            //RoutePipelineEngine.Initialize(altFile);
 
             Camel.StartAllRoutes();
 
@@ -88,7 +89,7 @@ namespace TestKit
             try
             {
                 var client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                client.Connect(IPAddress.Parse("127.0.0.1"), 9876);
+                client.Connect(IPAddress.Parse("127.0.0.1"), 9800);
                 client.ReceiveTimeout = 10000;
 
                 const string msg = @"<request><claim-type>90000</claim-type><claim>Success</claim></request>\r\n";

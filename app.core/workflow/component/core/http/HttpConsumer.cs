@@ -30,7 +30,6 @@ namespace app.core.workflow.component.core.http
 
         public override Exchange Poll()
         {
-            //PollHandler();
             Task.Factory.StartNew(PollHandler);
             return null;
         }
@@ -39,8 +38,9 @@ namespace app.core.workflow.component.core.http
 
         private void PollHandler()
         {
+            var exchange = new Exchange(_httpProcessor.Route);
             var initialDelay = _httpProcessor.UriInformation.GetUriProperty("initialDelay", 1000);
-            var portId = _httpProcessor.UriInformation.GetUriProperty("port", 9000);
+            var portId = _httpProcessor.UriInformation.GetUriProperty("port", 9000, exchange);
 
             if(initialDelay > 0)
                 Thread.Sleep(initialDelay);
@@ -52,7 +52,7 @@ namespace app.core.workflow.component.core.http
             HttpListener.Start();
             HttpListener.BeginGetContext(ProcessIncommingClientAsync, new PassData
             {
-                Exchange = new Exchange(_httpProcessor.Route),
+                Exchange = exchange,
                 HttpListener = HttpListener
             });
         }
@@ -71,13 +71,12 @@ namespace app.core.workflow.component.core.http
             var exchange = passData.Exchange;
             var client = listener.EndGetContext(res);
             var body = new StreamReader(client.Request.InputStream).ReadToEnd();
-
             BuildRequestMessage(client, exchange, body);
 
             exchange.InMessage.Body = body;
             _httpProcessor.Process(exchange);
 
-            var b = Encoding.UTF8.GetBytes(exchange.OutMessage.Body.ToString());
+            var b = Encoding.UTF8.GetBytes(exchange.InMessage.Body.ToString());
             client.Response.StatusCode = 200;
             client.Response.KeepAlive = false;
 
@@ -87,13 +86,11 @@ namespace app.core.workflow.component.core.http
                 {
                     client.Response.Headers.Add(headers.Key, WebUtility.HtmlEncode(headers.Value.ToString()));
                 }
-                catch
+                catch (Exception exception)
                 {
-                    
+                    exchange.Exception.Push(exception);
                 }
             }
-
-
 
             client.Response.ContentLength64 = b.Length;
             var output = client.Response.OutputStream;
