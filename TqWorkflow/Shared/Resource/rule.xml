@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<container>
+
+  <bean id="csvProcessor" class="camelinaction.OrderToCsvProcessor"/>
+  
+  <camelContext xmlns:csng="http://camel.apache.org/schema/spring">
+    
+    <route>
+      <from uri="quartz://report?cron=0+0+6+*+*+?"/>
+      <to uri="http://riders.com/orders/cmd=received&amp;date=yesterday"/>
+      <process ref="csvProcessor"/>
+      <to uri="file://riders/orders?fileName=report-${header.Date}.csv"/>
+    </route>
+    
+  </camelContext>
+  
+</container>

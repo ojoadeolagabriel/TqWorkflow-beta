@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<dependencys defaultPath="">
+  
+  <dependency>
+    <artifactid>ftpcomponent</artifactid>
+    <assembly></assembly>
+  </dependency>
+
+  <dependency>
+    <artifactid>tcpcomponent</artifactid>
+    <assembly></assembly>
+  </dependency>
+  
+</dependencys>

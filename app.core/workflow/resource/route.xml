@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<container>
+
+  <bean id="csvProcessor" class="app.core.workflow.test.CsvProcessor"/>
+  <bean id="testProcessor" class="app.core.workflow.test.TestProcessor"/>
+  <bean id="httpBeanProcessor" class="app.core.workflow.test.HttpRequestBean"/>
+  <bean id="xmlProcessor" class="app.core.workflow.test.XmlProcessor"/>
+  
+  <bean id="config" class="app.core.workflow.utility.Configuration">
+    <property key="fileName" value="c:\users\data.prop"/>
+  </bean>
+  
+  <bean id="minaProcessor" class="app.core.workflow.test.MinaTestProcessor"/>
+
+  <context>
+
+    <route>
+      <from uri="timer:testTimer?poll=200;dueTime=10000"/>
+      <setHeader headerName="timerPollInterval" value="10000"/>
+      <to uri="amq:127.0.0.1:61616?queue=timerQueue"/>
+    </route>
+
+    <route>
+      <from uri="amq:127.0.0.1:61616?queue=timerQueue"/>
+      <setHeader headerName="timerPollInterval" value="10000"/>
+      <to uri="log:amqProcessor?file=c:\Users\Adeola Ojo\Downloads\amq-processor.log;"/>
+    </route>
+
+    <route>
+      <from uri="amq:127.0.0.1:61616?queue=timerQueue"/>
+      <setHeader headerName="timerPollInterval" value="10000"/>
+      <to uri="log:amqProcessor?file=c:\Users\Adeola Ojo\Downloads\amq-processor2.log;"/>
+    </route>
+
+    <route>
+      <from uri="file:c:\Users\Adeola Ojo\Downloads\camel.test.file.txt?poll=100;initialDelay=1000"/>
+      <convertBodyTo type="System.String"/>
+      <setProperty propertyName="FilePollingTimeConfig" value="{{config.FilePollingTime}}"/>
+      <to uri="log:show_file_poll_config?groupsize=10;level=DEBUG;file=c:\Users\Adeola Ojo\Downloads\initial_processing-log.log;message='in here';"/>
+
+      <bean ref="csvProcessor" method="Processor"/>
+      <process ref="testProcessor"/>
+      <setHeader headerName="camelhttpmethod" value="${in.header.paydirect-httpmethod}"/>
+
+      <setProperty propertyName="Bankai" value="ichigo.orange"/>
+      <to uri="log:show_bankai_config?groupsize=10;level=DEBUG;file=c:\Users\Adeola Ojo\Downloads\before-delay-log.log;message='in here';"/>
+      <wireTap uri="direct:tapDirect"/>
+      <to uri="log:show_tap_direct_config?groupsize=10;level=DEBUG;logLevel=DEBUG;file=c:\Users\Adeola Ojo\Downloads\show_tap_direct_config-log.log;message='about to call test-me';"/>
+      <to uri="amq:127.0.0.1:61616?queue=fileQueue"/>
+
+    </route>
+
+    <route>
+      <from uri="http:127.0.0.1?port=10001;poll=500;initialDelay=1000;threadCount=10;ssl=true"/>
+      <process ref="httpBeanProcessor"/>
+      <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey={{config.ESBJWTSharedKey}}"/>
+
+      <!--<removeHeader headerName="httpToken"/>-->
+      <to uri="log:http_route_running?file=c:\Users\Adeola Ojo\Downloads\httplogs.log;show-out=true"/>
+      <to uri="amq:127.0.0.1:61616?queue=httpQueue"/>
+    </route>
+
+    <route>
+      <from uri="mina:127.0.0.1?port=9876;poll=0;initialDelay=1000;threadCount=10;sync=true;parallel=true"/>
+      <process ref="minaProcessor"/>
+
+      <choice>
+        <when>
+          <xpath>/code = '00'</xpath>
+          <setProperty propertyName="isRequestSuccessful" value="1"/>
+          <setProperty propertyName="messageProperty" value="Transaction successful"/>
+          <to uri="log:mina_logs?file=c:\Users\Adeola Ojo\Downloads\mina.sucess.log;show-out=true"/>
+        </when>
+        <when>
+          <xpath>/code = '91'</xpath>
+          <setProperty propertyName="isRequestSuccessful" value="2"/>
+          <setProperty propertyName="messageProperty" value="issuer or switch inoperative"/>
+          <to uri="log:mina_logs?file=c:\Users\Adeola Ojo\Downloads\mina.failed.91.log;show-out=true"/>
+        </when>
+        <when>
+          <xpath>/code = '51'</xpath>
+          <setProperty propertyName="isRequestSuccessful" value="3"/>
+          <setProperty propertyName="messageProperty" value="in-sufficient funds"/>
+          <to uri="log:mina_logs?file=c:\Users\Adeola Ojo\Downloads\mina.failed.51.log;show-out=true"/>
+        </when>
+        <otherwise>
+          <setProperty propertyName="isRequestSuccessful" value="-1"/>
+          <to uri="log:mina_logs?file=c:\Users\Adeola Ojo\Downloads\mina.unknown.error.log;show-out=true"/>
+        </otherwise>
+      </choice>
+
+      <to uri="log:mina_logs?file=c:\Users\Adeola Ojo\Downloads\mina.log;show-out=true"/>
+      <to uri="amq:127.0.0.1:61616?queue=tcpQueue"/>
+    </route>
+
+    <route>
+      <from uri="direct:direct_d_route"/>
+      <to uri="log:in_direct_d_route?file=c:\Users\Adeola Ojo\Downloads\d.log;show-out=true"/>
+    </route>
+
+    <route>
+
+      <from uri="direct:compare_me_route"/>
+      <setHeader headerName="prefix" value="log"/>
+      <setHeader headerName="person-counter" value="2"/>
+      <convertBodyTo type="System.String"/>
+
+      <process ref="xmlProcessor"/>
+
+      <choice>
+        <when>
+          <simple>${in.header.person-counter} = ${enum:app.core.workflow.utility.OpType.Middle}</simple>
+          <to uri="log:in_compare_me_route?file=c:\Users\Adeola Ojo\Downloads\testme-${in.header.prefix}.log;show-out=true"/>
+        </when>
+        <otherwise>
+
+        </otherwise>
+      </choice>
+
+    </route>
+
+  </context>
+
+</container>

@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<container>
+
+  <bean id="minaProcessor" class="app.core.workflow.test.MinaTestProcessor"/>
+  <bean id="cacheType" class="app.core.workflow.utility.CacheType"/>
+  
+  <bean id="config" class="app.core.workflow.utility.Configuration">
+    <property key="ESBJWTSharedKey" value="GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk"/>
+    <property key="ServerPort" value="9876"/>
+    <property key="AmqTestPort" value="61616"/>
+    <property key="HttpTestPort" value="45022"/>
+    <property key="CacheType" value="{{cacheType}}"/>
+  </bean>
+
+  <bean id="myDeadLetterErrorHandler" class="app.core.workflow.builder.DeadLetterChannelBuilder">
+    <property key="DeadLetterUri" value="jms:queue:dead"/>
+    <property key="MaxDeliveryAttempts" value="3"/>
+  </bean>
+
+  <context>
+    <route errorHandlerRef="myDeadLetterErrorHandler">
+      
+      <from uri="timer:opeTimer?poll=100000;"/>
+      <setHeader headerName="CamelHttpQuery" value="start-hour=11;end-hour=12"/>
+      <setHeader headerName="CamelHttpMethod" value="GET"/>
+      <setHeader headerName="CamelHttpContentType" value="application/x-www-form-urlencoded"/>
+
+      <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey={{config.ESBJWTSharedKey}}"/>
+      <to uri="httpclient:www.google.com"/>
+
+      <to uri="log2:C:\Users\ADEOLA.OJO\Downloads\http-test-log-file.log?logType=file"/>
+    </route>
+
+    <route>
+      <from uri="http:127.0.0.1?port={{config.HttpTestPort}};poll=500;initialDelay=1000;threadCount=10;ssl=true"/>
+      <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey={{config.ESBJWTSharedKey}}"/>
+      <to uri="log2:c:\Users\Adeola Ojo\Downloads\http-soap-component.log?logType=file"/>
+      <to uri="amq:127.0.0.1:61616?queue=http-test-request-post-queue;port={{config.AmqTestPort}}"/>
+    </route>
+
+    <route>
+      <from uri="amq:127.0.0.1:61616?queue=tcp-test-request-queue"/>
+      <to uri="log2:c:\Users\Adeola Ojo\Downloads\amq-component-reader.logs.log?logType=file"/>
+    </route>
+
+    <route>
+      <from uri="direct:segunTap"/>
+      <to uri="amq:127.0.0.1:61616?queue=http-wire-tap"/>
+    </route>
+
+    <route>
+
+      <from uri="mina:127.0.0.1?port={{config.ServerPort}};poll=0;threadCount=10;sync=true;parallel=true"/>
+      <process ref="minaProcessor"/>
+      <wireTap uri="direct:segunTap"/>
+      <to uri="normalizer:app.core.workflow.test.MinaTestProcessor?method=Start"/>
+
+      <split>
+        <xpath>/information/payment</xpath>
+        <to uri="log2:C:\Users\ADEOLA.OJO\Downloads\splitter-test-data1.log?logType=file"/>
+        <to uri="log2:C:\Users\ADEOLA.OJO\Downloads\splitter-test-data2.log?logType=file"/>
+        <choice>
+          <when>
+            <xpath>/code = '00'</xpath>
+            <setProperty propertyName="isRequestSuccessful" value="1"/>
+            <setProperty propertyName="messageProperty" value="Transaction successful"/>
+            <to uri="log2:C:\Users\ADEOLA.OJO\Downloads\bankai.log?logType=file"/>
+          </when>
+          <otherwise>
+            <setProperty propertyName="isRequestSuccessful" value="0"/>
+            <to uri="log2:C:\Users\ADEOLA.OJO\Downloads\bankai-non.log?logType=file"/>
+          </otherwise>
+        </choice>
+      </split>
+
+      <choice>
+        <when>
+          <xpath>/code = '00'</xpath>
+          <setProperty propertyName="isRequestSuccessful" value="1"/>
+          <setProperty propertyName="messageProperty" value="Transaction successful"/>
+          <to uri="log2:C:\Users\ADEOLA.OJO\Downloads\tcp-logs-00.txt?logType=file"/>
+        </when>
+        <when>
+          <xpath>/code = '91'</xpath>
+          <setProperty propertyName="isRequestSuccessful" value="2"/>
+          <setProperty propertyName="messageProperty" value="issuer or switch inoperative"/>
+          <to uri="log2:C:\Users\ADEOLA.OJO\Downloads\mina-91-component.txt?logType=file"/>
+        </when>
+        <when>
+          <xpath>/code = '51'</xpath>
+          <setProperty propertyName="isRequestSuccessful" value="3"/>
+          <setProperty propertyName="messageProperty" value="in-sufficient funds"/>
+          <to uri="log2:C:\Users\ADEOLA.OJO\Downloads\mina-51-component.txt?logType=file"/>
+        </when>
+        <otherwise>
+          <setProperty propertyName="isRequestSuccessful" value="0"/>
+        </otherwise>
+      </choice>
+
+    </route>
+
+  </context>
+</container>
