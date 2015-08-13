@@ -62,3 +62,6 @@ C:\Users\ADEOLA.OJO\Documents\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\A
 C:\Users\ADEOLA.OJO\Documents\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\Apache.NMS.xml
 C:\Users\ADEOLA.OJO\Documents\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\Newtonsoft.Json.xml
 C:\Users\ADEOLA.OJO\Documents\Projects\TqWorkflow\TqWorkflow\TestKit\obj\Debug\TestKit.csprojResolveAssemblyReference.cache
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\SynapseCore.TestKit.exe.config
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\obj\Debug\SynapseCore.TestKit.exe
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\obj\Debug\SynapseCore.TestKit.pdb

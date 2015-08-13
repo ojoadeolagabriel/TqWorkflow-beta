@@ -20,6 +20,7 @@ namespace TestKit
     {
         public const string Data = "The_OtherGirl!";
 
+
         public static string GetPropertyName<T>(Expression<Func<T>> propertyLambda)
         {
             switch (propertyLambda.Body.NodeType)
