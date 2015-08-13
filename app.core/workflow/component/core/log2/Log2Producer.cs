@@ -117,7 +117,14 @@ namespace app.core.workflow.component.core.log2
                 msg = string.Format("{0}, {1}", msg, errorListing);
             }
 
-            Log(uriDescriptor.ComponentPath, msg);
+            try
+            {
+                Log(uriDescriptor.ComponentPath, msg);
+            }
+            catch (Exception exception)
+            {
+                
+            }
         }
     }
 }

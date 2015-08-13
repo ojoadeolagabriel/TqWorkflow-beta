@@ -53,8 +53,8 @@ namespace app.core.workflow.component.core.mina
             if (TcpListener == null)
                 TcpListener = new TcpListener(IPAddress.Parse(ip), port);
 
-            TcpListener.Server.SendTimeout = 5000;
-            TcpListener.Server.ReceiveTimeout = 5000;
+            TcpListener.Server.SendTimeout = 51000;
+            TcpListener.Server.ReceiveTimeout = 51000;
             TcpListener.Start(1000);
 
             Console.WriteLine("listening for incomming connections @ {0}:{1}", ip, port);

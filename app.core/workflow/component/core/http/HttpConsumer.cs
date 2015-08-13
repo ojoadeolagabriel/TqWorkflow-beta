@@ -30,7 +30,6 @@ namespace app.core.workflow.component.core.http
 
         public override Exchange Poll()
         {
-            //PollHandler();
             Task.Factory.StartNew(PollHandler);
             return null;
         }
@@ -39,8 +38,9 @@ namespace app.core.workflow.component.core.http
 
         private void PollHandler()
         {
+            var exchange = new Exchange(_httpProcessor.Route);
             var initialDelay = _httpProcessor.UriInformation.GetUriProperty("initialDelay", 1000);
-            var portId = _httpProcessor.UriInformation.GetUriProperty("port", 9000);
+            var portId = _httpProcessor.UriInformation.GetUriProperty("port", 9000, exchange);
 
             if(initialDelay > 0)
                 Thread.Sleep(initialDelay);
@@ -52,7 +52,7 @@ namespace app.core.workflow.component.core.http
             HttpListener.Start();
             HttpListener.BeginGetContext(ProcessIncommingClientAsync, new PassData
             {
-                Exchange = new Exchange(_httpProcessor.Route),
+                Exchange = exchange,
                 HttpListener = HttpListener
             });
         }
@@ -77,7 +77,7 @@ namespace app.core.workflow.component.core.http
             exchange.InMessage.Body = body;
             _httpProcessor.Process(exchange);
 
-            var b = Encoding.UTF8.GetBytes(exchange.OutMessage.Body.ToString());
+            var b = Encoding.UTF8.GetBytes(exchange.InMessage.Body.ToString());
             client.Response.StatusCode = 200;
             client.Response.KeepAlive = false;
 
