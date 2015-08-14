@@ -49,7 +49,7 @@ namespace app.core.workflow.component.core.smtp
             var toAddress = endPointDescriptor.GetUriProperty("to");
             var from = endPointDescriptor.GetUriProperty("from");
             var port = endPointDescriptor.GetUriProperty<int>("port");
-            var host = endPointDescriptor.GetUriProperty<string>("host");
+            var host = endPointDescriptor.ComponentPath;
             var subject = endPointDescriptor.GetUriProperty<string>("subject");
             var body = endPointDescriptor.GetUriProperty<string>("body");
             var username = endPointDescriptor.GetUriProperty<string>("username");
@@ -62,11 +62,13 @@ namespace app.core.workflow.component.core.smtp
                 Port = port,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 Host = host,
+                UseDefaultCredentials = true,
                 Credentials = new NetworkCredential(username, password)
             };
 
-            mail.To.Add(toAddress);
+            mail.To.Add(new MailAddress(toAddress));
             mail.From = new MailAddress(@from);
+            mail.IsBodyHtml = true;
             mail.Body = exchange.InMessage.Body.ToString();
 
             mail.Subject = subject;
