@@ -36,7 +36,7 @@ namespace app.core.workflow.test
                     ).ToString(SaveOptions.DisableFormatting);
 
                 exchange.InMessage.Body = xml;
-                exchange.InMessage.SetHeader("email_address", "DAdubiaro@Interswitchng.com");
+                exchange.InMessage.SetHeader("email_address", "aojo@Interswitchng.com");
             }
 
             exchange.Exception.Push(new Exception("Error processing transaction request"));
