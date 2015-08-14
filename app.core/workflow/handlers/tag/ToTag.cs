@@ -9,7 +9,9 @@ namespace app.core.workflow.handlers.tag
         public static void Execute(string uri, Exchange exchange, Route route)
         {
             var leafNodeParts = UriDescriptor.Parse(uri);
-            SimpleExpression.ResolveExpression(leafNodeParts, exchange);
+            leafNodeParts.ComponentQueryPath = SimpleExpression.ResolveExpression(leafNodeParts.ComponentQueryPath, exchange);
+            leafNodeParts.ComponentPath = SimpleExpression.ResolveExpression(leafNodeParts.ComponentPath, exchange);
+
             EndPointBuilder.HandleTo(leafNodeParts, exchange, route);
         }
     }

@@ -229,7 +229,7 @@ namespace app.core.workflow.facade
         private static void HandleFromProcessor(XElement step, Route routeObj, Exchange exchange)
         {
             var uri = step.Attribute("uri").Value;
-            FromTag.Execute(uri, routeObj);
+            FromTag.Execute(uri, exchange, routeObj);
         }
     }
 }

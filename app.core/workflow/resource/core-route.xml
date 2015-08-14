@@ -37,19 +37,19 @@
       <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey={{config.ESBJWTSharedKey}}"/>
       <to uri="httpclient:www.google.com"/>
 
-      <to uri="log2:C:\Users\ADEOLA OJO\Downloads\http-test-log-file.log?logType=file"/>
+      <to uri="log2:{{config.DefaultLogPathRoot}}\http-test-log-file.log?logType=file"/>
     </route>
 
     <route>
       <from uri="http:127.0.0.1?port={{config.HttpTestPort}};poll=500;initialDelay=1000;"/>
       <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey={{config.ESBJWTSharedKey}}"/>
-      <to uri="log2:c:\Users\Adeola Ojo\Downloads\http-soap-component.log?logType=file"/>
+      <to uri="log2:{{config.DefaultLogPathRoot}}\http-soap-component.log?logType=file"/>
       <to uri="amq:127.0.0.1:61616?queue=http-test-request-post-queue"/>
     </route>
 
     <route>
       <from uri="amq:127.0.0.1:61616?queue=to-mina-queue"/>
-      <to uri="log2:c:\Users\Adeola Ojo\Downloads\amq-component-reader.logs.log?logType=file"/>
+      <to uri="log2:{{config.DefaultLogPathRoot}}\amq-component-reader.logs.log?logType=file"/>
     </route>
 
     <route>
@@ -62,18 +62,18 @@
 
       <split>
         <xpath>/information/payment</xpath>
-        <to uri="log2:C:\Users\ADEOLA OJO\Downloads\splitter-test-data1.log?logType=file"/>
-        <to uri="log2:C:\Users\ADEOLA OJO\Downloads\splitter-test-data2.log?logType=file"/>
+        <to uri="log2:{{config.DefaultLogPathRoot}}\splitter-test-data1.log?logType=file"/>
+        <to uri="log2:{{config.DefaultLogPathRoot}}\splitter-test-data2.log?logType=file"/>
         <choice>
           <when>
             <xpath>/code = '00'</xpath>
             <setProperty propertyName="isRequestSuccessful" value="1"/>
             <setProperty propertyName="messageProperty" value="Transaction successful"/>
-            <to uri="log2:C:\Users\ADEOLA.OJO\Downloads\bankai.log?logType=file"/>
+            <to uri="log2:{{config.DefaultLogPathRoot}}\bankai.log?logType=file"/>
           </when>
           <otherwise>
             <setProperty propertyName="isRequestSuccessful" value="0"/>
-            <to uri="log2:C:\Users\ADEOLA OJO\Downloads\bankai-non.log?logType=file"/>
+            <to uri="log2:{{config.DefaultLogPathRoot}}\bankai-non.log?logType=file"/>
           </otherwise>
         </choice>
       </split>
@@ -83,19 +83,19 @@
           <xpath>/code = '00'</xpath>
           <setProperty propertyName="isRequestSuccessful" value="1"/>
           <setProperty propertyName="messageProperty" value="Transaction successful"/>
-          <to uri="log2:C:\Users\ADEOLA OJO\Downloads\tcp-logs-00.txt?logType=file"/>
+          <to uri="log2:{{config.DefaultLogPathRoot}}\tcp-logs-00.txt?logType=file"/>
         </when>
         <when>
           <xpath>/code = '91'</xpath>
           <setProperty propertyName="isRequestSuccessful" value="2"/>
           <setProperty propertyName="messageProperty" value="issuer or switch inoperative"/>
-          <to uri="log2:C:\Users\ADEOLA OJO\Downloads\mina-91-component.txt?logType=file"/>
+          <to uri="log2:{{config.DefaultLogPathRoot}}\mina-91-component.txt?logType=file"/>
         </when>
         <when>
           <xpath>/code = '51'</xpath>
           <setProperty propertyName="isRequestSuccessful" value="3"/>
           <setProperty propertyName="messageProperty" value="in-sufficient funds"/>
-          <to uri="log2:C:\Users\ADEOLA OJO\Downloads\mina-51-component.txt?logType=file"/>
+          <to uri="log2:{{config.DefaultLogPathRoot}}\mina-51-component.txt?logType=file"/>
         </when>
         <otherwise>
           <setProperty propertyName="isRequestSuccessful" value="0"/>

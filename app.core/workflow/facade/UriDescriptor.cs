@@ -85,7 +85,7 @@ namespace app.core.workflow.facade
             }
 
             parts.ComponentName = uriPrimaryParts.Length >= 1 ? uriPrimaryParts[0] : "";
-            parts.ComponentPath = uriPrimaryParts.Length >= 2 ? uriPrimaryParts[1] : "";
+            parts.ComponentPath = uriPrimaryParts.Length >= 2 ? uriPrimaryParts[1] : "";           
             parts.ComponentQueryPath = mainParts.Length > 1 ? mainParts[1] : "";
             parts.FullUri = uri;
 

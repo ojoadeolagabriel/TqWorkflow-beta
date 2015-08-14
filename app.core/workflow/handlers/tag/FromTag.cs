@@ -6,7 +6,7 @@ namespace app.core.workflow.handlers.tag
 {
     public class FromTag
     {
-        public static void Execute(string uri, Route route)
+        public static void Execute(string uri, Exchange exchange, Route route)
         {
             var leafNodeParts = UriDescriptor.Parse(uri);
             EndPointBuilder.HandleFrom(leafNodeParts, route);
