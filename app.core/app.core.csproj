@@ -92,6 +92,7 @@
     <Compile Include="workflow\component\core\freemarker\FreeMarkerEndPoint.cs" />
     <Compile Include="workflow\component\core\freemarker\FreeMarkerProcessor.cs" />
     <Compile Include="workflow\component\core\freemarker\FreeMarkerProducer.cs" />
+    <Compile Include="workflow\component\core\ftp\FtpEndpoint.cs" />
     <Compile Include="workflow\component\core\httpclient\HttpClientConsumer.cs" />
     <Compile Include="workflow\component\core\httpclient\HttpClientEndPoint.cs" />
     <Compile Include="workflow\component\core\httpclient\HttpClientProcessor.cs" />
@@ -170,7 +171,6 @@
     <Folder Include="approval\dto\" />
     <Folder Include="approval\facade\" />
     <Folder Include="approval\service\" />
-    <Folder Include="workflow\component\core\ftp\" />
     <Folder Include="workflow\component\core\http\util\" />
     <Folder Include="workflow\component\core\mina\util\" />
   </ItemGroup>
