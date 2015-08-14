@@ -57,7 +57,7 @@
       <from uri="mina:127.0.0.1?port={{config.ServerPort}};timeout={{config.SocketTimeOut}}"/>
       <process ref="minaProcessor"/>
 
-      <to uri="smtp:172.25.20.20?port=8080;username=adeola;password=adeola;protocol=smtp;contenttype=html;to=${in.header.email_address}"/>
+      <to uri="smtp:172.25.20.20?host=172.16.10.20;port=8080;username=adeola;password=adeola;protocol=smtp;contenttype=html;to=${in.header.email_address}"/>
       <to uri="normalizer:app.core.workflow.test.MinaTestProcessor?method=Start"/>
       <to uri="amq:127.0.0.1:61616?queue=to-mina-queue;port={{config.AmqTestPort}}"/>
 
