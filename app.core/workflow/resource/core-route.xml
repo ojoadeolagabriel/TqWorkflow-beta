@@ -65,6 +65,7 @@
         <xpath>/information/payment</xpath>
         <to uri="log2:{{config.DefaultLogPathRoot}}\splitter-test-data1.log?logType=file"/>
         <to uri="log2:{{config.DefaultLogPathRoot}}\splitter-test-data2.log?logType=file"/>
+        
         <choice>
           <when>
             <xpath>/code = '00'</xpath>
