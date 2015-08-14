@@ -58,8 +58,15 @@ namespace app.core.workflow.handlers.pattern.eip
                         foreach (var item in result)
                         {
                             var exchangeMsg = item;
-                            exchange.InMessage.Body = exchangeMsg;
-                            RouteStep.ProcessStep(nextStep, exchange.Route, exchange);
+                            var splitterExchange = exchange.CloneExchange(new Message
+                            {
+                                Body = exchangeMsg,
+                                HeaderCollection = exchange.InMessage.HeaderCollection
+                            },
+                                new Message(),
+                                exchange.Route);
+
+                            RouteStep.ProcessStep(nextStep, exchange.Route, splitterExchange);
                         }
                         //restore original message
                         exchange.InMessage.Body = originalMessage;

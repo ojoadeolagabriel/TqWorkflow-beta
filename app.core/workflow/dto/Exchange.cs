@@ -57,7 +57,7 @@ namespace app.core.workflow.dto
 
         public Mep MepPattern { get; set; }
 
-        public readonly Guid ExchangeId;
+        public Guid ExchangeId;
 
         public Message InMessage = new Message();
 
@@ -73,6 +73,18 @@ namespace app.core.workflow.dto
             CamelCreatedTimestamp = DateTime.Now;
             _lastAccessTime = DateTime.Now;
             PropertyCollection = new ConcurrentDictionary<string, string>();
+        }
+
+        public Exchange CloneExchange(Message inMessage, Message outMessage, Route route)
+        {
+            return new Exchange(Route)
+            {
+                InMessage = inMessage,
+                OutMessage = outMessage,
+                CamelCreatedTimestamp = DateTime.Now,
+                ExchangeId = Guid.NewGuid(),
+                PropertyCollection = new ConcurrentDictionary<string, string>()
+            };
         }
 
         public DateTime CamelCreatedTimestamp { get; set; }
