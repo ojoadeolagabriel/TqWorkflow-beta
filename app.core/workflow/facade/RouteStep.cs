@@ -13,6 +13,7 @@ namespace app.core.workflow.facade
     public class RouteStep
     {
         public RouteStep NextTag;
+
         private readonly XElement _currentStepXml;
         public Route Route { get; set; }
 
