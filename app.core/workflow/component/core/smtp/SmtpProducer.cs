@@ -26,15 +26,19 @@ namespace app.core.workflow.component.core.smtp
                 switch (protocol)
                 {
                     case "smtp":
-                        SendMail(endPointDescriptor, exchange);
+                        Task.Factory.StartNew(() => SendMail(endPointDescriptor, exchange));
                         break;
                     case "imap":
                         break;
-                }               
+                }
             }
-            catch
+            catch (AggregateException aggregateException)
             {
-                
+                Console.WriteLine("aggr-error sending mail: {0}", aggregateException.Message);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("error sending mail: {0}", exception.Message);
             }
 
             return base.Process(exchange, endPointDescriptor);
@@ -50,7 +54,7 @@ namespace app.core.workflow.component.core.smtp
             var body = endPointDescriptor.GetUriProperty<string>("body");
             var username = endPointDescriptor.GetUriProperty<string>("username");
             var password = endPointDescriptor.GetUriProperty<string>("password");
-            
+
 
             var mail = new MailMessage();
             var client = new SmtpClient
