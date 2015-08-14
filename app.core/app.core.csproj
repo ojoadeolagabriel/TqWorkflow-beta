@@ -115,6 +115,9 @@
     <Compile Include="workflow\component\core\normalizer\NormalizerProcessor.cs" />
     <Compile Include="workflow\component\core\normalizer\NormalizerProducer.cs" />
     <Compile Include="workflow\component\core\PollingConsumer.cs" />
+    <Compile Include="workflow\component\core\smtp\SmtpEndpoint.cs" />
+    <Compile Include="workflow\component\core\smtp\SmtpProcessor.cs" />
+    <Compile Include="workflow\component\core\smtp\SmtpProducer.cs" />
     <Compile Include="workflow\component\core\timer\TimerConsumer.cs" />
     <Compile Include="workflow\component\core\timer\TimerEndPoint.cs" />
     <Compile Include="workflow\component\core\timer\TimerProcessor.cs" />

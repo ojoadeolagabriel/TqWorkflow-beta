@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TqWorkflow", "TqWorkflow\TqWorkflow.csproj", "{EFFC2DF6-7E09-4EA6-AE54-7173F4F237BA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestKit", "TestKit\TestKit.csproj", "{5C6DCBBF-B297-406F-9567-5BE80C28F79A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app.core", "app.core\app.core.csproj", "{C8C59F6C-6169-4C61-88C1-4CA8DD1FEC2F}"
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EFFC2DF6-7E09-4EA6-AE54-7173F4F237BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EFFC2DF6-7E09-4EA6-AE54-7173F4F237BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EFFC2DF6-7E09-4EA6-AE54-7173F4F237BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EFFC2DF6-7E09-4EA6-AE54-7173F4F237BA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5C6DCBBF-B297-406F-9567-5BE80C28F79A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5C6DCBBF-B297-406F-9567-5BE80C28F79A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C6DCBBF-B297-406F-9567-5BE80C28F79A}.Release|Any CPU.ActiveCfg = Release|Any CPU
