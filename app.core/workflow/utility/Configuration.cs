@@ -8,6 +8,7 @@ namespace app.core.workflow.utility
 {
     public class Configuration : ConfigBase<Configuration>
     {
+        public string ApplicationConfigRootFolderPath { get; set; }
         public int SocketTimeOut { get; set; }
         public int AmqTestPort { get; set; }
         public int ServerPort { get; set; }

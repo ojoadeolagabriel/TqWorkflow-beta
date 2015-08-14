@@ -27,7 +27,13 @@
       <setHeader headerName="CamelHttpQuery" value="start-hour=11;end-hour=12"/>
       <setHeader headerName="CamelHttpMethod" value="GET"/>
       <setHeader headerName="CamelHttpContentType" value="application/x-www-form-urlencoded"/>
-
+      
+      <multicast>
+        <to uri="direct:firstDirect"/>
+        <to uri="direct:secondDirect"/>
+        <to uri="direct:thirdDirect"/>
+      </multicast>
+      
       <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey={{config.ESBJWTSharedKey}}"/>
       <to uri="httpclient:www.google.com"/>
 

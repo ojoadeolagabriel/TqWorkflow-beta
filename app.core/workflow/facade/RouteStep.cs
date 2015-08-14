@@ -53,6 +53,9 @@ namespace app.core.workflow.facade
                     case "split":
                         HandleSplit(step, exchange);
                         break;
+                    case "multicast":
+                        HandleMulticast(step, exchange);
+                        break;
                     case "process":
                         HandleProcessor(step, routeObj, exchange);
                         break;
@@ -92,6 +95,11 @@ namespace app.core.workflow.facade
             {
 
             }
+        }
+
+        private static void HandleMulticast(XElement step, Exchange exchange)
+        {
+            PublishSubscribePattern.Process(step, exchange);
         }
 
         private static void HandleSplit(XElement step, Exchange exchange)

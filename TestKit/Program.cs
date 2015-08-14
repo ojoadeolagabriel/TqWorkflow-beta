@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IdentityModel.Tokens;
 using System.Linq;
 using System.Linq.Expressions;
@@ -60,13 +61,12 @@ namespace TestKit
                 Console.WriteLine("Invalid token!");
             }
 
-            const string camelFile = @"C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\workflow\resource\core-route.xml";
-            //const string altFile = @"C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\workflow\resource\alt-route.xml";
+            var config = new app.core.workflow.utility.Configuration();
+
+            var camelFile = string.Format("{0}\\core-route.xml", config.ApplicationConfigRootFolderPath);
             Camel.InitDependencyLibs(new List<string> { "app.core.workflow.component.core" });
 
             RoutePipelineEngine.Initialize(camelFile);
-            //RoutePipelineEngine.Initialize(altFile);
-
             Camel.StartAllRoutes();
 
             var startTime = DateTime.Now;
