@@ -20,8 +20,8 @@
     </route>
 
     <route>
-      <from uri="timer:opeTimer?poll=100000;"/>
-      <to uri="direct:firstInstitutionDirect"/>
+      <from uri="timer:opeTimer?poll=300000;"/>
+      <to uri="smtp:127.0.0.1?port=25;protocol=smtp;contenttype=html;from=killerbeans@paydirect.com;to=testclient@127.0.0.1;subject=cannot see me"/>
     </route>
     
   </context>

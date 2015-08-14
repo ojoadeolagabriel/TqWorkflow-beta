@@ -62,9 +62,13 @@ namespace app.core.workflow.component.core.smtp
                 Port = port,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 Host = host,
-                UseDefaultCredentials = true,
-                Credentials = new NetworkCredential(username, password)
             };
+
+            if (!string.IsNullOrEmpty(username) &&
+                !string.IsNullOrEmpty(password))
+            {
+                client.Credentials = new NetworkCredential(username, password);
+            }
 
             mail.To.Add(new MailAddress(toAddress));
             mail.From = new MailAddress(@from);

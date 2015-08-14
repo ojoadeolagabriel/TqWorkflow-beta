@@ -76,12 +76,10 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\System.Reactive.Runtime.Remoting.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\System.Reactive.Windows.Forms.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\System.Reactive.Windows.Threading.dll
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\TqWorkflow.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\Apache.NMS.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\Apache.NMS.ActiveMQ.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\app.core.pdb
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\TqWorkflow.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\System.IdentityModel.Tokens.Jwt.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\System.Reactive.Core.xml
