@@ -41,20 +41,20 @@ namespace app.core.workflow.component.core.mina
             var initialDelay = _processor.UriInformation.GetUriProperty("initialDelay", 1000);
             var poll = _processor.UriInformation.GetUriProperty("poll", 1000);
             var parallel = _processor.UriInformation.GetUriProperty("parallel", true);
-            var timeout = _processor.UriInformation.GetUriProperty("timeout", 10000);
-            var maxThreadCount = _processor.UriInformation.GetUriProperty("threadCount", 2);
+            var timeout = _processor.UriInformation.GetUriProperty("timeout", 10000, exchange);
+            var maxThreadCount = _processor.UriInformation.GetUriProperty("threadCount", 2, exchange);
             var sync = _processor.UriInformation.GetUriProperty("sync", false);
             var textline = _processor.UriInformation.GetUriProperty("textline", true);
             var encoding = _processor.UriInformation.GetUriProperty("encoding", "");
-            var port = _processor.UriInformation.GetUriProperty("port", 7000 , exchange);
+            var port = _processor.UriInformation.GetUriProperty("port", 7000, exchange);
             var ip = _processor.UriInformation.ComponentPath;
 
             //new
             if (TcpListener == null)
                 TcpListener = new TcpListener(IPAddress.Parse(ip), port);
 
-            TcpListener.Server.SendTimeout = 51000;
-            TcpListener.Server.ReceiveTimeout = 51000;
+            TcpListener.Server.SendTimeout = timeout;
+            TcpListener.Server.ReceiveTimeout = timeout;
             TcpListener.Start(1000);
 
             Console.WriteLine("listening for incomming connections @ {0}:{1}", ip, port);
@@ -70,7 +70,7 @@ namespace app.core.workflow.component.core.mina
         {
             var passData = (PassData)res.AsyncState;
             var listener = passData.TcpListener;
-            
+
             TcpListener.BeginAcceptTcpClient(ProcessIncommingClientAsync, new PassData { Exchange = new Exchange(_processor.Route), TcpListener = TcpListener });
 
             try
@@ -105,7 +105,7 @@ namespace app.core.workflow.component.core.mina
             }
             catch (Exception)
             {
-                            
+
             }
         }
     }
