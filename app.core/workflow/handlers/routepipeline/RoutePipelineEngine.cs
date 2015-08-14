@@ -51,7 +51,6 @@ namespace app.core.workflow.handlers.routepipeline
                 {
                     var xmlRoute = route;
                     RoutePipelineDefaultProcessor.ProcessRouteInformation(xmlRoute, autoExec);
-                    //Task.Factory.StartNew(() => RoutePipelineDefaultProcessor.ProcessRouteInformation(xmlRoute, autoExec));
                 }
             }
             else
