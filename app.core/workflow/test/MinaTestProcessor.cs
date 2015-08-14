@@ -24,10 +24,10 @@ namespace app.core.workflow.test
             if (xElement != null)
             {
                 exchange.InMessage.SetHeader("response-message", "ola .. in tcp/ip test processor");
-                
+
                 var ans = DateTime.Now.Second % 3;
                 var xml = new XElement("payments",
-                    new XElement("code", ans!=0 ? "00" : "91"),
+                    new XElement("code", ans != 0 ? "00" : "91"),
                     new XElement("information", new XElement("payment", new XAttribute("ref", "12345")),
                     new XElement("payment", new XAttribute("ref", "34343")),
                     new XElement("payment", new XAttribute("ref", "33411")),
@@ -36,6 +36,7 @@ namespace app.core.workflow.test
                     ).ToString(SaveOptions.DisableFormatting);
 
                 exchange.InMessage.Body = xml;
+                exchange.InMessage.SetHeader("email_address", "DAdubiaro@Interswitchng.com");
             }
 
             exchange.Exception.Push(new Exception("Error processing transaction request"));

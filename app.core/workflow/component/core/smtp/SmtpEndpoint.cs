@@ -12,6 +12,7 @@ namespace app.core.workflow.component.core.smtp
     {
         public SmtpEndpoint(string uri, Route route) : base(uri, route)
         {
+
         }
 
         public override void Send(Exchange exchange, UriDescriptor endPointDescriptor)

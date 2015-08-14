@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace app.core.workflow.component.core.smtp
 {
-    class SmtpProcessor
+    public class SmtpProcessor
     {
     }
 }
