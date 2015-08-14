@@ -179,6 +179,9 @@
     <Content Include="dependency\JWT.dll" />
     <Content Include="dependency\log4net.dll" />
     <Content Include="workflow\resource\alt-route.xml" />
+    <Content Include="workflow\resource\transaction-pocessor-route.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="workflow\resource\direct-route.xml">
       <SubType>Designer</SubType>
     </Content>
