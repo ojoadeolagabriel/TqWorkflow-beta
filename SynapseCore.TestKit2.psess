@@ -67,6 +67,11 @@
       <ProjName>TestKit</ProjName>
     </ProjBinary>
   </Binaries>
+  <Reports>
+    <Report>
+      <Path>SynapseCore.TestKit150814.vspx</Path>
+    </Report>
+  </Reports>
   <Launches>
     <ProjBinary>
       <Path>:PB:{5C6DCBBF-B297-406F-9567-5BE80C28F79A}|TestKit\TestKit.csproj</Path>
