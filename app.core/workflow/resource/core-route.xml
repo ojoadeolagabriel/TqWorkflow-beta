@@ -89,6 +89,7 @@
             <to uri="log2:{{config.DefaultLogPathRoot}}\bankai-non.log?logType=file"/>
           </otherwise>
         </choice>
+      
       </split>
 
       <choice>
