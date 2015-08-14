@@ -115,12 +115,14 @@
     <Compile Include="workflow\component\core\normalizer\NormalizerProcessor.cs" />
     <Compile Include="workflow\component\core\normalizer\NormalizerProducer.cs" />
     <Compile Include="workflow\component\core\PollingConsumer.cs" />
+    <Compile Include="workflow\component\core\sftp\SftpEndpoint.cs" />
     <Compile Include="workflow\component\core\smtp\SmtpEndpoint.cs" />
     <Compile Include="workflow\component\core\smtp\SmtpProcessor.cs" />
     <Compile Include="workflow\component\core\smtp\SmtpProducer.cs" />
     <Compile Include="workflow\component\core\timer\TimerConsumer.cs" />
     <Compile Include="workflow\component\core\timer\TimerEndPoint.cs" />
     <Compile Include="workflow\component\core\timer\TimerProcessor.cs" />
+    <Compile Include="workflow\component\core\xmltojson\XmlToJsonEndPoint.cs" />
     <Compile Include="workflow\dto\Exchange.cs" />
     <Compile Include="workflow\dto\Message.cs" />
     <Compile Include="workflow\dto\MessageExchangeType.cs" />

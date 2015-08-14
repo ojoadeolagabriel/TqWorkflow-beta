@@ -33,6 +33,7 @@
     </route>
 
     <route>
+      
       <from uri="file:c:\Users\Adeola Ojo\Downloads\camel.test.file.txt?poll=100;initialDelay=1000"/>
       <convertBodyTo type="System.String"/>
       <setProperty propertyName="FilePollingTimeConfig" value="{{config.FilePollingTime}}"/>
