@@ -20,6 +20,7 @@ namespace app.core.workflow.dto
         }
 
         public ConcurrentStack<Exception> Exception = new ConcurrentStack<Exception>();
+        public ConcurrentStack<Object> AlternativeMessage = new ConcurrentStack<Object>();
 
         public void SetException(Exception value)
         {

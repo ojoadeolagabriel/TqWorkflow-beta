@@ -53,6 +53,11 @@
     </route>
 
     <route>
+      <from uri="direct:firstInstitutionDirect"/>
+      <to uri="log2:{{config.DefaultLogPathRoot}}\firstInstitutionDirect.log?logType=file"/>
+    </route>
+      
+    <route>
 
       <from uri="mina:127.0.0.1?port={{config.ServerPort}};timeout={{config.SocketTimeOut}}"/>
       <process ref="minaProcessor"/>
@@ -65,6 +70,12 @@
         <xpath>/information/payment</xpath>
         <to uri="log2:{{config.DefaultLogPathRoot}}\splitter-test-data1.log?logType=file"/>
         <to uri="log2:{{config.DefaultLogPathRoot}}\splitter-test-data2.log?logType=file"/>
+
+        <multicast>
+          <to uri="direct:firstInstitutionDirect"/>
+          <to uri="direct:secondInstitutionLoggerDirect"/>
+          <to uri="direct:thirdInstitutionDirect"/>
+        </multicast>
         
         <choice>
           <when>

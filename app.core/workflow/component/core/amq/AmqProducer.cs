@@ -35,7 +35,7 @@ namespace app.core.workflow.component.core.amq
         public override Exchange Process(Exchange exchange, UriDescriptor endPointDescriptor)
         {           
             try
-            {
+            {                
                 var connection = CreateConnection(endPointDescriptor);
                 var queue = endPointDescriptor.GetUriProperty("queue", "test_queue");
 
