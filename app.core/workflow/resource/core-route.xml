@@ -11,7 +11,7 @@
     <property key="HttpTestPort" value="10002"/>
     <property key="SocketTimeOut" value="6000"/>
     <property key="CacheType" value="{{cacheType}}"/>
-  </bean>
+  </bean>  
 
   <bean id="myDeadLetterErrorHandler" class="app.core.workflow.builder.DeadLetterChannelBuilder">
     <property key="DeadLetterUri" value="jms:queue:dead"/>
