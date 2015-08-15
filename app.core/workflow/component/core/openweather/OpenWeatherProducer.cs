@@ -25,31 +25,30 @@ namespace app.core.workflow.component.core.openweather
 
         public override Exchange Process(Exchange exchange, UriDescriptor endPointDescriptor)
         {
-            Task.Factory.StartNew(() => PollHandler(exchange, endPointDescriptor));
-            return exchange;
-        }
-
-        private Timer timer;
-        private void PollHandler(Exchange exchange, UriDescriptor endPointDescriptor)
-        {
-            var poll = endPointDescriptor.GetUriProperty("poll", 1000);
-            var dueTime = endPointDescriptor.GetUriProperty("dueTime", 1000);
-
-            timer = new Timer(CallBack, new PassData { Exchange = exchange, UriInfo = endPointDescriptor }, dueTime, poll);
-        }
-
-        private void CallBack(object state)
-        {
-            var stateData = (PassData)state;
-            var location = stateData.UriInfo.GetUriProperty("location", "");
+            var baseApiUri = endPointDescriptor.ComponentPath;
+            var location = endPointDescriptor.GetUriProperty("location", "");
+            var resultHeader = endPointDescriptor.GetUriProperty("resultHeader");
+            var lat = endPointDescriptor.GetUriProperty("lat");
+            var lon = endPointDescriptor.GetUriProperty("lon");
 
             using (var client = new WebClient())
             {
-                var queryKeyValue = UriDescriptor.BuildKeyValueListWithEquality("");
-                queryKeyValue.ForEach(c => client.QueryString.Add(c.Key, c.Value));
+                if (!string.IsNullOrEmpty(lat))
+                    client.QueryString.Add("lat", lat);
+                if (!string.IsNullOrEmpty(lon))
+                    client.QueryString.Add("lon", lon);
 
-                client.DownloadString(location);
+                var finaUrl = string.Format("http://{0}?q={1}", baseApiUri, location);
+                var result = client.DownloadString(finaUrl);
+
+                if (!string.IsNullOrEmpty(resultHeader))
+                    exchange.InMessage.SetHeader("resultHeader", result);
+                else
+                {
+                    exchange.InMessage.Body = result;
+                }
             }
-        }
+            return exchange;
+        }     
     }
 }

@@ -23,6 +23,7 @@
 
     <route>
       <from uri="timer:opeTimer?poll=300000;"/>
+      <to uri="openweather:api.openweathermap.org/data/2.5/weather?location=lagos"/>
       <process ref="testProcessor"/>
       <to uri="couchdb:127.0.0.1?port=5984;createDb=true"/>
       <to uri="smtp:127.0.0.1?port=25;protocol=smtp;contenttype=html;from=killerbeans@paydirect.com;to=testclient@127.0.0.1;subject=cannot see me"/>

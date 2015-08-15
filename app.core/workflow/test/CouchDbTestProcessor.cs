@@ -20,8 +20,8 @@ namespace app.core.workflow.test
 
         public override void Process(Exchange exchange)
         {
-            var person = new Person { Password = "xxxxxxxx", Username = "aojo", Id = 1 };
-            exchange.InMessage.Body = person;
+            //var person = new Person { Password = "xxxxxxxx", Username = "aojo", Id = 1 };
+            //exchange.InMessage.Body = person;
             exchange.InMessage.SetHeader("CouchDbDatabase", "dev_paydirect");
         }
     }
