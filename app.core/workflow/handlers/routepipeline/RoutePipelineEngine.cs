@@ -97,7 +97,7 @@ namespace app.core.workflow.handlers.routepipeline
 
                                 //check for bean
                                 if (!Camel.Registry.ContainsKey(checkValue))
-                                    prop.SetValue(bean, Convert.ChangeType(@value, prop.PropertyType));
+                                    prop.SetValue(bean, Convert.ChangeType(@value, prop.PropertyType), null);
                                 else
                                 {
                                     if (@value != string.Empty && @value.StartsWith("{{") && @value.EndsWith("}}"))
@@ -105,7 +105,7 @@ namespace app.core.workflow.handlers.routepipeline
                                         try
                                         {
                                             var obj = Camel.Registry[checkValue];
-                                            prop.SetValue(bean, obj);
+                                            prop.SetValue(bean, obj, null);
                                         }
                                         catch
                                         {

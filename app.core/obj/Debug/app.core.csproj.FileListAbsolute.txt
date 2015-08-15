@@ -49,4 +49,5 @@ C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\app.core\obj\Debug\app.core
 C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\app.core\obj\Debug\app.core.dll
 C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\app.core\obj\Debug\app.core.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\RedBranch.Hammock.dll
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\obj\Debug\app.core.csprojResolveAssemblyReference.cache
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\System.Net.Http.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\System.Net.Http.xml
