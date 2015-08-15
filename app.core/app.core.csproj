@@ -49,9 +49,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dependency\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=4.0.4.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dependency\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RedBranch.Hammock, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dependency\RedBranch.Hammock.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -77,6 +81,9 @@
     <Compile Include="workflow\component\core\amq\AmqEndPoint.cs" />
     <Compile Include="workflow\component\core\amq\AmqProcessor.cs" />
     <Compile Include="workflow\component\core\amq\AmqProducer.cs" />
+    <Compile Include="workflow\component\core\couchdb\CouchDbEndpoint.cs" />
+    <Compile Include="workflow\component\core\couchdb\CouchDbProducer.cs" />
+    <Compile Include="workflow\component\core\couchdb\CouchDbProvider.cs" />
     <Compile Include="workflow\component\core\DefaultEndpoint.cs" />
     <Compile Include="workflow\component\core\DefaultProcessor.cs" />
     <Compile Include="workflow\component\core\DefaultProducer.cs" />
@@ -153,6 +160,7 @@
     <Compile Include="workflow\handlers\routepipeline\RoutePipelineEngine.cs" />
     <Compile Include="workflow\handlers\tag\XPathTag.cs" />
     <Compile Include="workflow\registry\BeanRegistry.cs" />
+    <Compile Include="workflow\test\CouchDbTestProcessor.cs" />
     <Compile Include="workflow\test\CsvProcessor.cs" />
     <Compile Include="workflow\test\HttpRequestBean.cs" />
     <Compile Include="workflow\test\MinaTestProcessor.cs" />
@@ -178,6 +186,8 @@
     <Content Include="dependency\Apache.NMS.ActiveMQ.dll" />
     <Content Include="dependency\JWT.dll" />
     <Content Include="dependency\log4net.dll" />
+    <Content Include="dependency\Newtonsoft.Json.dll" />
+    <Content Include="dependency\RedBranch.Hammock.dll" />
     <Content Include="workflow\resource\alt-route.xml" />
     <Content Include="workflow\resource\transaction-pocessor-route.xml">
       <SubType>Designer</SubType>
