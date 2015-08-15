@@ -122,6 +122,9 @@
     <Compile Include="workflow\component\core\normalizer\NormalizerEndPoint.cs" />
     <Compile Include="workflow\component\core\normalizer\NormalizerProcessor.cs" />
     <Compile Include="workflow\component\core\normalizer\NormalizerProducer.cs" />
+    <Compile Include="workflow\component\core\openweather\OpenWeatherConsumer.cs" />
+    <Compile Include="workflow\component\core\openweather\OpenWeatherEndpoint.cs" />
+    <Compile Include="workflow\component\core\openweather\OpenWeatherProducer.cs" />
     <Compile Include="workflow\component\core\PollingConsumer.cs" />
     <Compile Include="workflow\component\core\sftp\SftpEndpoint.cs" />
     <Compile Include="workflow\component\core\smtp\SmtpEndpoint.cs" />
