@@ -24,17 +24,6 @@ C:\Users\ADEOLA.OJO\Documents\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\
 C:\Users\ADEOLA.OJO\Documents\Projects\TqWorkflow\TqWorkflow\app.core\obj\Debug\app.core.csprojResolveAssemblyReference.cache
 C:\Users\ADEOLA.OJO\Documents\Projects\TqWorkflow\TqWorkflow\app.core\obj\Debug\app.core.dll
 C:\Users\ADEOLA.OJO\Documents\Projects\TqWorkflow\TqWorkflow\app.core\obj\Debug\app.core.pdb
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\app.core.dll
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\app.core.pdb
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\Apache.NMS.ActiveMQ.dll
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\Apache.NMS.dll
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\JWT.dll
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\log4net.dll
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\Apache.NMS.pdb
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\Apache.NMS.xml
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\obj\Debug\app.core.dll
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\obj\Debug\app.core.pdb
 C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\app.core\bin\Debug\app.core.dll
 C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\app.core\bin\Debug\app.core.pdb
 C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\app.core\bin\Debug\Apache.NMS.ActiveMQ.dll
@@ -48,6 +37,17 @@ C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\app.core\bin\Debug\Newtonso
 C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\app.core\obj\Debug\app.core.csprojResolveAssemblyReference.cache
 C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\app.core\obj\Debug\app.core.dll
 C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\app.core\obj\Debug\app.core.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\app.core.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\app.core.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\Apache.NMS.ActiveMQ.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\Apache.NMS.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\JWT.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\log4net.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\RedBranch.Hammock.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\System.Net.Http.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\Apache.NMS.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\Apache.NMS.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\System.Net.Http.xml
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\obj\Debug\app.core.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\obj\Debug\app.core.pdb

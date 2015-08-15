@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
 using System.Xml.XPath;
@@ -56,12 +57,34 @@ namespace app.core.workflow.handlers.pattern.eip
                 case "xpath":
                     return ProcessXPath(conditionXml, exchange);
                     break;
+                case "method":
+                    return ProcessBean(conditionXml, exchange);
+                    break;
                 default:
                     return false;
             }
 
             return false;
 
+        }
+
+        private static bool ProcessBean(XElement conditionXml, Exchange exchange)
+        {
+            if (conditionXml == null)
+                return false;   
+
+            var bean = conditionXml.Attribute("bean");
+            var method = conditionXml.Attribute("method");
+            if (bean == null || method == null)
+                return false;
+
+            var beanObj = Camel.Registry[bean.Value];
+            var methodInst = beanObj.GetType().GetMethod(method.Value, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+            if (methodInst == null)
+                return false;
+
+            var result  = methodInst.Invoke(beanObj, null);
+            return Convert.ToBoolean(result);
         }
 
         private static bool ProcessXPath(XElement conditionXml, Exchange exchange)

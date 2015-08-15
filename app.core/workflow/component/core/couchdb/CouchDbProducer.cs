@@ -34,12 +34,6 @@ namespace app.core.workflow.component.core.couchdb
                 {
                     conn.CreateDatabase(couchDbDatabase.ToString());
                 }
-
-                using (var session = conn.CreateSession(couchDbDatabase.ToString()))
-                {
-                    var persona = session.Save(document);
-                    var persons = session.Load<CouchDbTestProcessor.Person>("1");
-                }
             }
             catch (Exception exception)
             {

@@ -20,10 +20,16 @@
       <from uri="direct:firstInstitutionDirect"/>
       <to uri="log2:{{config.DefaultLogPathRoot}}\firstInstitutionDirect.log?logType=file"/>
     </route>
-
+ 
     <route>
       <from uri="timer:opeTimer?poll=300000;"/>
       <to uri="openweather:api.openweathermap.org/data/2.5/weather?location=lagos"/>
+      <choice>
+        <when>
+          <method bean="testProcessor" method="IsGood"/>
+          <to uri="log2:{{config.DefaultLogPathRoot}}\open-weather-result.log?logType=file"/>
+        </when>
+      </choice>
       <process ref="testProcessor"/>
       <to uri="couchdb:127.0.0.1?port=5984;createDb=true"/>
       <to uri="smtp:127.0.0.1?port=25;protocol=smtp;contenttype=html;from=killerbeans@paydirect.com;to=testclient@127.0.0.1;subject=cannot see me"/>

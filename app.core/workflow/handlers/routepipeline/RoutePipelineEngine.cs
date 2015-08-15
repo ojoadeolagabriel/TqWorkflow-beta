@@ -78,7 +78,7 @@ namespace app.core.workflow.handlers.routepipeline
 
                     var type = Type.GetType(@class);
                     if (type == null) continue;
-
+                      
                     var bean = Activator.CreateInstance(type);
                     //process product.
                     var propertyXmlColl = beanXml.Elements("property");

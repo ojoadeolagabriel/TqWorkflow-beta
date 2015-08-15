@@ -10,6 +10,11 @@ namespace app.core.workflow.test
 {
     public class CouchDbTestProcessor : ProcessorBase
     {
+        public bool IsGood()
+        {
+            return true;
+        }
+
         public class Person
         {
             public int Id { get; set; }
