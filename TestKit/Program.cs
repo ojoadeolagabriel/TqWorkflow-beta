@@ -62,16 +62,18 @@ namespace TestKit
 
             var config = new app.core.workflow.utility.Configuration();
 
-            var camelFile = string.Format("{0}\\direct-route.xml", config.ApplicationConfigRootFolderPath);
+            var directFile = string.Format("{0}\\direct-route.xml", config.ApplicationConfigRootFolderPath);
+            var camelFile = string.Format("{0}\\core-route.xml", config.ApplicationConfigRootFolderPath);
             Camel.InitDependencyLibs(new List<string> { "app.core.workflow.component.core" });
 
+            RoutePipelineEngine.Initialize(directFile);
             RoutePipelineEngine.Initialize(camelFile);
             Camel.StartAllRoutes();
 
             var startTime = DateTime.Now;
 
             Thread.Sleep(2000);
-            for (var i = 0; i < 1; i++)
+            for (var i = 0; i < 1000000000; i++)
             {
                 Task.Factory.StartNew(Exec);
                 Console.WriteLine("Response [{0}], received @ {1}", i, DateTime.Now);

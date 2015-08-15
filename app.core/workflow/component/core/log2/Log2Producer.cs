@@ -90,9 +90,9 @@ namespace app.core.workflow.component.core.log2
                     var inBody = exchange.InMessage.Body.ToString();
 
                     msg = string.Format(
-                            "Exchange-Id: {0}, MEP={5}. >> Route: ID({1}), Properties: [ {3} ], In Message: [ Headers: {2} InBody: {4} ]",
+                            "{6}: Exchange-Id: {0}, MEP={5}. >> Route: ID({1}), Properties: [ {3} ], In Message: [ Headers: {2} InBody: {4} ]",
                             exchange.ExchangeId, exchange.Route.RouteId, inHeaderBuilder, propertyBuilder, inBody,
-                            exchange.MepPattern);
+                            exchange.MepPattern, DateTime.Now.ToUniversalTime());
                 }
                 catch
                 {

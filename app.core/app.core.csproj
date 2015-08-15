@@ -173,6 +173,7 @@
     <Compile Include="workflow\utility\Configuration.cs" />
     <Compile Include="workflow\utility\LogUtil.cs" />
     <Compile Include="workflow\utility\OpType.cs" />
+    <Compile Include="workflow\utility\PomReader.cs" />
     <Compile Include="workflow\utility\ReflectionHelper.cs" />
     <Compile Include="workflow\utility\XmlHelper.cs" />
   </ItemGroup>

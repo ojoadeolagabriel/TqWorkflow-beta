@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<dependencys defaultPath="">
-  
-  <dependency>
-    <artifactid>ftpcomponent</artifactid>
-    <assembly></assembly>
-  </dependency>
+<configuration>
 
-  <dependency>
-    <artifactid>tcpcomponent</artifactid>
-    <assembly></assembly>
-  </dependency>
+  <routeConfiguration ignore="route.xml;pom.xml;alt-route.xml">
+    <path>C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\workflow\resource\</path>
+  </routeConfiguration>
+
+  <component>
+    <namespaces>
+      <namespace>app.core.workflow.component.core</namespace>
+    </namespaces>
+  </component>
   
-</dependencys>
+</configuration>

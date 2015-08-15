@@ -43,8 +43,6 @@
       <from uri="http:127.0.0.1?port={{config.HttpTestPort}};poll=500;initialDelay=1000;"/>
       <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey={{config.ESBJWTSharedKey}}"/>
       <to uri="log2:{{config.DefaultLogPathRoot}}\http-soap-component.log?logType=file"/>
-
-      <to uri="amq:127.0.0.1:61616?queue=http-test-request-post-queue"/>
     </route>
 
     <route>
@@ -62,10 +60,7 @@
       <from uri="mina:127.0.0.1?port={{config.ServerPort}};timeout={{config.SocketTimeOut}}"/>
       <process ref="minaProcessor"/>
 
-      <to uri="smtp:172.16.10.20?port=8080;username=adeola.ojo;password=Google432$;protocol=smtp;contenttype=html;from=killerbeans@paydirect.com;to=${in.header.email_address}"/>
       <to uri="normalizer:app.core.workflow.test.MinaTestProcessor?method=Start"/>
-      <!--<to uri="amq:127.0.0.1:61616?queue=to-mina-queue;port={{config.AmqTestPort}}"/>-->
-
       <split>
         <xpath>/information/payment</xpath>
         <to uri="log2:{{config.DefaultLogPathRoot}}\splitter-test-data1.log?logType=file"/>
