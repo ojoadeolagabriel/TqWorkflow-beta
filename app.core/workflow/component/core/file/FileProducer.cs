@@ -9,7 +9,7 @@ namespace app.core.workflow.component.core.file
         public FileProducer(UriDescriptor uriInformation, Route route)
             : base(uriInformation, route)
         {
-           
+
         }
 
         public override Exchange Process(Exchange exchange, UriDescriptor endPointDescriptor)
@@ -20,6 +20,7 @@ namespace app.core.workflow.component.core.file
             if (!string.IsNullOrEmpty(fileData) && !string.IsNullOrEmpty(fileName))
                 File.AppendAllText(fileName, fileData);
 
+            Camel.TryLog(exchange, "provider");
             return exchange;
         }
     }
