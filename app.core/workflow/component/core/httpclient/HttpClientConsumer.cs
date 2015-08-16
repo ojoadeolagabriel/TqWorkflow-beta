@@ -5,7 +5,7 @@ using System.Text;
 
 namespace app.core.workflow.component.core.httpclient
 {
-    class HttpClientConsumer
+    public class HttpClientConsumer
     {
     }
 }

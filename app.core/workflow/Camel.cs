@@ -5,6 +5,7 @@ using app.core.workflow.component.core;
 using app.core.workflow.dto;
 using app.core.workflow.facade;
 using app.core.workflow.registry;
+using app.core.workflow.test;
 
 namespace app.core.workflow
 {
@@ -17,6 +18,16 @@ namespace app.core.workflow
         /// Route Collection.
         /// </summary>
         public static readonly ConcurrentDictionary<string, Route> RouteCollection = new ConcurrentDictionary<string, Route>();
+
+        public static DbLogProvider DbLogProvider { get; set; }
+
+        public static void TryLog(Exchange exchange, string processorType = "consumer")
+        {
+            if (DbLogProvider == null)
+                return;
+
+            DbLogProvider.Log(exchange, processorType);
+        }
 
         /// <summary>
         /// 

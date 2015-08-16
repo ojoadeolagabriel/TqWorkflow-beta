@@ -25,6 +25,7 @@ namespace app.core.workflow.component.core.file
 
         private void PollHandler()
         {
+
             var pollInterval = _fileProcessor.UriInformation.GetUriProperty("poll", 1000);
             var fileFolderPath = _fileProcessor.UriInformation.ComponentPath;
             var maxThreadCount = _fileProcessor.UriInformation.GetUriProperty("threadCount", 3);
@@ -68,6 +69,7 @@ namespace app.core.workflow.component.core.file
             exchange.InMessage.SetHeader("fileFolderPath", fileFolderPath);
             exchange.InMessage.Body = fileData;
 
+            Camel.TryLog(exchange);
             _fileProcessor.Process(exchange);
             exchange.OutMessage.Body = exchange.InMessage.Body;
         }

@@ -18,6 +18,7 @@ namespace app.core.workflow.component.core.direct
         public override Exchange Execute()
         {
             var exchange = new Exchange(_directProcessor.Route);
+            Camel.TryLog(exchange);
             _directProcessor.Process(exchange);
             return exchange;
         }

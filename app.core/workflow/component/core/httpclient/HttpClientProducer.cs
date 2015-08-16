@@ -43,12 +43,11 @@ namespace app.core.workflow.component.core.httpclient
             var httpMethod = exchange.InMessage.GetHeader(CamelConstant.HttpMethod) as string;
             var httpUri = exchange.InMessage.GetHeader(CamelConstant.HttpUri);
             var httpQuery = exchange.InMessage.GetHeader(CamelConstant.HttpQuery) as string;
-            var httpCharacterEncoding = exchange.InMessage.GetHeader(CamelConstant.HttpCharacterEncoding);
 
             var httpContentType = exchange.InMessage.GetHeader(CamelConstant.HttpContentType, "application/x-www-form-urlencoded");
             var path = !string.IsNullOrEmpty((descriptor.ComponentPath)) ? descriptor.ComponentPath : httpUri as string;
 
-            path = string.Format("http://{0}", path);
+            path = string.Format("{0}", path);
 
             try
             {
@@ -97,6 +96,8 @@ namespace app.core.workflow.component.core.httpclient
                         var value = strings[0];
                         exchange.InMessage.SetHeader("http-response-" + key, value);
                     }
+
+                    Camel.TryLog(exchange, "provider");
                 }
             }
             catch (WebException exception)

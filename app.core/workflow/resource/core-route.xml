@@ -35,7 +35,7 @@
       </multicast>
 
       <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey={{config.ESBJWTSharedKey}}"/>
-      <to uri="httpclient:www.google.com"/>
+      <to uri="httpclient:http://www.google.com"/>
       <to uri="log2:{{config.DefaultLogPathRoot}}\http-test-log-file.log?logType=file"/>
     </route>
 

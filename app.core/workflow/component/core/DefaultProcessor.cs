@@ -10,9 +10,9 @@ namespace app.core.workflow.component.core
 {
     public abstract class DefaultProcessor
     {
-        public UriDescriptor UriInformation; 
-            
-        public Route Route ;
+        public UriDescriptor UriInformation;
+
+        public Route Route;
 
         protected DefaultProcessor(UriDescriptor uriInformation, Route route)
         {
@@ -22,12 +22,13 @@ namespace app.core.workflow.component.core
 
         public virtual void PrepareOut(Exchange exchange)
         {
-            
+
         }
 
         public virtual Exchange Process(Exchange exchange)
         {
-            Route.RouteProcess.NextTag.Execute(exchange);
+            if (Route.RouteProcess.NextTag != null)
+                Route.RouteProcess.NextTag.Execute(exchange);
             return exchange;
         }
     }

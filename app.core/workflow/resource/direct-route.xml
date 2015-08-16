@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <container>
 
+  <bean id="dbLogProvider" class="app.core.workflow.test.DbLogProvider">
+    <property key="ConnectionString" value="data source=.;initial catalog=esb;user id=paydirect;password=paydirect"/>
+  </bean>
+  
   <bean id="cacheType" class="app.core.workflow.utility.CacheType"/>
 
   <bean id="config" class="app.core.workflow.utility.Configuration">
@@ -14,8 +18,12 @@
 
   <bean id="testProcessor" class="app.core.workflow.test.CouchDbTestProcessor"/>
 
-  <context>
+  <context logProvider="dbLogProvider">
 
+    <route>
+      <from uri="mina:127.0.0.1?port={{config.ServerPort}};timeout={{config.SocketTimeOut}}"/>
+    </route>
+    
     <route>
       <from uri="direct:firstInstitutionDirect"/>
       <to uri="log2:{{config.DefaultLogPathRoot}}\firstInstitutionDirect.log?logType=file"/>
@@ -23,7 +31,7 @@
 
     <route>
       <from uri="seda:firstSedaInstitutionDirect"/>
-      <to uri="log2:{{config.DefaultLogPathRoot}}\open-weather-result-seda.log?logType=file"/>
+      <to uri="log2:{{config.DefaultLogPathRoot}}\open-weather-result-seda.log?logType=file;provider=dbLogProvider"/>
     </route>
 
      <route>
@@ -37,7 +45,7 @@
       <from uri="timer:opeTimer?poll=100000;"/>
       <to uri="openweather:http://api.openweathermap.org/data/2.5/weather?location=lagos"/>
       <setHeader headerName="CamelHttpMethod" value="GET"/>
-      <to uri="httpclient:www.google.com?connectionTimeOut=5000"/>
+      <to uri="httpclient:http://www.google.com?connectionTimeOut=5000"/>
       
       <choice>
         <when>

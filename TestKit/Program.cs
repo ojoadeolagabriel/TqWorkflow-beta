@@ -15,6 +15,7 @@ using app.core.workflow;
 using app.core.workflow.dto;
 using app.core.workflow.facade;
 using app.core.workflow.handlers.routepipeline;
+using app.core.workflow.test;
 
 namespace TestKit
 {
@@ -66,10 +67,12 @@ namespace TestKit
 
             var directFile = string.Format("{0}\\direct-route.xml", config.ApplicationConfigRootFolderPath);
             var camelFile = string.Format("{0}\\core-route.xml", config.ApplicationConfigRootFolderPath);
+
             Camel.InitDependencyLibs(new List<string> { "app.core.workflow.component.core" });
 
             CameContextConfigFileInitializer.Initialize(directFile);
-            //RoutePipelineEngine.Initialize(camelFile);
+            Camel.DbLogProvider = Camel.Registry["dbLogProvider"] as DbLogProvider;
+
             Camel.StartAllRoutes();
             Camel.StartSedaProcessor();
 

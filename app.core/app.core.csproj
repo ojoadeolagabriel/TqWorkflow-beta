@@ -169,7 +169,9 @@
     <Compile Include="workflow\registry\BeanRegistry.cs" />
     <Compile Include="workflow\test\CouchDbTestProcessor.cs" />
     <Compile Include="workflow\test\CsvProcessor.cs" />
+    <Compile Include="workflow\test\DbLogProvider.cs" />
     <Compile Include="workflow\test\HttpRequestBean.cs" />
+    <Compile Include="workflow\test\IDbLogProvider.cs" />
     <Compile Include="workflow\test\MinaTestProcessor.cs" />
     <Compile Include="workflow\test\TestProcessor.cs" />
     <Compile Include="workflow\test\XmlProcessor.cs" />

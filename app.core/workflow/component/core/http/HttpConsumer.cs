@@ -75,9 +75,12 @@ namespace app.core.workflow.component.core.http
             var exchange = passData.Exchange;
             var client = listener.EndGetContext(res);
             var body = new StreamReader(client.Request.InputStream).ReadToEnd();
+
             BuildRequestMessage(client, exchange, body);
 
             exchange.InMessage.Body = body;
+            Camel.TryLog(exchange);
+
             _httpProcessor.Process(exchange);
 
             var b = Encoding.UTF8.GetBytes(exchange.InMessage.Body.ToString());

@@ -28,6 +28,7 @@ namespace app.core.workflow.component.core.jwt
 
             var token = JWT.JsonWebToken.Encode(claims, sharedKey, JWT.JwtHashAlgorithm.HS256);
             exchange.InMessage.SetHeader(uriInformation.ComponentPath, token);
+            Camel.TryLog(exchange, "processor");
             return exchange;
         }
     }
