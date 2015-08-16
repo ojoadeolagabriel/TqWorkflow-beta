@@ -190,6 +190,7 @@
     <Folder Include="approval\service\" />
     <Folder Include="workflow\component\core\http\util\" />
     <Folder Include="workflow\component\core\mina\util\" />
+    <Folder Include="workflow\component\core\mssql\" />
     <Folder Include="workflow\language\" />
   </ItemGroup>
   <ItemGroup>

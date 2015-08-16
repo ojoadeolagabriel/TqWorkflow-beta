@@ -27,7 +27,7 @@ namespace app.core.workflow.facade
         /// <summary>
         /// 
         /// </summary>
-        private void HandleQueue()
+        private static void HandleQueue()
         {
             while (true)
             {
@@ -40,7 +40,6 @@ namespace app.core.workflow.facade
                 var concurrentConsumers = data.Key.GetUriProperty("concurrentConsumers", false);
                 var timeOut = data.Key.GetUriProperty("timeOut", 0);
 
-                //if concurrent provided.
                 if (concurrentConsumers)
                 {
                     System.Threading.Tasks.Task.Factory.StartNew(() => ProcessNextStep(data));
