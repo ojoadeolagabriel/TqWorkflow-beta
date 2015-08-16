@@ -18,6 +18,7 @@ namespace app.core.workflow.component.core.seda
         public override Exchange Execute()
         {
             var exchange = new Exchange(_sedaProcessor.Route);
+            Camel.TryLog(exchange, "consumer", _sedaProcessor.UriInformation.ComponentName);
 
             _sedaProcessor.Process(exchange);
             return exchange;
