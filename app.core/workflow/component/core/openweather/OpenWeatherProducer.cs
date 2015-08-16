@@ -38,7 +38,7 @@ namespace app.core.workflow.component.core.openweather
                 if (!string.IsNullOrEmpty(lon))
                     client.QueryString.Add("lon", lon);
 
-                var finaUrl = string.Format("http://{0}?q={1}", baseApiUri, location);
+                var finaUrl = string.Format("{0}?q={1}", baseApiUri, location);
                 var result = client.DownloadString(finaUrl);
 
                 if (!string.IsNullOrEmpty(resultHeader))

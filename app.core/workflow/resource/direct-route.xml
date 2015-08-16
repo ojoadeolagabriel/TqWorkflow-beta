@@ -29,7 +29,7 @@
     <route>
       
       <from uri="timer:opeTimer?poll=1000;"/>
-      <to uri="openweather:api.openweathermap.org/data/2.5/weather?location=abuja"/>
+      <to uri="openweather:http://api.openweathermap.org/data/2.5/weather?location=lagos"/>
       
       <choice>
         <when>
