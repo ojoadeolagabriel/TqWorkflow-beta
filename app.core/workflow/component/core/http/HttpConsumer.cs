@@ -47,6 +47,10 @@ namespace app.core.workflow.component.core.http
                 Thread.Sleep(initialDelay);
 
             HttpListener = new HttpListener();
+
+            if (path.StartsWith("\\"))
+                path = path.Remove(0, 1);
+
             var uriPref = string.Format("http://{0}:{1}/{2}/", _httpProcessor.UriInformation.ComponentPath, portId, path);
             if (!uriPref.EndsWith("/"))
                 uriPref = uriPref + "/";

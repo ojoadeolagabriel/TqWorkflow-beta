@@ -39,6 +39,8 @@ namespace app.core.workflow.component.core.httpclient
 
         public override Exchange Process(Exchange exchange, UriDescriptor descriptor)
         {
+            Camel.TryLog(exchange, "producer", descriptor.ComponentName);
+
             var connectionTimeOut = descriptor.GetUriProperty<int>("connectionTimeOut");
             var httpMethod = exchange.InMessage.GetHeader(CamelConstant.HttpMethod) as string;
             var httpUri = exchange.InMessage.GetHeader(CamelConstant.HttpUri);
