@@ -139,7 +139,6 @@
     <Compile Include="workflow\dto\Message.cs" />
     <Compile Include="workflow\dto\MessageExchangeType.cs" />
     <Compile Include="workflow\dto\Route.cs" />
-    <Compile Include="workflow\EndPoint.cs" />
     <Compile Include="workflow\error\DefaultHandler.cs" />
     <Compile Include="workflow\expression\SimpleExpressionResolver.cs" />
     <Compile Include="workflow\facade\CamelConstant.cs" />
