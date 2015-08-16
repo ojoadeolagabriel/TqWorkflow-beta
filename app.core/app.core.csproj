@@ -151,7 +151,6 @@
     <Compile Include="workflow\handlers\consumer\ScheduledPollConsumer.cs" />
     <Compile Include="workflow\handlers\pattern\eip\PublishSubscribePattern.cs" />
     <Compile Include="workflow\handlers\pattern\eip\SplitterPattern.cs" />
-    <Compile Include="workflow\RouteBuilder.cs" />
     <Compile Include="workflow\facade\RouteStep.cs" />
     <Compile Include="workflow\handlers\pattern\eip\EnricherPattern.cs" />
     <Compile Include="workflow\handlers\tag\DelayTag.cs" />
