@@ -66,7 +66,7 @@ namespace TestKit
             var camelFile = string.Format("{0}\\core-route.xml", config.ApplicationConfigRootFolderPath);
             Camel.InitDependencyLibs(new List<string> { "app.core.workflow.component.core" });
 
-            RoutePipelineEngine.Initialize(directFile);
+            CameContextConfigFileInitializer.Initialize(directFile);
             //RoutePipelineEngine.Initialize(camelFile);
             Camel.StartAllRoutes();
 

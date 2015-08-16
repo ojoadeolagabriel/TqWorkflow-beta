@@ -15,7 +15,7 @@ namespace app.core.workflow.handlers.routepipeline
     /// <summary>
     /// Route Pipe line Engine.
     /// </summary>
-    public class RoutePipelineEngine
+    public class CameContextConfigFileInitializer
     {
         /// <summary>
         /// Load Route Config File
@@ -50,7 +50,7 @@ namespace app.core.workflow.handlers.routepipeline
                 foreach (var route in routeNode)
                 {
                     var xmlRoute = route;
-                    RoutePipelineDefaultProcessor.ProcessRouteInformation(xmlRoute, autoExec);
+                    RouteStepAnalyzer.ProcessRouteInformation(xmlRoute, autoExec);
                 }
             }
             else

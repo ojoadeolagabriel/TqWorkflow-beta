@@ -14,7 +14,7 @@ namespace app.core.workflow.handlers.routepipeline
     /// <summary>
     /// RoutePipeline Default Processor.
     /// </summary>
-    public class RoutePipelineDefaultProcessor
+    public class RouteStepAnalyzer
     {
         /// <summary>
         /// ProcessRouteInformation Now.

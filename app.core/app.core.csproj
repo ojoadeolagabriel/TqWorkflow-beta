@@ -58,6 +58,7 @@
       <HintPath>dependency\RedBranch.Hammock.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Activities" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -143,6 +144,7 @@
     <Compile Include="workflow\expression\SimpleExpressionResolver.cs" />
     <Compile Include="workflow\facade\CamelConstant.cs" />
     <Compile Include="workflow\facade\EndPointBuilder.cs" />
+    <Compile Include="workflow\facade\Seda.cs" />
     <Compile Include="workflow\facade\UriDescriptor.cs" />
     <Compile Include="workflow\facade\ProcessorBase.cs" />
     <Compile Include="workflow\facade\UriExchange.cs" />
@@ -159,8 +161,8 @@
     <Compile Include="workflow\handlers\pattern\eip\WireTapPattern.cs" />
     <Compile Include="workflow\handlers\tag\FromTag.cs" />
     <Compile Include="workflow\handlers\tag\ToTag.cs" />
-    <Compile Include="workflow\handlers\routepipeline\RoutePipelineDefaultProcessor.cs" />
-    <Compile Include="workflow\handlers\routepipeline\RoutePipelineEngine.cs" />
+    <Compile Include="workflow\handlers\routepipeline\RouteStepAnalyzer.cs" />
+    <Compile Include="workflow\handlers\routepipeline\CameContextConfigFileInitializer.cs" />
     <Compile Include="workflow\handlers\tag\XPathTag.cs" />
     <Compile Include="workflow\registry\BeanRegistry.cs" />
     <Compile Include="workflow\test\CouchDbTestProcessor.cs" />
