@@ -7,7 +7,7 @@
     <property key="ESBJWTSharedKey" value="GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk"/>
     <property key="ServerPort" value="9800"/>
     <property key="AmqTestPort" value="61616"/>
-    <property key="HttpTestPort" value="10002"/>
+    <property key="HttpTestPort" value="9888"/>
     <property key="SocketTimeOut" value="6000"/>
     <property key="CacheType" value="{{cacheType}}"/>
   </bean>
@@ -25,11 +25,19 @@
       <from uri="seda:firstSedaInstitutionDirect"/>
       <to uri="log2:{{config.DefaultLogPathRoot}}\open-weather-result-seda.log?logType=file"/>
     </route>
- 
-    <route>
+
+     <route>
+      <from uri="http:127.0.0.1?port={{config.HttpTestPort}};poll=500;initialDelay=1000;path=testserver"/>
+      <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey={{config.ESBJWTSharedKey}}"/>
+      <to uri="log2:{{config.DefaultLogPathRoot}}\http-soap-component.log?logType=file"/>
+    </route>
       
-      <from uri="timer:opeTimer?poll=1000;"/>
+    <route>
+
+      <from uri="timer:opeTimer?poll=100000;"/>
       <to uri="openweather:http://api.openweathermap.org/data/2.5/weather?location=lagos"/>
+      <setHeader headerName="CamelHttpMethod" value="GET"/>
+      <to uri="httpclient:www.google.com?connectionTimeOut=50010"/>
       
       <choice>
         <when>
@@ -40,9 +48,9 @@
       <process ref="testProcessor"/>
       <to uri="couchdb:127.0.0.1?port=5984;createDb=true"/>
       <to uri="smtp:127.0.0.1?port=25;protocol=smtp;contenttype=html;from=killerbeans@paydirect.com;to=testclient@127.0.0.1;subject=cannot see me"/>
-    
+
     </route>
-    
+
   </context>
 
 </container>

@@ -14,6 +14,23 @@ namespace app.core.workflow.component.core.httpclient
 {
     public class HttpClientProducer : DefaultProducer
     {
+        private class WebCamelClient : System.Net.WebClient
+        {
+            public int Timeout { private get; set; }
+            public string ContentType { get; set; }
+
+            protected override WebRequest GetWebRequest(Uri uri)
+            {
+                var lWebRequest = base.GetWebRequest(uri);
+                if (lWebRequest != null)
+                {
+                    lWebRequest.Timeout = Timeout;
+                    ((HttpWebRequest)lWebRequest).ReadWriteTimeout = Timeout;
+                }
+                return lWebRequest;
+            }
+        }
+
         public HttpClientProducer(UriDescriptor uriInformation, Route route)
             : base(uriInformation, route)
         {
@@ -22,20 +39,23 @@ namespace app.core.workflow.component.core.httpclient
 
         public override Exchange Process(Exchange exchange, UriDescriptor descriptor)
         {
-            var connectionTimeToLive = descriptor.GetUriProperty<int>("connectionTimeToLive");
+            var connectionTimeOut = descriptor.GetUriProperty<int>("connectionTimeOut");
             var httpMethod = exchange.InMessage.GetHeader(CamelConstant.HttpMethod) as string;
             var httpUri = exchange.InMessage.GetHeader(CamelConstant.HttpUri);
             var httpQuery = exchange.InMessage.GetHeader(CamelConstant.HttpQuery) as string;
             var httpCharacterEncoding = exchange.InMessage.GetHeader(CamelConstant.HttpCharacterEncoding);
-            var httpContentType = exchange.InMessage.GetHeader(CamelConstant.HttpContentType);
+
+            var httpContentType = exchange.InMessage.GetHeader(CamelConstant.HttpContentType, "application/x-www-form-urlencoded");
             var path = !string.IsNullOrEmpty((descriptor.ComponentPath)) ? descriptor.ComponentPath : httpUri as string;
 
             path = string.Format("http://{0}", path);
 
             try
             {
-                using (var client = new WebClient())
+                using (var client = new WebCamelClient())
                 {
+                    client.Timeout = connectionTimeOut > 1000 ? connectionTimeOut : 1000;
+
                     switch (httpMethod)
                     {
                         case "POST":
@@ -45,6 +65,7 @@ namespace app.core.workflow.component.core.httpclient
                                     ? exchange.InMessage.Body.ToString()
                                     : string.Empty;
                                 client.Headers[HttpRequestHeader.ContentType] = httpContentType as string;
+                                client.ContentType = httpContentType;
                                 client.UploadString(path, payLoad);
                             }
                             break;
@@ -59,7 +80,8 @@ namespace app.core.workflow.component.core.httpclient
                             break;
                         case "GET":
                             var queryKeyValue = UriDescriptor.BuildKeyValueListWithEquality(httpQuery);
-                            queryKeyValue.ForEach(c => client.QueryString.Add(c.Key, c.Value));
+                            if (queryKeyValue != null)
+                                queryKeyValue.ForEach(c => client.QueryString.Add(c.Key, c.Value));
 
                             var response = client.DownloadString(path);
                             exchange.InMessage.Body = response;

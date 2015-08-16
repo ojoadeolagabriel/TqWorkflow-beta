@@ -52,6 +52,9 @@ namespace app.core.workflow.facade
 
         public static List<KeyValuePair<string, string>> BuildKeyValueListWithEquality(string data, char splitChar = ';')
         {
+            if (string.IsNullOrEmpty(data))
+                return null;
+
             var mParts = data.Split(new[] { splitChar });
             var postData = new List<KeyValuePair<string, string>>();
 

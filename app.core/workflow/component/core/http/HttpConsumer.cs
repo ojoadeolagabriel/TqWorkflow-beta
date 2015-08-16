@@ -41,12 +41,16 @@ namespace app.core.workflow.component.core.http
             var exchange = new Exchange(_httpProcessor.Route);
             var initialDelay = _httpProcessor.UriInformation.GetUriProperty("initialDelay", 1000);
             var portId = _httpProcessor.UriInformation.GetUriProperty("port", 9000, exchange);
+            var path = _httpProcessor.UriInformation.GetUriProperty("path","");
 
             if(initialDelay > 0)
                 Thread.Sleep(initialDelay);
 
             HttpListener = new HttpListener();
-            var uriPref = string.Format("http://{0}:{1}/", _httpProcessor.UriInformation.ComponentPath, portId);
+            var uriPref = string.Format("http://{0}:{1}/{2}/", _httpProcessor.UriInformation.ComponentPath, portId, path);
+            if (!uriPref.EndsWith("/"))
+                uriPref = uriPref + "/";
+
             HttpListener.Prefixes.Add(uriPref);
 
             HttpListener.Start();

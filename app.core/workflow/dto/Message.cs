@@ -19,6 +19,19 @@ namespace app.core.workflow.dto
             }
         }
 
+        public T GetHeader<T>(string key, T defaultResult = default (T))
+        {
+            try
+            {
+                var result = HeaderCollection[key];
+                return (T)Convert.ChangeType(result, typeof (T));
+            }
+            catch
+            {
+                return default(T);
+            }
+        }
+
 
         public void SetHeader(string key, Object data)
         {
