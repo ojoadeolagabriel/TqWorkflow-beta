@@ -55,9 +55,13 @@ namespace app.core.workflow.facade
         {
             ProcessStep(_currentStepXml, Route, exchange);
 
-            if (NextTag != null && exchange != null)
+            if (NextTag == null || exchange == null) return;
+
+            switch (exchange.Route.PipelineMode)
             {
-                NextTag.Execute(exchange);
+                case Route.MessagePipelineMode.Default:
+                    NextTag.Execute(exchange);
+                    break;
             }
         }
 

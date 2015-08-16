@@ -8,6 +8,14 @@ namespace app.core.workflow.dto
 {
     public class Route
     {
+        public enum MessagePipelineMode
+        {
+            Default,
+            Seda
+        }
+
+        public MessagePipelineMode PipelineMode = MessagePipelineMode.Default;
+
         public RouteStep RouteProcess { get; set; }
 
         public string RouteId = Guid.NewGuid().ToString();

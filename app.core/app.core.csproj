@@ -127,6 +127,10 @@
     <Compile Include="workflow\component\core\openweather\OpenWeatherEndpoint.cs" />
     <Compile Include="workflow\component\core\openweather\OpenWeatherProducer.cs" />
     <Compile Include="workflow\component\core\PollingConsumer.cs" />
+    <Compile Include="workflow\component\core\seda\SedaConsumer.cs" />
+    <Compile Include="workflow\component\core\seda\SedaEndPoint.cs" />
+    <Compile Include="workflow\component\core\seda\SedaProcessor.cs" />
+    <Compile Include="workflow\component\core\seda\SedaProducer.cs" />
     <Compile Include="workflow\component\core\sftp\SftpEndpoint.cs" />
     <Compile Include="workflow\component\core\smtp\SmtpEndpoint.cs" />
     <Compile Include="workflow\component\core\smtp\SmtpProcessor.cs" />

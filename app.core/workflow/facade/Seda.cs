@@ -34,6 +34,9 @@ namespace app.core.workflow.facade
                 var data = SedaQueue.FirstOrDefault();
                 if (!data.IsNull())
                 {
+                    Exchange removedData;
+                    SedaQueue.TryRemove(data.Key, out removedData);
+
                     //trigger next step.
                     ProcessNextStep(data);
                 }
@@ -54,9 +57,10 @@ namespace app.core.workflow.facade
             var uriInfo = endPoint.UriInformation;
             var step = new XElement("from",
                 new XAttribute("uri", uriInfo.FullUri));
-
+                
             //process step.
             RouteStep.ProcessStep(step, xchangeInfo.Value.Route, xchangeInfo.Value);
+            xchangeInfo.Value.Route.RouteProcess.NextTag.Execute(xchangeInfo.Value);
         }
     }
 }
