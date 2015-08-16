@@ -12,6 +12,7 @@ namespace app.core.workflow.component.core.direct
         public DirectProducer(UriDescriptor uriInformation, Route route) :
             base(uriInformation, route)
         {
+
         }
 
         public override Exchange Process(Exchange exchange, UriDescriptor endPointDescriptor)
