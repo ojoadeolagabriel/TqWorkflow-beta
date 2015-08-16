@@ -32,14 +32,16 @@ namespace app.core.workflow.facade
             while (true)
             {
                 var data = SedaQueue.FirstOrDefault();
-                if (!data.IsNull())
-                {
-                    Exchange removedData;
-                    SedaQueue.TryRemove(data.Key, out removedData);
+                if (data.IsNull()) continue;
 
-                    //trigger next step.
+                Exchange removedData;
+                SedaQueue.TryRemove(data.Key, out removedData);
+                var concurrentConsumers = data.Key.GetUriProperty("concurrentConsumers", false);
+
+                if (concurrentConsumers)
+                    System.Threading.Tasks.Task.Factory.StartNew(() => ProcessNextStep(data));
+                else
                     ProcessNextStep(data);
-                }
             }
         }
 
@@ -57,7 +59,7 @@ namespace app.core.workflow.facade
             var uriInfo = endPoint.UriInformation;
             var step = new XElement("from",
                 new XAttribute("uri", uriInfo.FullUri));
-                
+
             //process step.
             RouteStep.ProcessStep(step, xchangeInfo.Value.Route, xchangeInfo.Value);
             xchangeInfo.Value.Route.RouteProcess.NextTag.Execute(xchangeInfo.Value);

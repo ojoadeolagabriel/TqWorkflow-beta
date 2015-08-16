@@ -23,22 +23,24 @@
 
     <route>
       <from uri="seda:firstSedaInstitutionDirect"/>
-      <to uri="log2:{{config.DefaultLogPathRoot}}\firstSedaInstitutionDirect.log?logType=file"/>
+      <to uri="log2:{{config.DefaultLogPathRoot}}\open-weather-result-seda.log?logType=file"/>
     </route>
  
     <route>
-      <from uri="timer:opeTimer?poll=300000;"/>
-      <to uri="seda:firstSedaInstitutionDirect?size=10;waitForTaskToComplete=true"/>
+      
+      <from uri="timer:opeTimer?poll=1000;"/>
       <to uri="openweather:api.openweathermap.org/data/2.5/weather?location=abuja"/>
+      
       <choice>
         <when>
           <method bean="testProcessor" method="IsGood"/>
-          <to uri="log2:{{config.DefaultLogPathRoot}}\open-weather-result.log?logType=file"/>
+          <to uri="seda:firstSedaInstitutionDirect?size=10;concurrentConsumers=true"/>
         </when>
       </choice>
       <process ref="testProcessor"/>
       <to uri="couchdb:127.0.0.1?port=5984;createDb=true"/>
       <to uri="smtp:127.0.0.1?port=25;protocol=smtp;contenttype=html;from=killerbeans@paydirect.com;to=testclient@127.0.0.1;subject=cannot see me"/>
+    
     </route>
     
   </context>
