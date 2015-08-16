@@ -21,6 +21,30 @@ namespace app.core.workflow.facade
         {
             _currentStepXml = currentStepXml;
             Route = route;
+            CheckIfRouteNameOverrideRequired();
+        }
+
+        private void CheckIfRouteNameOverrideRequired()
+        {
+            try
+            {
+                var stepName = _currentStepXml.Name.ToString();
+                switch (stepName)
+                {
+                    case "from":
+                        var val = _currentStepXml.Attribute("uri").Value;
+                        var desc = UriDescriptor.Parse(val);
+                        if (desc.ComponentName == "direct")
+                        {
+                            Route.RouteId = desc.ComponentPath;
+                        }
+                        break;
+                }
+            }
+            catch (Exception exception)
+            {
+
+            }
         }
 
         public void Execute(Exchange exchange = null)

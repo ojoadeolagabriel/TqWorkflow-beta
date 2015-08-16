@@ -101,7 +101,8 @@ namespace app.core.workflow.facade
                     }
                 }
 
-                if (endPoint != null) endPoint.Send(exchange, leafDescriptor);
+                if (endPoint != null) 
+                    endPoint.Send(exchange, leafDescriptor);
                 else
                     throw new AppCoreException("end-point not found: " + leafDescriptor.ComponentName);
             }
