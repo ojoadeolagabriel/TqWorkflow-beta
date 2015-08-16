@@ -3,9 +3,12 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 using Apache.NMS.ActiveMQ.Threads;
+using app.core.workflow.component.core;
 using MTasks = System.Threading.Tasks;
 using app.core.workflow.dto;
+using app.core.workflow.utility;
 
 namespace app.core.workflow.facade
 {
@@ -14,7 +17,7 @@ namespace app.core.workflow.facade
     /// </summary>
     public class Seda
     {
-        public ConcurrentQueue<Exchange> SedaQueue = new ConcurrentQueue<Exchange>();
+        public static ConcurrentDictionary<UriDescriptor, Exchange> SedaQueue = new ConcurrentDictionary<UriDescriptor, Exchange>();
 
         public void ProcessSedaMessageQueue()
         {
@@ -28,11 +31,11 @@ namespace app.core.workflow.facade
         {
             while (true)
             {
-                Exchange xchange;
-                if (SedaQueue.TryDequeue(out xchange))
+                var data = SedaQueue.FirstOrDefault();
+                if (!data.IsNull())
                 {
                     //trigger next step.
-                    ProcessNextStep(xchange);
+                    ProcessNextStep(data);
                 }
             }
         }
@@ -40,10 +43,20 @@ namespace app.core.workflow.facade
         /// <summary>
         /// Process Next Step
         /// </summary>
-        /// <param name="xchange"></param>
-        private void ProcessNextStep(Exchange xchange)
+        /// <param name="xchangeInfo"></param>
+        private static void ProcessNextStep(KeyValuePair<UriDescriptor, Exchange> xchangeInfo)
         {
-            
+            //handle
+            DefaultEndpoint endPoint;
+            if (!Camel.EnPointCollection.TryGetValue(xchangeInfo.Key.FullUri, out endPoint)) return;
+
+            //build from step request.
+            var uriInfo = endPoint.UriInformation;
+            var step = new XElement("from",
+                new XAttribute("uri", uriInfo.FullUri));
+
+            //process step.
+            RouteStep.ProcessStep(step, xchangeInfo.Value.Route, xchangeInfo.Value);
         }
     }
 }

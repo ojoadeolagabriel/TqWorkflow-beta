@@ -171,6 +171,7 @@
     <Compile Include="workflow\test\XmlProcessor.cs" />
     <Compile Include="workflow\utility\ConfigBase.cs" />
     <Compile Include="workflow\utility\Configuration.cs" />
+    <Compile Include="workflow\utility\KeyValuePairExtensions.cs" />
     <Compile Include="workflow\utility\LogUtil.cs" />
     <Compile Include="workflow\utility\OpType.cs" />
     <Compile Include="workflow\utility\PomReader.cs" />
@@ -185,6 +186,7 @@
     <Folder Include="approval\service\" />
     <Folder Include="workflow\component\core\http\util\" />
     <Folder Include="workflow\component\core\mina\util\" />
+    <Folder Include="workflow\language\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="dependency\Apache.NMS.ActiveMQ.dll" />

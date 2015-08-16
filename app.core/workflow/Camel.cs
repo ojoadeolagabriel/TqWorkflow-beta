@@ -28,6 +28,11 @@ namespace app.core.workflow
         /// </summary>
         public static BeanRegistry Registry = new BeanRegistry();
 
+        public static void StartSedaProcessor()
+        {
+            new Seda().ProcessSedaMessageQueue();
+        }
+
         public static void SetRoute(Route route)
         {
             try

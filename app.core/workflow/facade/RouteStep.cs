@@ -38,6 +38,10 @@ namespace app.core.workflow.facade
                         {
                             Route.RouteId = desc.ComponentPath;
                         }
+                        if (desc.ComponentName == "seda")
+                        {
+                            Route.RouteId = desc.ComponentPath;
+                        }
                         break;
                 }
             }
@@ -52,7 +56,9 @@ namespace app.core.workflow.facade
             ProcessStep(_currentStepXml, Route, exchange);
 
             if (NextTag != null && exchange != null)
+            {
                 NextTag.Execute(exchange);
+            }
         }
 
         /// <summary>

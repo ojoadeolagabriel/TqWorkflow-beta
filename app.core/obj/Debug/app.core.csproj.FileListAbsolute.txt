@@ -51,3 +51,4 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\bin\Debug\System.Net.Http.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\obj\Debug\app.core.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\obj\Debug\app.core.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\obj\Debug\app.core.csprojResolveAssemblyReference.cache

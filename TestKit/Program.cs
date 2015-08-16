@@ -12,6 +12,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using app.core.workflow;
+using app.core.workflow.dto;
+using app.core.workflow.facade;
 using app.core.workflow.handlers.routepipeline;
 
 namespace TestKit
@@ -69,6 +71,7 @@ namespace TestKit
             CameContextConfigFileInitializer.Initialize(directFile);
             //RoutePipelineEngine.Initialize(camelFile);
             Camel.StartAllRoutes();
+            Camel.StartSedaProcessor();
 
             var startTime = DateTime.Now;
 

@@ -16,7 +16,6 @@ namespace app.core.workflow.facade
     /// </summary>
     public class EndPointBuilder
     {
-        //public const string ComponentNamespace = "app.core.workflow.component.core";
         public static ConcurrentQueue<string> PermissibleNamespaces = new ConcurrentQueue<string>();
 
         public static void BuildNamespaces(List<string> namespaces)
