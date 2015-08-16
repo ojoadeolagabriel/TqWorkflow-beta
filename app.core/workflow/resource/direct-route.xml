@@ -22,8 +22,9 @@
     </route>
  
     <route>
-      <from uri="timer:opeTimer?poll=10;"/>
-      <to uri="openweather:api.openweathermap.org/data/2.5/weather?location=ghana"/>
+      <from uri="timer:opeTimer?poll=300000;"/>
+      <to uri="direct:firstInstitutionDirect"/>
+      <to uri="openweather:api.openweathermap.org/data/2.5/weather?location=abuja"/>
       <choice>
         <when>
           <method bean="testProcessor" method="IsGood"/>

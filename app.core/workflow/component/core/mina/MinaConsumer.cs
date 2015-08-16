@@ -103,7 +103,7 @@ namespace app.core.workflow.component.core.mina
                     ns.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception escException)
             {
 
             }
