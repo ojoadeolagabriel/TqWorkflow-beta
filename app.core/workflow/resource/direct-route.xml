@@ -37,7 +37,7 @@
       <from uri="timer:opeTimer?poll=100000;"/>
       <to uri="openweather:http://api.openweathermap.org/data/2.5/weather?location=lagos"/>
       <setHeader headerName="CamelHttpMethod" value="GET"/>
-      <to uri="httpclient:www.google.com?connectionTimeOut=50010"/>
+      <to uri="httpclient:www.google.com?connectionTimeOut=5000"/>
       
       <choice>
         <when>
