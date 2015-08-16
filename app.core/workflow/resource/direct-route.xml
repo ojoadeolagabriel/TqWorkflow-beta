@@ -42,10 +42,9 @@
       
     <route>
 
-      <from uri="timer:opeTimer?poll=100000;"/>
+      <from uri="timer:opeTimer?poll=1000;"/>
       <to uri="openweather:http://api.openweathermap.org/data/2.5/weather?location=lagos"/>
       <setHeader headerName="CamelHttpMethod" value="GET"/>
-      <to uri="httpclient:http://www.google.com?connectionTimeOut=5000"/>
       
       <choice>
         <when>
