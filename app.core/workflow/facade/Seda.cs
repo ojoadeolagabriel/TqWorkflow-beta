@@ -36,10 +36,15 @@ namespace app.core.workflow.facade
 
                 Exchange removedData;
                 SedaQueue.TryRemove(data.Key, out removedData);
-                var concurrentConsumers = data.Key.GetUriProperty("concurrentConsumers", false);
 
+                var concurrentConsumers = data.Key.GetUriProperty("concurrentConsumers", false);
+                var timeOut = data.Key.GetUriProperty("timeOut", 0);
+
+                //if concurrent provided.
                 if (concurrentConsumers)
+                {
                     System.Threading.Tasks.Task.Factory.StartNew(() => ProcessNextStep(data));
+                }
                 else
                     ProcessNextStep(data);
             }
