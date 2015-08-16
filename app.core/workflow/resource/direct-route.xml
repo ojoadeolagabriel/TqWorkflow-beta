@@ -4,7 +4,7 @@
   <bean id="dbLogProvider" class="app.core.workflow.test.DbLogProvider">
     <property key="ConnectionString" value="data source=.;initial catalog=esb;user id=paydirect;password=paydirect"/>
   </bean>
-  
+
   <bean id="cacheType" class="app.core.workflow.utility.CacheType"/>
 
   <bean id="config" class="app.core.workflow.utility.Configuration">
@@ -23,7 +23,7 @@
     <route>
       <from uri="mina:127.0.0.1?port={{config.ServerPort}};timeout={{config.SocketTimeOut}}"/>
     </route>
-    
+
     <route>
       <from uri="direct:firstInstitutionDirect"/>
       <to uri="log2:{{config.DefaultLogPathRoot}}\firstInstitutionDirect.log?logType=file"/>
@@ -34,18 +34,20 @@
       <to uri="log2:{{config.DefaultLogPathRoot}}\open-weather-result-seda.log?logType=file;provider=dbLogProvider"/>
     </route>
 
-     <route>
+    <route>
       <from uri="http:127.0.0.1?port={{config.HttpTestPort}};poll=500;initialDelay=1000;path=testserver"/>
+      <to uri="xmltojson:Processor?reverse=false"/>
+
       <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey={{config.ESBJWTSharedKey}}"/>
       <to uri="log2:{{config.DefaultLogPathRoot}}\http-soap-component.log?logType=file"/>
     </route>
-      
+
     <route>
 
-      <from uri="timer:opeTimer?poll=1000;"/>
+      <from uri="timer:opeTimer?poll=10000;"/>
       <to uri="openweather:http://api.openweathermap.org/data/2.5/weather?location=lagos"/>
       <setHeader headerName="CamelHttpMethod" value="GET"/>
-      
+
       <choice>
         <when>
           <method bean="testProcessor" method="IsGood"/>

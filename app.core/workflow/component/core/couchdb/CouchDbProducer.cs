@@ -21,6 +21,8 @@ namespace app.core.workflow.component.core.couchdb
         {
             try
             {
+                Camel.TryLog(exchange, "provider", endPointDescriptor.ComponentName);
+
                 var dbHost = endPointDescriptor.ComponentPath;
                 var port = endPointDescriptor.GetUriProperty<int>("port");
                 var couchDbDatabase = exchange.InMessage.GetHeader("CouchDbDatabase");

@@ -77,6 +77,7 @@ namespace app.core.workflow.component.core.smtp
 
             mail.Subject = subject;
             client.Send(mail);
+            Camel.TryLog(exchange, "producer", endPointDescriptor.ComponentName);
         }
     }
 }

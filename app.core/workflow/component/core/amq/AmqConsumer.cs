@@ -72,7 +72,7 @@ namespace app.core.workflow.component.core.amq
                 if (msg == null) return;
 
                 var ex = new Exchange(_processor.Route) { InMessage = { Body = msg.Text } };
-                Console.WriteLine(msg.Text);
+                Camel.TryLog(ex, "consumer", "amqcomponent");
                 _processor.Process(ex);
             }
             catch (Exception)

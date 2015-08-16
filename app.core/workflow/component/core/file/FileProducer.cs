@@ -20,7 +20,7 @@ namespace app.core.workflow.component.core.file
             if (!string.IsNullOrEmpty(fileData) && !string.IsNullOrEmpty(fileName))
                 File.AppendAllText(fileName, fileData);
 
-            Camel.TryLog(exchange, "provider");
+            Camel.TryLog(exchange, "provider", endPointDescriptor.ComponentName);
             return exchange;
         }
     }

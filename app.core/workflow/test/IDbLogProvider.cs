@@ -7,6 +7,6 @@ namespace app.core.workflow.test
     /// </summary>
     public interface IDbLogProvider
     {
-        void Log(Exchange exchange, string processorType);
+        void Log(Exchange exchange, string processorType, string componentName);
     }
 }

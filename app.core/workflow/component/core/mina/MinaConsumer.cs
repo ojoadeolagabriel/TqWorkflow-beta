@@ -98,7 +98,7 @@ namespace app.core.workflow.component.core.mina
 
                     exchange.OutMessage.Body = exchange.InMessage.Body;
 
-                    Camel.TryLog(exchange);
+                    Camel.TryLog(exchange, "consumer", _processor.UriInformation.ComponentName);
                     var outputMessage = Encoding.ASCII.GetBytes(exchange.OutMessage.Body.ToString());
                     ns.Write(outputMessage, 0, outputMessage.Length);
                     ns.Flush();

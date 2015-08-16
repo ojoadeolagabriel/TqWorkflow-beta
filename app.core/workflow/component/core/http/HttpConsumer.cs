@@ -79,7 +79,7 @@ namespace app.core.workflow.component.core.http
             BuildRequestMessage(client, exchange, body);
 
             exchange.InMessage.Body = body;
-            Camel.TryLog(exchange);
+            Camel.TryLog(exchange, "consumer", _httpProcessor.UriInformation.ComponentName);
 
             _httpProcessor.Process(exchange);
 

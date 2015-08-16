@@ -13,11 +13,11 @@ namespace app.core.workflow.test
     {
         public string ConnectionString { get; set; }
 
-        public void Log(Exchange exchange, string processorType)
+        public void Log(Exchange exchange, string processorType, string componentName)
         {
             try
             {
-                System.Threading.Tasks.Task.Factory.StartNew(() => InitLog(exchange, processorType));
+                System.Threading.Tasks.Task.Factory.StartNew(() => InitLog(exchange, processorType, componentName));
             }
             catch (Exception)
             {
@@ -25,7 +25,7 @@ namespace app.core.workflow.test
             }
         }
 
-        private void InitLog(Exchange exchange, string processorType)
+        private void InitLog(Exchange exchange, string processorType, string componentName)
         {
             using (var conn = new SqlConnection(ConnectionString))
             {
@@ -35,6 +35,7 @@ namespace app.core.workflow.test
                 cmd.Parameters.AddWithValue("@exhangeid", exchange.ExchangeId);
                 cmd.Parameters.AddWithValue("@body", exchange.InMessage.Body.ToString());
                 cmd.Parameters.AddWithValue("@processorType", processorType);
+                cmd.Parameters.AddWithValue("@component", componentName);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.ExecuteNonQuery();

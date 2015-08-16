@@ -14,7 +14,7 @@ namespace app.core.workflow.component.core.httpclient
 {
     public class HttpClientProducer : DefaultProducer
     {
-        private class WebCamelClient : System.Net.WebClient
+        private class WebCamelClient : WebClient
         {
             public int Timeout { private get; set; }
             public string ContentType { get; set; }
@@ -97,7 +97,7 @@ namespace app.core.workflow.component.core.httpclient
                         exchange.InMessage.SetHeader("http-response-" + key, value);
                     }
 
-                    Camel.TryLog(exchange, "provider");
+                    Camel.TryLog(exchange, "provider", descriptor.ComponentName);
                 }
             }
             catch (WebException exception)

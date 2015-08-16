@@ -21,12 +21,12 @@ namespace app.core.workflow
 
         public static DbLogProvider DbLogProvider { get; set; }
 
-        public static void TryLog(Exchange exchange, string processorType = "consumer")
+        public static void TryLog(Exchange exchange, string processorType = "consumer", string componentName = "--")
         {
             if (DbLogProvider == null)
                 return;
 
-            DbLogProvider.Log(exchange, processorType);
+            DbLogProvider.Log(exchange, processorType, componentName);
         }
 
         /// <summary>
