@@ -33,12 +33,18 @@ namespace app.core.workflow.component.core.timer
         {
             var poll = _processor.UriInformation.GetUriProperty("poll", 1000);
             var dueTime = _processor.UriInformation.GetUriProperty("dueTime", 1000);
-            timer = new Timer(CallBack, new PassData { Exchange = new Exchange(_processor.Route) }, dueTime, poll);
+            timer = new Timer(CallBack, new PassData () , dueTime, poll);
+        }
+
+        public Exchange LoadExchange()
+        {
+            return new Exchange(_processor.Route);
         }
 
         private void CallBack(object state)
         {
             var passData = (PassData) state;
+            passData.Exchange = LoadExchange();
             _processor.Process(passData.Exchange);
         }
     }
