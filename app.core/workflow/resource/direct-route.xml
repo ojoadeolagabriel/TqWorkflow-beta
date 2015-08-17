@@ -2,7 +2,7 @@
 <container>
 
   <bean id="dbLogProvider" class="app.core.workflow.test.DbLogProvider">
-    <property key="ConnectionString" value="data source=.;initial catalog=esb;user id=paydirect;password="/>
+    <property key="ConnectionString" value="data source=.;initial catalog=esb;user id=paydirect;password=paydirect"/>
   </bean>
 
   <bean id="cacheType" class="app.core.workflow.utility.CacheType"/>
