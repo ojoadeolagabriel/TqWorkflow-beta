@@ -59,6 +59,7 @@ namespace app.core.workflow.dto
         public Mep MepPattern { get; set; }
 
         public Guid ExchangeId;
+        public Guid ParentExchangeId;
 
         public Message InMessage = new Message();
 
