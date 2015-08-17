@@ -18,7 +18,6 @@ namespace app.core.workflow.test
         public override void Process(Exchange exchange)
         {
             var xE = XElement.Parse(exchange.InMessage.Body.ToString().Replace("\\r\\n", ""));
-            var extraProperty = exchange.GetProperty("messageProperty");
 
             var xElement = xE.Element("claim-type");
             if (xElement != null)
