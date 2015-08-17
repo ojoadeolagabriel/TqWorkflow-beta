@@ -78,7 +78,6 @@ C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\System.Id
 C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
 C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\Apache.NMS.pdb
 C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\Apache.NMS.xml
-C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\Newtonsoft.Json.xml
 C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\obj\Debug\TestKit.csprojResolveAssemblyReference.cache
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\SynapseCore.TestKit.exe.config
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\bin\Debug\SynapseCore.TestKit.exe
@@ -114,3 +113,12 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\obj\Debug\TestKit.csprojResolveAssemblyReference.cache
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\obj\Debug\SynapseCore.TestKit.exe
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\TestKit\obj\Debug\SynapseCore.TestKit.pdb
+C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\RedBranch.Hammock.dll
+C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\System.Reactive.Core.xml
+C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\System.Reactive.Interfaces.xml
+C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\System.Reactive.Linq.xml
+C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\System.Reactive.PlatformServices.xml
+C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\System.Reactive.Providers.xml
+C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\System.Reactive.Runtime.Remoting.xml
+C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\System.Reactive.Windows.Forms.xml
+C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\System.Reactive.Windows.Threading.xml

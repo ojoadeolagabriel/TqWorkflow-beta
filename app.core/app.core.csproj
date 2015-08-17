@@ -204,6 +204,7 @@
     <Content Include="dependency\log4net.dll" />
     <Content Include="dependency\Newtonsoft.Json.dll" />
     <Content Include="dependency\RedBranch.Hammock.dll" />
+    <Content Include="script_migration\first_script.sql" />
     <Content Include="workflow\resource\alt-route.xml" />
     <Content Include="workflow\resource\transaction-pocessor-route.xml">
       <SubType>Designer</SubType>

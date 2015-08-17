@@ -46,38 +46,46 @@ namespace app.core.workflow.component.core.smtp
 
         private static void SendMail(UriDescriptor endPointDescriptor, Exchange exchange)
         {
-            var toAddress = endPointDescriptor.GetUriProperty("to");
-            var from = endPointDescriptor.GetUriProperty("from");
-            var port = endPointDescriptor.GetUriProperty<int>("port");
-            var host = endPointDescriptor.ComponentPath;
-            var subject = endPointDescriptor.GetUriProperty<string>("subject");
-            var body = endPointDescriptor.GetUriProperty<string>("body");
-            var username = endPointDescriptor.GetUriProperty<string>("username");
-            var password = endPointDescriptor.GetUriProperty<string>("password");
-
-
-            var mail = new MailMessage();
-            var client = new SmtpClient
+            try
             {
-                Port = port,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                Host = host,
-            };
+                var toAddress = endPointDescriptor.GetUriProperty("to");
+                var from = endPointDescriptor.GetUriProperty("from");
+                var port = endPointDescriptor.GetUriProperty<int>("port");
+                var host = endPointDescriptor.ComponentPath;
+                var subject = endPointDescriptor.GetUriProperty<string>("subject");
+                var body = endPointDescriptor.GetUriProperty<string>("body");
+                var username = endPointDescriptor.GetUriProperty<string>("username");
+                var password = endPointDescriptor.GetUriProperty<string>("password");
 
-            if (!string.IsNullOrEmpty(username) &&
-                !string.IsNullOrEmpty(password))
-            {
-                client.Credentials = new NetworkCredential(username, password);
+
+                var mail = new MailMessage();
+                var client = new SmtpClient
+                {
+                    Port = port,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    Host = host,
+                };
+
+                if (!string.IsNullOrEmpty(username) &&
+                    !string.IsNullOrEmpty(password))
+                {
+                    client.Credentials = new NetworkCredential(username, password);
+                }
+
+                mail.To.Add(new MailAddress(toAddress));
+                mail.From = new MailAddress(@from);
+                mail.IsBodyHtml = true;
+                mail.Body = exchange.InMessage.Body.ToString();
+
+                mail.Subject = subject;
+
+                Camel.TryLog(exchange, "producer", endPointDescriptor.ComponentName);
+                client.Send(mail);
             }
-
-            mail.To.Add(new MailAddress(toAddress));
-            mail.From = new MailAddress(@from);
-            mail.IsBodyHtml = true;
-            mail.Body = exchange.InMessage.Body.ToString();
-
-            mail.Subject = subject;
-            client.Send(mail);
-            Camel.TryLog(exchange, "producer", endPointDescriptor.ComponentName);
+            catch (Exception exception)
+            {
+                
+            }
         }
     }
 }
