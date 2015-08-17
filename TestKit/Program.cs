@@ -19,50 +19,11 @@ using app.core.workflow.test;
 
 namespace TestKit
 {
-    public static class ReflectionHelper
-    {
-        public const string Data = "The_OtherGirl!";
-
-
-        public static string GetPropertyName<T>(Expression<Func<T>> propertyLambda)
-        {
-            switch (propertyLambda.Body.NodeType)
-            {
-                case ExpressionType.Constant:
-                    return ((ConstantExpression)propertyLambda.Body).Value.ToString();
-                    break;
-                case ExpressionType.MemberAccess:
-                    break;
-            }
-            var me = propertyLambda.Body as MemberExpression;
-
-            if (me == null)
-            {
-                throw new ArgumentException("You must pass a lambda of the form: '() => Class.Property' or '() => object.Property'");
-            }
-
-            return me.Member.Name;
-        }
-    }
 
     class Program
     {
         static void Main(string[] args)
         {
-            var enctoken = TokenManager.CreateJwtToken("aojo", "admin");
-            var token = enctoken;
-            const string secretKey = "GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk";
-
-            try
-            {
-                var jsonPayload = JWT.JsonWebToken.Decode(token, secretKey);
-                Console.WriteLine(jsonPayload);
-            }
-            catch (JWT.SignatureVerificationException)
-            {
-                Console.WriteLine("Invalid token!");
-            }
-
             var config = new app.core.workflow.utility.Configuration();
 
             var directFile = string.Format("{0}\\direct-route.xml", config.ApplicationConfigRootFolderPath);
