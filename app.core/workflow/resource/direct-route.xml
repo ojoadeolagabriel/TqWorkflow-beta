@@ -1,11 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <container>
 
-  <bean id="dbLogProvider" class="app.core.workflow.test.DbLogProvider">
-    <property key="ConnectionString" value="
-              "/>
-  </bean>
-
   <bean id="cacheType" class="app.core.workflow.utility.CacheType"/>
 
   <bean id="config" class="app.core.workflow.utility.Configuration">
@@ -17,6 +12,10 @@
     <property key="CacheType" value="{{cacheType}}"/>
   </bean>
 
+  <bean id="dbLogProvider" class="app.core.workflow.test.DbLogProvider">
+    <property key="ConnectionString" value="{{config.LocalConnectionString}}"/>
+  </bean>
+  
   <bean id="testProcessor" class="app.core.workflow.test.CouchDbTestProcessor"/>
 
   <context logProvider="dbLogProvider">

@@ -10,6 +10,7 @@ namespace app.core.workflow.utility
     {
         public string ApplicationConfigRootFolderPath { get; set; }
         public string DefaultLogPathRoot { get; set; }
+        public string LocalConnectionString { get; set; }
         public int SocketTimeOut { get; set; }
         public int AmqTestPort { get; set; }
         public int ServerPort { get; set; }
