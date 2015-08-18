@@ -13,6 +13,45 @@ namespace app.core.workflow.expression
 {
     public static class SimpleExpression
     {
+        public static T ObjectExpressionResolver<T>(string expression)
+            where T : class
+        {
+            if (string.IsNullOrEmpty(expression))
+                return default(T);
+
+            if (!expression.StartsWith("{{") && !expression.EndsWith("}}"))
+                return (T)Convert.ChangeType(expression, typeof(T));            
+
+            var expressionParts = expression.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries);
+            switch (expressionParts.Length)
+            {
+                case 1:
+                    var checkValue = expression.Replace("{{", "").Replace("}}", "");
+                    var regObj = Camel.Registry[checkValue];
+                    if (regObj == null)
+                        return null;
+
+                    return regObj as T;
+                    break;
+                case 2:
+                    var checkValueColl = expression.Replace("{{", "").Replace("}}", "");
+                    var checkValueCollParts = checkValueColl.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries);
+                    var @class = checkValueCollParts[0];
+                    var property = checkValueCollParts[1];
+                    regObj = Camel.Registry[@class];
+                    if (regObj == null)
+                        return null;
+
+                    var propertyValue = regObj.GetType().GetProperty(property).GetValue(regObj, null);
+                    return propertyValue as T;
+                    break;
+                default:
+                    return default(T);
+            }
+
+            return default (T);
+        }
+
         public static string Resolve(string expression, Exchange exchange)
         {
             return "";
