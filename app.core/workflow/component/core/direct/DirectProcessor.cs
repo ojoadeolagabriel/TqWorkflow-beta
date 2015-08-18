@@ -17,7 +17,7 @@ namespace app.core.workflow.component.core.direct
 
         public override Exchange Process(Exchange exchange)
         {
-            exchange.Route.RouteProcess.NextTag.Execute(exchange);
+            exchange.Route.RouteProcess.NextTag.ProcessChannel(exchange);
             return exchange;
         }
     }

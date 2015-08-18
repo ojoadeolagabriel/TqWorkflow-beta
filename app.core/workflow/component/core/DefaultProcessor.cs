@@ -28,7 +28,7 @@ namespace app.core.workflow.component.core
         public virtual Exchange Process(Exchange exchange)
         {
             if (Route.RouteProcess.NextTag != null)
-                Route.RouteProcess.NextTag.Execute(exchange);
+                Route.RouteProcess.NextTag.ProcessChannel(exchange);
             return exchange;
         }
     }

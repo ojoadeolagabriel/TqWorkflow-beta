@@ -15,7 +15,7 @@ namespace app.core.workflow.component.core.seda
 
         public override Exchange Process(Exchange exchange)
         {
-            exchange.Route.RouteProcess.NextTag.Execute(exchange);
+            exchange.Route.RouteProcess.NextTag.ProcessChannel(exchange);
             return base.Process(exchange);
         }
     }

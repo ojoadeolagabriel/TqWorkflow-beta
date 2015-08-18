@@ -81,7 +81,7 @@ namespace app.core.workflow
 
         public static void StartAllRoutes()
         {
-            RouteCollection.ToList().ForEach(c=>c.Value.RouteProcess.Execute());
+            RouteCollection.ToList().ForEach(c=>c.Value.RouteProcess.ProcessChannel());
         }
     }
 }

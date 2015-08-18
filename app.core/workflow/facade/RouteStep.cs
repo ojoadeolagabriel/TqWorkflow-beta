@@ -51,7 +51,7 @@ namespace app.core.workflow.facade
             }
         }
 
-        public void Execute(Exchange exchange = null)
+        public void ProcessChannel(Exchange exchange = null)
         {
             ProcessStep(_currentStepXml, Route, exchange);
 
@@ -60,7 +60,7 @@ namespace app.core.workflow.facade
             switch (exchange.Route.PipelineMode)
             {
                 case Route.MessagePipelineMode.Default:
-                    NextTag.Execute(exchange);
+                    NextTag.ProcessChannel(exchange);
                     break;
             }
         }

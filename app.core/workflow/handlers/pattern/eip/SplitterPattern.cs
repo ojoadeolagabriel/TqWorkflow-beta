@@ -17,7 +17,7 @@ namespace app.core.workflow.handlers.pattern.eip
     public class SplitterPattern
     {
         /// <summary>
-        /// Execute
+        /// ProcessChannel
         /// </summary>
         /// <param name="splitElement"></param>
         /// <param name="exchange"></param>

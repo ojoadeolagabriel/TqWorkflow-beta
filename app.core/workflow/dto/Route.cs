@@ -27,7 +27,7 @@ namespace app.core.workflow.dto
 
         public void TriggerRoute()
         {
-            RouteProcess.Execute();
+            RouteProcess.ProcessChannel();
         }
     }
 }

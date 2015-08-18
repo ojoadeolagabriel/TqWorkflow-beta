@@ -49,7 +49,7 @@ namespace app.core.workflow.handlers.routepipeline
 
             Camel.SetRoute(newRoute);
             if (autoExec)
-                newRoute.RouteProcess.Execute();
+                newRoute.RouteProcess.ProcessChannel();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace app.core.workflow.component.core.direct
             var route = Camel.GetRouteBy(path);
 
             if (route != null)
-                route.RouteProcess.Execute(exchange);
+                route.RouteProcess.ProcessChannel(exchange);
 
             return exchange;
        }

@@ -66,7 +66,7 @@ namespace app.core.workflow.facade
 
             //process step.
             RouteStep.ProcessStep(step, xchangeInfo.Value.Route, xchangeInfo.Value);
-            xchangeInfo.Value.Route.RouteProcess.NextTag.Execute(xchangeInfo.Value);
+            xchangeInfo.Value.Route.RouteProcess.NextTag.ProcessChannel(xchangeInfo.Value);
         }
     }
 }

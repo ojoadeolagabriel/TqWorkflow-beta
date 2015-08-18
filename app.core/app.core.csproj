@@ -219,6 +219,7 @@
     <Content Include="workflow\resource\route.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="workflow\resource\wgrus-route.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
