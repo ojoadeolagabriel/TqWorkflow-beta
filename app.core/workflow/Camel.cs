@@ -19,14 +19,12 @@ namespace app.core.workflow
         /// </summary>
         public static readonly ConcurrentDictionary<string, Route> RouteCollection = new ConcurrentDictionary<string, Route>();
 
-        public static DbLogProvider DbLogProvider { get; set; }
-
         public static void TryLog(Exchange exchange, string processorType = "consumer", string componentName = "--")
         {
-            if (DbLogProvider == null)
+            if (exchange.Route.LogProvider == null)
                 return;
 
-            DbLogProvider.Log(exchange, processorType, componentName);
+            exchange.Route.LogProvider.Log(exchange, processorType, componentName);
         }
 
         /// <summary>

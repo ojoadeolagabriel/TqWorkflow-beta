@@ -72,10 +72,10 @@ namespace app.core.workflow.component.core.mina
             var listener = passData.TcpListener;
 
             TcpListener.BeginAcceptTcpClient(ProcessIncommingClientAsync, new PassData { Exchange = new Exchange(_processor.Route), TcpListener = TcpListener });
-
+            var exchange = passData.Exchange;
             try
             {
-                var exchange = passData.Exchange;
+                
                 var client = listener.EndAcceptTcpClient(res);
 
                 var messageBuilder = new StringBuilder();
@@ -99,15 +99,19 @@ namespace app.core.workflow.component.core.mina
                     exchange.OutMessage.Body = exchange.InMessage.Body;
 
                     Camel.TryLog(exchange, "consumer", _processor.UriInformation.ComponentName);
+                    
                     var outputMessage = Encoding.ASCII.GetBytes(exchange.OutMessage.Body.ToString());
                     ns.Write(outputMessage, 0, outputMessage.Length);
                     ns.Flush();
                     ns.Close();
+
+                    throw new Exception();
                 }
             }
             catch (Exception escException)
             {
-
+                exchange.CurrentException = escException;
+                Camel.TryLog(exchange, "consumer", _processor.UriInformation.ComponentName);
             }
         }
     }

@@ -19,6 +19,7 @@ namespace app.core.workflow.dto
             InOnly, InOut
         }
 
+        public Exception CurrentException;
         public ConcurrentStack<Exception> Exception = new ConcurrentStack<Exception>();
         public ConcurrentStack<Object> AlternativeMessage = new ConcurrentStack<Object>();
 

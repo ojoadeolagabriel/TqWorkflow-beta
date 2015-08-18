@@ -32,7 +32,6 @@ namespace app.core.workflow.expression
                         return null;
 
                     return regObj as T;
-                    break;
                 case 2:
                     var checkValueColl = expression.Replace("{{", "").Replace("}}", "");
                     var checkValueCollParts = checkValueColl.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries);
@@ -44,12 +43,47 @@ namespace app.core.workflow.expression
 
                     var propertyValue = regObj.GetType().GetProperty(property).GetValue(regObj, null);
                     return propertyValue as T;
-                    break;
                 default:
                     return default(T);
             }
 
             return default (T);
+        }
+
+        public static object ObjectExpressionResolver(string expression)
+        {
+            if (string.IsNullOrEmpty(expression))
+                return null;
+
+            if (!expression.StartsWith("{{") && !expression.EndsWith("}}"))
+                return expression;
+
+            var expressionParts = expression.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries);
+            switch (expressionParts.Length)
+            {
+                case 1:
+                    var checkValue = expression.Replace("{{", "").Replace("}}", "");
+                    var regObj = Camel.Registry[checkValue];
+                    if (regObj == null)
+                        return null;
+
+                    return regObj;
+                case 2:
+                    var checkValueColl = expression.Replace("{{", "").Replace("}}", "");
+                    var checkValueCollParts = checkValueColl.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries);
+                    var @class = checkValueCollParts[0];
+                    var property = checkValueCollParts[1];
+                    regObj = Camel.Registry[@class];
+                    if (regObj == null)
+                        return null;
+
+                    var propertyValue = regObj.GetType().GetProperty(property).GetValue(regObj, null);
+                    return propertyValue;
+                default:
+                    return null;
+            }
+
+            return null;
         }
 
         public static string Resolve(string expression, Exchange exchange)

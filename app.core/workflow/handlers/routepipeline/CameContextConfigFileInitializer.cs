@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using app.core.application.error;
 using app.core.workflow.dto;
+using app.core.workflow.expression;
 using app.core.workflow.facade;
 using app.core.workflow.registry;
 
@@ -93,40 +94,23 @@ namespace app.core.workflow.handlers.routepipeline
                     if (type == null) continue;
 
                     var bean = Activator.CreateInstance(type);
+
                     //process product.
                     var propertyXmlColl = beanXml.Elements("property");
-                    if (propertyXmlColl.Any())
+                    var xmlColl = propertyXmlColl as IList<XElement> ?? propertyXmlColl.ToList();
+
+                    if (xmlColl.Any())
                     {
-                        foreach (var item in propertyXmlColl)
+                        foreach (var item in xmlColl)
                         {
                             var key = item.Attribute("key").Value;
                             var @value = item.Attribute("value").Value;
 
                             var prop = bean.GetType().GetProperty(key);
-                            if (prop != null)
-                            {
-                                var checkValue = @value.Replace("{{", "");
-                                checkValue = checkValue.Replace("}}", "");
+                            if (prop == null) continue;
 
-                                //check for bean
-                                if (!Camel.Registry.ContainsKey(checkValue))
-                                    prop.SetValue(bean, Convert.ChangeType(@value, prop.PropertyType), null);
-                                else
-                                {
-                                    if (@value != string.Empty && @value.StartsWith("{{") && @value.EndsWith("}}"))
-                                    {
-                                        try
-                                        {
-                                            var obj = Camel.Registry[checkValue];
-                                            prop.SetValue(bean, obj, null);
-                                        }
-                                        catch
-                                        {
-
-                                        }
-                                    }
-                                }
-                            }
+                            var res = SimpleExpression.ObjectExpressionResolver(@value);
+                            prop.SetValue(bean, Convert.ChangeType(res, prop.PropertyType), null);
                         }
                     }
 

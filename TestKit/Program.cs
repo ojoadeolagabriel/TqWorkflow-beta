@@ -30,9 +30,7 @@ namespace TestKit
             var camelFile = string.Format("{0}\\core-route.xml", config.ApplicationConfigRootFolderPath);
 
             Camel.InitDependencyLibs(new List<string> { "app.core.workflow.component.core" });
-
             CameContextConfigFileInitializer.Initialize(directFile);
-            Camel.DbLogProvider = Camel.Registry["dbLogProvider"] as DbLogProvider;
 
             Camel.StartAllRoutes();
             Camel.StartSedaProcessor();
