@@ -21,13 +21,14 @@ namespace app.core.workflow.handlers.routepipeline
         /// </summary>
         /// <param name="route"></param>
         /// <param name="autoExec"></param>
-        public static void ProcessRouteInformation(XElement route, bool autoExec = false)
+        /// <param name="logProvider"></param>
+        public static void ProcessRouteInformation(XElement route, bool autoExec = false, ISystemLogProvider logProvider = null)
         {
             if (route == null)
                 throw new AppCoreException("error loading route-config: route cannot be null");
 
             var steps = route.Elements();
-            var newRoute = new Route();
+            var newRoute = new Route {LogProvider = logProvider};
             RouteStep nextRouteStepProcessorToLink = null;
 
             foreach (var step in steps)

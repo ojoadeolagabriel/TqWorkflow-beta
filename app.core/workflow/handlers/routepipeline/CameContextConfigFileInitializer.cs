@@ -46,11 +46,24 @@ namespace app.core.workflow.handlers.routepipeline
             //get first route
             if (leafContextXml != null)
             {
+                ISystemLogProvider logProvider = null;
+
+                //read handler.
+                var logProviderXml = leafContextXml.Attribute("logProvider");
+                if (logProviderXml != null && logProviderXml.Value!= string.Empty)
+                {
+                    var logger = Camel.Registry[logProviderXml.Value];
+                    if (logger is ISystemLogProvider)
+                    {
+                        logProvider = logger as ISystemLogProvider;
+                    }
+                }
+
                 var routeNode = leafContextXml.Elements("route");
                 foreach (var route in routeNode)
                 {
                     var xmlRoute = route;
-                    RouteStepAnalyzer.ProcessRouteInformation(xmlRoute, autoExec);
+                    RouteStepAnalyzer.ProcessRouteInformation(xmlRoute, autoExec, logProvider);
                 }
             }
             else

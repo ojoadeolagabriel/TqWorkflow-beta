@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using app.core.workflow.facade;
+using app.core.workflow.test;
 
 namespace app.core.workflow.dto
 {
     public class Route
     {
+        public ISystemLogProvider LogProvider = null;
+
         public enum MessagePipelineMode
         {
             Default,

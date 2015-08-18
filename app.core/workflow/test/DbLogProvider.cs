@@ -9,21 +9,10 @@ using app.core.workflow.dto;
 
 namespace app.core.workflow.test
 {
-    public class DbLogProvider : IDbLogProvider
+    public class DbLogProvider : ISystemLogProvider
     {
         public string ConnectionString { get; set; }
 
-        public void Log(Exchange exchange, string processorType, string componentName)
-        {
-            try
-            {
-                System.Threading.Tasks.Task.Factory.StartNew(() => InitLog(exchange, processorType, componentName));
-            }
-            catch (Exception)
-            {
-
-            }
-        }
 
         private void InitLog(Exchange exchange, string processorType, string componentName)
         {
@@ -39,6 +28,18 @@ namespace app.core.workflow.test
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.ExecuteNonQuery();
+
+            }
+        }
+
+        public void Log(Exchange exchange, string processorType, string componentName, Exception exception = null)
+        {
+            try
+            {
+                System.Threading.Tasks.Task.Factory.StartNew(() => InitLog(exchange, processorType, componentName));
+            }
+            catch (Exception)
+            {
 
             }
         }

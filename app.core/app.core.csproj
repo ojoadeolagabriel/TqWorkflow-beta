@@ -143,6 +143,7 @@
     <Compile Include="workflow\component\core\xmltojson\XmlToJsonProvider.cs" />
     <Compile Include="workflow\component\core\xmltojson\XmlToJsonProducer.cs" />
     <Compile Include="workflow\dto\Exchange.cs" />
+    <Compile Include="workflow\dto\ISystemLogProvider.cs" />
     <Compile Include="workflow\dto\Message.cs" />
     <Compile Include="workflow\dto\MessageExchangeType.cs" />
     <Compile Include="workflow\dto\Route.cs" />
