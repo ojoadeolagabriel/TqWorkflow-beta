@@ -38,7 +38,12 @@
       <from uri="http:127.0.0.1?port={{config.HttpTestPort}};initialDelay=1000;path=testserver"/>
       <to uri="xmltojson:Processor?reverse=false"/>
       <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey={{config.ESBJWTSharedKey}}"/>
-      <to uri="log2:{{config.DefaultLogPathRoot}}\http-soap-component.log?logType=file"/>
+
+      <loop>
+        <expression>4</expression>
+        <to uri="log2:{{config.DefaultLogPathRoot}}\http-soap-component.log?logType=file"/>
+      </loop>      
+      
     </route>
 
     <route>

@@ -35,7 +35,14 @@ namespace app.core.nerve.handlers.tag
                 var data = loopTag.Elements().Skip(1);
                 foreach (var dataItem in data)
                 {
-                    RouteStep.ProcessStep(dataItem, route, exchange);
+                    try
+                    {
+                        RouteStep.ProcessStep(dataItem, route, exchange);
+                    }
+                    catch (Exception exception)
+                    {
+
+                    }
                 }
             }
         }

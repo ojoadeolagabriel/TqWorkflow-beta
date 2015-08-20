@@ -113,6 +113,9 @@ namespace app.core.nerve.facade
                     case "choice":
                         HandleChoice(step, routeObj, exchange);
                         break;
+                    case "loop":
+                        HandleLoop(step, routeObj, exchange);
+                        break;
                     case "delay":
                         HandleDelay(step, routeObj, exchange);
                         break;
@@ -131,6 +134,11 @@ namespace app.core.nerve.facade
             {
 
             }
+        }
+
+        private static void HandleLoop(XElement step, Route routeObj, Exchange exchange)
+        {
+            LoopTag.Execute(step, exchange, routeObj);
         }
 
         private static void HandleMulticast(XElement step, Exchange exchange)
