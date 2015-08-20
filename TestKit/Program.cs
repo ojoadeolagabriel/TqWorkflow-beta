@@ -11,11 +11,11 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using app.core.nerve;
+using app.core.nerve.handlers.routepipeline;
 using app.core.workflow;
 using app.core.workflow.dto;
-using app.core.workflow.facade;
-using app.core.workflow.handlers.routepipeline;
-using app.core.workflow.test;
+using Configuration = app.core.nerve.utility.Configuration;
 
 namespace TestKit
 {
@@ -24,7 +24,7 @@ namespace TestKit
     {
         static void Main(string[] args)
         {
-            var config = new app.core.workflow.utility.Configuration();
+            var config = new Configuration();
 
             var directFile = string.Format("{0}\\direct-route.xml", config.ApplicationConfigRootFolderPath);
             var camelFile = string.Format("{0}\\core-route.xml", config.ApplicationConfigRootFolderPath);
