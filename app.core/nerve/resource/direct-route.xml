@@ -46,6 +46,7 @@
       <loop>
         <expression>4</expression>
         <to uri="log2:{{config.DefaultLogPathRoot}}\http-soap-component.log?logType=file"/>
+        
         <when>
           <method bean="testProcessor" method="IsTransactionValid"/>
           <to uri="log2:{{config.DefaultLogPathRoot}}\http.good.log?logType=file"/>
