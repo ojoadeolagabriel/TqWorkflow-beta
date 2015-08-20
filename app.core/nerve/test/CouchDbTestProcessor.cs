@@ -1,4 +1,5 @@
-﻿using app.core.nerve.dto;
+﻿using System;
+using app.core.nerve.dto;
 using app.core.nerve.facade;
 using app.core.workflow.dto;
 
@@ -9,6 +10,11 @@ namespace app.core.nerve.test
         public bool IsGood()
         {
             return true;
+        }
+
+        public bool IsTransactionValid()
+        {
+            return DateTime.Now.Second % 3 == 0;
         }
 
         public class Person
