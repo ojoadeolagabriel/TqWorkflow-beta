@@ -206,21 +206,13 @@
     <Content Include="dependency\Newtonsoft.Json.dll" />
     <Content Include="dependency\RedBranch.Hammock.dll" />
     <Content Include="script_migration\first_script.sql" />
-    <Content Include="nerve\resource\alt-route.xml" />
-    <Content Include="nerve\resource\transaction-pocessor-route.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="nerve\resource\direct-route.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="nerve\resource\core-route.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="nerve\resource\pom.xml" />
     <Content Include="nerve\resource\route.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="nerve\resource\wgrus-route.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

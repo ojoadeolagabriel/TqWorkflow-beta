@@ -29,7 +29,7 @@ namespace TestKit
             var directFile = string.Format("{0}\\direct-route.xml", config.ApplicationConfigRootFolderPath);
             var camelFile = string.Format("{0}\\core-route.xml", config.ApplicationConfigRootFolderPath);
 
-            Camel.InitDependencyLibs(new List<string> { "app.core.workflow.component.core" });
+            Camel.InitDependencyLibs(new List<string> { "app.core.nerve.component.core" });
             CameContextConfigFileInitializer.Initialize(directFile);
 
             Camel.StartAllRoutes();
