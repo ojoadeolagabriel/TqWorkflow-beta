@@ -4,7 +4,6 @@ using app.core.nerve.dto;
 using app.core.nerve.expression;
 using app.core.nerve.handlers.pattern.eip;
 using app.core.nerve.handlers.tag;
-using app.core.workflow.dto;
 
 namespace app.core.nerve.facade
 {
@@ -76,7 +75,7 @@ namespace app.core.nerve.facade
         {
             try
             {
-                var stepname = step.Name.ToString();
+                var stepname = step.Name.ToString().ToLower();
 
                 switch (stepname)
                 {
@@ -85,6 +84,9 @@ namespace app.core.nerve.facade
                         break;
                     case "to":
                         HandleToProcessor(step, routeObj, exchange);
+                        break;
+                    case "enrich":
+                        HandleToEnricher(step, routeObj, exchange);
                         break;
                     case "split":
                         HandleSplit(step, exchange);
@@ -98,16 +100,16 @@ namespace app.core.nerve.facade
                     case "bean":
                         HandleBean(step, routeObj, exchange);
                         break;
-                    case "convertBodyTo":
+                    case "convertbodyto":
                         HandleConvertBodyTo(step, routeObj, exchange);
                         break;
-                    case "setHeader":
+                    case "setheader":
                         HandleSetHeader(step, routeObj, exchange);
                         break;
-                    case "removeHeader":
+                    case "removeheader":
                         HandleRemoveHeader(step, routeObj, exchange);
                         break;
-                    case "setProperty":
+                    case "setproperty":
                         HandleProperty(step, routeObj, exchange);
                         break;
                     case "choice":
@@ -119,7 +121,7 @@ namespace app.core.nerve.facade
                     case "delay":
                         HandleDelay(step, routeObj, exchange);
                         break;
-                    case "wireTap":
+                    case "wiretap":
                         HandleWireTap(step, routeObj, exchange);
                         break;
                     case "transform":
@@ -134,6 +136,11 @@ namespace app.core.nerve.facade
             {
 
             }
+        }
+
+        private static void HandleToEnricher(XElement step, dto.Route routeObj, Exchange exchange)
+        {
+            EnricherPattern.Enrich(step, exchange, routeObj);
         }
 
         private static void HandleLoop(XElement step, Route routeObj, Exchange exchange)

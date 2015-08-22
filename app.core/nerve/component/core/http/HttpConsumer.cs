@@ -33,31 +33,38 @@ namespace app.core.nerve.component.core.http
 
         private void PollHandler()
         {
-            var exchange = new Exchange(_httpProcessor.Route);
-            var initialDelay = _httpProcessor.UriInformation.GetUriProperty("initialDelay", 1000);
-            var portId = _httpProcessor.UriInformation.GetUriProperty("port", 9000, exchange);
-            var path = _httpProcessor.UriInformation.GetUriProperty("path","");
-
-            if(initialDelay > 0)
-                Thread.Sleep(initialDelay);
-
-            HttpListener = new HttpListener();
-
-            if (path.StartsWith("\\"))
-                path = path.Remove(0, 1);
-
-            var uriPref = string.Format("http://{0}:{1}/{2}/", _httpProcessor.UriInformation.ComponentPath, portId, path);
-            if (!uriPref.EndsWith("/"))
-                uriPref = uriPref + "/";
-
-            HttpListener.Prefixes.Add(uriPref);
-
-            HttpListener.Start();
-            HttpListener.BeginGetContext(ProcessIncommingClientAsync, new PassData
+            try
             {
-                Exchange = exchange,
-                HttpListener = HttpListener
-            });
+                var exchange = new Exchange(_httpProcessor.Route);
+                var initialDelay = _httpProcessor.UriInformation.GetUriProperty("initialDelay", 1000);
+                var portId = _httpProcessor.UriInformation.GetUriProperty("port", 9000, exchange);
+                var path = _httpProcessor.UriInformation.GetUriProperty("path", "");
+
+                if (initialDelay > 0)
+                    Thread.Sleep(initialDelay);
+
+                HttpListener = new HttpListener();
+
+                if (path.StartsWith("\\"))
+                    path = path.Remove(0, 1);
+
+                var uriPref = string.Format("http://{0}:{1}/{2}/", _httpProcessor.UriInformation.ComponentPath, portId, path);
+                if (!uriPref.EndsWith("/"))
+                    uriPref = uriPref + "/";
+
+                HttpListener.Prefixes.Add(uriPref);
+
+                HttpListener.Start();
+                HttpListener.BeginGetContext(ProcessIncommingClientAsync, new PassData
+                {
+                    Exchange = exchange,
+                    HttpListener = HttpListener
+                });
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void ProcessIncommingClientAsync(IAsyncResult res)
@@ -106,10 +113,10 @@ namespace app.core.nerve.component.core.http
 
         private void BuildRequestMessage(HttpListenerContext client, Exchange exchange, string body)
         {
-            var msg = Environment.NewLine + Environment.NewLine + @"{0} {1} {2}" + Environment.NewLine + 
-                         "Host: {3}" + Environment.NewLine + 
-                         "Content-Type: {4}" + Environment.NewLine + 
-                         "Content-Length: {5}" +  Environment.NewLine + Environment.NewLine +
+            var msg = Environment.NewLine + Environment.NewLine + @"{0} {1} {2}" + Environment.NewLine +
+                         "Host: {3}" + Environment.NewLine +
+                         "Content-Type: {4}" + Environment.NewLine +
+                         "Content-Length: {5}" + Environment.NewLine + Environment.NewLine +
                          "{6}" + Environment.NewLine + Environment.NewLine;
 
             var data = string.Format(msg, client.Request.HttpMethod, client.Request.Url, "HTTP/1.1",
@@ -130,7 +137,7 @@ namespace app.core.nerve.component.core.http
 
             foreach (var headers in exchange.InMessage.HeaderCollection)
             {
-                getContext.Response.Headers.Add(headers.Key, headers.Value.ToString());    
+                getContext.Response.Headers.Add(headers.Key, headers.Value.ToString());
             }
 
             getContext.Response.ContentLength64 = b.Length;

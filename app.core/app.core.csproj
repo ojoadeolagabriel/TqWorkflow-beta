@@ -76,6 +76,8 @@
   <ItemGroup>
     <Compile Include="application\error\AppCoreException.cs" />
     <Compile Include="nerve\handlers\tag\LoopTag.cs" />
+    <Compile Include="nerve\strategy\AggregationStrategy.cs" />
+    <Compile Include="nerve\test\DummyAggreationStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="nerve\builder\DeadLetterChannelBuilder.cs" />
     <Compile Include="nerve\Camel.cs" />
@@ -192,9 +194,6 @@
   <ItemGroup>
     <Folder Include="application\error\util\" />
     <Folder Include="application\reflection\" />
-    <Folder Include="approval\dto\" />
-    <Folder Include="approval\facade\" />
-    <Folder Include="approval\service\" />
     <Folder Include="nerve\component\core\http\util\" />
     <Folder Include="nerve\component\core\mina\util\" />
     <Folder Include="nerve\component\core\mssql\" />

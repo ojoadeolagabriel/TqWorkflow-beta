@@ -3,7 +3,6 @@ using System.Linq;
 using System.Xml.Linq;
 using app.core.nerve.dto;
 using app.core.nerve.facade;
-using app.core.workflow.dto;
 
 namespace app.core.nerve.handlers.pattern.eip
 {

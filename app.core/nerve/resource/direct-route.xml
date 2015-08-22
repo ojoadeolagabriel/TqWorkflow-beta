@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<container xmlns:n="http://www.nerveinteract.com/context">
+<container xmlns:n="http://nerveinteract.com/context">
 
   <bean id="cacheType" class="app.core.nerve.utility.CacheType"/>
 
@@ -15,8 +15,9 @@
   <bean id="dbLogProvider" class="app.core.nerve.test.DbLogProvider">
     <property key="ConnectionString" value="{{config.LocalConnectionString}}"/>
   </bean>
-  
+
   <bean id="testProcessor" class="app.core.nerve.test.CouchDbTestProcessor"/>
+  <bean id="dummyAggreationStrategy" class="app.core.nerve.test.DummyAggreationStrategy"/>
 
   <context logProvider="dbLogProvider">
 
@@ -35,10 +36,15 @@
     </route>
 
     <route>
-      <from uri="http:127.0.0.1?port=9887;initialDelay=1000;path=testserver"/>
+      <from uri="direct:aggr"/>
     </route>
 
-      <route>
+    <route>
+      <from uri="http:127.0.0.1?port=4195;initialDelay=1000;path=testserver"/>
+      <enrich uri="direct:aggr" strategyref="dummyAggreationStrategy"/>
+    </route>
+
+    <route>
       <from uri="http:127.0.0.1?port={{config.HttpTestPort}};initialDelay=1000;path=testserver"/>
       <to uri="xmltojson:Processor?reverse=false"/>
       <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey={{config.ESBJWTSharedKey}}"/>
@@ -46,21 +52,21 @@
       <loop>
         <expression>4</expression>
         <to uri="log2:{{config.DefaultLogPathRoot}}\http-soap-component.log?logType=file"/>
-        
+
         <when>
           <method bean="testProcessor" method="IsTransactionValid"/>
           <to uri="log2:{{config.DefaultLogPathRoot}}\http.good.log?logType=file"/>
 
           <setHeader headerName="CamelHttpMethod" value="POST"/>
           <setHeader headerName="CamelHttpContentType" value="application/x-www-form-urlencoded"/>
-          
+
           <multicast>
-            <to uri="httpclient:127.0.0.1?connectionTimeOut=5000;"/>            
+            <to uri="httpclient:127.0.0.1?connectionTimeOut=5000;"/>
           </multicast>
-          
+
         </when>
-      </loop>      
-      
+      </loop>
+
     </route>
 
     <route>

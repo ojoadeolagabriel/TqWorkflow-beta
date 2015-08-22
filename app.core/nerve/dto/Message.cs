@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace app.core.workflow.dto
+namespace app.core.nerve.dto
 {
+    [Serializable]
     public class Message
     {
         public object GetHeader(string key)

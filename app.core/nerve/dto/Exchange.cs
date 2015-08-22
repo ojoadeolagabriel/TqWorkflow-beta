@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using app.core.workflow.dto;
+using app.core.nerve.utility;
 using Newtonsoft.Json;
 
 namespace app.core.nerve.dto
@@ -79,16 +79,19 @@ namespace app.core.nerve.dto
             PropertyCollection = new ConcurrentDictionary<string, string>();
         }
 
-        public Exchange CloneExchange(Message inMessage, Message outMessage, Route route)
+        public Exchange CloneExchange(Message inMessage = null, Message outMessage = null, Route route = null)
         {
-            return new Exchange(Route)
+            var exc = new Exchange(Route)
             {
-                InMessage = inMessage,
-                OutMessage = outMessage,
+                InMessage = inMessage ?? ReflectionHelper.DeepCopy(InMessage),
+                OutMessage = outMessage ?? ReflectionHelper.DeepCopy(OutMessage),
                 CamelCreatedTimestamp = DateTime.Now,
                 ExchangeId = Guid.NewGuid(),
-                PropertyCollection = new ConcurrentDictionary<string, string>()
+                PropertyCollection = new ConcurrentDictionary<string, string>(),
             };
+
+
+            return exc;
         }
 
         public DateTime CamelCreatedTimestamp { get; set; }
