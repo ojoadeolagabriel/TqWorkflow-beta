@@ -7,5 +7,6 @@ namespace app.core.data
 {
     public class CoreDao
     {
+        
     }
 }
