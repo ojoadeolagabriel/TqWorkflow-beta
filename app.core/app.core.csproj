@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="application\error\AppCoreException.cs" />
+    <Compile Include="data\CoreDao.cs" />
     <Compile Include="nerve\handlers\tag\LoopTag.cs" />
     <Compile Include="nerve\strategy\AggregationStrategy.cs" />
     <Compile Include="nerve\test\DummyAggreationStrategy.cs" />
