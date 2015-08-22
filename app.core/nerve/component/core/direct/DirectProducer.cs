@@ -18,7 +18,7 @@ namespace app.core.nerve.component.core.direct
 
             if (route != null)
                 route.RouteProcess.ProcessChannel(exchange);
-
+  
             return exchange;
        }
     }
