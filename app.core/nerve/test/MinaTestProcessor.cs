@@ -5,7 +5,7 @@ using app.core.nerve.facade;
 
 namespace app.core.nerve.test
 {
-    class MinaTestProcessor : ProcessorBase
+    public class MinaTestProcessor : ProcessorBase
     {
         public void Start()
         {

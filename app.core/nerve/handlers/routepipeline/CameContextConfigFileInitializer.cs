@@ -38,6 +38,7 @@ namespace app.core.nerve.handlers.routepipeline
 
             InjestContextBeans(routeConfigFile);
 
+            var reg = Camel.Registry;
             //get context node
             var leafContextXml = routeConfigFile.Element(CamelConstant.LeafContext);
 
@@ -48,7 +49,7 @@ namespace app.core.nerve.handlers.routepipeline
 
                 //read handler.
                 var logProviderXml = leafContextXml.Attribute("logProvider");
-                if (logProviderXml != null && logProviderXml.Value!= string.Empty)
+                if (logProviderXml != null && logProviderXml.Value != string.Empty)
                 {
                     var logger = Camel.Registry[logProviderXml.Value];
                     if (logger is ISystemLogProvider)
@@ -100,14 +101,22 @@ namespace app.core.nerve.handlers.routepipeline
                     {
                         foreach (var item in xmlColl)
                         {
-                            var key = item.Attribute("key").Value;
-                            var @value = item.Attribute("value").Value;
+                            try
+                            {
+                                var key = item.Attribute("key").Value;
+                                var @value = item.Attribute("value").Value;
 
-                            var prop = bean.GetType().GetProperty(key);
-                            if (prop == null) continue;
+                                var prop = bean.GetType().GetProperty(key);
+                                if (prop == null) continue;
 
-                            var res = SimpleExpression.ObjectExpressionResolver(@value);
-                            prop.SetValue(bean, Convert.ChangeType(res, prop.PropertyType), null);
+                                //does rubbish.. change
+                                var res = SimpleExpression.ResolveObjectFromRegistry(@value);
+                                prop.SetValue(bean, Convert.ChangeType(res, prop.PropertyType), null);
+                            }
+                            catch (Exception exception)
+                            {
+
+                            }
                         }
                     }
 

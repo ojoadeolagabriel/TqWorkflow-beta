@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <container xmlns:n="http://nerveinteract.com/context">
 
-  <bean id="config" class="TestKit.configuration.PaymentNotificationConfiguration">
-    <property key="EnterpriseDbConnectionString" value="data source=.;initial catalog=esb;user id=paydirect;password=paydirect"/>
-  </bean>
-
   <bean id="cacheType" class="app.core.nerve.utility.CacheType"/>
 
   <bean id="config" class="app.core.nerve.utility.Configuration">
@@ -13,16 +9,21 @@
     <property key="AmqTestPort" value="61616"/>
     <property key="HttpTestPort" value="5600"/>
     <property key="SocketTimeOut" value="6000"/>
-    <property key="CacheType" value="{{cacheType}}"/>
+    <property key="CacheType" value="${cacheType}"/>
   </bean>
 
+  <bean id="pdconfig" class="TestKit.configuration.PaymentNotificationConfiguration, SynapseCore.TestKit">
+    <property key="EnterpriseDbConnectionString" value="data source=.;initial catalog=esb;user id=paydirect;password=paydirect"/>
+  </bean>
+
+  <bean id="minaTestProc" class="app.core.nerve.test.MinaTestProcessor"/>
 
   <context>
 
     <route>
       <from uri="mina:127.0.0.1?port=${config.ServerPort};timeout=${config.SocketTimeOut}"/>
     </route>
-    
+
     <route>
       <from uri="http:127.0.0.1?port=${config.HttpTestPort};initialDelay=1000;path=testserver"/>
       <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey=${config.ESBJWTSharedKey}"/>

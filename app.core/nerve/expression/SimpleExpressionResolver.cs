@@ -4,47 +4,11 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using app.core.nerve.dto;
-using app.core.nerve.facade;
-using Configuration = app.core.nerve.utility.Configuration;
 
 namespace app.core.nerve.expression
 {
     public static class SimpleExpression
     {
-        public static object ObjectExpressionResolver(string expression)
-        {
-            if (string.IsNullOrEmpty(expression))
-                return null;
-
-            if (!expression.StartsWith("{{") && !expression.EndsWith("}}"))
-                return expression;
-
-            var expressionParts = expression.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries);
-            switch (expressionParts.Length)
-            {
-                case 1:
-                    var checkValue = expression.Replace("{{", "").Replace("}}", "");
-                    var regObj = Camel.Registry[checkValue];
-                    if (regObj == null)
-                        return null;
-
-                    return regObj;
-                case 2:
-                    var checkValueColl = expression.Replace("{{", "").Replace("}}", "");
-                    var checkValueCollParts = checkValueColl.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries);
-                    var @class = checkValueCollParts[0];
-                    var property = checkValueCollParts[1];
-                    regObj = Camel.Registry[@class];
-                    if (regObj == null)
-                        return null;
-
-                    var propertyValue = regObj.GetType().GetProperty(property).GetValue(regObj, null);
-                    return propertyValue;
-                default:
-                    return null;
-            }
-        }
-
         public static bool Evaluate(Exchange exchange, string expression)
         {
             var expressionParts = expression.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
@@ -67,6 +31,17 @@ namespace app.core.nerve.expression
 
             return false;
         }
+
+        public static Object ResolveObjectFromRegistry(string objectExpression)
+        {
+            if (!objectExpression.StartsWith("${") || !objectExpression.EndsWith("}"))
+                return objectExpression;
+
+            var mData = objectExpression.Replace("${", "");
+            mData = mData.Replace("}", "");
+
+            return Camel.Registry[mData];
+        } 
 
         /// <summary>
         /// Resolve path via exchange.
@@ -112,7 +87,7 @@ namespace app.core.nerve.expression
                 var objectDataProperty = parts.Length >= 2 ? parts[1] : "";
                 var objectDataKey = parts.Length >= 3 ? parts[2] : "";
 
-                Object replacementData = "";
+                Object replacementData;
 
                 switch (objectData)
                 {
@@ -172,7 +147,7 @@ namespace app.core.nerve.expression
             }
         }
 
-        private static string ReadComplexData(string objectData, string objectDataProperty, string objectDataKey)
+        private static object ReadComplexData(string objectData, string objectDataProperty, string objectDataKey)
         {
             var objectInRegistry = Camel.Registry.FirstOrDefault(c => c.Key == objectData);
             if (objectInRegistry.Value == null)

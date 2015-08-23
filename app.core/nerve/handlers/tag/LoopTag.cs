@@ -28,7 +28,7 @@ namespace app.core.nerve.handlers.tag
                 return;
 
             var xpression = expressionTag.Value;
-            var count = SimpleExpression.ObjectExpressionResolver(xpression);
+            var count = SimpleExpression.ResolveSpecifiedUriPart(xpression, exchange);
 
             var mCount = Convert.ToInt32(count);
             for (var i = 0; i < mCount; i++)
