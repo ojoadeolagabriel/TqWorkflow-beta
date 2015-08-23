@@ -18,6 +18,12 @@ namespace app.core.nerve
         /// </summary>
         public static readonly ConcurrentDictionary<string, Route> RouteCollection = new ConcurrentDictionary<string, Route>();
 
+        /// <summary>
+        /// Try Log
+        /// </summary>
+        /// <param name="exchange"></param>
+        /// <param name="processorType"></param>
+        /// <param name="componentName"></param>
         public static void TryLog(Exchange exchange, string processorType = "consumer", string componentName = "--")
         {
             if (exchange.Route.LogProvider == null)

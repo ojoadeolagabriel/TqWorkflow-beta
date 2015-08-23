@@ -24,7 +24,7 @@ namespace app.core.nerve.facade
             {
                 if (exchange != null)
                 {
-                    data = SimpleExpression.ResolveExpression(data, exchange);
+                    data = SimpleExpression.ResolveSpecifiedUriPart(data, exchange);
                 }
 
                 var foo = TypeDescriptor.GetConverter(typeof(T));
@@ -68,10 +68,14 @@ namespace app.core.nerve.facade
         /// Parse
         /// </summary>
         /// <param name="uri"></param>
+        /// <param name="exchange"></param>
         /// <returns></returns>
-        public static UriDescriptor Parse(string uri)
+        public static UriDescriptor Parse(string uri, Exchange exchange = null)
         {
             var parts = new UriDescriptor();
+
+            if (exchange != null)
+                uri = SimpleExpression.ResolveSpecifiedUriPart(uri, exchange);
 
             if (string.IsNullOrEmpty(uri))
                 throw new AppCoreException("uri data error: cannot be empty");
@@ -80,13 +84,8 @@ namespace app.core.nerve.facade
 
             var uriPrimaryParts = mainParts[0].Split(new[] { ':' }, 2);
 
-            if (mainParts.Length == 1)
-            {
-                var d = "";
-            }
-
             parts.ComponentName = uriPrimaryParts.Length >= 1 ? uriPrimaryParts[0] : "";
-            parts.ComponentPath = uriPrimaryParts.Length >= 2 ? uriPrimaryParts[1] : "";           
+            parts.ComponentPath = uriPrimaryParts.Length >= 2 ? uriPrimaryParts[1] : "";
             parts.ComponentQueryPath = mainParts.Length > 1 ? mainParts[1] : "";
             parts.FullUri = uri;
 

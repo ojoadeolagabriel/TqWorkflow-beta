@@ -8,11 +8,7 @@ namespace app.core.nerve.handlers.tag
     {
         public static void Execute(string uri, Exchange exchange, Route route)
         {
-            var leafNodeParts = UriDescriptor.Parse(uri);
-
-            leafNodeParts.ComponentQueryPath = SimpleExpression.ResolveExpression(leafNodeParts.ComponentQueryPath, exchange);
-            leafNodeParts.ComponentPath = SimpleExpression.ResolveExpression(leafNodeParts.ComponentPath, exchange);
-
+            var leafNodeParts = UriDescriptor.Parse(uri, exchange);
             EndPointBuilder.HandleTo(leafNodeParts, exchange, route);
         }
     }

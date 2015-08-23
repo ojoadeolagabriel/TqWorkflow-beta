@@ -40,7 +40,6 @@ namespace app.core.nerve.component.core.file
                     continue;
 
                 var exchange = new Exchange(_fileProcessor.Route);
-                SimpleExpression.ResolveExpression(_fileProcessor.UriInformation, exchange);
                 var fileData = "";
 
                 if (Directory.Exists(fileFolderPath))

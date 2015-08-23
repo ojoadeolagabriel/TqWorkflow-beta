@@ -124,29 +124,5 @@ namespace app.core.nerve.component.core.http
 
             exchange.InMessage.SetHeader("HttpRequest", data);
         }
-
-        private Exchange ProcessResponse(HttpListenerContext getContext, Exchange exchange)
-        {
-            var body = new StreamReader(getContext.Request.InputStream).ReadToEnd();
-            exchange.InMessage.Body = body;
-            _httpProcessor.Process(exchange);
-
-            var b = Encoding.UTF8.GetBytes(exchange.OutMessage.Body.ToString());
-            getContext.Response.StatusCode = 200;
-            getContext.Response.KeepAlive = false;
-
-            foreach (var headers in exchange.InMessage.HeaderCollection)
-            {
-                getContext.Response.Headers.Add(headers.Key, headers.Value.ToString());
-            }
-
-            getContext.Response.ContentLength64 = b.Length;
-
-            var output = getContext.Response.OutputStream;
-            output.Write(b, 0, b.Length);
-            getContext.Response.Close();
-
-            return exchange;
-        }
     }
 }

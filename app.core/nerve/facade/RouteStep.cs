@@ -203,7 +203,7 @@ namespace app.core.nerve.facade
             var propertyName = step.Attribute("propertyName").Value;
             var value = step.Attribute("value").Value;
 
-            value = SimpleExpression.ResolveExpression(value, exchange);
+            value = SimpleExpression.ResolveSpecifiedUriPart(value, exchange);
             exchange.SetProperty(propertyName, value);
         }
 
@@ -212,7 +212,7 @@ namespace app.core.nerve.facade
             var headerName = step.Attribute("headerName").Value;
             var value = step.Attribute("value").Value;
 
-            value = SimpleExpression.ResolveExpression(value, exchange);
+            value = SimpleExpression.ResolveSpecifiedUriPart(value, exchange);
             exchange.InMessage.SetHeader(headerName, value);
         }
 

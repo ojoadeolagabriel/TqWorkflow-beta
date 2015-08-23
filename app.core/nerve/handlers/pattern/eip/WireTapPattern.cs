@@ -16,13 +16,12 @@ namespace app.core.nerve.handlers.pattern.eip
         {
             try
             {
-                var leafNodeParts = UriDescriptor.Parse(path);
-                SimpleExpression.ResolveExpression(leafNodeParts, exchange);
+                var leafNodeParts = UriDescriptor.Parse(path, exchange);
                 EndPointBuilder.HandleTo(leafNodeParts, exchange, route);
             }
             catch
             {
-                
+
             }
         }
     }

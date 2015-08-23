@@ -63,15 +63,13 @@
           <multicast>
             <to uri="httpclient:127.0.0.1?connectionTimeOut=5000;"/>
           </multicast>
-
         </when>
       </loop>
-
     </route>
 
     <route>
 
-      <from uri="timer:opeTimer?poll=10000;"/>
+      <from uri="timer:opeTimer?poll=100000;"/>
       <to uri="openweather:http://api.openweathermap.org/data/2.5/weather?location=lagos"/>
       <setHeader headerName="CamelHttpMethod" value="GET"/>
 

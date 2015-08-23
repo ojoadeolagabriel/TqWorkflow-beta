@@ -29,8 +29,7 @@ namespace app.core.nerve.handlers.pattern.eip
                 if (uri == null || strategyref == null)
                     return;
 
-                var uriInfo = UriDescriptor.Parse(uri.Value);
-                SimpleExpression.ResolveExpression(uriInfo, exchange);
+                var uriInfo = UriDescriptor.Parse(uri.Value, exchange);
                 var route = Camel.GetRouteBy(uriInfo.ComponentPath);
 
                 if (route == null) return;

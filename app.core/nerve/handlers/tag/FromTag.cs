@@ -1,4 +1,5 @@
 ﻿using app.core.nerve.dto;
+using app.core.nerve.expression;
 using app.core.nerve.facade;
 
 namespace app.core.nerve.handlers.tag
@@ -7,7 +8,8 @@ namespace app.core.nerve.handlers.tag
     {
         public static void Execute(string uri, Exchange exchange, Route route)
         {
-            var leafNodeParts = UriDescriptor.Parse(uri);
+            uri = SimpleExpression.ResolveSpecifiedUriPart(uri, exchange);
+            var leafNodeParts = UriDescriptor.Parse(uri,exchange);
             EndPointBuilder.HandleFrom(leafNodeParts, route);
         }
     }

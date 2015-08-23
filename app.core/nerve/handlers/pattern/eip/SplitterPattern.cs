@@ -86,7 +86,7 @@ namespace app.core.nerve.handlers.pattern.eip
         {
             var listOfParts = new List<String>();
 
-            var simpleData = SimpleExpression.ResolveExpression(value, exchange);
+            var simpleData = SimpleExpression.ResolveSpecifiedUriPart(value, exchange);
 
             return listOfParts;
         }

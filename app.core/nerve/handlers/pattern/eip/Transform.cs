@@ -36,7 +36,7 @@ namespace app.core.nerve.handlers.pattern.eip
 
         private static void ProcessSimple(XElement transformXml, Route routeObj, Exchange exchange)
         {
-            var newBody = SimpleExpression.ResolveExpression(transformXml.Value, exchange);
+            var newBody = SimpleExpression.ResolveSpecifiedUriPart(transformXml.Value, exchange);
             exchange.InMessage.Body = newBody;
         }
     }

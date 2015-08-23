@@ -22,6 +22,7 @@ namespace app.core.nerve.handlers.tag
         /// <param name="route"></param>
         public static void Execute(XElement loopTag, Exchange exchange, Route route)
         {
+            Camel.TryLog(exchange, "processor", "loop");
             var expressionTag = loopTag.Elements().FirstOrDefault();
             if (expressionTag == null)
                 return;
