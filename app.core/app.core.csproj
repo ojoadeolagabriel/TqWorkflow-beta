@@ -159,7 +159,6 @@
     <Compile Include="nerve\facade\UriDescriptor.cs" />
     <Compile Include="nerve\facade\ProcessorBase.cs" />
     <Compile Include="nerve\facade\UriExchange.cs" />
-    <Compile Include="nerve\handlers\consumer\ScheduledPollConsumer.cs" />
     <Compile Include="nerve\handlers\pattern\eip\PublishSubscribePattern.cs" />
     <Compile Include="nerve\handlers\pattern\eip\SplitterPattern.cs" />
     <Compile Include="nerve\facade\RouteStep.cs" />

@@ -17,7 +17,8 @@
   </bean>
 
   <bean id="minaTestProc" class="app.core.nerve.test.MinaTestProcessor"/>
-
+  <bean id="testProcessor" class="app.core.nerve.test.CouchDbTestProcessor"/>
+  
   <context>
 
     <route>
@@ -25,8 +26,19 @@
     </route>
 
     <route>
+      <from uri="seda:jwtSeda"/>
+      <to uri="log2:{{config.DefaultLogPathRoot}}\sedaJwtToken.log?logType=file"/>
+    </route>
+    
+    <route>
       <from uri="http:127.0.0.1?port=${config.HttpTestPort};initialDelay=1000;path=testserver"/>
       <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey=${config.ESBJWTSharedKey}"/>
+      <choice>
+        <when>
+          <method bean="testProcessor" method="IsGood"/>
+          <to uri="seda:jwtSeda?size=10;concurrentConsumers=true"/>
+        </when>
+      </choice>
     </route>
 
   </context>

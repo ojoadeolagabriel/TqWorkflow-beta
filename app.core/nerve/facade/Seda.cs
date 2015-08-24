@@ -4,6 +4,7 @@ using System.Linq;
 using System.Xml.Linq;
 using app.core.nerve.component.core;
 using app.core.nerve.dto;
+using app.core.nerve.handlers.tag;
 using app.core.nerve.utility;
 
 namespace app.core.nerve.facade
@@ -60,7 +61,6 @@ namespace app.core.nerve.facade
             var step = new XElement("from",
                 new XAttribute("uri", uriInfo.FullUri));
 
-            //process step.
             RouteStep.ProcessStep(step, xchangeInfo.Value.Route, xchangeInfo.Value);
             xchangeInfo.Value.Route.RouteProcess.NextTag.ProcessChannel(xchangeInfo.Value);
         }
