@@ -19,7 +19,7 @@ namespace app.core.nerve.component.core.seda
             Camel.TryLog(exchange, "producer", endPointDescriptor.ComponentName);
 
             exchange.Route = route;
-            Seda.SedaQueue.TryAdd(endPointDescriptor, exchange);
+            SedaDriver.SedaQueue.TryAdd(endPointDescriptor, exchange);
             return exchange;
         }
     }

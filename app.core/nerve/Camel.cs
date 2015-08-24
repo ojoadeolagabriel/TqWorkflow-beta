@@ -44,7 +44,7 @@ namespace app.core.nerve
 
         public static void StartSedaProcessor()
         {
-            new Seda().ProcessSedaMessageQueue();
+            new SedaDriver().ProcessSedaMessageQueue();
         }
 
         public static void SetRoute(Route route)

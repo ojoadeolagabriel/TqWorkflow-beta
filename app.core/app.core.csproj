@@ -155,7 +155,7 @@
     <Compile Include="nerve\expression\SimpleExpressionResolver.cs" />
     <Compile Include="nerve\facade\CamelConstant.cs" />
     <Compile Include="nerve\facade\EndPointBuilder.cs" />
-    <Compile Include="nerve\facade\Seda.cs" />
+    <Compile Include="nerve\facade\SedaDriver.cs" />
     <Compile Include="nerve\facade\UriDescriptor.cs" />
     <Compile Include="nerve\facade\ProcessorBase.cs" />
     <Compile Include="nerve\facade\UriExchange.cs" />

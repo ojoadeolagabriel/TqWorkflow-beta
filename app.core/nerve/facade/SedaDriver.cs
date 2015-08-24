@@ -12,7 +12,7 @@ namespace app.core.nerve.facade
     /// <summary>
     /// 
     /// </summary>
-    public class Seda
+    public class SedaDriver
     {
         public static ConcurrentDictionary<UriDescriptor, Exchange> SedaQueue = new ConcurrentDictionary<UriDescriptor, Exchange>();
 
