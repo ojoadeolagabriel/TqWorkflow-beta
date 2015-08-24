@@ -8,5 +8,10 @@ namespace app.core.nerve.component.core
         {
             return null;
         }
+
+        public virtual Exchange Execute(Exchange exchange)
+        {
+            return null;
+        }
     }
 }

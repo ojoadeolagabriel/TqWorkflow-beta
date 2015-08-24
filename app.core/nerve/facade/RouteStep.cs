@@ -51,6 +51,11 @@ namespace app.core.nerve.facade
             }
         }
 
+        public void ForceEndPointProcess(Exchange exchange)
+        {
+            
+        }
+
         public void ProcessChannel(Exchange exchange = null)
         {
             ProcessStep(_currentStepXml, Route, exchange);

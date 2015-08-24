@@ -19,5 +19,6 @@ namespace app.core.nerve.component.core.seda
             _sedaProcessor.Process(exchange);
             return exchange;
         }
+
     }
 }

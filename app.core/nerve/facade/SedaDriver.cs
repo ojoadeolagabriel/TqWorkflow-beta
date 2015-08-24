@@ -56,12 +56,13 @@ namespace app.core.nerve.facade
             DefaultEndpoint endPoint;
             if (!Camel.EnPointCollection.TryGetValue(xchangeInfo.Key.FullUri, out endPoint)) return;
 
-            //build from step request.
-            var uriInfo = endPoint.UriInformation;
-            var step = new XElement("from",
-                new XAttribute("uri", uriInfo.FullUri));
+            Route sedaRoute;
+            Camel.RouteCollection.TryGetValue(endPoint.UriInformation.ComponentPath, out sedaRoute);
+            if (sedaRoute != null)
+            {
+                EndPointBuilder.HandleTo(xchangeInfo.Key, xchangeInfo.Value, sedaRoute.);
+            }
 
-            RouteStep.ProcessStep(step, xchangeInfo.Value.Route, xchangeInfo.Value);
             xchangeInfo.Value.Route.RouteProcess.NextTag.ProcessChannel(xchangeInfo.Value);
         }
     }
