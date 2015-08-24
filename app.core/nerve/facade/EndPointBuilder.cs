@@ -27,7 +27,7 @@ namespace app.core.nerve.facade
         /// </summary>
         /// <param name="leafDescriptor"></param>
         /// <param name="route"></param>
-        public static void HandleFrom(UriDescriptor leafDescriptor, Route route)
+        public static void HandleFrom(UriDescriptor leafDescriptor, Route route, Exchange exchangeData = null)
         {
             try
             {
@@ -58,7 +58,15 @@ namespace app.core.nerve.facade
                     }
                 }
 
-                if (endPoint != null) endPoint.Start();
+                if (endPoint != null)
+                {
+                    if (exchangeData == null)
+                        endPoint.Start();
+                    else
+                    {
+                        endPoint.StartWithExistingExchange(exchangeData);
+                    }
+                }
                 else
                     throw new AppCoreException("end-point not found: " + leafDescriptor.ComponentName);
             }
@@ -67,6 +75,7 @@ namespace app.core.nerve.facade
                 throw new AppCoreException("error handling [from-tag] :" + exception.Message, exception);
             }
         }
+
 
         public static void HandleTo(UriDescriptor leafDescriptor, Exchange exchange, Route route)
         {
@@ -98,7 +107,7 @@ namespace app.core.nerve.facade
                     }
                 }
 
-                if (endPoint != null) 
+                if (endPoint != null)
                     endPoint.Send(exchange, leafDescriptor);
                 else
                     throw new AppCoreException("end-point not found: " + leafDescriptor.ComponentName);

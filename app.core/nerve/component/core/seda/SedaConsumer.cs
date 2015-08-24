@@ -20,5 +20,13 @@ namespace app.core.nerve.component.core.seda
             return exchange;
         }
 
+        public override Exchange Execute(Exchange exchange)
+        {
+            Camel.TryLog(exchange, "consumer", _sedaProcessor.UriInformation.ComponentName);
+
+            _sedaProcessor.Process(exchange);
+            return exchange;
+        }
+
     }
 }

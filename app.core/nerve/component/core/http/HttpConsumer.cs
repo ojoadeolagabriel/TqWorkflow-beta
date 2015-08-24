@@ -52,6 +52,7 @@ namespace app.core.nerve.component.core.http
                 if (!uriPref.EndsWith("/"))
                     uriPref = uriPref + "/";
 
+                Console.WriteLine("Listening in on: {0}", uriPref);
                 HttpListener.Prefixes.Add(uriPref);
 
                 HttpListener.Start();

@@ -14,6 +14,7 @@ namespace app.core.nerve.component.core
         }
 
         public string Uri { get; set; }
+
         public UriDescriptor UriInformation { get; set; }
 
         public DefaultEndpoint(string uri, Route route)
@@ -24,6 +25,11 @@ namespace app.core.nerve.component.core
         }
 
         public virtual void Send(Exchange exchange, UriDescriptor endPointDescriptor)
+        {
+            return;
+        }
+
+        public virtual void StartWithExistingExchange(Exchange exchangeData)
         {
             return;
         }

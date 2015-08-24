@@ -60,7 +60,7 @@ namespace app.core.nerve.facade
             Camel.RouteCollection.TryGetValue(endPoint.UriInformation.ComponentPath, out sedaRoute);
             if (sedaRoute != null)
             {
-                EndPointBuilder.HandleTo(xchangeInfo.Key, xchangeInfo.Value, sedaRoute.);
+                EndPointBuilder.HandleFrom(endPoint.UriInformation, xchangeInfo.Value.Route, xchangeInfo.Value);
             }
 
             xchangeInfo.Value.Route.RouteProcess.NextTag.ProcessChannel(xchangeInfo.Value);

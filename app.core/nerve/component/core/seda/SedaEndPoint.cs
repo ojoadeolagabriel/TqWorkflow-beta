@@ -18,6 +18,12 @@ namespace app.core.nerve.component.core.seda
             _consumer = CreateConsumer();
         }
 
+        public override void StartWithExistingExchange(Exchange exchangeData)
+        {
+            _consumer = CreateConsumer();
+            _consumer.Execute(exchangeData);
+        }
+
         public override void Send(Exchange exchange, UriDescriptor endPointDescriptor)
         {
             var producer = CreateProducer();
