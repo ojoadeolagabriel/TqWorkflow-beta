@@ -12,14 +12,18 @@
     <property key="CacheType" value="${cacheType}"/>
   </bean>
 
+  <bean id="dbLogProvider" class="app.core.nerve.test.DbLogProvider">
+    <property key="ConnectionString" value="${config.LocalConnectionString}"/>
+  </bean>
+
   <bean id="pdconfig" class="TestKit.configuration.PaymentNotificationConfiguration, SynapseCore.TestKit">
     <property key="EnterpriseDbConnectionString" value="data source=.;initial catalog=esb;user id=paydirect;password=paydirect"/>
   </bean>
 
   <bean id="minaTestProc" class="app.core.nerve.test.MinaTestProcessor"/>
   <bean id="testProcessor" class="app.core.nerve.test.CouchDbTestProcessor"/>
-  
-  <context>
+
+  <context logProvider="dbLogProvider">
 
     <route>
       <from uri="mina:127.0.0.1?port=${config.ServerPort};timeout=${config.SocketTimeOut}"/>
@@ -29,7 +33,7 @@
       <from uri="seda:jwtSeda"/>
       <to uri="log2:{{config.DefaultLogPathRoot}}\sedaJwtToken.log?logType=file"/>
     </route>
-    
+
     <route>
       <from uri="http:127.0.0.1?port=${config.HttpTestPort};initialDelay=1000;path=testserver"/>
       <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey=${config.ESBJWTSharedKey}"/>

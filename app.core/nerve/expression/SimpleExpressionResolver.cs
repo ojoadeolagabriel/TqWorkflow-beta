@@ -40,7 +40,11 @@ namespace app.core.nerve.expression
             var mData = objectExpression.Replace("${", "");
             mData = mData.Replace("}", "");
 
-            return Camel.Registry[mData];
+            var mDataParts = mData.Split(new []{"."}, StringSplitOptions.RemoveEmptyEntries);
+            var objectKey = mDataParts[0];
+
+            var objectData = Camel.Registry[objectKey];
+            return objectData;
         } 
 
         /// <summary>

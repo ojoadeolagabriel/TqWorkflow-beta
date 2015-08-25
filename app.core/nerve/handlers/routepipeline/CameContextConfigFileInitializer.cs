@@ -38,7 +38,6 @@ namespace app.core.nerve.handlers.routepipeline
 
             InjestContextBeans(routeConfigFile);
 
-            var reg = Camel.Registry;
             //get context node
             var leafContextXml = routeConfigFile.Element(CamelConstant.LeafContext);
 
