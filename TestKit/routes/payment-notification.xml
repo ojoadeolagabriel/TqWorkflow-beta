@@ -37,7 +37,7 @@
 
     <route>
       <from uri="http:127.0.0.1?port=${config.HttpTestPort};initialDelay=1000;path=${config.ServerPath}"/>
-      <to uri="cache:add?id=${config.SocketTimeOut}"/>
+      <to uri="cache:add?id=${config.SocketTimeOut};username=adeola.ojo"/>
       
       <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey=${config.ESBJWTSharedKey}"/>
       <choice>
