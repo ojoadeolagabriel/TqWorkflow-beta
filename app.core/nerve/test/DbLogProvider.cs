@@ -34,7 +34,7 @@ namespace app.core.nerve.test
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.ExecuteNonQuery();
-
+                exchange.CurrentException = null;
             }
         }
 
