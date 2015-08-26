@@ -9,6 +9,7 @@
     <property key="AmqTestPort" value="61616"/>
     <property key="HttpTestPort" value="5600"/>
     <property key="SocketTimeOut" value="6000"/>
+    <property key="ServerPath" value="coco.api"/>
     <property key="CacheType" value="${cacheType}"/>
   </bean>
 
@@ -31,11 +32,11 @@
 
     <route>
       <from uri="seda:jwtSeda"/>
-      <to uri="log2:{{config.DefaultLogPathRoot}}\sedaJwtToken.log?logType=file"/>
+      <to uri="log2:${config.DefaultLogPathRoot}\sedaJwtToken.log?logType=file"/>
     </route>
 
     <route>
-      <from uri="http:127.0.0.1?port=${config.HttpTestPort};initialDelay=1000;path=testserver"/>
+      <from uri="http:127.0.0.1?port=${config.HttpTestPort};initialDelay=1000;path=${config.ServerPath}"/>
       <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey=${config.ESBJWTSharedKey}"/>
       <choice>
         <when>

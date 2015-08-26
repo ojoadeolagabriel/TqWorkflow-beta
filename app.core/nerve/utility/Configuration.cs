@@ -14,6 +14,8 @@
         public string HttpPollIp { get; set; }
         public string ESBJWTSharedKey { get; set; }
 
+        public string  ServerPath{ get; set; }
+
         public Configuration()
         {
             Load();
