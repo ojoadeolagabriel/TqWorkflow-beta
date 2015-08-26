@@ -44,6 +44,17 @@ namespace app.core.nerve.expression
             var objectKey = mDataParts[0];
 
             var objectData = Camel.Registry[objectKey];
+
+            if (objectData != null)
+            {
+                if (mDataParts.Length == 2)
+                {
+                    var prop = objectData.GetType().GetProperty(mDataParts[1]);
+                    var res = prop.GetValue(objectData, BindingFlags.Public | BindingFlags.NonPublic, null, null,
+                        CultureInfo.CurrentCulture);
+                    return res;
+                }
+            }
             return objectData;
         } 
 
