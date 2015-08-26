@@ -40,7 +40,7 @@
       <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey=${config.ESBJWTSharedKey}"/>
       <choice>
         <when>
-          <method bean="testProcessor" method="IsGood"/>
+          <method bean="testProcessor" method="IsTransactionValid"/>
           <to uri="seda:jwtSeda?size=10;concurrentConsumers=true"/>
         </when>
       </choice>
