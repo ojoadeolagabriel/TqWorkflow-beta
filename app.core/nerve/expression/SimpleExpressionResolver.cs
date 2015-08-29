@@ -48,6 +48,11 @@ namespace app.core.nerve.expression
             return ReadObjectRecursion(res, newMProperty, newNextProperty);
         }
 
+        /// <summary>
+        /// Resolve Object From Registry
+        /// </summary>
+        /// <param name="objectExpression"></param>
+        /// <returns></returns>
         public static Object ResolveObjectFromRegistry(string objectExpression)
         {
             if (!objectExpression.StartsWith("${") || !objectExpression.EndsWith("}"))
