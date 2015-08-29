@@ -38,7 +38,7 @@
     <route>
       <from uri="http:127.0.0.1?port=${config.HttpTestPort};initialDelay=1000;path=${config.ServerPath}"/>
       <to uri="cache:add?id=${config.SocketTimeOut};username=adeola.ojo"/>
-      
+
       <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey=${config.ESBJWTSharedKey}"/>
       <choice>
         <when>
@@ -46,6 +46,16 @@
           <to uri="seda:jwtSeda?size=10;concurrentConsumers=true"/>
         </when>
       </choice>
+
+      <setHeader headerName="person-counter" value="2"/>
+      
+      <choice>
+        <when>
+          <simple>${in.header.person-counter} = ${enum:app.core.nerve.utility.OpType.Middle}</simple>
+          <to uri="log2:${config.DefaultLogPathRoot}\header-counter-log.log?logType=file"/>
+        </when>
+      </choice>
+    
     </route>
 
   </context>
