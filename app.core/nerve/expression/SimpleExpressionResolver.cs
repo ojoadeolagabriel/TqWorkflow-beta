@@ -32,6 +32,22 @@ namespace app.core.nerve.expression
             return false;
         }
 
+        public static Object ReadObjectRecursion(Object mObject, string mProperty, string nextProperty = null)
+        {
+            var prop = mObject.GetType().GetProperty(mProperty);
+            var res = prop.GetValue(mObject, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.IgnoreCase, null, null,
+                CultureInfo.CurrentCulture);
+
+            if (string.IsNullOrEmpty(nextProperty))
+                return res;
+
+            var nextPropertyParts = nextProperty.Split(new[] { '.' }, 2);
+            var newMProperty = nextPropertyParts[0];
+            var newNextProperty = nextPropertyParts.Length > 1 ? nextPropertyParts[1] : null;
+
+            return ReadObjectRecursion(res, newMProperty, newNextProperty);
+        }
+
         public static Object ResolveObjectFromRegistry(string objectExpression)
         {
             if (!objectExpression.StartsWith("${") || !objectExpression.EndsWith("}"))
@@ -40,23 +56,15 @@ namespace app.core.nerve.expression
             var mData = objectExpression.Replace("${", "");
             mData = mData.Replace("}", "");
 
-            var mDataParts = mData.Split(new []{"."}, StringSplitOptions.RemoveEmptyEntries);
+            var mDataParts = mData.Split(new[] { '.' }, 3);
             var objectKey = mDataParts[0];
 
             var objectData = Camel.Registry[objectKey];
+            if (mDataParts.Length == 1)
+                return objectData;
 
-            if (objectData != null)
-            {
-                if (mDataParts.Length == 2)
-                {
-                    var prop = objectData.GetType().GetProperty(mDataParts[1]);
-                    var res = prop.GetValue(objectData, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.IgnoreCase, null, null,
-                        CultureInfo.CurrentCulture);
-                    return res;
-                }
-            }
-            return objectData;
-        } 
+            return ReadObjectRecursion(objectData, mDataParts[1], mDataParts.Length == 3 ? mDataParts[2] : null);
+        }
 
         /// <summary>
         /// Resolve path via exchange.
@@ -87,39 +95,38 @@ namespace app.core.nerve.expression
                 var originalData = group.Value;
 
                 var mData = group.Value.Replace("${", "");
-                mData = mData.Replace("{{", "");
                 mData = mData.Replace("}", "");
 
                 var parts = mData.Split(new[] { ':' });
                 if (parts.Length != 2)
                 {
                     parts = mData.Split(new[] { '.' });
-                    if (parts.Length > 3)
-                        return "";
                 }
 
-                var objectData = parts.Length >= 1 ? parts[0] : "";
-                var objectDataProperty = parts.Length >= 2 ? parts[1] : "";
-                var objectDataKey = parts.Length >= 3 ? parts[2] : "";
+                var originalObjectKey = parts.Length >= 1 ? parts[0] : "";
+                var originalObjectProperty = parts.Length >= 2 ? parts[1] : "";
+                var originalObjectPropertyOfProperty = parts.Length >= 3 ? parts[2] : "";
 
                 Object replacementData;
 
-                switch (objectData)
+                switch (originalObjectKey)
                 {
                     case "in":
-                        replacementData = ReadMessageData(exchange.InMessage, objectDataProperty, objectDataKey);
+                        replacementData = ReadMessageData(exchange.InMessage, originalObjectProperty, originalObjectPropertyOfProperty);
                         break;
                     case "out":
-                        replacementData = ReadMessageData(exchange.OutMessage, objectDataProperty, objectDataKey);
+                        replacementData = ReadMessageData(exchange.OutMessage, originalObjectProperty, originalObjectPropertyOfProperty);
                         break;
                     case "property":
-                        replacementData = exchange.PropertyCollection[objectDataKey];
+                        replacementData = exchange.PropertyCollection[originalObjectPropertyOfProperty];
                         break;
                     case "enum":
-                        replacementData = ReadEnumData(objectDataProperty);
+                        replacementData = ReadEnumData(originalObjectProperty);
                         break;
                     default:
-                        replacementData = ReadComplexData(objectData, objectDataProperty, objectDataKey);
+
+                        var dataObj = Camel.Registry[originalObjectKey];
+                        replacementData = ReadObjectRecursion(dataObj, originalObjectProperty, originalObjectPropertyOfProperty);
                         break;
                 }
 
