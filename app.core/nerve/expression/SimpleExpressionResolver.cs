@@ -7,26 +7,39 @@ using app.core.nerve.dto;
 
 namespace app.core.nerve.expression
 {
+    /// <summary>
+    /// Simple Expression.
+    /// </summary>
     public static class SimpleExpression
     {
         public static bool Evaluate(Exchange exchange, string expression)
         {
-            var expressionParts = expression.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-
-            var operatorType = expressionParts[1];
-            var lhs = expressionParts[0];
-            var rhs = expressionParts[2];
-
-            var lhsResult = ResolveSpecifiedUriPart(lhs, exchange);
-            var rhsResult = ResolveSpecifiedUriPart(rhs, exchange);
-
-            switch (operatorType)
+            try
             {
-                case "=":
-                    return lhsResult == rhsResult;
-                case "!=":
-                    return lhsResult != rhsResult;
+                var expressionParts = expression.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
 
+                var operatorType = expressionParts[1];
+                var lhs = expressionParts[0];
+                var rhs = expressionParts[2];
+
+                var lhsResult = ResolveSpecifiedUriPart(lhs, exchange);
+                var rhsResult = ResolveSpecifiedUriPart(rhs, exchange);
+
+                switch (operatorType)
+                {
+                    case "=":
+                        return lhsResult == rhsResult;
+                    case "!=":
+                        return lhsResult != rhsResult;
+                    case "<=":
+                        return lhsResult != rhsResult;
+                    case ">=":
+                        return lhsResult != rhsResult;
+
+                }
+            }
+            catch (Exception exception)
+            {
             }
 
             return false;
@@ -34,18 +47,22 @@ namespace app.core.nerve.expression
 
         public static Object ReadObjectRecursion(Object mObject, string mProperty, string nextProperty = null)
         {
-            var prop = mObject.GetType().GetProperty(mProperty);
-            var res = prop.GetValue(mObject, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.IgnoreCase, null, null,
-                CultureInfo.CurrentCulture);
+            while (true)
+            {
+                var prop = mObject.GetType().GetProperty(mProperty);
+                var res = prop.GetValue(mObject, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.IgnoreCase, null, null, CultureInfo.CurrentCulture);
 
-            if (string.IsNullOrEmpty(nextProperty))
-                return res;
+                if (string.IsNullOrEmpty(nextProperty))
+                    return res;
 
-            var nextPropertyParts = nextProperty.Split(new[] { '.' }, 2);
-            var newMProperty = nextPropertyParts[0];
-            var newNextProperty = nextPropertyParts.Length > 1 ? nextPropertyParts[1] : null;
+                var nextPropertyParts = nextProperty.Split(new[] {'.'}, 2);
+                var newMProperty = nextPropertyParts[0];
+                var newNextProperty = nextPropertyParts.Length > 1 ? nextPropertyParts[1] : null;
 
-            return ReadObjectRecursion(res, newMProperty, newNextProperty);
+                mObject = res;
+                mProperty = newMProperty;
+                nextProperty = newNextProperty;
+            }
         }
 
         /// <summary>
