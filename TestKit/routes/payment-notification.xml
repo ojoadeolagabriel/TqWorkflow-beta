@@ -47,7 +47,8 @@
         </when>
       </choice>
 
-      <setHeader name="person-counter" value="2"/>
+      <setheader name="person-counter" value="2"/>
+      <setproperty name="bank-counter" value="1"/>
       
       <choice>
         <when>
