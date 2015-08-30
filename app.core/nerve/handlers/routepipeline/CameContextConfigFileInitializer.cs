@@ -87,7 +87,7 @@ namespace app.core.nerve.handlers.routepipeline
                     var id = beanXml.Attributes("id").First().Value;
                     var @class = beanXml.Attributes("class").First().Value;
 
-                    var type = Type.GetType(@class);
+                    var type = SimpleExpression.GetBean(@class);// Type.GetType(@class);
                     if (type == null) continue;
 
                     var bean = Activator.CreateInstance(type);

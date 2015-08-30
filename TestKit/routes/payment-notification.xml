@@ -17,7 +17,7 @@
     <property key="ConnectionString" value="${config.LocalConnectionString}"/>
   </bean>
 
-  <bean id="pdconfig" class="TestKit.configuration.PaymentNotificationConfiguration, SynapseCore.TestKit">
+  <bean id="pdconfig" class="TestKit.configuration.PaymentNotificationConfiguration">
     <property key="EnterpriseDbConnectionString" value="data source=.;initial catalog=esb;user id=paydirect;password=paydirect"/>
   </bean>
 
@@ -52,7 +52,7 @@
       
       <choice>
         <when>
-          <simple>${in.header.person-counter} = ${enum:TestKit.util.CheckType.Damaged, SynapseCore.TestKit}</simple>
+          <simple>${in.header.person-counter} = ${enum:TestKit.util.CheckType.Damaged}</simple>
           <to uri="log2:${config.DefaultLogPathRoot}\header-counter-log.log?logType=file"/>
         </when>
       </choice>

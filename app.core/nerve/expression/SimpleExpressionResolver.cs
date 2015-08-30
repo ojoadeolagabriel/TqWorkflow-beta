@@ -146,7 +146,6 @@ namespace app.core.nerve.expression
                         replacementData = ReadEnumData(originalObjectProperty);
                         break;
                     default:
-
                         var dataObj = Camel.Registry[originalObjectKey];
                         replacementData = ReadObjectRecursion(dataObj, originalObjectProperty, originalObjectPropertyOfProperty);
                         break;
@@ -177,7 +176,7 @@ namespace app.core.nerve.expression
 
                 fullName = fullName.Remove(fullName.Length - 1, 1);
 
-                var @enum = Type.GetType(fullName);
+                var @enum = GetEnumType(fullName);
                 if (@enum != null)
                 {
                     var val = (int)Enum.Parse(@enum, last);
@@ -191,20 +190,24 @@ namespace app.core.nerve.expression
             }
         }
 
-        private static object ReadComplexData(string objectData, string objectDataProperty, string objectDataKey)
+        public static Type GetEnumType(string name)
         {
-            var objectInRegistry = Camel.Registry.FirstOrDefault(c => c.Key == objectData);
-            if (objectInRegistry.Value == null)
-                return "";
+            return
+             (from assembly in AppDomain.CurrentDomain.GetAssemblies()
+              let type = assembly.GetType(name)
+              where type != null
+                 && type.IsEnum
+              select type).FirstOrDefault();
+        }
 
-            var prop = objectInRegistry.Value.GetType().GetProperty(objectDataProperty);
-
-            if (prop == null)
-                return null;
-
-            var data = prop.GetValue(objectInRegistry.Value, BindingFlags.Public | BindingFlags.NonPublic, null, null, CultureInfo.CurrentCulture);
-
-            return data.ToString();
+        public static Type GetBean(string name)
+        {
+            return
+             (from assembly in AppDomain.CurrentDomain.GetAssemblies()
+              let type = assembly.GetType(name)
+              where type != null
+                 && type.IsClass
+              select type).FirstOrDefault();
         }
 
         private static object ReadMessageData(Message message, string objectDataProperty, string objectDataKey)
@@ -218,13 +221,12 @@ namespace app.core.nerve.expression
                     case "body":
                         return message.Body;
                 }
-
-                return "";
             }
             catch
             {
-                return "";
+               
             }
+            return "";
         }
     }
 }
