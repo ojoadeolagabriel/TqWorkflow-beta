@@ -205,7 +205,7 @@ namespace app.core.nerve.facade
 
         private static void HandleProperty(XElement step, Route routeObj, Exchange exchange)
         {
-            var propertyName = step.Attribute("propertyName").Value;
+            var propertyName = step.Attribute("name").Value;
             var value = step.Attribute("value").Value;
 
             value = SimpleExpression.ResolveSpecifiedUriPart(value, exchange);
@@ -214,7 +214,7 @@ namespace app.core.nerve.facade
 
         private static void HandleSetHeader(XElement step, Route routeObj, Exchange exchange)
         {
-            var headerName = step.Attribute("headerName").Value;
+            var headerName = step.Attribute("name").Value;
             var value = step.Attribute("value").Value;
 
             value = SimpleExpression.ResolveSpecifiedUriPart(value, exchange);

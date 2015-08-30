@@ -47,7 +47,7 @@
         </when>
       </choice>
 
-      <setHeader headerName="person-counter" value="2"/>
+      <setHeader name="person-counter" value="2"/>
       
       <choice>
         <when>
