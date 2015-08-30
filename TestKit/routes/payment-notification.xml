@@ -51,7 +51,7 @@
       
       <choice>
         <when>
-          <simple>${in.header.person-counter} = ${enum:app.core.nerve.utility.OpType.Middle}</simple>
+          <simple>${in.header.person-counter} = ${enum:TestKit.util.CheckType.Damaged, SynapseCore.TestKit}</simple>
           <to uri="log2:${config.DefaultLogPathRoot}\header-counter-log.log?logType=file"/>
         </when>
       </choice>

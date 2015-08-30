@@ -55,7 +55,7 @@ namespace app.core.nerve.expression
                 if (string.IsNullOrEmpty(nextProperty))
                     return res;
 
-                var nextPropertyParts = nextProperty.Split(new[] {'.'}, 2);
+                var nextPropertyParts = nextProperty.Split(new[] { '.' }, 2);
                 var newMProperty = nextPropertyParts[0];
                 var newNextProperty = nextPropertyParts.Length > 1 ? nextPropertyParts[1] : null;
 

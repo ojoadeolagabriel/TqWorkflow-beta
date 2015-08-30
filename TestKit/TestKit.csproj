@@ -69,6 +69,7 @@
     <Compile Include="configuration\PaymentNotificationConfiguration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="util\CheckType.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\app.core\app.core.csproj">
