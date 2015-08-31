@@ -40,6 +40,7 @@
       <to uri="cache:add?id=${config.SocketTimeOut};username=adeola.ojo"/>
 
       <to uri="jwt:httpToken?username=adeola.ojo;role=admin;iss=isw;sharedKey=${config.ESBJWTSharedKey}"/>
+
       <choice>
         <when>
           <method bean="testProcessor" method="IsTransactionValid"/>
@@ -55,7 +56,7 @@
         <!--do nothing-->
       </loop>
 
-        <choice>
+      <choice>
         <when>
           <simple>${in.header.person-counter} = ${enum:TestKit.util.CheckType.Damaged}</simple>
           <to uri="log2:${config.DefaultLogPathRoot}\header-counter-log.log?logType=file"/>
@@ -63,7 +64,6 @@
       </choice>
 
     </route>
-
   </context>
 
 </container>
