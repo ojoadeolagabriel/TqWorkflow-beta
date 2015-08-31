@@ -209,9 +209,6 @@
     <Content Include="dependency\Newtonsoft.Json.dll" />
     <Content Include="dependency\RedBranch.Hammock.dll" />
     <Content Include="script_migration\first_script.sql" />
-    <Content Include="nerve\resource\direct-route.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="nerve\resource\pom.xml" />
     <Content Include="nerve\resource\route.xml">
       <SubType>Designer</SubType>
