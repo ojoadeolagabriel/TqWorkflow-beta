@@ -50,10 +50,17 @@ namespace app.core.nerve.handlers.routepipeline
                 var logProviderXml = leafContextXml.Attribute("logProvider");
                 if (logProviderXml != null && logProviderXml.Value != string.Empty)
                 {
-                    var logger = Camel.Registry[logProviderXml.Value];
-                    if (logger is ISystemLogProvider)
+                    try
                     {
-                        logProvider = logger as ISystemLogProvider;
+                        var logger = Camel.Registry[logProviderXml.Value];
+                        if (logger is ISystemLogProvider)
+                        {
+                            logProvider = logger as ISystemLogProvider;
+                        }
+                    }
+                    catch (Exception exception)
+                    {
+                        
                     }
                 }
 
