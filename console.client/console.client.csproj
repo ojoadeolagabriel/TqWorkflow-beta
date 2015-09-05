@@ -41,11 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="facade\tcp\BasicTcpProcessor.cs" />
     <Compile Include="StartClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="facade\tcp\" />
     <Folder Include="utility\" />
   </ItemGroup>
   <ItemGroup>
