@@ -7,7 +7,7 @@ using app.core.nerve.utility;
 
 namespace camelcontext.server
 {
-    public class Start
+    public class StartServer
     {
         static void Main(string[] args)
         {

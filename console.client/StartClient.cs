@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace console.client
 {
-    internal class Program
+    internal class StartClient
     {
         private static void Main(string[] args)
         {

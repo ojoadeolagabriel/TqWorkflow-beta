@@ -14,9 +14,9 @@ namespace app.core.nerve
     /// </summary>
     public class Camel
     {
-        public static void LoadCamelContext(List<string> path)
+        public static void LoadCamelContext(List<string> path,List<string> nameSpaces = null)
         {
-            InitDependencyLibs(new List<string> { "app.core.nerve.component.core" });
+            InitDependencyLibs(nameSpaces ?? new List<string> { "app.core.nerve.component.core" });
 
             foreach (var filePath in path)
             {
