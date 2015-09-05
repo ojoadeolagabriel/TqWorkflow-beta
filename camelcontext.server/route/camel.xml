@@ -14,11 +14,11 @@
   </bean>
   <bean id="tcpProcessor" class="camelcontext.server.facade.network.BasicTcpProcessor"/>
 
-  <bean id="dbLogProvider" class="app.core.nerve.test.DbLogProvider">
+  <bean id="sysLogger" class="app.core.nerve.test.DbLogProvider">
     <property key="ConnectionString" value="${config.LocalConnectionString}"/>
   </bean>
 
-  <context logProvider="dbLogProvider">
+  <context logProvider="sysLogger">
     
     <route>
       
