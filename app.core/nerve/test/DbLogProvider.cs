@@ -24,14 +24,9 @@ namespace app.core.nerve.test
                 cmd.Parameters.AddWithValue("@component", componentName);
                 cmd.Parameters.AddWithValue("@routeId", exchange.Route.RouteId);
                 var builder = new StringBuilder();
-                
-                if (exchange.CurrentException != null)
-                {
-                    builder.AppendFormat("error message: {0}, stack trace: {1}", exchange.CurrentException.Message,
-                        exchange.CurrentException.StackTrace);
-                }
+               
 
-                cmd.Parameters.AddWithValue("@errorMessage", builder.ToString());
+                cmd.Parameters.AddWithValue("@errorMessage", "");
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.ExecuteNonQuery();

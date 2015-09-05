@@ -7,11 +7,15 @@ using app.core.nerve.utility;
 
 namespace camelcontext.server
 {
-    public class Program
+    public class Start
     {
         static void Main(string[] args)
         {
+            Console.Write("..starting camel context");
             Camel.LoadCamelContext(CamelFilePath);
+            Console.WriteLine(" ...ready!");
+            
+            Console.ReadLine();
         }
 
         private static List<string> CamelFilePath
