@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="facade\network\BasicTcpProcessor.cs" />
     <Compile Include="StartServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

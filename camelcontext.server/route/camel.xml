@@ -12,7 +12,7 @@
     <property key="ServerPath" value="coco.api"/>
     <property key="CacheType" value="${cacheType}"/>
   </bean>
-
+  <bean id="tcpProcessor" class="camelcontext.server.facade.network.BasicTcpProcessor"/>
 
   <bean id="dbLogProvider" class="app.core.nerve.test.DbLogProvider">
     <property key="ConnectionString" value="${config.LocalConnectionString}"/>
@@ -21,7 +21,11 @@
   <context logProvider="dbLogProvider">
     
     <route>
+      
       <from uri="mina:127.0.0.1?port=${config.ServerPort};timeout=${config.SocketTimeOut}"/>
+      <process ref="tcpProcessor"/>
+      <to uri="xmltojson:jConvert"/>
+      
     </route>
 
     <route>
