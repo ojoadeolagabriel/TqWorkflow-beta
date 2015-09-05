@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Xml.Linq;
 using app.core.nerve.dto;
-using app.core.nerve.expression;
 using app.core.nerve.facade;
-using app.core.nerve.handlers.tag;
 using app.core.nerve.strategy;
 
-namespace app.core.nerve.handlers.pattern.eip
+namespace app.core.nerve.pattern.eip
 {
     /// <summary>
     /// 
