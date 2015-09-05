@@ -27,9 +27,11 @@ namespace console.client
                 RunSocketTest();
             }
         }
-
         private static readonly List<string> Resp = new List<string>();
-
+        
+        /// <summary>
+        /// Run Socket Test
+        /// </summary>
         private static void RunSocketTest()
         {
 
