@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<container xmlns:n="http://nerveinteract.com/context">
+
+  <bean id="cacheType" class="app.core.nerve.utility.CacheType"/>
+
+  <bean id="config" class="app.core.nerve.utility.Configuration">
+    <property key="ESBJWTSharedKey" value="GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk"/>
+    <property key="ServerPort" value="9800"/>
+    <property key="AmqTestPort" value="61616"/>
+    <property key="HttpTestPort" value="5600"/>
+    <property key="SocketTimeOut" value="6000"/>
+    <property key="ServerPath" value="coco.api"/>
+    <property key="CacheType" value="${cacheType}"/>
+  </bean>
+
+
+  <bean id="dbLogProvider" class="app.core.nerve.test.DbLogProvider">
+    <property key="ConnectionString" value="${config.LocalConnectionString}"/>
+  </bean>
+
+  <context logProvider="dbLogProvider">
+    
+    <route>
+      <from uri="mina:127.0.0.1?port=${config.ServerPort};timeout=${config.SocketTimeOut}"/>
+    </route>
+    
+  </context>
+
+</container>

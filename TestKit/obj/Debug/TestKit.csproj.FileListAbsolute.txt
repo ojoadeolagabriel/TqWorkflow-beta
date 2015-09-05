@@ -122,3 +122,6 @@ C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\System.Re
 C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\System.Reactive.Runtime.Remoting.xml
 C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\System.Reactive.Windows.Forms.xml
 C:\Users\ADEOLA.OJO\Documents\GitHub\TqWorkflow-beta\TestKit\bin\Debug\System.Reactive.Windows.Threading.xml
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\TestKit\bin\Debug\SynapseCore.TestKit.exe.config
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\TestKit\obj\Debug\SynapseCore.TestKit.exe
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\TestKit\obj\Debug\SynapseCore.TestKit.pdb

@@ -4,6 +4,7 @@ using System.Linq;
 using app.core.nerve.component.core;
 using app.core.nerve.dto;
 using app.core.nerve.facade;
+using app.core.nerve.handlers.routepipeline;
 using app.core.nerve.registry;
 
 namespace app.core.nerve
@@ -13,6 +14,19 @@ namespace app.core.nerve
     /// </summary>
     public class Camel
     {
+        public static void LoadCamelContext(List<string> path)
+        {
+            InitDependencyLibs(new List<string> { "app.core.nerve.component.core" });
+
+            foreach (var filePath in path)
+            {
+                CameContextConfigFileInitializer.Initialize(filePath);
+            }
+
+            StartAllRoutes();
+            StartSedaProcessor();
+        }
+
         /// <summary>
         /// Route Collection.
         /// </summary>
@@ -84,7 +98,7 @@ namespace app.core.nerve
 
         public static void StartAllRoutes()
         {
-            RouteCollection.ToList().ForEach(c=>c.Value.RouteProcess.ProcessChannel());
+            RouteCollection.ToList().ForEach(c => c.Value.RouteProcess.ProcessChannel());
         }
     }
 }
