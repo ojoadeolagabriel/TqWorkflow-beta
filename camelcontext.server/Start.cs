@@ -24,6 +24,7 @@ namespace camelcontext.server
             {
                 var config = new Configuration();
                 var directFile = string.Format("{0}\\camel.xml", config.ApplicationConfigRootFolderPath);
+
                 var paths = new List<string> {directFile};
                 return paths;
             }
