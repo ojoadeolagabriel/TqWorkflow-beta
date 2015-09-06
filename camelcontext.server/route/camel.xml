@@ -25,7 +25,7 @@
       <from uri="direct:one"/>
       <to uri="log2:${config.DefaultLogPathRoot}\wire_one.log?logType=file"/>
     </route>
-      
+
     <route>
 
       <from uri="mina:127.0.0.1?port=${config.ServerPort};timeout=${config.SocketTimeOut}"/>
@@ -41,6 +41,8 @@
 
     <route>
       <from uri="http:127.0.0.1?port=${config.HttpTestPort};initialDelay=1000;path=${config.ServerPath}"/>
+      <to uri="xmltojson:jConvert"/>
+      <to uri="xmltojson:jConvert?reverse=true"/>
     </route>
 
   </context>

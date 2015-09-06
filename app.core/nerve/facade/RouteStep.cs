@@ -35,6 +35,23 @@ namespace app.core.nerve.facade
             }
         }
 
+        public string ComponentPathInfoWithComponentFilter(string component = null)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(_componentPathInfo) && _currentStepXml.Name == "from")
+                {
+                    var uri = UriDescriptor.Parse(_currentStepXml.Attribute("uri").Value);
+                    return uri.ComponentPath;
+                }
+                return _componentPathInfo;
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+        }
+
         private readonly XElement _currentStepXml;
         public Route Route { get; set; }
 
@@ -74,7 +91,7 @@ namespace app.core.nerve.facade
 
         public void ForceEndPointProcess(Exchange exchange)
         {
-            
+
         }
 
         public void ProcessChannel(Exchange exchange = null)

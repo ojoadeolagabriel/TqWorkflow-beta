@@ -30,7 +30,7 @@ namespace app.core.nerve.component.core.xmltojson
                 else
                 {
                     var doc = JsonConvert.DeserializeXmlNode(body);
-                    exchange.InMessage.Body = doc;
+                    exchange.InMessage.Body = doc.InnerXml;
                 }
                 Camel.TryLog(exchange, "processor", endPointDescriptor.ComponentName);
             }

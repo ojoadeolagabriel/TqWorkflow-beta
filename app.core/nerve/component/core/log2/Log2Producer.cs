@@ -12,7 +12,7 @@ namespace app.core.nerve.component.core.log2
     public class Log2Producer : DefaultProducer
     {
 
-        private static object locker = new object();
+        private static readonly object locker = new object();
 
         public static void Log(string path, string message)
         {
