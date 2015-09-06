@@ -15,7 +15,7 @@ namespace app.core.nerve.dto
 
         public MessagePipelineMode PipelineMode = MessagePipelineMode.Default;
 
-        public RouteStep RouteProcess { get; set; }
+        public RouteStep CurrentRouteStep { get; set; }
 
         public string RouteId = Guid.NewGuid().ToString();
 
@@ -26,7 +26,7 @@ namespace app.core.nerve.dto
 
         public void TriggerRoute()
         {
-            RouteProcess.ProcessChannel();
+            CurrentRouteStep.ProcessChannel();
         }
     }
 }

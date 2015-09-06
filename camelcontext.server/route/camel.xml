@@ -13,25 +13,36 @@
     <property key="CacheType" value="${cacheType}"/>
   </bean>
   <bean id="tcpProcessor" class="camelcontext.server.facade.network.BasicTcpProcessor"/>
+  <bean id="jsonValidator" class="camelcontext.server.facade.validator.JsonValidator"/>
 
   <bean id="sysLogger" class="app.core.nerve.test.DbLogProvider">
     <property key="ConnectionString" value="${config.LocalConnectionString}"/>
   </bean>
 
   <context logProvider="sysLogger">
-    
+
     <route>
+      <from uri="direct:one"/>
+      <to uri="log2:${config.DefaultLogPathRoot}\wire_one.log?logType=file"/>
+    </route>
       
+    <route>
+
       <from uri="mina:127.0.0.1?port=${config.ServerPort};timeout=${config.SocketTimeOut}"/>
       <process ref="tcpProcessor"/>
       <to uri="xmltojson:jConvert"/>
-      
+      <choice>
+        <when>
+          <method bean="jsonValidator" method="CanPlay"/>
+          <wiretap uri="direct:one"/>
+        </when>
+      </choice>
     </route>
 
     <route>
       <from uri="http:127.0.0.1?port=${config.HttpTestPort};initialDelay=1000;path=${config.ServerPath}"/>
     </route>
-    
+
   </context>
 
 </container>

@@ -33,7 +33,7 @@ namespace app.core.nerve.pattern.eip
                 if (route == null) return;
 
                 var clonedExchange = exchange.CloneExchange();
-                route.RouteProcess.ProcessChannel(clonedExchange);
+                route.CurrentRouteStep.ProcessChannel(clonedExchange);
 
                 //fetch strategy
                 var stragegyObj = Camel.Registry[strategyref.Value] as AggregationStrategy;

@@ -27,10 +27,10 @@ namespace app.core.nerve.handlers.routepipeline
 
             foreach (var step in steps)
             {
-                if (newRoute.RouteProcess == null)
+                if (newRoute.CurrentRouteStep == null)
                 {
-                    newRoute.RouteProcess = new RouteStep(step, newRoute);
-                    nextRouteStepProcessorToLink = newRoute.RouteProcess;
+                    newRoute.CurrentRouteStep = new RouteStep(step, newRoute);
+                    nextRouteStepProcessorToLink = newRoute.CurrentRouteStep;
                 }
                 else
                 {
@@ -44,7 +44,7 @@ namespace app.core.nerve.handlers.routepipeline
 
             Camel.SetRoute(newRoute);
             if (autoExec)
-                newRoute.RouteProcess.ProcessChannel();
+                newRoute.CurrentRouteStep.ProcessChannel();
         }
     }
 }

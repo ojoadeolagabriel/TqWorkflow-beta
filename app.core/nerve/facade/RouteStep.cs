@@ -14,6 +14,27 @@ namespace app.core.nerve.facade
     {
         public RouteStep NextTag;
 
+        private readonly string _componentPathInfo = null;
+        public string ComponentPathInfo
+        {
+            get
+            {
+                try
+                {
+                    if (string.IsNullOrEmpty(_componentPathInfo) && _currentStepXml.Name == "from")
+                    {
+                        var uri = UriDescriptor.Parse(_currentStepXml.Attribute("uri").Value);
+                        return uri.ComponentPath;
+                    }
+                    return _componentPathInfo;
+                }
+                catch (Exception ex)
+                {
+                    return "";
+                }
+            }
+        }
+
         private readonly XElement _currentStepXml;
         public Route Route { get; set; }
 

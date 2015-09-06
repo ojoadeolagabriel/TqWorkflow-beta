@@ -22,7 +22,7 @@ namespace console.client
             Console.WriteLine("..starting socket test");
             Thread.Sleep(3000);
 
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i < 1; i++)
             {
                 RunSocketTest();
             }

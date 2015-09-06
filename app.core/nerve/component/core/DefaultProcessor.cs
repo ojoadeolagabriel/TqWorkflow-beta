@@ -22,8 +22,8 @@ namespace app.core.nerve.component.core
 
         public virtual Exchange Process(Exchange exchange)
         {
-            if (Route.RouteProcess.NextTag != null)
-                Route.RouteProcess.NextTag.ProcessChannel(exchange);
+            if (Route.CurrentRouteStep.NextTag != null)
+                Route.CurrentRouteStep.NextTag.ProcessChannel(exchange);
             return exchange;
         }
     }

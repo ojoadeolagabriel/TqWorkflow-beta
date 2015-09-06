@@ -17,7 +17,7 @@ namespace app.core.nerve.component.core.direct
             var route = Camel.GetRouteBy(path);
 
             if (route != null)
-                route.RouteProcess.ProcessChannel(exchange);
+                route.CurrentRouteStep.ProcessChannel(exchange);
   
             return exchange;
        }

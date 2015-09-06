@@ -75,7 +75,17 @@ namespace app.core.nerve
 
         public static Route GetRouteBy(string direct)
         {
-            var data = RouteCollection.FirstOrDefault(c => c.Value.RouteId == direct);
+            var data = RouteCollection.FirstOrDefault(c =>
+            {
+                try
+                {
+                    return c.Value.CurrentRouteStep.ComponentPathInfo == direct;
+                }
+                catch (System.Exception)
+                {
+                    return false;
+                }
+            });
             return data.Value;
         }
 
@@ -98,7 +108,7 @@ namespace app.core.nerve
 
         public static void StartAllRoutes()
         {
-            RouteCollection.ToList().ForEach(c => c.Value.RouteProcess.ProcessChannel());
+            RouteCollection.ToList().ForEach(c => c.Value.CurrentRouteStep.ProcessChannel());
         }
     }
 }

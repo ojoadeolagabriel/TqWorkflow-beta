@@ -63,7 +63,7 @@ namespace app.core.nerve.facade
                 EndPointBuilder.HandleFrom(endPoint.UriInformation, xchangeInfo.Value.Route, xchangeInfo.Value);
             }
 
-            xchangeInfo.Value.Route.RouteProcess.NextTag.ProcessChannel(xchangeInfo.Value);
+            xchangeInfo.Value.Route.CurrentRouteStep.NextTag.ProcessChannel(xchangeInfo.Value);
         }
     }
 }

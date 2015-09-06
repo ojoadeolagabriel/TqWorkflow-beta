@@ -13,7 +13,7 @@ namespace app.core.nerve.component.core.direct
 
         public override Exchange Process(Exchange exchange)
         {
-            exchange.Route.RouteProcess.NextTag.ProcessChannel(exchange);
+            exchange.Route.CurrentRouteStep.NextTag.ProcessChannel(exchange);
             return exchange;
         }
     }
