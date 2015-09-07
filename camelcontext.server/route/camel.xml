@@ -31,6 +31,7 @@
       <from uri="mina:127.0.0.1?port=${config.ServerPort};timeout=${config.SocketTimeOut}"/>
       <process ref="tcpProcessor"/>
       <to uri="xmltojson:jConvert"/>
+      
       <choice>
         <when>
           <method bean="jsonValidator" method="CanPlay"/>
@@ -42,7 +43,6 @@
     <route>
       <from uri="http:127.0.0.1?port=${config.HttpTestPort};initialDelay=1000;path=${config.ServerPath}"/>
       <to uri="xmltojson:jConvert"/>
-      <to uri="xmltojson:jConvert?reverse=true"/>
     </route>
 
   </context>
