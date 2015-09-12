@@ -27,7 +27,6 @@
     </route>
 
     <route>
-
       <from uri="mina:127.0.0.1?port=${config.ServerPort};timeout=${config.SocketTimeOut}"/>
       <process ref="tcpProcessor"/>
       <to uri="xmltojson:jConvert"/>
