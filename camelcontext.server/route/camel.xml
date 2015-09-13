@@ -48,7 +48,7 @@
       <from uri="http:127.0.0.1?port=${config.HttpTestPort};initialDelay=1000;path=${config.ServerPath}"/>
       <to uri="xmltojson:jConvert"/>
       <setheader name="Content-Type" value="application/json"/>
-      <to uri="mongodb:myDb?database=user;operation=inser;host=localhost:27000"/>
+      <to uri="mongodb:myDb?database=local;operation=insert;host=localhost:27000;collection=user_info;createCollection=true"/>
     </route>
 
   </context>
