@@ -13,7 +13,7 @@ namespace app.core.nerve.component.core.mongodb
     {
         public enum OperationType
         {
-            FetchById, Insert
+            FetchById, Insert, FetchAll
         }
 
         public MongoDbProducer(UriDescriptor uriInformation, Route route)
