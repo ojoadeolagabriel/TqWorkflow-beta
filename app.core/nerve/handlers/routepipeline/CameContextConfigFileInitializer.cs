@@ -60,7 +60,7 @@ namespace app.core.nerve.handlers.routepipeline
                     }
                     catch (Exception exception)
                     {
-                        
+
                     }
                 }
 
@@ -100,8 +100,15 @@ namespace app.core.nerve.handlers.routepipeline
                     var bean = Activator.CreateInstance(type);
 
                     //process product.
-                    var propertyXmlColl = beanXml.Elements("property");
-                    var xmlColl = propertyXmlColl as IList<XElement> ?? propertyXmlColl.ToList();
+                    IList<XElement> xmlColl = null;
+
+                    try
+                    {
+                        var propertyXmlColl = beanXml.Elements("propertys").Elements("property");
+                        xmlColl = propertyXmlColl as IList<XElement> ?? propertyXmlColl.ToList();
+                    }
+                    catch (Exception)
+                    { }
 
                     if (xmlColl.Any())
                     {

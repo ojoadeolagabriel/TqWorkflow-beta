@@ -4,20 +4,24 @@
   <bean id="cacheType" class="app.core.nerve.utility.CacheType"/>
 
   <bean id="config" class="app.core.nerve.utility.Configuration">
-    <property key="ESBJWTSharedKey" value="GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk"/>
-    <property key="ServerPort" value="9801"/>
-    <property key="AmqTestPort" value="61616"/>
-    <property key="HttpTestPort" value="5600"/>
-    <property key="SocketTimeOut" value="6000"/>
-    <property key="ServerPath" value="coco.api"/>
-    <property key="CacheType" value="${cacheType}"/>
+    <propertys>
+      <property key="ESBJWTSharedKey" value="GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk"/>
+      <property key="ServerPort" value="9801"/>
+      <property key="AmqTestPort" value="61616"/>
+      <property key="HttpTestPort" value="5600"/>
+      <property key="SocketTimeOut" value="6000"/>
+      <property key="ServerPath" value="coco.api"/>
+      <property key="CacheType" value="${cacheType}"/>
+    </propertys>
   </bean>
-  
+
   <bean id="tcpProcessor" class="camelcontext.server.facade.network.BasicTcpProcessor"/>
   <bean id="jsonValidator" class="camelcontext.server.facade.validator.JsonValidator"/>
 
   <bean id="sysLogger" class="app.core.nerve.test.DbLogProvider">
-    <property key="ConnectionString" value="${config.LocalConnectionString}"/>
+    <propertys>
+      <property key="ConnectionString" value="${config.LocalConnectionString}"/>
+    </propertys>
   </bean>
 
   <context logProvider="sysLogger">
@@ -31,7 +35,7 @@
       <from uri="mina:127.0.0.1?port=${config.ServerPort};timeout=${config.SocketTimeOut}"/>
       <process ref="tcpProcessor"/>
       <to uri="xmltojson:jConvert"/>
-      
+
       <choice>
         <when>
           <method bean="jsonValidator" method="CanPlay"/>

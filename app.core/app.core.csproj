@@ -74,6 +74,14 @@
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MongoDB, Version=0.90.0.1, Culture=neutral, PublicKeyToken=f61bd00ba2535278, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dependency\MongoDB.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.GridFS, Version=0.90.0.1, Culture=neutral, PublicKeyToken=f61bd00ba2535278, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dependency\MongoDB.GridFS.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.0.4.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dependency\Newtonsoft.Json.dll</HintPath>
@@ -136,6 +144,10 @@
     <Compile Include="nerve\component\core\cache\CacheEndpoint.cs" />
     <Compile Include="nerve\component\core\cache\CacheProducer.cs" />
     <Compile Include="nerve\component\core\cache\util\CacheUtil.cs" />
+    <Compile Include="nerve\component\core\mongodb\MongoDbConsumer.cs" />
+    <Compile Include="nerve\component\core\mongodb\MongoDbEndPoint.cs" />
+    <Compile Include="nerve\component\core\mongodb\MongoDbProcessor.cs" />
+    <Compile Include="nerve\component\core\mongodb\MongoDbProducer.cs" />
     <Compile Include="nerve\handlers\tag\LoopTag.cs" />
     <Compile Include="nerve\strategy\AggregationStrategy.cs" />
     <Compile Include="nerve\test\DummyAggreationStrategy.cs" />
@@ -263,6 +275,8 @@
     <Content Include="dependency\Apache.NMS.ActiveMQ.dll" />
     <Content Include="dependency\JWT.dll" />
     <Content Include="dependency\log4net.dll" />
+    <Content Include="dependency\MongoDB.dll" />
+    <Content Include="dependency\MongoDB.GridFS.dll" />
     <Content Include="dependency\Newtonsoft.Json.dll" />
     <Content Include="dependency\RedBranch.Hammock.dll" />
     <Content Include="script_migration\first_script.sql" />
