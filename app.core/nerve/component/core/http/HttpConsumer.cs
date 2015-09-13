@@ -84,7 +84,6 @@ namespace app.core.nerve.component.core.http
             var body = new StreamReader(client.Request.InputStream).ReadToEnd();
 
             BuildRequestMessage(client, exchange, body);
-
             exchange.InMessage.Body = body;
             Camel.TryLog(exchange, "consumer", _httpProcessor.UriInformation.ComponentName);
 
