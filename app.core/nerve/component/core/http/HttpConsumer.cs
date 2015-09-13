@@ -111,7 +111,7 @@ namespace app.core.nerve.component.core.http
             client.Response.Close();
         }
 
-        private void BuildRequestMessage(HttpListenerContext client, Exchange exchange, string body)
+        private static void BuildRequestMessage(HttpListenerContext client, Exchange exchange, string body)
         {
             var msg = Environment.NewLine + Environment.NewLine + @"{0} {1} {2}" + Environment.NewLine +
                          "Host: {3}" + Environment.NewLine +
