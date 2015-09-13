@@ -14,10 +14,13 @@ namespace camelcontext.server
             Console.Write("..starting camel context");
             Camel.LoadCamelContext(CamelFilePath);
             Console.WriteLine(" ...ready!");
-            
+
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private static List<string> CamelFilePath
         {
             get

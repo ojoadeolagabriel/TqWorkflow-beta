@@ -12,6 +12,7 @@
     <property key="ServerPath" value="coco.api"/>
     <property key="CacheType" value="${cacheType}"/>
   </bean>
+  
   <bean id="tcpProcessor" class="camelcontext.server.facade.network.BasicTcpProcessor"/>
   <bean id="jsonValidator" class="camelcontext.server.facade.validator.JsonValidator"/>
 
@@ -42,6 +43,7 @@
     <route>
       <from uri="http:127.0.0.1?port=${config.HttpTestPort};initialDelay=1000;path=${config.ServerPath}"/>
       <to uri="xmltojson:jConvert"/>
+      <setheader name="Content-Type" value="application/json"/>
     </route>
 
   </context>
