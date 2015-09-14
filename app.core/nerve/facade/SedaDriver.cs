@@ -1,6 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Xml.Linq;
 using app.core.nerve.component.core;
 using app.core.nerve.dto;
@@ -29,7 +30,11 @@ namespace app.core.nerve.facade
             while (true)
             {
                 var data = SedaQueue.FirstOrDefault();
-                if (data.IsNull()) continue;
+                if (data.IsNull())
+                {
+                    Thread.Sleep(1000);
+                    continue;
+                }
 
                 Exchange removedData;
                 SedaQueue.TryRemove(data.Key, out removedData);
