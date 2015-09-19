@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<container xmlns:n="http://nerveinteract.com/context">
+<container xmlns:n="http://com.nerveinteract.camel/context">
 
   <bean id="cacheType" class="app.core.nerve.utility.CacheType"/>
 
