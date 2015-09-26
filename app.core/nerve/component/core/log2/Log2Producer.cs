@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using app.core.nerve.dto;
 using app.core.nerve.facade;
 
@@ -62,6 +63,10 @@ namespace app.core.nerve.component.core.log2
                 if (LogStack.TryDequeue(out data))
                 {
                     LogToFile(data);
+                }
+                else
+                {
+                    Thread.Sleep(1000);
                 }
             }
         }

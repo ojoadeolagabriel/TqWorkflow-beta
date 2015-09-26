@@ -18,7 +18,9 @@ namespace app.core.nerve.component.core.xmltojson
             try
             {
                 var inReverse = endPointDescriptor.GetUriProperty("reverse", false);
-                var body = exchange.InMessage.Body.ToString();
+                var useOut = endPointDescriptor.GetUriProperty("useout", false);
+
+                var body = useOut ? exchange.OutMessage.Body.ToString() : exchange.InMessage.Body.ToString();
 
                 if (!inReverse)
                 {

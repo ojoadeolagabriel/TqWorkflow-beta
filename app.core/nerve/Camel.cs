@@ -14,6 +14,11 @@ namespace app.core.nerve
     /// </summary>
     public class Camel
     {
+        /// <summary>
+        /// Load Camel Context
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="nameSpaces"></param>
         public static void LoadCamelContext(List<string> path,List<string> nameSpaces = null)
         {
             InitDependencyLibs(nameSpaces ?? new List<string> { "app.core.nerve.component.core" });

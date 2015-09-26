@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:n="http://com.nerveinteract.camel/context" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="container">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="bean">
+          <xs:complexType>
+            <xs:sequence minOccurs="0">
+              <xs:element name="propertys">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="property">
+                      <xs:complexType>
+                        <xs:attribute name="key" type="xs:string" use="required" />
+                        <xs:attribute name="value" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:string" use="required" />
+            <xs:attribute name="class" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="context">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="route">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:choice maxOccurs="unbounded">
+                      <xs:element name="from">
+                        <xs:complexType>
+                          <xs:attribute name="uri" type="xs:string" use="required" />
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="process">
+                        <xs:complexType>
+                          <xs:attribute name="ref" type="xs:string" use="required" />
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="to">
+                        <xs:complexType>
+                          <xs:attribute name="uri" type="xs:string" use="required" />
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="setheader">
+                        <xs:complexType>
+                          <xs:attribute name="name" type="xs:string" use="required" />
+                          <xs:attribute name="value" type="xs:string" use="required" />
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="choice">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="when">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element name="method">
+                                    <xs:complexType>
+                                      <xs:attribute name="bean" type="xs:string" use="required" />
+                                      <xs:attribute name="method" type="xs:string" use="required" />
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="wiretap">
+                                    <xs:complexType>
+                                      <xs:attribute name="uri" type="xs:string" use="required" />
+                                    </xs:complexType>
+                                  </xs:element>
+                                </xs:sequence>
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:choice>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="logProvider" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

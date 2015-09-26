@@ -2,11 +2,11 @@
 <container xmlns:n="http://com.nerveinteract.camel/context">
 
   <bean id="cacheType" class="app.core.nerve.utility.CacheType"/>
-
   <bean id="config" class="app.core.nerve.utility.Configuration">
     <propertys>
       <property key="ESBJWTSharedKey" value="GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk"/>
       <property key="ServerPort" value="9801"/>
+      <property key="MongoDbPort" value="27000"/>
       <property key="AmqTestPort" value="61616"/>
       <property key="HttpTestPort" value="5600"/>
       <property key="SocketTimeOut" value="6000"/>
@@ -28,7 +28,7 @@
 
     <route>
       <from uri="direct:one"/>
-      <to uri="log2:${config.DefaultLogPathRoot}\wire_one.log?logType=file"/>
+      <to  uri="log2:${config.DefaultLogPathRoot}\wire_one.log?logType=file"/>
     </route>
 
     <route>
@@ -45,12 +45,22 @@
     </route>
 
     <route>
+      <from uri="mongodb:myDb?database=local;host=localhost:${config.MongoDbPort};collection=userFeedBack;createCollection=true"/>
+      <to  uri="log2:${config.DefaultLogPathRoot}\mongo.log?logType=file"/>
+    </route>
+
+    <route>
       <from uri="http:127.0.0.1?port=${config.HttpTestPort};initialDelay=1000;path=${config.ServerPath}"/>
-      <to uri="xmltojson:jConvert"/>
+      <to uri="xmltojson:jConvert?useout=false"/>
+
+      <loop>
+        <count>10</count>
+        <to uri="mongodb:myDb?database=local;operation=insert;host=localhost:27000;collection=user_info;createCollection=true"/>
+      </loop>
+
       <setheader name="Content-Type" value="application/json"/>
       <to uri="mongodb:myDb?database=local;operation=insert;host=localhost:27000;collection=user_info;createCollection=true"/>
     </route>
 
   </context>
-
 </container>

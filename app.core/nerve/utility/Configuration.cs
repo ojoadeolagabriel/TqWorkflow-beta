@@ -19,7 +19,7 @@
         public int FilePollingTime { get; set; }
         public string HttpPollIp { get; set; }
         public string ESBJWTSharedKey { get; set; }
-
+        public int MongoDbPort { get; set; }
         public string ServerPath { get; set; }
 
         public Configuration()

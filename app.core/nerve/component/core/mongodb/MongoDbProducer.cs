@@ -13,7 +13,7 @@ namespace app.core.nerve.component.core.mongodb
     {
         public enum OperationType
         {
-            FetchById, Insert, FetchAll
+            FetchById, Insert, FetchAll,  Remove
         }
 
         public MongoDbProducer(UriDescriptor uriInformation, Route route)
@@ -38,11 +38,11 @@ namespace app.core.nerve.component.core.mongodb
             var doc = BsonDocument.Parse(exchange.InMessage.Body.ToString());
 
             ServeOperation(db, exchange, endPointDescriptor, doc, operation, collection);
-
             return exchange;
         }
 
-        private void ServeOperation(MongoDatabase db, Exchange exchange, UriDescriptor endPointDescriptor, 
+        private static void ServeOperation(MongoDatabase db, Exchange exchange,
+            UriDescriptor endPointDescriptor,
             BsonDocument doc, OperationType operation, string collection)
         {
             switch (operation)
@@ -51,6 +51,13 @@ namespace app.core.nerve.component.core.mongodb
                     db.GetCollection(collection).Insert(doc);
                     break;
                 case OperationType.FetchById:
+                    db.GetCollection(collection).FindOneById("");
+                    break;
+                case OperationType.FetchAll:
+                    db.GetCollection(collection).FindAll();
+                    break;
+                case OperationType.Remove:
+                    db.GetCollection(collection).Remove(null);
                     break;
             }
         }

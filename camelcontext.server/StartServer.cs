@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using app.core.data;
 using app.core.nerve;
 using app.core.nerve.utility;
+using app.core.utility;
+using camelcontext.server.facade.util;
 
 namespace camelcontext.server
 {
@@ -11,12 +15,16 @@ namespace camelcontext.server
     {
         static void Main(string[] args)
         {
+            //CsvProcessor.ProcessDb();
+            CsvProcessor.ProcessCsv();
             Console.Write("..starting camel context");
             Camel.LoadCamelContext(CamelFilePath);
             Console.WriteLine(" ...ready!");
 
             Console.ReadLine();
         }
+
+
 
         /// <summary>
         /// 
@@ -28,7 +36,7 @@ namespace camelcontext.server
                 var config = new Configuration();
                 var directFile = string.Format("{0}\\camel.xml", config.ApplicationConfigRootFolderPath);
 
-                var paths = new List<string> {directFile};
+                var paths = new List<string> { directFile };
                 return paths;
             }
         }

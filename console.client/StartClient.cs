@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -15,20 +16,20 @@ namespace console.client
         {
             ProcessSocketTest();
             Console.ReadLine();
-        }
+        }     
 
         private static void ProcessSocketTest()
         {
             Console.WriteLine("..starting socket test");
             Thread.Sleep(3000);
 
-            for (var i = 0; i < 5; i++)
+            for (var i = 0; i < 10000; i++)
             {
-                RunSocketTest();
+                Task.Factory.StartNew(RunSocketTest);
             }
         }
         private static readonly List<string> Resp = new List<string>();
-        
+
         /// <summary>
         /// Run Socket Test
         /// </summary>
@@ -63,7 +64,7 @@ namespace console.client
                     }
                 }
 
-                Console.WriteLine("Reveived socket response @ {0}", DateTime.Now);
+                Console.WriteLine("Reveived secure response @ {0}", DateTime.Now);
                 Resp.Add(message);
             }
             catch (AggregateException exception)

@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="facade\network\BasicTcpProcessor.cs" />
+    <Compile Include="facade\util\CsvProcessor.cs" />
+    <Compile Include="facade\util\PaymentContext.cs" />
     <Compile Include="facade\validator\JsonValidator.cs" />
     <Compile Include="StartServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,8 +58,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="route\camel.xml" />
-    <Content Include="route\payment-notification.xml" />
+    <Content Include="route\camel.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="route\payment-notification.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

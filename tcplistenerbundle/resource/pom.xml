@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<definition>
+  <name>tcp-listener-conumer</name>
+  <version>1.0.0.1</version>
+  <group>isw-bundles</group>
+</definition>
+

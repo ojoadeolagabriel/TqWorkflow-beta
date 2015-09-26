@@ -24,7 +24,7 @@ namespace app.core.nerve.handlers.tag
         {
             Camel.TryLog(exchange, "processor", "loop");
             var expressionTag = loopTag.Elements().FirstOrDefault();
-            if (expressionTag == null)
+            if (expressionTag == null || (expressionTag.Name != "count"))
                 return;
 
             var xpression = expressionTag.Value;

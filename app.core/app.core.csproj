@@ -142,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="application\error\AppCoreException.cs" />
+    <Compile Include="data\BasicAdo\Blitz.cs" />
     <Compile Include="data\CoreDao.cs" />
     <Compile Include="nerve\component\core\cache\CacheEndpoint.cs" />
     <Compile Include="nerve\component\core\cache\CacheProducer.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="nerve\component\core\mongodb\MongoDbProcessor.cs" />
     <Compile Include="nerve\component\core\mongodb\MongoDbProducer.cs" />
     <Compile Include="nerve\handlers\tag\LoopTag.cs" />
+    <Compile Include="nerve\language\RouteBuilder.cs" />
     <Compile Include="nerve\strategy\AggregationStrategy.cs" />
     <Compile Include="nerve\sys\MongoLogger.cs" />
     <Compile Include="nerve\test\DummyAggreationStrategy.cs" />
@@ -265,6 +267,8 @@
     <Compile Include="nerve\utility\PomReader.cs" />
     <Compile Include="nerve\utility\ReflectionHelper.cs" />
     <Compile Include="nerve\utility\XmlHelper.cs" />
+    <Compile Include="utility\Blitz.cs" />
+    <Compile Include="utility\CsvDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="application\error\util\" />
@@ -272,7 +276,8 @@
     <Folder Include="nerve\component\core\http\util\" />
     <Folder Include="nerve\component\core\mina\util\" />
     <Folder Include="nerve\component\core\mssql\" />
-    <Folder Include="nerve\language\" />
+    <Folder Include="nerve\component\core\restclient\" />
+    <Folder Include="nerve\component\core\websocket\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="dependency\Apache.NMS.ActiveMQ.dll" />
