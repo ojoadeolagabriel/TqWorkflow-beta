@@ -81,7 +81,7 @@ namespace camelcontext.server.facade.util
                 CsvDao.SafeFileWrite(rootFolder, @"SFX\ERROR", originalFileNameWtExt, export);
                 return;
             }
-
+             
             var secureRow = csvDao.FetchSingle(SecureHeaderField.SecureRowId);
 
             //get payment rows
