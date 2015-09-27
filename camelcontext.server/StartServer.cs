@@ -15,9 +15,9 @@ namespace camelcontext.server
     {
         static void Main(string[] args)
         {
-            new TaskManager().Run();
+            //new TaskManager().Run();
             //CsvProcessor.ProcessDb();
-            CsvProcessor.ProcessCsv();
+            //CsvProcessor.ProcessCsv();
             Console.Write("..starting camel context");
             Camel.LoadCamelContext(CamelFilePath);
             Console.WriteLine(" ...ready!");
