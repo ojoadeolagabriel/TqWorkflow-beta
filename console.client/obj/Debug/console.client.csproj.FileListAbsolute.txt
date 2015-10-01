@@ -4,3 +4,16 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\console.client\
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\console.client\obj\Debug\console.client.csprojResolveAssemblyReference.cache
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\console.client\obj\Debug\console.client.exe
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\console.client\obj\Debug\console.client.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\console.client\bin\Debug\app.core.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\console.client\bin\Debug\MongoDB.Bson.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\console.client\bin\Debug\MongoDB.Driver.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\console.client\bin\Debug\Apache.NMS.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\console.client\bin\Debug\Apache.NMS.ActiveMQ.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\console.client\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\console.client\bin\Debug\RedBranch.Hammock.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\console.client\bin\Debug\JWT.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\console.client\bin\Debug\app.core.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\console.client\bin\Debug\MongoDB.Bson.xml
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\console.client\bin\Debug\MongoDB.Driver.xml
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\console.client\bin\Debug\Apache.NMS.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\console.client\bin\Debug\Apache.NMS.xml

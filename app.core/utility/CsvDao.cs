@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace app.core.utility
 {
@@ -11,6 +12,8 @@ namespace app.core.utility
     /// </summary>
     public class CsvDao
     {
+        
+
         public static FileInfo SafeFileRead(string basePath, string foldername)
         {
             var fullPath = Path.Combine(basePath, foldername);
@@ -721,6 +724,20 @@ namespace app.core.utility
             return row.Count == limit;
         }
 
+        public static string CombineUri(params string[] uriParts)
+        {
+            var uri = string.Empty;
+            if (uriParts == null || !uriParts.Any()) return uri;
+
+            var trims = new char[] { '\\', '/' };
+            uri = (uriParts[0] ?? string.Empty).TrimEnd(trims);
+            for (var i = 1; i < uriParts.Count(); i++)
+            {
+                uri = string.Format("{0}/{1}", uri.TrimEnd(trims), (uriParts[i] ?? string.Empty).TrimStart(trims));
+            }
+            return uri;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -766,16 +783,73 @@ namespace app.core.utility
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="stringToSplit"></param>
+        /// <returns></returns>
+        public static string[] OtherSplit(string stringToSplit)
+        {
+            var characters = stringToSplit.ToCharArray();
+            var returnValueList = new List<string>();
+            var tempString = "";
+            var blockUntilEndQuote = false;
+            var blockUntilEndQuote2 = false;
+            var characterCount = 0;
+            foreach (var character in characters)
+            {
+                characterCount = characterCount + 1;
+
+                if (character == '"' && !blockUntilEndQuote2)
+                {
+                    blockUntilEndQuote = blockUntilEndQuote == false;
+                }
+                if (character == '\'' && !blockUntilEndQuote)
+                {
+                    switch (blockUntilEndQuote2)
+                    {
+                        case false:
+                            blockUntilEndQuote2 = true;
+                            break;
+                        case true:
+                            blockUntilEndQuote2 = false;
+                            break;
+                    }
+                }
+
+                if (character != ',')
+                {
+                    tempString = tempString + character;
+                }
+                else if (character == ',' && (blockUntilEndQuote || blockUntilEndQuote2))
+                {
+                    tempString = tempString + character;
+                }
+                else
+                {
+                    returnValueList.Add(tempString);
+                    tempString = "";
+                }
+
+                if (characterCount != characters.Length) continue;
+                returnValueList.Add(tempString);
+                tempString = "";
+            }
+
+            
+            return returnValueList.ToArray();
+        }
+
+        /// <summary>
         /// Split Columns
         /// </summary>
         /// <param name="csvRow"></param>
         /// <returns></returns>
-        private static IEnumerable<string> SplitColumns(string csvRow)
+        public static IEnumerable<string> SplitColumns(string csvRow)
         {
             var totalchars = csvRow.Length;
             var fieldBuilder = new StringBuilder();
             var list = new List<String>();
-            var readingComma = false;
+            var readingQuote = false;
 
             for (var i = 0; i <= totalchars - 1; i++)
             {
@@ -783,13 +857,14 @@ namespace app.core.utility
                 {
                     var ch = csvRow[i];
 
-                    if (!readingComma)
+                    if (!readingQuote)
                     {
                         if (ch != '"' && ch != ',')
                         {
                             fieldBuilder.Append(ch);
                             if (i != totalchars - 1) continue;
                             var field = fieldBuilder.ToString();
+
                             list.Add(field);
                             fieldBuilder.Clear();
                         }
@@ -803,7 +878,7 @@ namespace app.core.utility
                                     fieldBuilder.Clear();
                                     break;
                                 case '"':
-                                    readingComma = true;
+                                    readingQuote = true;
                                     break;
                             }
                         }
@@ -820,7 +895,7 @@ namespace app.core.utility
                         }
                         else
                         {
-                            readingComma = false;
+                            readingQuote = false;
                             var field = fieldBuilder.ToString();
                             list.Add(field);
                             fieldBuilder.Clear();

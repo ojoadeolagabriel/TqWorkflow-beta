@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using app.core.utility;
 
 namespace console.client
 {
@@ -20,8 +21,13 @@ namespace console.client
 
         private static void ProcessSocketTest()
         {
-            var uri = new Uri(@"\\172.35.2.9\Coco\Stp\In", UriKind.RelativeOrAbsolute);
-            
+            const string values = "111,222, \"33,44,55\",666, \"77,88\" , \"99\"";
+            var row = CsvDao.OtherSplit(values);
+            var row2 = CsvDao.SplitColumns(values);
+
+            var path = CsvDao.CombineUri("http://Drive1/Plate/", @"\Place/Coco","Sft:Piper",@"\Nasty/Bmm","gogo.jpg");
+            var fname = Path.GetFileName(path);
+            var nfilename = Path.ChangeExtension(path, "mp4");
 
             Console.WriteLine("..starting socket test");
             Thread.Sleep(3000);
