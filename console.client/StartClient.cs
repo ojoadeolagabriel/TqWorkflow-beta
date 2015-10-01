@@ -20,6 +20,9 @@ namespace console.client
 
         private static void ProcessSocketTest()
         {
+            var uri = new Uri(@"\\172.35.2.9\Coco\Stp\In", UriKind.RelativeOrAbsolute);
+            
+
             Console.WriteLine("..starting socket test");
             Thread.Sleep(3000);
 
