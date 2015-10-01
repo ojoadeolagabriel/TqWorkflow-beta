@@ -21,9 +21,11 @@ namespace console.client
 
         private static void ProcessSocketTest()
         {
-            const string values = "111,222, \"33,44,55\",666, \"77,88\" , \"99\"";
-            var row = CsvDao.OtherSplit(values);
-            var row2 = CsvDao.SplitColumns(values);
+            var fpath = @"C:\Users\Adeola Ojo\Desktop\data.csv";
+            var line = File.ReadAllLines(fpath)[0];
+
+            var row = CsvDao.OtherSplit(line);
+            var row2 = CsvDao.SplitColumns(line);
 
             var path = CsvDao.CombineUri("http://Drive1/Plate/", @"\Place/Coco","Sft:Piper",@"\Nasty/Bmm","gogo.jpg");
             var fname = Path.GetFileName(path);

@@ -12,7 +12,7 @@ namespace app.core.utility
     /// </summary>
     public class CsvDao
     {
-        
+
 
         public static FileInfo SafeFileRead(string basePath, string foldername)
         {
@@ -510,7 +510,7 @@ namespace app.core.utility
         /// <param name="errorMessage"></param>
         /// <param name="throwOnColumnNotSet"></param>
         /// <returns></returns>
-        public static T GetColumnData<T>(int columnIndex, List<string> row, T defaultData = default(T), 
+        public static T GetColumnData<T>(int columnIndex, List<string> row, T defaultData = default(T),
             bool throwOnError = false, string errorMessage = "", bool throwOnColumnNotSet = false)
         {
             try
@@ -520,14 +520,14 @@ namespace app.core.utility
 
                 var columnData = row[columnIndex];
 
-                if(string.IsNullOrWhiteSpace(columnData) && throwOnColumnNotSet)
+                if (string.IsNullOrWhiteSpace(columnData) && throwOnColumnNotSet)
                     throw new Exception(errorMessage);
 
                 return (T)Convert.ChangeType(columnData, typeof(T));
             }
             catch (Exception exception)
             {
-                if (!throwOnError && !throwOnColumnNotSet) 
+                if (!throwOnError && !throwOnColumnNotSet)
                     return defaultData;
 
                 if (string.IsNullOrEmpty(errorMessage))
@@ -835,7 +835,7 @@ namespace app.core.utility
                 tempString = "";
             }
 
-            
+
             return returnValueList.ToArray();
         }
 
