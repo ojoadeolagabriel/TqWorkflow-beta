@@ -147,6 +147,10 @@
     <Compile Include="nerve\component\core\cache\CacheEndpoint.cs" />
     <Compile Include="nerve\component\core\cache\CacheProducer.cs" />
     <Compile Include="nerve\component\core\cache\util\CacheUtil.cs" />
+    <Compile Include="nerve\component\core\csv\CsvConsumer.cs" />
+    <Compile Include="nerve\component\core\csv\CsvEndPoint.cs" />
+    <Compile Include="nerve\component\core\csv\CsvProcessor.cs" />
+    <Compile Include="nerve\component\core\csv\CsvProducer.cs" />
     <Compile Include="nerve\component\core\mongodb\MongoDbConsumer.cs" />
     <Compile Include="nerve\component\core\mongodb\MongoDbEndPoint.cs" />
     <Compile Include="nerve\component\core\mongodb\MongoDbProcessor.cs" />

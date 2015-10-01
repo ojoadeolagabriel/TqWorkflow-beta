@@ -6,6 +6,7 @@ namespace app.core.nerve.dto
     public class Route
     {
         public ISystemLogProvider LogProvider = null;
+        public string Description { get; set; }
 
         public enum MessagePipelineMode
         {

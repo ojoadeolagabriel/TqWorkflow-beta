@@ -21,8 +21,11 @@ namespace app.core.nerve.handlers.routepipeline
             if (route == null)
                 throw new AppCoreException("error loading route-config: route cannot be null");
 
+            var xmlRouteDesc = route.Attribute("description");
+            var routeDesc = xmlRouteDesc != null ? xmlRouteDesc.Value : "";
+
             var steps = route.Elements();
-            var newRoute = new Route {LogProvider = logProvider};
+            var newRoute = new Route { LogProvider = logProvider, Description = routeDesc };
             RouteStep nextRouteStepProcessorToLink = null;
 
             foreach (var step in steps)
