@@ -80,7 +80,7 @@ namespace app.core.nerve.facade
             if (string.IsNullOrEmpty(uri))
                 throw new AppCoreException("uri data error: cannot be empty");
 
-            var mainParts = uri.Split(new[] { '?' });
+            var mainParts = uri.Split(new[] { '?' }, 2);
 
             var uriPrimaryParts = mainParts[0].Split(new[] { ':' }, 2);
 

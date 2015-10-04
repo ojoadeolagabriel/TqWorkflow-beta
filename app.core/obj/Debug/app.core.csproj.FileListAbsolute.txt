@@ -102,3 +102,12 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\obj\De
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\obj\Debug\app.core.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\obj\Debug\app.core.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\obj\Debug\app.core.csprojResolveAssemblyReference.cache
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.Core.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Quartz.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.xml
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.Core.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.Core.xml
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Quartz.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Quartz.xml

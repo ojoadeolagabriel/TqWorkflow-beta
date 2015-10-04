@@ -7,6 +7,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using app.core.nerve.dto;
 using app.core.utility;
+using Quartz;
+using Quartz.Impl;
 
 namespace app.core.nerve.component.core.csv
 {
@@ -27,25 +29,59 @@ namespace app.core.nerve.component.core.csv
 
         private void PollHandler()
         {
-            var pollInterval = _csvProcessor.UriInformation.GetUriProperty("poll", 500);
-            var fileFolderPath = _csvProcessor.UriInformation.ComponentPath;
-            var maxThreadCount = _csvProcessor.UriInformation.GetUriProperty("threadCount", 3);
-            var initialDelay = _csvProcessor.UriInformation.GetUriProperty("initialDelay", 1000);
-            var pathToCsv = _csvProcessor.UriInformation.GetUriProperty<string>("pathToCsv");
-            var csvFileExt = _csvProcessor.UriInformation.GetUriProperty<string>("csvFileExt");
-            var createDirectory = _csvProcessor.UriInformation.GetUriProperty<bool>("createDirectory");
-            var deleteIfErrorFound = _csvProcessor.UriInformation.GetUriProperty<bool>("deleteIfErrorFound");
-            Thread.Sleep(initialDelay);
+            var cron = _csvProcessor.UriInformation.GetUriProperty<string>("cron");
 
-            while (true)
+            if (!string.IsNullOrWhiteSpace(cron))
             {
-                if (string.IsNullOrEmpty(pathToCsv))
-                {
-                    Thread.Sleep(1000);
-                    continue;
-                }
+                var jobDesc = _csvProcessor.UriInformation.ComponentPath + "_job";
+                var jobGroup = _csvProcessor.UriInformation.ComponentPath + "_group";
 
-                Thread.Sleep(pollInterval);
+                ISchedulerFactory schedFact = new StdSchedulerFactory();
+                var sched = schedFact.GetScheduler();
+                sched.Start();
+
+                var job = JobBuilder.Create<CsvJob>()
+                    .WithIdentity(jobDesc, jobGroup)
+                    .UsingJobData(new JobDataMap { { "processor", _csvProcessor } })
+                    .Build();
+
+                var trigger = TriggerBuilder.Create()
+                    .WithIdentity(_csvProcessor.UriInformation.ComponentPath, jobGroup)
+                    .WithCronSchedule(cron)
+                    .ForJob(jobDesc, jobGroup)
+                    .Build();
+
+                sched.ScheduleJob(job, trigger);
+            }
+            else
+            {
+                while (true)
+                {
+                    var pollInterval = _csvProcessor.UriInformation.GetUriProperty("poll", 500);
+                    Thread.Sleep(pollInterval);
+                    CsvJob.RunJob(_csvProcessor);
+                }
+            }
+        }
+
+
+        public class CsvJob : IJob
+        {
+            public void Execute(IJobExecutionContext context)
+            {
+                var csvProcessor = context.Get("processor") as CsvProcessor;
+                RunJob(csvProcessor);
+            }
+
+            public static void RunJob(DefaultProcessor csvProcessor)
+            {
+                var fileFolderPath = csvProcessor.UriInformation.ComponentPath;
+                var maxThreadCount = csvProcessor.UriInformation.GetUriProperty("threadCount", 3);
+                var initialDelay = csvProcessor.UriInformation.GetUriProperty("initialDelay", 1000);
+                var pathToCsv = csvProcessor.UriInformation.GetUriProperty<string>("pathToCsv");
+                var csvFileExt = csvProcessor.UriInformation.GetUriProperty<string>("csvFileExt");
+                var createDirectory = csvProcessor.UriInformation.GetUriProperty<bool>("createDirectory");
+                var deleteIfErrorFound = csvProcessor.UriInformation.GetUriProperty<bool>("deleteIfErrorFound");
 
                 if (!Directory.Exists(pathToCsv))
                     Directory.CreateDirectory(pathToCsv);
@@ -53,9 +89,8 @@ namespace app.core.nerve.component.core.csv
                 var firstFile = Directory.GetFiles(pathToCsv, "*.csv").FirstOrDefault();
                 if (firstFile == null)
                 {
-                    continue;
+                    return;
                 }
-
 
                 var filedata = File.ReadAllText(firstFile);
                 var dao = CsvDao.ParseFromString(filedata);
@@ -64,14 +99,14 @@ namespace app.core.nerve.component.core.csv
                 {
                     if (deleteIfErrorFound)
                         File.Delete(firstFile);
+
                     Thread.Sleep(1000);
-                    continue;
+                    return;
                 }
 
-                var exchange = new Exchange(_csvProcessor.Route) { InMessage = { Body = dao.OriginalCsvData } };
-                _csvProcessor.Process(exchange);
+                var exchange = new Exchange(csvProcessor.Route) { InMessage = { Body = dao.OriginalCsvData } };
+                csvProcessor.Process(exchange);
             }
         }
-
     }
 }
