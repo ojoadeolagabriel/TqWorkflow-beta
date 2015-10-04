@@ -27,6 +27,26 @@
   <context logProvider="sysLogger">
 
     <route>
+      <from uri="csv:files?pathtocsv=C:\Users\Adeola Ojo\Desktop"/>
+      
+      <split strategy="camelcontext.server.facade.strategy.CsvSplitter">
+        <to uri="log2:${config.DefaultLogPathRoot}\wire_three.log?logType=file"/>
+      </split>
+
+      <choice>
+        <when>
+          <method bean="" method=""/>
+        </when>
+        <when>
+          <method bean="" method=""/>
+        </when>
+        <otherwise>
+        </otherwise>
+      </choice>
+      
+    </route>
+    
+    <route>
       <from uri="direct:one"/>
       <to  uri="log2:${config.DefaultLogPathRoot}\wire_one.log?logType=file"/>
     </route>

@@ -25,13 +25,14 @@ namespace app.core.nerve.component.core.csv
             return null;
         }
 
-        private  void PollHandler()
+        private void PollHandler()
         {
-            var pollInterval = _csvProcessor.UriInformation.GetUriProperty("poll", 1000);
+            var pollInterval = _csvProcessor.UriInformation.GetUriProperty("poll", 500);
             var fileFolderPath = _csvProcessor.UriInformation.ComponentPath;
             var maxThreadCount = _csvProcessor.UriInformation.GetUriProperty("threadCount", 3);
             var initialDelay = _csvProcessor.UriInformation.GetUriProperty("initialDelay", 1000);
             var pathToCsv = _csvProcessor.UriInformation.GetUriProperty<string>("pathToCsv");
+            var csvFileExt = _csvProcessor.UriInformation.GetUriProperty<string>("csvFileExt");
             var createDirectory = _csvProcessor.UriInformation.GetUriProperty<bool>("createDirectory");
             var deleteIfErrorFound = _csvProcessor.UriInformation.GetUriProperty<bool>("deleteIfErrorFound");
             Thread.Sleep(initialDelay);
@@ -44,27 +45,30 @@ namespace app.core.nerve.component.core.csv
                     continue;
                 }
 
+                Thread.Sleep(pollInterval);
+
                 if (!Directory.Exists(pathToCsv))
                     Directory.CreateDirectory(pathToCsv);
 
                 var firstFile = Directory.GetFiles(pathToCsv, "*.csv").FirstOrDefault();
                 if (firstFile == null)
                 {
-                    Thread.Sleep(1000);
                     continue;
                 }
+
 
                 var filedata = File.ReadAllText(firstFile);
                 var dao = CsvDao.ParseFromString(filedata);
 
-                if (dao == null && deleteIfErrorFound)
+                if (dao == null)
                 {
-                    File.Delete(firstFile);
+                    if (deleteIfErrorFound)
+                        File.Delete(firstFile);
                     Thread.Sleep(1000);
                     continue;
                 }
-                var exchange = new Exchange(_csvProcessor.Route);
-                if (dao != null) exchange.InMessage.Body = dao.GoodCsvRawData;
+
+                var exchange = new Exchange(_csvProcessor.Route) { InMessage = { Body = dao.OriginalCsvData } };
                 _csvProcessor.Process(exchange);
             }
         }

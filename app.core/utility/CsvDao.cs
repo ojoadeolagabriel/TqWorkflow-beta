@@ -847,7 +847,7 @@ namespace app.core.utility
         public static IEnumerable<string> SplitColumns(string csvRow)
         {
             var totalchars = csvRow.Length;
-            var fieldBuilder = new StringBuilder();
+            var columnBuilder = new StringBuilder();
             var list = new List<String>();
             var readingQuote = false;
 
@@ -861,21 +861,21 @@ namespace app.core.utility
                     {
                         if (ch != '"' && ch != ',')
                         {
-                            fieldBuilder.Append(ch);
+                            columnBuilder.Append(ch);
                             if (i != totalchars - 1) continue;
-                            var field = fieldBuilder.ToString();
+                            var field = columnBuilder.ToString();
 
                             list.Add(field);
-                            fieldBuilder.Clear();
+                            columnBuilder.Clear();
                         }
                         else
                         {
                             switch (ch)
                             {
                                 case ',':
-                                    var field = fieldBuilder.ToString();
+                                    var field = columnBuilder.ToString();
                                     list.Add(field);
-                                    fieldBuilder.Clear();
+                                    columnBuilder.Clear();
                                     break;
                                 case '"':
                                     readingQuote = true;
@@ -887,18 +887,18 @@ namespace app.core.utility
                     {
                         if (ch != '"')
                         {
-                            fieldBuilder.Append(ch);
+                            columnBuilder.Append(ch);
                             if (i != totalchars - 1) continue;
-                            var field = fieldBuilder.ToString();
+                            var field = columnBuilder.ToString();
                             list.Add(field);
-                            fieldBuilder.Clear();
+                            columnBuilder.Clear();
                         }
                         else
                         {
                             readingQuote = false;
-                            var field = fieldBuilder.ToString();
+                            var field = columnBuilder.ToString();
                             list.Add(field);
-                            fieldBuilder.Clear();
+                            columnBuilder.Clear();
                             ++i;
                         }
                     }

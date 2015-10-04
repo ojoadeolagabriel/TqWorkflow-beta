@@ -1,4 +1,5 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using app.core.nerve.component.core;
@@ -14,14 +15,38 @@ namespace app.core.nerve
     /// </summary>
     public class Camel
     {
+        public static ConcurrentQueue<string> AssemblyCollection = new ConcurrentQueue<string>();
+
+        public static object LoadBean(string type)
+        {
+            foreach (var assemblyCollection in AssemblyCollection)
+            {
+                try
+                {
+                    var instance = Activator.CreateInstance(assemblyCollection, type).Unwrap();
+                    if (instance != null)
+                        return instance;
+                }
+                catch
+                {
+                }
+            }
+            return null;
+        }
+
         /// <summary>
         /// Load Camel Context
         /// </summary>
         /// <param name="path"></param>
         /// <param name="nameSpaces"></param>
-        public static void LoadCamelContext(List<string> path,List<string> nameSpaces = null)
+        public static void LoadCamelContext(List<string> path, List<string> nameSpaces = null, List<string> assemblies = null)
         {
             InitDependencyLibs(nameSpaces ?? new List<string> { "app.core.nerve.component.core" });
+
+            foreach (var assembly in assemblies)
+            {
+                assemblies.ForEach(c => AssemblyCollection.Enqueue(c));
+            }
 
             foreach (var filePath in path)
             {

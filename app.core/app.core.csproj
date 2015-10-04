@@ -158,6 +158,7 @@
     <Compile Include="nerve\handlers\tag\LoopTag.cs" />
     <Compile Include="nerve\language\RouteBuilder.cs" />
     <Compile Include="nerve\strategy\AggregationStrategy.cs" />
+    <Compile Include="nerve\strategy\ISplitterStrategy.cs" />
     <Compile Include="nerve\sys\MongoLogger.cs" />
     <Compile Include="nerve\test\DummyAggreationStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

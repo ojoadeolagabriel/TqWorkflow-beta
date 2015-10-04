@@ -19,7 +19,7 @@ namespace camelcontext.server
             //CsvProcessor.ProcessDb();
             //CsvProcessor.ProcessCsv();
             Console.Write("..starting camel context");
-            Camel.LoadCamelContext(CamelFilePath);
+            Camel.LoadCamelContext(CamelFilePath, assemblies: new List<string> { "camelcontext.server" });
             Console.WriteLine(" ...ready!");
 
             Console.ReadLine();

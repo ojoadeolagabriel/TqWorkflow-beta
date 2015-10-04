@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="facade\network\BasicTcpProcessor.cs" />
+    <Compile Include="facade\strategy\CsvSplitter.cs" />
     <Compile Include="facade\util\CsvProcessor.cs" />
     <Compile Include="facade\util\PaymentContext.cs" />
     <Compile Include="facade\util\TaskManager.cs" />

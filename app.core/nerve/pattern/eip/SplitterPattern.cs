@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using app.core.nerve.dto;
 using app.core.nerve.expression;
 using app.core.nerve.facade;
+using app.core.nerve.strategy;
 
 namespace app.core.nerve.pattern.eip
 {
@@ -30,21 +32,35 @@ namespace app.core.nerve.pattern.eip
                 if (spliterXml == null)
                     return;
 
-                var splitterName = spliterXml.Name.ToString();
+                ISplitterStrategy strategy = null;
+                var strategyAttr = splitElement.Attribute("strategy");
+
+                if (strategyAttr != null)
+                    strategy = Camel.LoadBean(strategyAttr.Value.ToString(CultureInfo.InvariantCulture)) as ISplitterStrategy;
 
                 var result = new List<String>();
-                switch (splitterName)
+                if (strategy != null)
                 {
-                    case "xpath":
-                        result = SplitByXPath(spliterXml.Value, exchange);
-                        break;
-                    case "simple":
-                        result = SplitSimple(spliterXml.Value, exchange);
-                        break;
+                    result = strategy.Split(exchange);
+                }
+                else
+                {
+                    var splitterName = spliterXml.Name.ToString();
+                    switch (splitterName)
+                    {
+                        case "xpath":
+                            result = SplitByXPath(spliterXml.Value, exchange);
+                            break;
+                        case "simple":
+                            result = SplitSimple(spliterXml.Value, exchange);
+                            break;
+                    }
                 }
 
-                //get next steps.
-                var nextSteps = splitElement.Elements().Skip(1);
+                if (result == null)
+                    return;
+
+                var nextSteps = strategy == null ? splitElement.Elements().Skip(1) : splitElement.Elements();
 
                 //process each
                 foreach (var nextStep in nextSteps)
