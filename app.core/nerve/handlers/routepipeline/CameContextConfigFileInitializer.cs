@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Xml.Linq;
 using app.core.application.error;
 using app.core.nerve.dto;
@@ -15,12 +16,58 @@ namespace app.core.nerve.handlers.routepipeline
     /// </summary>
     public class CameContextConfigFileInitializer
     {
+        public static string GetBundleResourceTextFile(string bundleDllPath)
+        {
+            var assemblyName = Path.GetFileNameWithoutExtension(bundleDllPath);
+            var routePath = string.Format("{0}.property.route.route.xml", assemblyName);
+
+            Console.Write("Bundle: [{0}]", assemblyName);
+
+            string result;
+
+            var assembly = Assembly.LoadFile(bundleDllPath);
+            using (var stream = assembly.GetManifestResourceStream(routePath))
+            {
+                if (stream == null)
+                    return null;
+                using (var sr = new StreamReader(stream))
+                {
+                    result = sr.ReadToEnd();
+                }
+            }
+            return result;
+        }
+
+        public static DescriptorObject GetDescriptorResourceTextFile(string bundleDllPath)
+        {
+            var assemblyName = Path.GetFileNameWithoutExtension(bundleDllPath);
+            var routePath = string.Format("{0}.property.descriptor.xml", assemblyName);
+
+            var assembly = Assembly.LoadFile(bundleDllPath);
+            using (var stream = assembly.GetManifestResourceStream(routePath))
+            {
+                if (stream == null)
+                    return null;
+                using (var sr = new StreamReader(stream))
+                {
+                    var data = sr.ReadToEnd();
+                    var obj = DescriptorObject.Init(data);
+                    Console.WriteLine(" version: [{0}], friendly-name: [{1}]", obj.Version, obj.Name);
+                }
+            }
+
+            return null;
+        }
+
+
+
         /// <summary>
         /// Load Route Config File
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="autoExec"></param>
-        public static void Initialize(string filePath, bool autoExec = false)
+        /// <param name="isBundle"></param>
+        public static void Initialize(string filePath, bool autoExec = false, bool isBundle = false)
         {
             if (!File.Exists(filePath))
                 throw new AppCoreException("route config file [" + filePath + "] not found!");
@@ -29,7 +76,15 @@ namespace app.core.nerve.handlers.routepipeline
 
             try
             {
-                routeConfigFile = XElement.Load(filePath);
+                if (!isBundle)
+                    routeConfigFile = XElement.Load(filePath);
+                else
+                {
+                    var routeXml = GetBundleResourceTextFile(filePath);
+                    var descrptor = GetDescriptorResourceTextFile(filePath);
+
+                    routeConfigFile = XElement.Parse(routeXml);
+                }
             }
             catch (Exception exception)
             {
@@ -48,6 +103,8 @@ namespace app.core.nerve.handlers.routepipeline
 
                 //read handler.
                 var logProviderXml = leafContextXml.Attribute("logProvider");
+                var id = leafContextXml.Attribute("id");
+
                 if (logProviderXml != null && logProviderXml.Value != string.Empty)
                 {
                     try

@@ -3,7 +3,7 @@
     public class CamelConstant
     {
         //general
-        public const string LeafContext = "context";
+        public const string LeafContext = "routecontext";
 
         //http component
         public const string HttpUri = "CamelHttpUri";

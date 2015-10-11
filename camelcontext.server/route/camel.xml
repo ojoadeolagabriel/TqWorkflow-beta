@@ -1,8 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <container xmlns:n="http://com.nerveinteract.camel/context">
 
+  <import uri="csv-reader-route.xml"/>
   <bean id="cacheType" class="app.core.nerve.utility.CacheType"/>
+  
   <bean id="config" class="app.core.nerve.utility.Configuration">
+    <propertys>
+      <property key="ESBJWTSharedKey" value="GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk"/>
+      <property key="ServerPort" value="9801"/>
+      <property key="MongoDbPort" value="27000"/>
+      <property key="AmqTestPort" value="61616"/>
+      <property key="HttpTestPort" value="5600"/>
+      <property key="SocketTimeOut" value="6000"/>
+      <property key="CronConfig" value="0 * 12 * * ?"/>
+      <property key="ServerPath" value="coco.api"/>
+      <property key="CacheType" value="${cacheType}"/>
+    </propertys>
+  </bean>
+
+  <bean id="config2" class="app.core.nerve.utility.Configuration">
     <propertys>
       <property key="ESBJWTSharedKey" value="GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk"/>
       <property key="ServerPort" value="9801"/>
@@ -25,24 +41,24 @@
     </propertys>
   </bean>
 
-  <context logProvider="sysLogger">
+  <routecontext id="myId" logProvider="sysLogger">
 
     <route>
-      <from uri="csv:files?pathtocsv=C:\Users\Adeola Ojo\Desktop;cron=${config.CronConfig}"/>
+      <from uri="csv:files?pathtocsv=C:\Users\Adeola Ojo\Desktop"/>
       
       <split strategy="camelcontext.server.facade.strategy.CsvSplitter">
-        <to uri="log2:${config.DefaultLogPathRoot}\wire_three.log?logType=file"/>
+        <to uri="log2:${config2.DefaultLogPathRoot}\wire_three_main.log?logType=file"/>
       </split>
 
       <choice>
         <when>
-          <method bean="" method=""/>
+          <method bean="jsonValidator" method="CanPlay"/>
+          <multicast>
+            <to uri="log2:${config.DefaultLogPathRoot}\wire_three.log?logType=file"/>
+            <to uri="log2:${config.DefaultLogPathRoot}\wire_three2.log?logType=file"/>
+            <to uri="log2:${config.DefaultLogPathRoot}\wire_three3.log?logType=file"/>
+          </multicast>
         </when>
-        <when>
-          <method bean="" method=""/>
-        </when>
-        <otherwise>
-        </otherwise>
       </choice>
       
     </route>
@@ -83,5 +99,5 @@
       <to uri="mongodb:myDb?database=local;operation=insert;host=localhost:27000;collection=user_info;createCollection=true"/>
     </route>
 
-  </context>
+  </routecontext>
 </container>

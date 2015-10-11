@@ -57,6 +57,8 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\De
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\app.core.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Apache.NMS.ActiveMQ.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Apache.NMS.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.Core.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Google.Apis.Core.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Google.Apis.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Google.Apis.PlatformServices.dll
@@ -68,6 +70,7 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\De
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\MongoDB.Bson.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\MongoDB.Driver.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Quartz.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\RedBranch.Hammock.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\System.IO.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\System.Net.Http.dll
@@ -79,6 +82,10 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\De
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Zlib.Portable.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Apache.NMS.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Apache.NMS.xml
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.xml
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.Core.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.Core.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Google.Apis.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Google.Apis.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Google.Apis.Core.pdb
@@ -90,6 +97,8 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\De
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\MongoDB.Bson.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\MongoDB.Driver.xml
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Quartz.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Quartz.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\System.IO.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\System.Net.Http.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\System.Net.Http.Extensions.xml
@@ -101,13 +110,3 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\De
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\obj\Debug\app.core.csproj.App.config
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\obj\Debug\app.core.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\obj\Debug\app.core.pdb
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\obj\Debug\app.core.csprojResolveAssemblyReference.cache
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.Core.dll
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.dll
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Quartz.dll
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.pdb
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.xml
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.Core.pdb
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.Core.xml
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Quartz.pdb
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Quartz.xml

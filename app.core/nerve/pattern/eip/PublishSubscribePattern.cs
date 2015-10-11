@@ -13,10 +13,11 @@ namespace app.core.nerve.pattern.eip
             try
             {
                 var toElements = multicastElement.Elements("to");
-                if (!toElements.Any())
+                var xElements = toElements as XElement[] ?? toElements.ToArray();
+                if (!xElements.Any())
                     return;
 
-                foreach (var toTag in toElements)
+                foreach (var toTag in xElements)
                 {
                     RouteStep.ProcessStep(toTag, exchange.Route, exchange);
                 }

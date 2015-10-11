@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using app.core.data;
 using app.core.nerve;
+using app.core.nerve.dto;
 using app.core.nerve.utility;
 using app.core.utility;
 using camelcontext.server.facade.util;
@@ -15,17 +17,38 @@ namespace camelcontext.server
     {
         static void Main(string[] args)
         {
-            //new TaskManager().Run();
-            //CsvProcessor.ProcessDb();
-            //CsvProcessor.ProcessCsv();
-            Console.Write("..starting camel context");
             Camel.LoadCamelContext(CamelFilePath, assemblies: new List<string> { "camelcontext.server" });
-            Console.WriteLine(" ...ready!");
+            Camel.LoadBundle(new List<string>{ @"C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\tcp.consumer.bundle\bin\Debug\tcp.consumer.bundle.dll" });
+            Camel.LoadBundle(new List<string> { @"C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\mina.nibss.consumer.bunde\bin\Debug\mina.nibss.consumer.bundle.dll" });
+            
+            Camel.StartAllRoutes();
+            Camel.StartSedaProcessor();
 
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// Get Resource Text File
+        /// </summary>
+        /// <param name="resource"></param>
+        /// <param name="filename"></param>
+        /// <returns></returns>
+        public string GetResourceTextFile(string resource, string filename)
+        {
+            string result;
 
+            var assembly = Assembly.LoadFile(filename);
+            using (var stream = assembly.GetManifestResourceStream(resource))
+            {
+                if (stream == null) 
+                    return null;
+                using (var sr = new StreamReader(stream))
+                {
+                    result = sr.ReadToEnd();
+                }
+            }
+            return result;
+        }
 
         /// <summary>
         /// 

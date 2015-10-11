@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using app.core.nerve.component.core;
 using app.core.nerve.dto;
@@ -42,19 +43,30 @@ namespace app.core.nerve
         public static void LoadCamelContext(List<string> path, List<string> nameSpaces = null, List<string> assemblies = null)
         {
             InitDependencyLibs(nameSpaces ?? new List<string> { "app.core.nerve.component.core" });
-
-            foreach (var assembly in assemblies)
-            {
-                assemblies.ForEach(c => AssemblyCollection.Enqueue(c));
-            }
+            if (assemblies != null) assemblies.ForEach(c => AssemblyCollection.Enqueue(c));
 
             foreach (var filePath in path)
             {
                 CameContextConfigFileInitializer.Initialize(filePath);
             }
+        }
 
-            StartAllRoutes();
-            StartSedaProcessor();
+        public static void LoadBundle(List<string> bundleDllPaths)
+        {
+            foreach (var filePath in bundleDllPaths)
+            {
+                try
+                {
+                    
+                    var assemName = Path.GetFileNameWithoutExtension(filePath);
+                    AssemblyCollection.Enqueue(assemName);
+                    CameContextConfigFileInitializer.Initialize(filePath, isBundle: true);
+                }
+                catch (Exception exception)
+                {
+
+                }
+            }
         }
 
         /// <summary>

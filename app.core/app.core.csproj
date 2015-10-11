@@ -167,6 +167,7 @@
     <Compile Include="nerve\component\core\mongodb\MongoDbEndPoint.cs" />
     <Compile Include="nerve\component\core\mongodb\MongoDbProcessor.cs" />
     <Compile Include="nerve\component\core\mongodb\MongoDbProducer.cs" />
+    <Compile Include="nerve\dto\DescriptorObject.cs" />
     <Compile Include="nerve\handlers\tag\LoopTag.cs" />
     <Compile Include="nerve\language\RouteBuilder.cs" />
     <Compile Include="nerve\strategy\AggregationStrategy.cs" />

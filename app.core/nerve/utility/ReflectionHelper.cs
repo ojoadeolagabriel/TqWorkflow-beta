@@ -38,6 +38,7 @@ namespace app.core.nerve.utility
                 return (T)formatter.Deserialize(stream);
             }
         }
+
         public static object DeepCopyUsingReflection(object objSource)
         {
             //step : 1 Get the type of source object and create a new instance of that type

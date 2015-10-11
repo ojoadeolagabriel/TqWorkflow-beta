@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<container xmlns:n="http://com.nerveinteract.camel/context">
+
+  <bean id="config3" class="app.core.nerve.utility.Configuration">
+    <propertys>
+      <property key="ESBJWTSharedKey" value="GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk"/>
+      <property key="ServerPort" value="9805"/>
+      <property key="MongoDbPort" value="27000"/>
+      <property key="AmqTestPort" value="61616"/>
+      <property key="HttpTestPort" value="5600"/>
+      <property key="SocketTimeOut" value="6000"/>
+      <property key="CronConfig" value="0 * 12 * * ?"/>
+      <property key="ServerPath" value="coco2.api"/>
+      <property key="CacheType" value="${cacheType}"/>
+    </propertys>
+  </bean>
+ 
+  
+  <routecontext id="myId3">
+
+    <route>
+      <from uri="mina:127.0.0.1?port=9905;timeout=${config3.SocketTimeOut}"/>
+    </route>
+    
+  </routecontext>
+</container>
