@@ -150,6 +150,7 @@ namespace app.core.nerve
 
         public static void StartAllRoutes()
         {
+            Console.WriteLine("Starting all components");
             RouteCollection.ToList().ForEach(c => c.Value.CurrentRouteStep.ProcessChannel());
         }
     }

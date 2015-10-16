@@ -156,6 +156,7 @@
     <Compile Include="application\error\AppCoreException.cs" />
     <Compile Include="data\BasicAdo\Blitz.cs" />
     <Compile Include="data\CoreDao.cs" />
+    <Compile Include="nerve\bundle\BundleInfo.cs" />
     <Compile Include="nerve\component\core\cache\CacheEndpoint.cs" />
     <Compile Include="nerve\component\core\cache\CacheProducer.cs" />
     <Compile Include="nerve\component\core\cache\util\CacheUtil.cs" />
