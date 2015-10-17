@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using app.core.nerve.dto;
 using app.core.nerve.facade;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using Newtonsoft.Json;
 
 namespace app.core.nerve.component.core.mongodb
 {
@@ -13,7 +15,7 @@ namespace app.core.nerve.component.core.mongodb
     {
         public enum OperationType
         {
-            FetchById, Insert, FetchAll,  Remove
+            FetchById, Insert, FetchAll, Remove
         }
 
         public MongoDbProducer(UriDescriptor uriInformation, Route route)
@@ -24,6 +26,7 @@ namespace app.core.nerve.component.core.mongodb
         public override Exchange Process(Exchange exchange, UriDescriptor endPointDescriptor)
         {
             var host = endPointDescriptor.GetUriProperty("host");
+            var isBodyXml = endPointDescriptor.GetUriProperty<bool>("isBodyXml");
             var database = endPointDescriptor.GetUriProperty("database");
             var collection = endPointDescriptor.GetUriProperty("collection");
             var createCollection = endPointDescriptor.GetUriProperty<bool>("createCollection");
@@ -35,9 +38,17 @@ namespace app.core.nerve.component.core.mongodb
             if (!db.CollectionExists(collection) && createCollection)
                 db.CreateCollection(collection);
 
-            var doc = BsonDocument.Parse(exchange.InMessage.Body.ToString());
+            var bson = exchange.InMessage.Body.ToString();
 
-            ServeOperation(db, exchange, endPointDescriptor, doc, operation, collection);
+            if (isBodyXml)
+            {
+                var doc = new XmlDocument();
+                doc.LoadXml(exchange.InMessage.Body.ToString());
+                bson = JsonConvert.SerializeXmlNode(doc);
+            }
+            var bsonDoc = BsonDocument.Parse(bson);
+
+            ServeOperation(db, exchange, endPointDescriptor, bsonDoc, operation, collection);
             return exchange;
         }
 

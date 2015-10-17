@@ -14,11 +14,31 @@
       <property key="CacheType" value="${cacheType}"/>
     </propertys>
   </bean>
+
+  <bean id="httpConfig" class="app.core.nerve.utility.Configuration">
+    <propertys>
+      <property key="ESBJWTSharedKey" value="GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk"/>
+      <property key="ServerPort" value="9566"/>
+      <property key="MongoDbPort" value="27000"/>
+      <property key="AmqTestPort" value="61616"/>
+      <property key="HttpTestPort" value="5600"/>
+      <property key="SocketTimeOut" value="6000"/>
+      <property key="CronConfig" value="0 * 12 * * ?"/>
+      <property key="ServerPath" value="api/v2/paydirect"/>
+      <property key="CacheType" value="${cacheType}"/>
+    </propertys>
+  </bean>
   
   <bean id="jsonValidator2" class="tcp.consumer.bundle.JsonValidator"/>
+  <bean id="choiceManager" class="tcp.consumer.bundle.impl.ChoiceManager"/>
   
   <routecontext id="myId2">
 
+    <route>
+      <from uri="direct:httpOne"/>
+      <to  uri="log2:${config3.DefaultLogPathRoot}\wowzerWorks.log?logType=file"/>
+    </route>
+    
     <route>
       <from uri="http:127.0.0.1?port=${config3.ServerPort};initialDelay=1000;path=${config3.ServerPath}"/>
       <to uri="xmltojson:jConvert?useout=false;reverse=true"/>
@@ -26,9 +46,21 @@
     </route>
 
     <route>
-      <from uri="http:127.0.0.1?port=9566;initialDelay=1000;path=api/v2/paydirect"/>
+      <from uri="http:127.0.0.1?port=${httpConfig.ServerPort};initialDelay=1000;path=${httpConfig.ServerPath}"/>
       <to uri="xmltojson:jConvert?useout=false;reverse=true"/>
-      <process ref="jsonValidator2"/>
+      
+      <choice>
+        <when>
+          <method bean="choiceManager" method="IsPaymentValid"/>
+          <wiretap uri="direct:httpOne"/>
+        </when>
+      </choice>
+
+      <loop>
+        <count>2</count>
+        <to uri="mongodb:myDb?database=local;operation=insert;host=localhost:27000;collection=user_info;createCollection=true;isBodyXml=true"/>
+      </loop>
+      
     </route>
     
   </routecontext>
