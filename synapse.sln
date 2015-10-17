@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app.core", "app.core\app.core.csproj", "{C8C59F6C-6169-4C61-88C1-4CA8DD1FEC2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "console.client", "console.client\console.client.csproj", "{D0132A4B-BC08-404B-A9AD-73E94F173862}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "camelcontext.server", "camelcontext.server\camelcontext.server.csproj", "{45F5D6F1-09B3-409F-AA8A-2025DBD69BC6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcp.consumer.bundle", "tcp.consumer.bundle\tcp.consumer.bundle.csproj", "{B76C6227-0AFC-4E2C-98F8-81CD947BE596}"
@@ -27,10 +25,6 @@ Global
 		{C8C59F6C-6169-4C61-88C1-4CA8DD1FEC2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8C59F6C-6169-4C61-88C1-4CA8DD1FEC2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8C59F6C-6169-4C61-88C1-4CA8DD1FEC2F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D0132A4B-BC08-404B-A9AD-73E94F173862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0132A4B-BC08-404B-A9AD-73E94F173862}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0132A4B-BC08-404B-A9AD-73E94F173862}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0132A4B-BC08-404B-A9AD-73E94F173862}.Release|Any CPU.Build.0 = Release|Any CPU
 		{45F5D6F1-09B3-409F-AA8A-2025DBD69BC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{45F5D6F1-09B3-409F-AA8A-2025DBD69BC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45F5D6F1-09B3-409F-AA8A-2025DBD69BC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
