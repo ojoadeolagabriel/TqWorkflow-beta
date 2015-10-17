@@ -23,43 +23,5 @@ namespace camelcontext.server
             Camel.StartEngine();
             Console.ReadLine();
         }
-
-        /// <summary>
-        /// Get Resource Text File
-        /// </summary>
-        /// <param name="resource"></param>
-        /// <param name="filename"></param>
-        /// <returns></returns>
-        public string GetResourceTextFile(string resource, string filename)
-        {
-            string result;
-
-            var assembly = Assembly.LoadFile(filename);
-            using (var stream = assembly.GetManifestResourceStream(resource))
-            {
-                if (stream == null) 
-                    return null;
-                using (var sr = new StreamReader(stream))
-                {
-                    result = sr.ReadToEnd();
-                }
-            }
-            return result;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private static List<string> CamelFilePath
-        {
-            get
-            {
-                var config = new Configuration();
-                var directFile = string.Format("{0}\\camel.xml", config.ApplicationConfigRootFolderPath);
-
-                var paths = new List<string> { directFile };
-                return paths;
-            }
-        }
     }
 }
