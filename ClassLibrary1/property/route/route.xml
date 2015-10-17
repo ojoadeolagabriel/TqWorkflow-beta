@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<container xmlns:n="http://com.nerveinteract.camel/context">
+
+  <bean id="paydirectConfiguration" class="paymentnotification.generic.bundle.codebase.PaydirectConfiguration">
+    <propertys>
+      <property key="IsGenericConfiguration" value="false"/>
+    </propertys>
+  </bean>
+
+  <bean id="httpGenericChecker" class="paymentnotification.generic.bundle.codebase.HttpGenericChecker"/>
+  <bean id="httpGenericUtil" class="paymentnotification.generic.bundle.codebase.HttpGenericUtil"/>
+  
+  <routecontext>
+
+    <route>
+      <from uri="direct:httpGenericProcessor"/>
+      <process ref="httpGenericUtil"/>
+    </route>
+
+    <route>
+      <from uri="direct:httpNonGenericProcessor"/>
+    </route>
+    
+    <route>
+      <from uri="http:127.0.0.1?port=${paydirectConfiguration.IntegrationPort};initialDelay=1000;path=${paydirectConfiguration.RestIntegrationPath}"/>
+      <choice>
+        <when>
+          <processor-method bean="httpGenericChecker" method="IsHttpGenericRequest"/>
+          <setheader name="IsHttpGeneric" value="true"/>
+          <wiretap uri="direct:httpGenericProcessor"/>
+        </when>
+        <otherwise>
+          <setheader key="IsHttpGeneric" value="false"/>
+          <wiretap uri="direct:httpNonGenericProcessor"/>
+        </otherwise>
+      </choice>
+      <loadbalance>
+        <to/>
+        <to/>
+        <to/>
+      </loadbalance>
+    </route>
+    
+  </routecontext>
+</container>

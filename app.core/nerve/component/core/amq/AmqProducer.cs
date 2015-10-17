@@ -29,11 +29,11 @@ namespace app.core.nerve.component.core.amq
         }
 
         public override Exchange Process(Exchange exchange, UriDescriptor endPointDescriptor)
-        {           
+        {
             try
-            {                
+            {
                 var connection = CreateConnection(endPointDescriptor);
-                var queue = endPointDescriptor.GetUriProperty("queue", "test_queue");
+                var queue = endPointDescriptor.GetUriProperty("queue", "test_queue." + DateTime.Now.Ticks);
 
                 using (var session = connection.CreateSession())
                 {
@@ -56,8 +56,9 @@ namespace app.core.nerve.component.core.amq
             {
 
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
+                Console.WriteLine("{0}-{1}", exception.Message, exception.StackTrace);
                 exchange.SetException(new Exception("error connecting to amq", exception));
             }
 

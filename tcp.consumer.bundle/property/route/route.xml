@@ -15,7 +15,7 @@
     </propertys>
   </bean>
 
-  <bean id="httpConfig" class="app.core.nerve.utility.Configuration">
+  <bean id="httpConfig" class="app.core.nerve.utility.Configuration" start-method="">
     <propertys>
       <property key="ESBJWTSharedKey" value="GQDstcKsx0NHjPOuXOYg5MbeJ1XT0uFiwDVvVBrk"/>
       <property key="ServerPort" value="9566"/>
@@ -59,8 +59,10 @@
       <loop>
         <count>2</count>
         <to uri="mongodb:myDb?database=local;operation=insert;host=localhost:27000;collection=user_info;createCollection=true;isBodyXml=true"/>
+        <to uri="amq:127.0.0.1:61616?queue=looperQueue"/>
       </loop>
-      
+
+      <setheader name="Age" value="2400"/>
     </route>
     
   </routecontext>

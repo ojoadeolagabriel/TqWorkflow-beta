@@ -25,30 +25,36 @@ namespace app.core.nerve.component.core.mongodb
 
         public override Exchange Process(Exchange exchange, UriDescriptor endPointDescriptor)
         {
-            var host = endPointDescriptor.GetUriProperty("host");
-            var isBodyXml = endPointDescriptor.GetUriProperty<bool>("isBodyXml");
-            var database = endPointDescriptor.GetUriProperty("database");
-            var collection = endPointDescriptor.GetUriProperty("collection");
-            var createCollection = endPointDescriptor.GetUriProperty<bool>("createCollection");
-            var operation = endPointDescriptor.GetUriProperty<OperationType>("operation");
-
-            var client = new MongoClient("mongodb://" + host);
-            var db = client.GetServer().GetDatabase(database);
-
-            if (!db.CollectionExists(collection) && createCollection)
-                db.CreateCollection(collection);
-
-            var bson = exchange.InMessage.Body.ToString();
-
-            if (isBodyXml)
+            try
             {
-                var doc = new XmlDocument();
-                doc.LoadXml(exchange.InMessage.Body.ToString());
-                bson = JsonConvert.SerializeXmlNode(doc);
-            }
-            var bsonDoc = BsonDocument.Parse(bson);
+                var host = endPointDescriptor.GetUriProperty("host");
+                var isBodyXml = endPointDescriptor.GetUriProperty<bool>("isBodyXml");
+                var database = endPointDescriptor.GetUriProperty("database");
+                var collection = endPointDescriptor.GetUriProperty("collection");
+                var createCollection = endPointDescriptor.GetUriProperty<bool>("createCollection");
+                var operation = endPointDescriptor.GetUriProperty<OperationType>("operation");
 
-            ServeOperation(db, exchange, endPointDescriptor, bsonDoc, operation, collection);
+                var client = new MongoClient("mongodb://" + host);
+                var db = client.GetServer().GetDatabase(database);
+
+                if (!db.CollectionExists(collection) && createCollection)
+                    db.CreateCollection(collection);
+
+                var bson = exchange.InMessage.Body.ToString();
+
+                if (isBodyXml)
+                {
+                    var doc = new XmlDocument();
+                    doc.LoadXml(exchange.InMessage.Body.ToString());
+                    bson = JsonConvert.SerializeXmlNode(doc);
+                }
+                var bsonDoc = BsonDocument.Parse(bson);
+                ServeOperation(db, exchange, endPointDescriptor, bsonDoc, operation, collection);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("{0}-{1}", exception.Message, exception.StackTrace);
+            }
             return exchange;
         }
 

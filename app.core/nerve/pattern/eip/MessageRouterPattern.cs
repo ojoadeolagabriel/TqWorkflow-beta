@@ -58,6 +58,9 @@ namespace app.core.nerve.pattern.eip
                 case "method":
                     return ProcessBean(conditionXml, exchange);
                     break;
+                case "processor-method":
+                    return ProcessExchangeBean(conditionXml, exchange);
+                    break;
                 default:
                     return false;
             }
@@ -69,7 +72,7 @@ namespace app.core.nerve.pattern.eip
         private static bool ProcessBean(XElement conditionXml, Exchange exchange)
         {
             if (conditionXml == null)
-                return false;   
+                return false;
 
             var bean = conditionXml.Attribute("bean");
             var method = conditionXml.Attribute("method");
@@ -81,7 +84,26 @@ namespace app.core.nerve.pattern.eip
             if (methodInst == null)
                 return false;
 
-            var result  = methodInst.Invoke(beanObj, null);
+            var result = methodInst.Invoke(beanObj, null);
+            return Convert.ToBoolean(result);
+        }
+
+        private static bool ProcessExchangeBean(XElement conditionXml, Exchange exchange)
+        {
+            if (conditionXml == null)
+                return false;
+
+            var bean = conditionXml.Attribute("bean");
+            var method = conditionXml.Attribute("method");
+            if (bean == null || method == null)
+                return false;
+
+            var beanObj = Camel.Registry[bean.Value];
+            var methodInst = beanObj.GetType().GetMethod(method.Value, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+            if (methodInst == null)
+                return false;
+
+            var result = methodInst.Invoke(beanObj, new object[] { exchange });
             return Convert.ToBoolean(result);
         }
 
