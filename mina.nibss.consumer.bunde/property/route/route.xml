@@ -21,6 +21,14 @@
     <route>
       <from uri="mina:127.0.0.1?port=9905;timeout=${config3.SocketTimeOut}"/>
     </route>
+
+    <route>
+      <from uri="mina:127.0.0.1?port=9906;timeout=${config3.SocketTimeOut}"/>
+    </route>
+
+    <route>
+      <from uri="mina:127.0.0.1?port=9907;timeout=${config3.SocketTimeOut}"/>
+    </route>
     
   </routecontext>
 </container>

@@ -18,7 +18,11 @@ namespace app.core.nerve.facade
 
         public static void BuildNamespaces(List<string> namespaces)
         {
-            namespaces.ForEach(c => PermissibleNamespaces.Enqueue(c));
+            namespaces.ForEach(c =>
+            {
+                if (!PermissibleNamespaces.Contains(c))
+                    PermissibleNamespaces.Enqueue(c);
+            });
         }
 
 

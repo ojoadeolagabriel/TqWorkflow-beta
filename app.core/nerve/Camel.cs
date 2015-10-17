@@ -51,8 +51,9 @@ namespace app.core.nerve
             }
         }
 
-        public static void LoadBundle(List<string> bundleDllPaths)
+        public static void LoadBundle(List<string> bundleDllPaths, List<string> namespaces = null)
         {
+            InitDependencyLibs(namespaces ?? new List<string> { "app.core.nerve.component.core" });
             foreach (var filePath in bundleDllPaths)
             {
                 try
@@ -150,7 +151,8 @@ namespace app.core.nerve
 
         public static void StartAllRoutes()
         {
-            Console.WriteLine("Starting all components");
+            Console.WriteLine(Environment.NewLine);
+            Console.WriteLine("Starting all components...");
             RouteCollection.ToList().ForEach(c => c.Value.CurrentRouteStep.ProcessChannel());
         }
     }

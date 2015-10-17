@@ -20,7 +20,13 @@
   <routecontext id="myId2">
 
     <route>
-      <from uri="http:127.0.0.1?port=9033;initialDelay=1000;path=${config3.ServerPath}"/>
+      <from uri="http:127.0.0.1?port=${config3.ServerPort};initialDelay=1000;path=${config3.ServerPath}"/>
+      <to uri="xmltojson:jConvert?useout=false;reverse=true"/>
+      <process ref="jsonValidator2"/>
+    </route>
+
+    <route>
+      <from uri="http:127.0.0.1?port=9566;initialDelay=1000;path=api/v2/paydirect"/>
       <to uri="xmltojson:jConvert?useout=false;reverse=true"/>
       <process ref="jsonValidator2"/>
     </route>

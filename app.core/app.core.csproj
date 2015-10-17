@@ -154,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="application\error\AppCoreException.cs" />
+    <Compile Include="brainiac\RuleEngineCore.cs" />
     <Compile Include="data\BasicAdo\Blitz.cs" />
     <Compile Include="data\CoreDao.cs" />
     <Compile Include="nerve\bundle\BundleInfo.cs" />
@@ -292,6 +293,8 @@
   <ItemGroup>
     <Folder Include="application\error\util\" />
     <Folder Include="application\reflection\" />
+    <Folder Include="brainiac\facade\" />
+    <Folder Include="brainiac\utility\" />
     <Folder Include="nerve\component\core\http\util\" />
     <Folder Include="nerve\component\core\mina\util\" />
     <Folder Include="nerve\component\core\mssql\" />
@@ -299,6 +302,7 @@
     <Folder Include="nerve\component\core\websocket\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="brainiac\resources\rule.xml" />
     <Content Include="dependency\Apache.NMS.ActiveMQ.dll" />
     <Content Include="dependency\JWT.dll" />
     <Content Include="dependency\log4net.dll" />

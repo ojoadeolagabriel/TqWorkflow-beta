@@ -52,7 +52,7 @@ namespace app.core.nerve.component.core.http
                 if (!uriPref.EndsWith("/"))
                     uriPref = uriPref + "/";
 
-                Console.WriteLine("Listening in on: {0}", uriPref);
+                Console.WriteLine("Activiating HTTP Endpoint: {0}", uriPref);
                 HttpListener.Prefixes.Add(uriPref);
 
                 HttpListener.Start();
@@ -62,9 +62,9 @@ namespace app.core.nerve.component.core.http
                     HttpListener = HttpListener
                 });
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-
+                Console.WriteLine("{0}-{1}",exception.Message,exception.StackTrace);
             }
         }
 

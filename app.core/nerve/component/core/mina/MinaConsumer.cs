@@ -33,32 +33,39 @@ namespace app.core.nerve.component.core.mina
 
         private void PollHandler()
         {
-            var exchange = new Exchange(_processor.Route);
-            var initialDelay = _processor.UriInformation.GetUriProperty("initialDelay", 1000);
-            var poll = _processor.UriInformation.GetUriProperty("poll", 1000);
-            var parallel = _processor.UriInformation.GetUriProperty("parallel", true);
-            var timeout = _processor.UriInformation.GetUriProperty("timeout", 10000, exchange);
-            var maxThreadCount = _processor.UriInformation.GetUriProperty("threadCount", 2, exchange);
-            var sync = _processor.UriInformation.GetUriProperty("sync", false);
-            var textline = _processor.UriInformation.GetUriProperty("textline", true);
-            var encoding = _processor.UriInformation.GetUriProperty("encoding", "");
-            var port = _processor.UriInformation.GetUriProperty("port", 7000, exchange);
-            var ip = _processor.UriInformation.ComponentPath;
-
-            //new
-            if (TcpListener == null)
-                TcpListener = new TcpListener(IPAddress.Parse(ip), port);
-
-            TcpListener.Server.SendTimeout = timeout;
-            TcpListener.Server.ReceiveTimeout = timeout;
-            TcpListener.Start(1000);
-
-            Console.WriteLine("listening for incomming connections @ {0}:{1}", ip, port);
-            TcpListener.BeginAcceptTcpClient(ProcessIncommingClientAsync, new PassData
+            try
             {
-                Exchange = exchange,
-                TcpListener = TcpListener
-            });
+                var exchange = new Exchange(_processor.Route);
+                var initialDelay = _processor.UriInformation.GetUriProperty("initialDelay", 1000);
+                var poll = _processor.UriInformation.GetUriProperty("poll", 1000);
+                var parallel = _processor.UriInformation.GetUriProperty("parallel", true);
+                var timeout = _processor.UriInformation.GetUriProperty("timeout", 10000, exchange);
+                var maxThreadCount = _processor.UriInformation.GetUriProperty("threadCount", 2, exchange);
+                var sync = _processor.UriInformation.GetUriProperty("sync", false);
+                var textline = _processor.UriInformation.GetUriProperty("textline", true);
+                var encoding = _processor.UriInformation.GetUriProperty("encoding", "");
+                var port = _processor.UriInformation.GetUriProperty("port", 7000, exchange);
+                var ip = _processor.UriInformation.ComponentPath;
+
+                //new
+                if (TcpListener == null)
+                    TcpListener = new TcpListener(IPAddress.Parse(ip), port);
+
+                TcpListener.Server.SendTimeout = timeout;
+                TcpListener.Server.ReceiveTimeout = timeout;
+                TcpListener.Start(1000);
+
+                Console.WriteLine("Activiating TCP Endpoint {0}:{1}", ip, port);
+                TcpListener.BeginAcceptTcpClient(ProcessIncommingClientAsync, new PassData
+                {
+                    Exchange = exchange,
+                    TcpListener = TcpListener
+                });
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("{0}-{1}",exception.Message,exception.StackTrace);
+            }
         }
 
 

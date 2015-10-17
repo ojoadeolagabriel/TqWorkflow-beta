@@ -17,7 +17,7 @@ namespace camelcontext.server
     {
         static void Main(string[] args)
         {
-            Camel.LoadCamelContext(CamelFilePath, assemblies: new List<string> { "camelcontext.server" });
+            //Camel.LoadCamelContext(CamelFilePath, assemblies: new List<string> { "camelcontext.server" });
 
             Camel.LoadBundle(new List<string>{ @"C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\tcp.consumer.bundle\bin\Debug\tcp.consumer.bundle.dll" });
             Camel.LoadBundle(new List<string> { @"C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\mina.nibss.consumer.bunde\bin\Debug\mina.nibss.consumer.bundle.dll" });
