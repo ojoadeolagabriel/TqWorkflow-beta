@@ -149,6 +149,12 @@ namespace app.core.nerve
             EndPointBuilder.BuildNamespaces(namespaces);
         }
 
+        public static void StartEngine()
+        {
+            StartAllRoutes();
+            StartSedaProcessor();
+        }
+
         public static void StartAllRoutes()
         {
             Console.WriteLine(Environment.NewLine);
