@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -39,7 +40,7 @@ namespace app.core.nerve.component.core.mina
                 var initialDelay = _processor.UriInformation.GetUriProperty("initialDelay", 1000);
                 var poll = _processor.UriInformation.GetUriProperty("poll", 1000);
                 var parallel = _processor.UriInformation.GetUriProperty("parallel", true);
-                var timeout = _processor.UriInformation.GetUriProperty("timeout", 10000, exchange);
+                var timeout = _processor.UriInformation.GetUriProperty("timeout", 1000000, exchange);
                 var maxThreadCount = _processor.UriInformation.GetUriProperty("threadCount", 2, exchange);
                 var sync = _processor.UriInformation.GetUriProperty("sync", false);
                 var textline = _processor.UriInformation.GetUriProperty("textline", true);
@@ -64,7 +65,7 @@ namespace app.core.nerve.component.core.mina
             }
             catch (Exception exception)
             {
-                Console.WriteLine("{0}-{1}",exception.Message,exception.StackTrace);
+                Console.WriteLine("{0}-{1}", exception.Message, exception.StackTrace);
             }
         }
 
@@ -78,36 +79,40 @@ namespace app.core.nerve.component.core.mina
             var exchange = passData.Exchange;
             try
             {
-                
+
                 var client = listener.EndAcceptTcpClient(res);
 
                 var messageBuilder = new StringBuilder();
                 var buffer = new byte[1];
 
-                using (var ns = client.GetStream())
+                using (var networkStream = client.GetStream())
                 {
-                    int totalBytes;
-                    while ((totalBytes = ns.Read(buffer, 0, 1)) > 0)
+                    if (networkStream.CanRead)
                     {
-                        var data = Encoding.ASCII.GetString(buffer, 0, totalBytes);
-                        messageBuilder.Append(data);
+                        // Buffer to store the response bytes.
+                        var readBuffer = new byte[client.ReceiveBufferSize];
+                        using (var writer = new MemoryStream())
+                        {
+                            do
+                            {
+                                var numberOfBytesRead = networkStream.Read(readBuffer, 0, readBuffer.Length);
+                                if (numberOfBytesRead <= 0)
+                                {
+                                    break;
+                                }
+                                writer.Write(readBuffer, 0, numberOfBytesRead);
+                            } while (networkStream.DataAvailable);
+                            exchange.InMessage.Body = Encoding.UTF8.GetString(writer.ToArray());
+                        }
+                        _processor.Process(exchange);
+                        exchange.OutMessage.Body = exchange.InMessage.Body;
+                        Camel.TryLog(exchange, "consumer", _processor.UriInformation.ComponentName);
 
-                        if (messageBuilder.ToString().EndsWith(Environment.NewLine) || messageBuilder.ToString().EndsWith("\\r\\n"))
-                            break;
+                        var outputMessage = Encoding.ASCII.GetBytes(exchange.OutMessage.Body.ToString());
+                        networkStream.Write(outputMessage, 0, outputMessage.Length);
+                        networkStream.Flush();
+                        networkStream.Close();
                     }
-
-                    exchange.InMessage.Body = messageBuilder;
-                    _processor.Process(exchange);
-
-                    exchange.OutMessage.Body = exchange.InMessage.Body;
-
-                    Camel.TryLog(exchange, "consumer", _processor.UriInformation.ComponentName);
-                    
-                    var outputMessage = Encoding.ASCII.GetBytes(exchange.OutMessage.Body.ToString());
-                    ns.Write(outputMessage, 0, outputMessage.Length);
-                    ns.Flush();
-                    ns.Close();
-
                     throw new Exception();
                 }
             }

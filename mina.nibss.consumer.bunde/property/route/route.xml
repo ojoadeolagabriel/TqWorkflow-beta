@@ -16,7 +16,7 @@
   </bean>
  
   
-  <routecontext id="myId3">
+  <routecontext id="myId33">
 
     <route>
       <from uri="mina:127.0.0.1?port=9905;timeout=${config3.SocketTimeOut}"/>

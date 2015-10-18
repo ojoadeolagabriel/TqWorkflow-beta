@@ -23,22 +23,27 @@
     
     <route>
       <from uri="http:127.0.0.1?port=${paydirectConfiguration.IntegrationPort};initialDelay=1000;path=${paydirectConfiguration.RestIntegrationPath}"/>
+      
       <choice>
         <when>
           <processor-method bean="httpGenericChecker" method="IsHttpGenericRequest"/>
           <setheader name="IsHttpGeneric" value="true"/>
+          <setheader name="tcpPort" value="9906"/>
           <wiretap uri="direct:httpGenericProcessor"/>
+          <to uri="mina:127.0.0.1?port=${in.header.tcpPort}"/>
         </when>
         <otherwise>
           <setheader key="IsHttpGeneric" value="false"/>
           <wiretap uri="direct:httpNonGenericProcessor"/>
         </otherwise>
       </choice>
+      
       <loadbalance>
         <to/>
         <to/>
         <to/>
       </loadbalance>
+      
     </route>
     
   </routecontext>

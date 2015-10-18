@@ -1,4 +1,5 @@
 ﻿using app.core.nerve.dto;
+using app.core.nerve.facade;
 
 namespace app.core.nerve.component.core.mina
 {
@@ -24,6 +25,12 @@ namespace app.core.nerve.component.core.mina
             {
                 _consumer.Execute();
             }
+        }
+
+        public override void Send(Exchange exchange, UriDescriptor endPointDescriptor)
+        {
+            var producer = CreateProducer();
+            producer.Process(exchange, endPointDescriptor);
         }
 
         public DefaultConsumer CreateConsumer()

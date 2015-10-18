@@ -22,7 +22,7 @@ namespace app.core.nerve.dto
             obj.Name = XmlHelper.GetValue<string>(xmlData, "name");
             obj.ModelVersion = XmlHelper.GetValue<string>(xmlData, "version");
             obj.Author = XmlHelper.GetValue(xmlData, "author", "system");
-            obj.GroupId = XmlHelper.GetValue(xmlData, "groupid", "nerve");
+            obj.GroupId = XmlHelper.GetValue(xmlData, "groupid", "com.nerve.group");
 
             return obj;
         }
