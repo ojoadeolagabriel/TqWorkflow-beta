@@ -85,6 +85,5 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf\bin\ko\Sy
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf\bin\ru\System.Spatial.resources.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf\bin\zh-Hant\System.Spatial.resources.dll
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf\obj\Debug\karaf.csprojResolveAssemblyReference.cache
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf\obj\Debug\karaf.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf\obj\Debug\karaf.pdb

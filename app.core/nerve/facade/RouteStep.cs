@@ -15,6 +15,7 @@ namespace app.core.nerve.facade
         public RouteStep NextTag;
 
         private readonly string _componentPathInfo = null;
+
         public string ComponentPathInfo
         {
             get

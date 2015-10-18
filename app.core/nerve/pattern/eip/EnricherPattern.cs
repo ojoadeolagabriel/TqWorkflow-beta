@@ -28,12 +28,8 @@ namespace app.core.nerve.pattern.eip
                     return;
 
                 var uriInfo = UriDescriptor.Parse(uri.Value, exchange);
-                var route = Camel.GetRouteBy(uriInfo.ComponentPath);
-
-                if (route == null) return;
-
                 var clonedExchange = exchange.CloneExchange();
-                route.CurrentRouteStep.ProcessChannel(clonedExchange);
+                EndPointBuilder.HandleTo(uriInfo, clonedExchange, routeObj);
 
                 //fetch strategy
                 var stragegyObj = Camel.Registry[strategyref.Value] as AggregationStrategy;

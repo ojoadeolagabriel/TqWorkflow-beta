@@ -14,7 +14,8 @@
       <property key="CacheType" value="${cacheType}"/>
     </propertys>
   </bean>
- 
+
+  <bean id="getMyDateTimeProcessorFromRequest" class="mina.nibss.consumer.bundle.codebase.GetDateTimeProcessor"/>
   
   <routecontext id="myId33">
 
@@ -24,6 +25,7 @@
 
     <route>
       <from uri="mina:127.0.0.1?port=9906;timeout=${config3.SocketTimeOut}"/>
+      <process ref="getMyDateTimeProcessorFromRequest"/>
     </route>
 
     <route>
