@@ -17,6 +17,7 @@ namespace app.core.nerve
     public class Camel
     {
         public static ConcurrentQueue<string> AssemblyCollection = new ConcurrentQueue<string>();
+        public const string AppCoreDefaultNamespace = "app.core.nerve.component.core";
 
         public static object LoadBean(string type)
         {
@@ -42,7 +43,7 @@ namespace app.core.nerve
         /// <param name="nameSpaces"></param>
         public static void LoadCamelContext(List<string> path, List<string> nameSpaces = null, List<string> assemblies = null)
         {
-            InitDependencyLibs(nameSpaces ?? new List<string> { "app.core.nerve.component.core" });
+            InitDependencyLibs(nameSpaces ?? new List<string> { AppCoreDefaultNamespace });
             if (assemblies != null) assemblies.ForEach(c => AssemblyCollection.Enqueue(c));
 
             foreach (var filePath in path)
@@ -53,19 +54,18 @@ namespace app.core.nerve
 
         public static void LoadBundle(List<string> bundleDllPaths, List<string> namespaces = null)
         {
-            InitDependencyLibs(namespaces ?? new List<string> { "app.core.nerve.component.core" });
+            InitDependencyLibs(namespaces ?? new List<string> { AppCoreDefaultNamespace });
             foreach (var filePath in bundleDllPaths)
             {
                 try
                 {
-                    
                     var assemName = Path.GetFileNameWithoutExtension(filePath);
                     AssemblyCollection.Enqueue(assemName);
                     CameContextConfigFileInitializer.Initialize(filePath, isBundle: true);
                 }
                 catch (Exception exception)
                 {
-
+                    Console.WriteLine(exception.StackTrace);
                 }
             }
         }

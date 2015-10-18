@@ -289,6 +289,7 @@
     <Compile Include="nerve\utility\XmlHelper.cs" />
     <Compile Include="utility\Blitz.cs" />
     <Compile Include="utility\CsvDao.cs" />
+    <Compile Include="utility\XmlHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="application\error\util\" />

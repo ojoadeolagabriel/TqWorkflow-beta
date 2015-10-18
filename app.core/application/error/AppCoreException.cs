@@ -5,6 +5,7 @@ using System.Text;
 
 namespace app.core.application.error
 {
+    [Serializable]
     public class AppCoreException : Exception
     {
         public AppCoreException(string message = "", Exception exception = null) :

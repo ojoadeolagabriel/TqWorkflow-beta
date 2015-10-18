@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns="http://quartznet.sourceforge.net/JobSchedulingData"
@@ -33,7 +33,7 @@
       </xs:sequence>
       <xs:attribute name="version" type="xs:string">
         <xs:annotation>
-          <xs:documentation>Version of the XML Schema instance</xs:documentation>
+          <xs:documentation>ModelVersion of the XML Schema instance</xs:documentation>
         </xs:annotation>
       </xs:attribute>
     </xs:complexType>

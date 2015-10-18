@@ -52,7 +52,7 @@ namespace app.core.nerve.handlers.routepipeline
                 {
                     var data = sr.ReadToEnd();
                     var obj = DescriptorObject.Init(data);
-                    Console.WriteLine(" version: [{0}], friendly-name: [{1}]", obj.Version, obj.Name);
+                    Console.WriteLine(" version: [{0}], friendly-name: [{1}]", obj.ModelVersion, obj.Name);
                 }
             }
 
