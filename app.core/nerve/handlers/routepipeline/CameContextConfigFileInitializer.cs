@@ -169,20 +169,34 @@ namespace app.core.nerve.handlers.routepipeline
 
                         @params.ToList().ForEach(c =>
                         {
-                            var paramType = c.ParameterType;
-                            var xmlIndex = xmlConstrArgs[c.Position];
-                            var paramValObj = xmlIndex.Attribute("value").Value;
-
-                            var argObj = Convert.ChangeType(paramValObj, paramType);
-                            args.Add(argObj);
+                            try
+                            {
+                                var paramType = c.ParameterType;
+                                var xmlIndex = xmlConstrArgs[c.Position];
+                                var paramValObj = xmlIndex.Attribute("value").Value;
+                                var argObj = Convert.ChangeType(paramValObj, paramType);
+                                args.Add(argObj);
+                            }
+                            catch (Exception exception)
+                            {
+                                var errMsg = exception.Message;
+                            }
                         });
 
-                        bean = Activator.CreateInstance(
-                            type,
-                            BindingFlags.Public | BindingFlags.Instance,
-                            default(Binder),
-                            args.ToArray(),
-                            default(CultureInfo));
+                        //init bean
+                        try
+                        {
+                            bean = Activator.CreateInstance(
+                                               type,
+                                               BindingFlags.Public | BindingFlags.Instance,
+                                               default(Binder),
+                                               args.ToArray(),
+                                               default(CultureInfo));
+                        }
+                        catch
+                        {
+                            continue;
+                        }
                     }
 
                     //process product.
