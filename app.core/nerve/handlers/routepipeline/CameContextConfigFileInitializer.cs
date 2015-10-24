@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -153,8 +154,36 @@ namespace app.core.nerve.handlers.routepipeline
 
                     var type = SimpleExpression.GetBean(@class);// Type.GetType(@class);
                     if (type == null) continue;
+                    object bean = null;
 
-                    var bean = Activator.CreateInstance(type);
+                    var constrArgs = beanXml.Elements("const-arg").Elements("index");
+                    var enumerable = constrArgs as XElement[] ?? constrArgs.ToArray();
+
+                    if (!enumerable.Any())
+                        bean = Activator.CreateInstance(type);
+                    else
+                    {
+                        var @params = type.GetConstructors()[0].GetParameters();
+                        var args = new List<object>();
+                        var xmlConstrArgs = enumerable.ToList();
+
+                        @params.ToList().ForEach(c =>
+                        {
+                            var paramType = c.ParameterType;
+                            var xmlIndex = xmlConstrArgs[c.Position];
+                            var paramValObj = xmlIndex.Attribute("value").Value;
+
+                            var argObj = Convert.ChangeType(paramValObj, paramType);
+                            args.Add(argObj);
+                        });
+
+                        bean = Activator.CreateInstance(
+                            type,
+                            BindingFlags.Public | BindingFlags.Instance,
+                            default(Binder),
+                            args.ToArray(),
+                            default(CultureInfo));
+                    }
 
                     //process product.
                     IList<XElement> xmlColl = null;

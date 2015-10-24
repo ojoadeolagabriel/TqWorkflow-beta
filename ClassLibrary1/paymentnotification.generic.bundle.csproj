@@ -42,6 +42,7 @@
     <Compile Include="codebase\PaydirectConfiguration.cs" />
     <Compile Include="codebase\RemoveRouteAggregationStrategy.cs" />
     <Compile Include="codebase\RequestChecker.cs" />
+    <Compile Include="codebase\StatusObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <container xmlns:n="http://com.nerveinteract.camel/context">
 
+  <bean id="otherConfig" class="paymentnotification.generic.bundle.codebase.StatusObject">
+     <const-arg>
+      <index key="0" value="12"/>
+      <index key="1" value="13"/>
+    </const-arg>
+  
+    <propertys>
+      <property key="A" value="14"/>
+    </propertys>
+  </bean>
+  
   <bean id="paydirectConfiguration" class="paymentnotification.generic.bundle.codebase.PaydirectConfiguration">
     <propertys>
       <property key="IsGenericConfiguration" value="false"/>
@@ -25,13 +36,14 @@
     <route>
       <from uri="http:127.0.0.1?port=${paydirectConfiguration.IntegrationPort};initialDelay=1000;path=${paydirectConfiguration.RestIntegrationPath}"/>
 
-      <choice>
+      <choice>   
         <when>
           <processor-method bean="httpGenericChecker" method="IsHttpGenericRequest"/>
           <setheader name="IsHttpGeneric" value="true"/>
           <setheader name="tcpPort" value="9906"/>
           <wiretap uri="direct:httpGenericProcessor"/>
         </when>
+        
         <otherwise>
           <setheader key="IsHttpGeneric" value="false"/>
           <wiretap uri="direct:httpNonGenericProcessor"/>
@@ -39,7 +51,6 @@
       </choice>
 
       <enrich uri="mina:127.0.0.1?port=${in.header.tcpPort}" strategyref="removeRouteAggregationStrategy"/>
-
     </route>
 
   </routecontext>
