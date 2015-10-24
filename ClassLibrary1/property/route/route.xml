@@ -8,7 +8,7 @@
     </const-arg>
   
     <propertys>
-      <property key="A" value="14"/>
+      <property key="A" value="9906"/>
     </propertys>
   </bean>
   
@@ -40,7 +40,7 @@
         <when>
           <processor-method bean="httpGenericChecker" method="IsHttpGenericRequest"/>
           <setheader name="IsHttpGeneric" value="true"/>
-          <setheader name="tcpPort" value="9906"/>
+          <setheader name="tcpPort" value="${otherConfig.A}"/>
           <wiretap uri="direct:httpGenericProcessor"/>
         </when>
         
