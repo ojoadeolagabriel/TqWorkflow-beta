@@ -10,6 +10,12 @@ namespace app.core.nerve.dto
     public class BundleDescriptorObject
     {
         public string GuidData { get; set; }
+
+        public enum Status
+        {
+            Starting, Stopped, Active, Installed, Stopping
+        }
+
         private BundleDescriptorObject()
         {
 
@@ -26,6 +32,7 @@ namespace app.core.nerve.dto
             obj.GroupId = XmlHelper.GetValue(xmlData, "groupid", "com.nerve.group");
             obj.Priority = XmlHelper.GetValue(xmlData, "priority", "low");
             obj.GuidData = Guid.NewGuid().ToString();
+            obj.BundleStatus = Status.Active;
             return obj;
         }
 
@@ -35,5 +42,6 @@ namespace app.core.nerve.dto
         public string Author { get; set; }
         public string ModelVersion { get; set; }
         public string Name { get; set; }
+        public Status BundleStatus { get; set; }
     }
 }

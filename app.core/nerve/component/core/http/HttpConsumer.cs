@@ -72,42 +72,47 @@ namespace app.core.nerve.component.core.http
         {
             var passData = (PassData)res.AsyncState;
             var listener = passData.HttpListener;
-
+            var client = listener.EndGetContext(res);
             HttpListener.BeginGetContext(ProcessIncommingClientAsync, new PassData
             {
                 Exchange = new Exchange(_httpProcessor.Route),
                 HttpListener = listener
             });
 
-            var exchange = passData.Exchange;
-            var client = listener.EndGetContext(res);
-            var body = new StreamReader(client.Request.InputStream).ReadToEnd();
-
-            BuildRequestMessage(client, exchange, body);
-            exchange.InMessage.Body = body;
-            Camel.TryLog(exchange, "consumer", _httpProcessor.UriInformation.ComponentName);
-
-            _httpProcessor.Process(exchange);
-
-            var b = Encoding.UTF8.GetBytes(exchange.InMessage.Body.ToString());
-            client.Response.StatusCode = 200;
-            client.Response.KeepAlive = false;
-
-            foreach (var headers in exchange.InMessage.HeaderCollection)
+            if (_httpProcessor.Route.BundleInfo.BundleStatus != BundleDescriptorObject.Status.Active)
             {
-                try
+                Console.WriteLine("Bundle [{0}]: NotActive", _httpProcessor.Route.BundleInfo.Name);
+            }
+            else
+            {               
+                var exchange = passData.Exchange;
+                var body = new StreamReader(client.Request.InputStream).ReadToEnd();
+
+                BuildRequestMessage(client, exchange, body);
+                exchange.InMessage.Body = body;
+                Camel.TryLog(exchange, "consumer", _httpProcessor.UriInformation.ComponentName);
+                _httpProcessor.Process(exchange);
+                var b = Encoding.UTF8.GetBytes(exchange.InMessage.Body.ToString());
+                
+                foreach (var headers in exchange.InMessage.HeaderCollection)
                 {
-                    client.Response.Headers.Add(headers.Key, WebUtility.HtmlEncode(headers.Value.ToString()));
+                    try
+                    {
+                        client.Response.Headers.Add(headers.Key, WebUtility.HtmlEncode(headers.Value.ToString()));
+                    }
+                    catch (Exception exception)
+                    {
+                        exchange.Exception.Push(exception);
+                    }
                 }
-                catch (Exception exception)
-                {
-                    exchange.Exception.Push(exception);
-                }
+
+                client.Response.ContentLength64 = b.Length;
+                var output = client.Response.OutputStream;
+                output.Write(b, 0, b.Length);
             }
 
-            client.Response.ContentLength64 = b.Length;
-            var output = client.Response.OutputStream;
-            output.Write(b, 0, b.Length);
+            client.Response.StatusCode = 200;
+            client.Response.KeepAlive = false;
             client.Response.Close();
         }
 

@@ -7,6 +7,7 @@ using System.Text;
 using app.core.data;
 using app.core.nerve;
 using app.core.nerve.dto;
+using app.core.nerve.management;
 using app.core.nerve.utility;
 using app.core.utility;                                                                                             
 using camelcontext.server.facade.util;
@@ -23,6 +24,8 @@ namespace camelcontext.server
             Camel.LoadBundle(new List<string> { @"C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.ftp.consumer.bundle\bin\Debug\autopay.ftp.consumer.bundle.dll" });
         
             Camel.StartEngine();
+            SystemBundleManagement.StartService("http://127.0.0.1:7098/api/v2/app.management.api/");
+
             Console.ReadLine();
         }
     }

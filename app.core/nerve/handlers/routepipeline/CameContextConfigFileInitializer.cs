@@ -54,6 +54,7 @@ namespace app.core.nerve.handlers.routepipeline
                     var data = sr.ReadToEnd();
                     var obj = BundleDescriptorObject.Init(data);
                     Console.WriteLine(" version: [{0}], friendly-name: [{1}]", obj.ModelVersion, obj.Name);
+                    return obj;
                 }
             }
 

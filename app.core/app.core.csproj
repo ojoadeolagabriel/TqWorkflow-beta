@@ -179,6 +179,7 @@
     <Compile Include="nerve\dto\BundleDescriptorObject.cs" />
     <Compile Include="nerve\handlers\tag\LoopTag.cs" />
     <Compile Include="nerve\language\RouteBuilder.cs" />
+    <Compile Include="nerve\management\SystemBundleManagement.cs" />
     <Compile Include="nerve\strategy\AggregationStrategy.cs" />
     <Compile Include="nerve\strategy\ISplitterStrategy.cs" />
     <Compile Include="nerve\sys\MongoLogger.cs" />
@@ -308,6 +309,8 @@
     <Folder Include="nerve\component\core\mssql\" />
     <Folder Include="nerve\component\core\restclient\" />
     <Folder Include="nerve\component\core\websocket\" />
+    <Folder Include="nerve\component\events\" />
+    <Folder Include="nerve\component\management\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="brainiac\resources\rule.xml" />
