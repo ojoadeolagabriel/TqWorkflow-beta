@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<container xmlns:n="http://com.nerveinteract.camel/context">
+
+  <routecontext>
+    <route>
+      <from uri="ftp:testftp?host=demo.wftpserver.com;port=2222;username=demo-user;password=demo-user;secure=true;destination=C:\Users\Adeola Ojo\Downloads\sftp_folder"/>
+    </route>
+  </routecontext>
+  
+</container>

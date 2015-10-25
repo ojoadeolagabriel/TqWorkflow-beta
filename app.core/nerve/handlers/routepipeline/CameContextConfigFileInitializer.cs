@@ -152,7 +152,7 @@ namespace app.core.nerve.handlers.routepipeline
                     var id = beanXml.Attributes("id").First().Value;
                     var @class = beanXml.Attributes("class").First().Value;
 
-                    var type = SimpleExpression.GetBean(@class);// Type.GetType(@class);
+                    var type = SimpleExpression.GetBean(@class);
                     if (type == null) continue;
                     object bean = null;
 
@@ -177,9 +177,10 @@ namespace app.core.nerve.handlers.routepipeline
                                 var argObj = Convert.ChangeType(paramValObj, paramType);
                                 args.Add(argObj);
                             }
-                            catch (Exception exception)
+                            catch (Exception exc)
                             {
-                                var errMsg = exception.Message;
+                                var msg = exc.Message;
+                                Console.WriteLine("{0} => {1}", msg, exc.StackTrace);
                             }
                         });
 
@@ -214,10 +215,12 @@ namespace app.core.nerve.handlers.routepipeline
                     {
                         foreach (var item in xmlColl)
                         {
+                            string key = "", @value = "";
+
                             try
                             {
-                                var key = item.Attribute("key").Value;
-                                var @value = item.Attribute("value").Value;
+                                key = item.Attribute("key").Value;
+                                @value = item.Attribute("value").Value;
 
                                 var prop = bean.GetType().GetProperty(key);
                                 if (prop == null) continue;
@@ -226,9 +229,10 @@ namespace app.core.nerve.handlers.routepipeline
                                 var res = SimpleExpression.ResolveObjectFromRegistry(@value);
                                 prop.SetValue(bean, Convert.ChangeType(res, prop.PropertyType), null);
                             }
-                            catch (Exception exception)
+                            catch (Exception exc)
                             {
-
+                                var msg = exc.Message + string.Format(" [{0}] - [{1}] ", key, @value);
+                                Console.WriteLine("{0} => {1}", msg, exc.StackTrace);
                             }
                         }
                     }
@@ -238,6 +242,7 @@ namespace app.core.nerve.handlers.routepipeline
                 catch (Exception exc)
                 {
                     var msg = exc.Message;
+                    Console.WriteLine("{0} => {1}", msg, exc.StackTrace);
                 }
             }
         }

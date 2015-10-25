@@ -122,7 +122,7 @@ namespace app.core.nerve.component.core.http
             var data = string.Format(msg, client.Request.HttpMethod, client.Request.Url, "HTTP/1.1",
                 client.Request.UserHostName, client.Request.ContentType, client.Request.ContentLength64, body);
 
-            exchange.InMessage.SetHeader("HttpRequest", data);
+            exchange.InMessage.SetHeader("HttpRequestLog", data);
         }
     }
 }

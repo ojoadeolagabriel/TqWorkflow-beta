@@ -52,6 +52,7 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\obj\Debug\app.core.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\obj\Debug\app.core.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\Projects\TqWorkflow\TqWorkflow\app.core\obj\Debug\app.core.csprojResolveAssemblyReference.cache
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Quartz.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\app.core.dll.config
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\app.core.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\app.core.pdb
@@ -97,7 +98,6 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\De
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\MongoDB.Bson.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\MongoDB.Driver.xml
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Quartz.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Quartz.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\System.IO.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\System.Net.Http.xml
@@ -110,3 +110,5 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\De
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\obj\Debug\app.core.csproj.App.config
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\obj\Debug\app.core.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\obj\Debug\app.core.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Renci.SshNet.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\obj\Debug\app.core.csprojResolveAssemblyReference.cache

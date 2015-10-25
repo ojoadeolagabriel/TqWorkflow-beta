@@ -20,6 +20,7 @@ namespace camelcontext.server
             Camel.LoadBundle(new List<string>{ @"C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\tcp.consumer.bundle\bin\Debug\tcp.consumer.bundle.dll" });
             Camel.LoadBundle(new List<string> { @"C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\mina.nibss.consumer.bunde\bin\Debug\mina.nibss.consumer.bundle.dll" });
             Camel.LoadBundle(new List<string> { @"C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\ClassLibrary1\bin\Debug\paymentnotification.generic.bundle.dll" });
+            Camel.LoadBundle(new List<string> { @"C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.ftp.consumer.bundle\bin\Debug\autopay.ftp.consumer.bundle.dll" });
         
             Camel.StartEngine();
             Console.ReadLine();

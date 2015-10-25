@@ -6,7 +6,6 @@
       <index key="0" value="12"/>
       <index key="1" value="13"/>
     </const-arg>
-  
     <propertys>
       <property key="A" value="9906"/>
     </propertys>
@@ -51,6 +50,48 @@
       </choice>
 
       <enrich uri="mina:127.0.0.1?port=${in.header.tcpPort}" strategyref="removeRouteAggregationStrategy"/>
+    </route>
+
+    <route>
+      <from uri="http:127.0.0.1?port=2390;initialDelay=1000;path=food.network/apiv2"/>
+
+      <choice>
+        <when>
+          <processor-method bean="httpGenericChecker" method="IsHttpGenericRequest"/>
+          <setheader name="IsHttpGeneric" value="true"/>
+          <setheader name="tcpPort" value="${otherConfig.A}"/>
+          <wiretap uri="direct:httpGenericProcessor"/>
+        </when>
+
+        <otherwise>
+          <setheader key="IsHttpGeneric" value="false"/>
+          <wiretap uri="direct:httpNonGenericProcessor"/>
+        </otherwise>
+      </choice>
+
+      <enrich uri="mina:127.0.0.1?port=${in.header.tcpPort}" strategyref="removeRouteAggregationStrategy"/>
+      <to uri="xmltojson"/>
+    </route>
+
+    <route>
+      <from uri="http:127.0.0.1?port=2391;initialDelay=1000;path=food.network/apiv3"/>
+
+      <choice>
+        <when>
+          <processor-method bean="httpGenericChecker" method="IsHttpGenericRequest"/>
+          <setheader name="IsHttpGeneric" value="true"/>
+          <setheader name="tcpPort" value="${otherConfig.A}"/>
+          <wiretap uri="direct:httpGenericProcessor"/>
+        </when>
+
+        <otherwise>
+          <setheader key="IsHttpGeneric" value="false"/>
+          <wiretap uri="direct:httpNonGenericProcessor"/>
+        </otherwise>
+      </choice>
+
+      <enrich uri="mina:127.0.0.1?port=${in.header.tcpPort}" strategyref="removeRouteAggregationStrategy"/>
+      <to uri="xmltojson"/>
     </route>
 
   </routecontext>
