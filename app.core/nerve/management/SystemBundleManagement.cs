@@ -33,7 +33,7 @@ namespace app.core.nerve.management
             Server.Prefixes.Add(uriPrefix + "bundle.start/");
             Server.Start();
 
-            Console.WriteLine("Activiating [NERVE.API.MANAGEMENT.V2] http.endpoint: {0}", uriPrefix);
+            Console.WriteLine("Starting [nerve.management.api.v2] @ {0}", uriPrefix);
             Server.BeginGetContext(InitServer, new StartData
             {
                 ServerListener = Server
