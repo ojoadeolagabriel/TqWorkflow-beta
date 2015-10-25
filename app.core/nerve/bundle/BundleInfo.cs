@@ -10,6 +10,6 @@ namespace app.core.nerve.bundle
     public class BundleInfo
     {
         public XElement RouteXml { get; set; }
-        public DescriptorObject DescriptorObject { get; set; }
+        public BundleDescriptorObject BundleDescriptorObject { get; set; }
     }
 }

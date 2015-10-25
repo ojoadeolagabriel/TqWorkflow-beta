@@ -39,7 +39,7 @@ namespace app.core.nerve.handlers.routepipeline
             return result;
         }
 
-        public static DescriptorObject GetDescriptorResourceTextFile(string bundleDllPath)
+        public static BundleDescriptorObject GetDescriptorResourceTextFile(string bundleDllPath)
         {
             var assemblyName = Path.GetFileNameWithoutExtension(bundleDllPath);
             var routePath = string.Format("{0}.property.descriptor.xml", assemblyName);
@@ -52,7 +52,7 @@ namespace app.core.nerve.handlers.routepipeline
                 using (var sr = new StreamReader(stream))
                 {
                     var data = sr.ReadToEnd();
-                    var obj = DescriptorObject.Init(data);
+                    var obj = BundleDescriptorObject.Init(data);
                     Console.WriteLine(" version: [{0}], friendly-name: [{1}]", obj.ModelVersion, obj.Name);
                 }
             }
@@ -74,6 +74,7 @@ namespace app.core.nerve.handlers.routepipeline
                 throw new AppCoreException("route config file [" + filePath + "] not found!");
 
             XElement routeConfigFile;
+            BundleDescriptorObject bundleInDescriptorObject = null;
 
             try
             {
@@ -82,8 +83,7 @@ namespace app.core.nerve.handlers.routepipeline
                 else
                 {
                     var routeXml = GetBundleResourceTextFile(filePath);
-                    var descrptor = GetDescriptorResourceTextFile(filePath);
-
+                    bundleInDescriptorObject = GetDescriptorResourceTextFile(filePath);
                     routeConfigFile = XElement.Parse(routeXml);
                 }
             }
@@ -126,7 +126,7 @@ namespace app.core.nerve.handlers.routepipeline
                 foreach (var route in routeNode)
                 {
                     var xmlRoute = route;
-                    RouteStepAnalyzer.ProcessRouteInformation(xmlRoute, autoExec, logProvider);
+                    RouteStepAnalyzer.ProcessRouteInformation(xmlRoute, autoExec, logProvider, bundleInDescriptorObject);
                 }
             }
             else

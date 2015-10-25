@@ -16,7 +16,8 @@ namespace app.core.nerve.handlers.routepipeline
         /// <param name="route"></param>
         /// <param name="autoExec"></param>
         /// <param name="logProvider"></param>
-        public static void ProcessRouteInformation(XElement route, bool autoExec = false, ISystemLogProvider logProvider = null)
+        /// <param name="bundleDescriptorObject"></param>
+        public static void ProcessRouteInformation(XElement route, bool autoExec = false, ISystemLogProvider logProvider = null, BundleDescriptorObject bundleDescriptorObject = null)
         {
             if (route == null)
                 throw new AppCoreException("error loading route-config: route cannot be null");
@@ -25,7 +26,7 @@ namespace app.core.nerve.handlers.routepipeline
             var routeDesc = xmlRouteDesc != null ? xmlRouteDesc.Value : "";
 
             var steps = route.Elements();
-            var newRoute = new Route { LogProvider = logProvider, Description = routeDesc };
+            var newRoute = new Route { LogProvider = logProvider, Description = routeDesc, BundleInfo = bundleDescriptorObject };
             RouteStep nextRouteStepProcessorToLink = null;
 
             foreach (var step in steps)

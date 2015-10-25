@@ -7,16 +7,17 @@ using app.core.utility;
 
 namespace app.core.nerve.dto
 {
-    public class DescriptorObject
+    public class BundleDescriptorObject
     {
-        private DescriptorObject()
+        public string GuidData { get; set; }
+        private BundleDescriptorObject()
         {
 
         }
 
-        public static DescriptorObject Init(string data)
+        public static BundleDescriptorObject Init(string data)
         {
-            var obj = new DescriptorObject();
+            var obj = new BundleDescriptorObject();
 
             var xmlData = XElement.Parse(data);
             obj.Name = XmlHelper.GetValue<string>(xmlData, "name");
@@ -24,7 +25,7 @@ namespace app.core.nerve.dto
             obj.Author = XmlHelper.GetValue(xmlData, "author", "default.author");
             obj.GroupId = XmlHelper.GetValue(xmlData, "groupid", "com.nerve.group");
             obj.Priority = XmlHelper.GetValue(xmlData, "priority", "low");
-
+            obj.GuidData = Guid.NewGuid().ToString();
             return obj;
         }
 

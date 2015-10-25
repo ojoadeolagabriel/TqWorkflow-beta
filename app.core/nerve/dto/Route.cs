@@ -29,5 +29,7 @@ namespace app.core.nerve.dto
         {
             CurrentRouteStep.ProcessChannel();
         }
+
+        public BundleDescriptorObject BundleInfo { get; set; }
     }
 }
