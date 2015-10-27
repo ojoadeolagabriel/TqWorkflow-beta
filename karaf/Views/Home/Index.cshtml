@@ -43,11 +43,11 @@
                             color = "label label-danger";
                         }
 
-                        tdName.append("<span class=\"glyphicon glyphicon-triangle-right\" aria-hidden=\"true\"></span> <span style='width: 400px; text-decoration: underline'>" + route.Name + "</span>");
+                        tdName.append("</span> <span style='width: 400px; text-decoration: underline'>" + route.Name + "</span>");
                         var version = "<button class=\"btn btn-primary\" type=\"button\">" +
                                           "<span class=\"badge\">" + route.Model + "</span>" +
                                        "</button>";
-                        tdGroupId.append("[ " + route.GroupId + " ]");
+                        tdGroupId.append("<b>[</b> " + route.GroupId + " <b>]</b>");
                         tdModel.append(version);
                         tdState.append("<span class=\"" + color + "\">" + route.BundleState + "</span>");
 
@@ -62,10 +62,9 @@
                         }
 
                         var msg = "<div class=\"btn-group\" role=\"group\" aria-label=\"...\">" +
-
                                       "<button id=\"activity\" name=\"activity\"  type=\"button\" class=\"btn btn-default\">" + statusMsg + "</button>" +
                                       "<button type=\"button\" class=\"btn btn-default\">un-install</button>" +
-                                      "<button type=\"button\" class=\"btn btn-default\">delete</button>" +
+                                      "<button type=\"button\" class=\"btn btn-default\">info</button>" +
                                   "</div>";
 
                         tdAction.append(msg);
@@ -94,30 +93,26 @@
         });
     </script>
 </head>
-<body style="margin: 0 auto; font-family: Helvetica Neue,Helvetica,Arial,sans-serif; font-size: 12px;">
-
-    <div class="alert alert-danger" role="alert" style="margin: 3px">
-        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-        <span class="sr-only">Error:</span>
-        Enter a valid email address
-    </div>
-
-    <div class="input-group">
-        <span class="input-group-addon" id="sizing-addon3">$</span>
-        <input type="text" class="form-control" placeholder="Search" aria-describedby="sizing-addon3">
-    </div>
+<body style="margin: 0 auto; font-family: Helvetica Neue,Helvetica,Arial,sans-serif; font-size: 13px; background-color: #F8F8F8;">
 
     <br /><br /><br />
 
     <div class="panel panel-primary" style="margin: auto; width: 70%; ">
-        <div class="panel-heading">
-            <h3 class="panel-title">Bundle Monitor</h3>
-        </div><br />
+            <div class="panel-heading">
+                <h3 class="panel-title">Bundle Monitor::</h3>
+            </div>
+        <br />
+        
+        <div class="well well-lg" style="margin-left: 30px; margin-right: 30px">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <b>NerveFabric</b> is Online: 4 bundles loaded, 3 active ,1 Suspended
+        </div>
+
         <table id="contr" class="" style="margin-left: auto; margin-right: auto; border-collapse: separate; border-spacing: 3px;">
             <tr>
                 <th align="center" style="width: 400px">Name::</th>
                 <th align="center" style="width: 300px">GroupId::</th>
-                <th align="center" style="width: 200px">Model::</th>
+                <th align="center" style="width: 200px">Version::</th>
                 <th align="center" style="width: 200px">Status::</th>
                 <th align="center"></th>
             </tr>
@@ -148,11 +143,12 @@
             </ul>
         </nav>
     </div>
-    <br /><br />
-    <div class="panel panel-warning" style="margin: auto; width: 70%; ">
+    <br />
+    <br />
+    <div class="panel panel-primary" style="margin: auto; width: 70%; ">
         <div class="panel-heading">
-            <h3 class="panel-title">Event Logs</h3>
-        </div><br />
+            <h3 class="panel-title">Event Logs::</h3>
+        </div><br /><br /><br />
     </div>
 
 </body>
