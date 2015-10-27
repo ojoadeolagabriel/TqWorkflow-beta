@@ -1,45 +1,160 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    Layout = "";
 }
-@section featured {
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>@ViewBag.Title.</h1>
-                <h2>@ViewBag.Message</h2>
-            </hgroup>
-            <p>
-                To learn more about ASP.NET MVC visit
-                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
-                If you have any questions about ASP.NET MVC visit
-                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
-            </p>
-        </div>
-    </section>
-}
-<h3>We suggest the following:</h3>
-<ol class="round">
-    <li class="one">
-        <h5>Getting Started</h5>
-        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-        enables a clean separation of concerns and that gives you full control over markup
-        for enjoyable, agile development. ASP.NET MVC includes many features that enable
-        fast, TDD-friendly development for creating sophisticated applications that use
-        the latest web standards.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Learn more…</a>
-    </li>
 
-    <li class="two">
-        <h5>Add NuGet packages and jump-start your coding</h5>
-        NuGet makes it easy to install and update free libraries and tools.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">Learn more…</a>
-    </li>
+<html>
+<head>
+    <title>NERVE ADMIN CONSOLE V1</title>
+    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <link href="~/Scripts/Css/default.css" rel="stylesheet" />
 
-    <li class="three">
-        <h5>Find Web Hosting</h5>
-        You can easily find a web hosting company that offers the right mix of features
-        and price for your applications.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
-    </li>
-</ol>
+    <script src="~/Scripts/bootstrap-3.3.5-dist/js/bootstrap.js"></script>
+    <link href="~/Scripts/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        $('activity').on('click', function (event) {
+            alert("in here");
+        });
+
+        $(document).ready(function () {
+            var pmUrl = 'http://127.0.0.1:7098/api/v2/app.management.api/status';
+            $.ajax({
+                crossDomain: true,
+                url: pmUrl,
+                type: 'POST',
+                dataType: 'jsonp',
+                jsonpCallback: 'callback',
+                success: function (bundles) {
+
+
+                    $.each(bundles.Routes, function () {
+                        var route = this;
+
+                        var tdName = $("<td/>");
+                        var tdGroupId = $("<td/>");
+                        var tdModel = $("<td/>");
+                        var tdState = $("<td/>");
+                        var tdAction = $("<td/>");
+
+                        var color;
+                        if (route.BundleState == 'Active') {
+                            color = "label label-success";
+                        } else {
+                            color = "label label-danger";
+                        }
+
+                        tdName.append("<span class=\"glyphicon glyphicon-triangle-right\" aria-hidden=\"true\"></span> <span style='width: 400px; text-decoration: underline'>" + route.Name + "</span>");
+                        var version = "<button class=\"btn btn-primary\" type=\"button\">" +
+                                          "<span class=\"badge\">" + route.Model + "</span>" +
+                                       "</button>";
+                        tdGroupId.append("[ " + route.GroupId + " ]");
+                        tdModel.append(version);
+                        tdState.append("<span class=\"" + color + "\">" + route.BundleState + "</span>");
+
+
+
+                        var statusMsg = "";
+
+                        if (route.BundleState == "Active") {
+                            statusMsg = "Pause Bundle";
+                        } else {
+                            statusMsg = "Resume";
+                        }
+
+                        var msg = "<div class=\"btn-group\" role=\"group\" aria-label=\"...\">" +
+
+                                      "<button id=\"activity\" name=\"activity\"  type=\"button\" class=\"btn btn-default\">" + statusMsg + "</button>" +
+                                      "<button type=\"button\" class=\"btn btn-default\">un-install</button>" +
+                                      "<button type=\"button\" class=\"btn btn-default\">delete</button>" +
+                                  "</div>";
+
+                        tdAction.append(msg);
+
+                        //if (route.BundleState == 'Active') {
+                        //    tdAction.append("<a class='button' href=\"http://127.0.0.1:7098/api/v2/app.management.api/bundle.pause/" + route.GuidData + "\">Pause</a>");
+                        //} else {
+                        //    tdAction.append("<a class='button' href=\"http://127.0.0.1:7098/api/v2/app.management.api/bundle.start/" + route.GuidData + "\">Resume</a>");
+                        //}
+
+                        //tdAction.append("  <a class='button.other' href=\"http://127.0.0.1:7098/api/v2/app.management.api/" + route.GuidData + "\">Un-Install Bundle</a>");
+
+                        var newRow = $("<tr/>");
+
+                        $("#contr").append((newRow)
+                            .append(tdName)
+                            .append(tdGroupId)
+                            .append(tdModel)
+                            .append(tdState)
+                            .append(tdAction));
+                    });
+
+
+                }
+            });
+        });
+    </script>
+</head>
+<body style="margin: 0 auto; font-family: Helvetica Neue,Helvetica,Arial,sans-serif; font-size: 12px;">
+
+    <div class="alert alert-danger" role="alert" style="margin: 3px">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        Enter a valid email address
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-addon" id="sizing-addon3">$</span>
+        <input type="text" class="form-control" placeholder="Search" aria-describedby="sizing-addon3">
+    </div>
+
+    <br /><br /><br />
+
+    <div class="panel panel-primary" style="margin: auto; width: 70%; ">
+        <div class="panel-heading">
+            <h3 class="panel-title">Bundle Monitor</h3>
+        </div><br />
+        <table id="contr" class="" style="margin-left: auto; margin-right: auto; border-collapse: separate; border-spacing: 3px;">
+            <tr>
+                <th align="center" style="width: 400px">Name::</th>
+                <th align="center" style="width: 300px">GroupId::</th>
+                <th align="center" style="width: 200px">Model::</th>
+                <th align="center" style="width: 200px">Status::</th>
+                <th align="center"></th>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table><br /><br /><nav>
+            <ul class="pagination" style="padding-left: 30px">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <br /><br />
+    <div class="panel panel-warning" style="margin: auto; width: 70%; ">
+        <div class="panel-heading">
+            <h3 class="panel-title">Event Logs</h3>
+        </div><br />
+    </div>
+
+</body>
+
+</html>

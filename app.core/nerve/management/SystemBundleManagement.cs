@@ -108,48 +108,55 @@ namespace app.core.nerve.management
             if (!bundle.IsNull())
             {
                 bundle.Value.BundleInfo.BundleStatus = BundleDescriptorObject.Status.Active;
-                return JsonConvert.SerializeObject(new
+                var result = JsonConvert.SerializeObject(new
                 {
                     ResponseMessage = "[BundleUpdateComplete]",
                     ResponseCode = "90000",
                     InnerResponseDescription = "Active"
                 });
+                return PrepareResponse(result, client);
             }
 
-            return JsonConvert.SerializeObject(new
+            var res = JsonConvert.SerializeObject(new
             {
                 ResponseMessage = "[BundleNotFound]",
                 ResponseCode = "E02",
                 InnerResponseDescription = "Contact Admin."
             });
+
+            return PrepareResponse(res, client);
         }
 
         private static string HandlePause(HttpListenerContext client, string body)
         {
             var id = client.Request.Url.Segments[5].Replace("/", "");
             var bundle = Camel.RouteCollection.FirstOrDefault(c => c.Value.BundleInfo != null && c.Value.BundleInfo.GuidData == id);
-            
+
             if (!bundle.IsNull())
             {
                 bundle.Value.BundleInfo.BundleStatus = BundleDescriptorObject.Status.Stopped;
-                return JsonConvert.SerializeObject(new
+                var result = JsonConvert.SerializeObject(new
                 {
                     ResponseMessage = "[BundleUpdateComplete]",
                     ResponseCode = "90000",
                     InnerResponseDescription = "Stopped"
                 });
+                return PrepareResponse(result, client);
             }
 
-            return JsonConvert.SerializeObject(new
+            var res = JsonConvert.SerializeObject(new
             {
                 ResponseMessage = "[BundleNotFound]",
                 ResponseCode = "E02",
                 InnerResponseDescription = "Contact Admin."
             });
+
+            return PrepareResponse(res, client);
         }
 
         private static string HandleStatus(HttpListenerContext client, string body)
         {
+            
             var details = Camel.RouteCollection.Select(c => new
             {
                 Author = c.Value.BundleInfo.Author,
@@ -161,12 +168,20 @@ namespace app.core.nerve.management
                 BundleState = c.Value.BundleInfo.BundleStatus.ToString()
             }).Distinct();
 
-            return JsonConvert.SerializeObject(new
+            var res = JsonConvert.SerializeObject(new
             {
                 ResponseCode = "90000",
                 ResponseMessage = "",
                 Routes = details
             });
+
+            return PrepareResponse(res, client);
+        }
+
+        private static string PrepareResponse(string res, HttpListenerContext client)
+        {
+            var callback = client.Request.QueryString["callback"];
+            return !string.IsNullOrEmpty(callback) ? string.Format("{0}({1})", callback, res) : res;
         }
     }
 }
