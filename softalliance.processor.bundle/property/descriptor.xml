@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<descriptor>
+  
+  <name>nerve :: soft alliance data converter bundle</name>
+  <version>v1.3.0.98888</version>
+  <author>adeola.ojo</author>
+  <groupid>nerve.core</groupid>
+  <priority>low</priority>
+
+  <project>
+    <developer></developer>
+    <license></license>
+    <contributor></contributor>
+    <organisation></organisation>
+  </project>
+  
+</descriptor>

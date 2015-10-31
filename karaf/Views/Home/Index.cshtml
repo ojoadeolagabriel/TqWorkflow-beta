@@ -43,11 +43,11 @@
                             color = "label label-danger";
                         }
 
-                        tdName.append("</span> <span style='width: 400px; text-decoration: underline'>" + route.Name + "</span>");
+                        tdName.append("<input type='checkbox'/> </span> <span style='width: 400px; text-decoration: underline'>" + route.Name + "</span>");
                         var version = "<button class=\"btn btn-primary\" type=\"button\">" +
                                           "<span class=\"badge\">" + route.Model + "</span>" +
                                        "</button>";
-                        tdGroupId.append("[ " + route.GroupId + " ]");
+                        tdGroupId.append(route.GroupId);
                         tdModel.append(version);
                         tdState.append("<span class=\"" + color + "\">" + route.BundleState + "</span>");
 
@@ -97,33 +97,41 @@
 
     <br /><br /><br />
 
-    <div class="panel panel-primary" style="margin: auto; width: 70%; ">
-            <div class="panel-heading">
-                <h3 class="panel-title">Bundle Monitor::</h3>
-            </div>
+    <div class="panel panel-primary" style="margin: auto; width: 80%; ">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">Bundle Configuration::</h3>
+        </div>
         <br />
-        
         <div class="well well-lg" style="margin-left: 30px; margin-right: 30px">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <b>NerveFabric</b> is Online: 4 bundles loaded, 3 active ,1 Suspended
         </div>
 
-        <table id="contr" class="" style="margin-left: auto; margin-right: auto; border-collapse: separate; border-spacing: 3px;">
-            <tr>
-                <th align="center" style="width: 400px">Name::</th>
-                <th align="center" style="width: 300px">GroupId::</th>
-                <th align="center" style="width: 200px">Version::</th>
-                <th align="center" style="width: 200px">Status::</th>
-                <th align="center"></th>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table><br /><br /><nav>
+        <div class="panel panel-default" style="margin: 30px">
+            <div class="panel-body">
+                
+
+                <table id="contr" class="" style="margin-left: auto; margin-right: auto; border-collapse: separate; border-spacing: 3px;">
+                    <tr>
+                        <th align="center" style="width: 400px">Name::</th>
+                        <th align="center" style="width: 300px">GroupId::</th>
+                        <th align="center" style="width: 200px">Version::</th>
+                        <th align="center" style="width: 200px">Status::</th>
+                        <th align="center"></th>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table><br /><br />
+            </div>
+        </div>
+
+        <nav>
             <ul class="pagination" style="padding-left: 30px">
                 <li>
                     <a href="#" aria-label="Previous">
@@ -143,12 +151,21 @@
             </ul>
         </nav>
     </div>
+
     <br />
-    <br />
-    <div class="panel panel-primary" style="margin: auto; width: 70%; ">
+
+    <div class="panel panel-primary" style="margin: auto; width: 80%; ">
         <div class="panel-heading">
-            <h3 class="panel-title">Event Logs::</h3>
-        </div><br /><br /><br />
+            <h3 class="panel-title">System Logs::</h3>
+        </div><br />
+
+        <div class="panel panel-default" style="margin: 30px">
+            <div class="panel-body">
+                Basic panel example
+            </div>
+        </div>
+
+        <br />
     </div>
 
 </body>

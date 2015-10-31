@@ -26,3 +26,13 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\ClassLibrary1\o
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\ClassLibrary1\obj\Debug\paymentnotification.generic.bundle.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\ClassLibrary1\obj\Debug\paymentnotification.generic.bundle.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\ClassLibrary1\bin\Debug\Renci.SshNet.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\ClassLibrary1\bin\Debug\paymentnotification.generic.bundle.dll.config
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\ClassLibrary1\bin\Debug\AutoMapper.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\ClassLibrary1\bin\Debug\System.IO.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\ClassLibrary1\bin\Debug\System.Runtime.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\ClassLibrary1\bin\Debug\System.Threading.Tasks.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\ClassLibrary1\bin\Debug\AutoMapper.xml
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\ClassLibrary1\bin\Debug\System.IO.xml
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\ClassLibrary1\bin\Debug\System.Runtime.xml
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\ClassLibrary1\bin\Debug\System.Threading.Tasks.xml
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\ClassLibrary1\obj\Debug\paymentnotification.generic.bundle.csproj.App.config
