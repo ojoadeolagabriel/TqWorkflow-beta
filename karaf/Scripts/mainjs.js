@@ -88,14 +88,15 @@ $(document).ready(function () {
                     statusMsg = "Pause Bundle";
                     command = "pauseBundle";
                 } else {
-                    statusMsg = "Start - Bundle";
+                    statusMsg = "<b>Start</b> - Bundle";
                     command = "unPauseBundle";
                 }
 
                 var msg = "<div class=\"btn-group\" role=\"group\" aria-label=\"...\">" +
                               "<button id=\"activity\" name=\"activity\"  type=\"button\" onclick='"+command+"(\"" + route.GuidData + "\")' class=\"btn btn-default\">" + statusMsg + "</button>" +
-                              "<button type=\"button\" class=\"btn btn-default\" >un-install</button>" +
-                              "<button type=\"button\" class=\"btn btn-default\">info</button>" +
+                              "<button type=\"button\" class=\"btn btn-default\" >Un-install</button>" +
+                              "<button type=\"button\" class=\"btn btn-default\" >Restart</button>" +
+                              "<button type=\"button\" class=\"btn btn-default\">Info</button>" +
                           "</div>";
 
                 tdAction.append(msg);
