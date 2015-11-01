@@ -72,11 +72,21 @@ namespace app.core.nerve.component.core.mina
 
         private void ProcessIncommingClientAsync(IAsyncResult res)
         {
+
+
             var passData = (PassData)res.AsyncState;
             var listener = passData.TcpListener;
 
             TcpListener.BeginAcceptTcpClient(ProcessIncommingClientAsync, new PassData { Exchange = new Exchange(_processor.Route), TcpListener = TcpListener });
             var exchange = passData.Exchange;
+
+
+            if (_processor.Route.BundleInfo.BundleStatus != BundleDescriptorObject.Status.Active)
+            {
+                Console.WriteLine("Bundle [{0}]: not-active", _processor.Route.BundleInfo.Name);
+                return;
+            }
+
             try
             {
 

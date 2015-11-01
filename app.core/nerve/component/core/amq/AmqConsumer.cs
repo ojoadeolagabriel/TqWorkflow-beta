@@ -64,12 +64,19 @@ namespace app.core.nerve.component.core.amq
         {
             try
             {
-                var msg = message as ITextMessage;
-                if (msg == null) return;
+                if (_processor.Route.BundleInfo.BundleStatus != BundleDescriptorObject.Status.Active)
+                {
+                    Console.WriteLine("Bundle [{0}]: not-active", _processor.Route.BundleInfo.Name);
+                }
+                else
+                {
+                    var msg = message as ITextMessage;
+                    if (msg == null) return;
 
-                var ex = new Exchange(_processor.Route) { InMessage = { Body = msg.Text } };
-                Camel.TryLog(ex, "consumer", "amqcomponent");
-                _processor.Process(ex);
+                    var ex = new Exchange(_processor.Route) {InMessage = {Body = msg.Text}};
+                    Camel.TryLog(ex, "consumer", "amqcomponent");
+                    _processor.Process(ex);
+                }
             }
             catch (Exception)
             {

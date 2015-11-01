@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using app.core.nerve.dto;
 
@@ -39,8 +40,15 @@ namespace app.core.nerve.component.core.timer
 
         private void CallBack(object state)
         {
+            if (_processor.Route.BundleInfo.BundleStatus != BundleDescriptorObject.Status.Active)
+            {
+                Console.WriteLine("Bundle [{0}]: not-active", _processor.Route.BundleInfo.Name);
+                return;
+            }
+
             var passData = (PassData) state;
             passData.Exchange = LoadExchange();
+
             _processor.Process(passData.Exchange);
         }
     }

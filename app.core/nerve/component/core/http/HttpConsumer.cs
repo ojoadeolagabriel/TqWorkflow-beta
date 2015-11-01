@@ -83,6 +83,7 @@ namespace app.core.nerve.component.core.http
             {
                 Console.WriteLine("Bundle [{0}]: NotActive", _httpProcessor.Route.BundleInfo.Name);
             }
+
             else
             {               
                 var exchange = passData.Exchange;
