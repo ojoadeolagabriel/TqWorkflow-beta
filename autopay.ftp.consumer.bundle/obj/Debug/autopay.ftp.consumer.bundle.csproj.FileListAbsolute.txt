@@ -2,3 +2,4 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.ftp.con
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.ftp.consumer.bundle\bin\Debug\autopay.ftp.consumer.bundle.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.ftp.consumer.bundle\obj\Debug\autopay.ftp.consumer.bundle.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.ftp.consumer.bundle\obj\Debug\autopay.ftp.consumer.bundle.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.ftp.consumer.bundle\obj\Debug\autopay.ftp.consumer.bundle.csprojResolveAssemblyReference.cache
