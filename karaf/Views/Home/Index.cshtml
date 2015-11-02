@@ -14,13 +14,13 @@
     <script src="~/Scripts/Css/icheck-1.x/icheck.js"></script>
     <link href="~/Scripts/Css/icheck-1.x/skins/minimal/aero.css" rel="stylesheet" />
 </head>
-<body style="margin: 0 auto; font-family: Helvetica Neue,Helvetica,Arial,sans-serif; font-size: 13px; background-color: #F8F8F8;">
+<body style="margin: 0 auto; font-family: Roboto, 'Helvetica Neue', Helvetica, sans-serif; font-size: 13px; background-color: #F8F8F8;">
 
     <br /><br />
     <div style="margin: auto; width: 80%; font-family: Roboto, 'Helvetica Neue', Helvetica, sans-serif; font-weight: bolder; line-height: 24px; font-size: 17px; ">
         [ NERVE ] - Bundles Administrator Console
         <div style="text-align: right; color: brown">
-           v1.0.10091 
+            v1.0.10091
         </div>
     </div>
     <br />
@@ -30,6 +30,46 @@
         <div class="panel-heading">
             <h3 class="panel-title">Bundle Configuration::</h3>
         </div>
+        
+        <!-- modal-->
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog bs-example-modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Bundle Description</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table style="border-collapse: separate; border-spacing: 3px; ">
+                            <tr>
+                                <td style="width: 200px">Description: </td>
+                                <td id="tdName"></td>
+                            </tr>
+                            <tr>
+                                <td >Guid: </td>
+                                <td id="tdGuid"></td>
+                            </tr>
+                            <tr>
+                                <td>Developer: </td>
+                                <td id="tdDev"></td>
+                            </tr>
+                            <tr>
+                                <td>Version: </td>
+                                <td id="tdModel"></td>
+                            </tr>
+                            <tr>
+                                <td>Status: </td>
+                                <td id="tdStatus"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <br />
         <div class="well well-lg" style="margin-left: 30px; margin-right: 30px">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -57,7 +97,7 @@
                 </table><br /><br />
             </div>
             <div class="panel-footer">loaded bundles as at @DateTime.Now.ToString("dd-MMM-yyyy, hh:mm:ss tt")</div>
-        
+
         </div>
 
         <nav>

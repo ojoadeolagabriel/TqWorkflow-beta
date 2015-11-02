@@ -30,7 +30,9 @@ namespace app.core.nerve.management
             Server.Prefixes.Add(uriPrefix);
             Server.Prefixes.Add(uriPrefix + "status/");
             Server.Prefixes.Add(uriPrefix + "bundle.pause/");
+            Server.Prefixes.Add(uriPrefix + "bundle.restart/");
             Server.Prefixes.Add(uriPrefix + "bundle.start/");
+            Server.Prefixes.Add(uriPrefix + "bundle.status/");
             Server.Start();
 
             Console.WriteLine("Starting [nerve.management.api.v2] @ {0}", uriPrefix);
@@ -74,11 +76,17 @@ namespace app.core.nerve.management
                     case "status":
                         return HandleStatus(client, body);
                         break;
+                    case "bundle.status":
+                        return HandleBundleStatus(client, body);
+                        break;
                     case "bundle.pause":
                         return HandlePause(client, body);
                         break;
                     case "bundle.start":
                         return HandleStart(client, body);
+                        break;
+                    case "bundle.restart":
+                        return HandleReStart(client, body);
                         break;
                 }
             }
@@ -98,6 +106,33 @@ namespace app.core.nerve.management
                 ResponseCode = "E01",
                 InnerResponseDescription = "Contact Admin."
             });
+        }
+
+        private static string HandleReStart(HttpListenerContext client, string body)
+        {
+            var id = client.Request.Url.Segments[5].Replace("/", "");
+            var bundle = Camel.RouteCollection.FirstOrDefault(c => c.Value.BundleInfo != null && c.Value.BundleInfo.GuidData == id);
+
+            if (!bundle.IsNull())
+            {
+                bundle.Value.BundleInfo.BundleStatus = BundleDescriptorObject.Status.UnInstalled;
+                var result = JsonConvert.SerializeObject(new
+                {
+                    ResponseMessage = "[BundleUnInstallComplete]",
+                    ResponseCode = "90000",
+                    InnerResponseDescription = "UnInstalled"
+                });
+                return PrepareResponse(result, client);
+            }
+
+            var res = JsonConvert.SerializeObject(new
+            {
+                ResponseMessage = "[BundleNotFound]",
+                ResponseCode = "E02",
+                InnerResponseDescription = "Contact Admin."
+            });
+
+            return PrepareResponse(res, client);
         }
 
         private static string HandleStart(HttpListenerContext client, string body)
@@ -173,6 +208,30 @@ namespace app.core.nerve.management
                 ResponseCode = "90000",
                 ResponseMessage = "",
                 Routes = details
+            });
+
+            return PrepareResponse(res, client);
+        }
+
+        private static string HandleBundleStatus(HttpListenerContext client, string body)
+        {
+            var id = client.Request.Url.Segments[5].Replace("/", "");
+            var item = Camel.RouteCollection.Select(c => new
+            {
+                Author = c.Value.BundleInfo.Author,
+                GroupId = c.Value.BundleInfo.GroupId,
+                GuidData = c.Value.BundleInfo.GuidData,
+                Model = c.Value.BundleInfo.ModelVersion,
+                Name = c.Value.BundleInfo.Name,
+                Priority = c.Value.BundleInfo.Priority,
+                BundleState = c.Value.BundleInfo.BundleStatus.ToString()
+            }).Distinct().FirstOrDefault(c=>c.GuidData == id);
+
+            var res = JsonConvert.SerializeObject(new
+            {
+                ResponseCode = "90000",
+                ResponseMessage = "",
+                Route = item
             });
 
             return PrepareResponse(res, client);

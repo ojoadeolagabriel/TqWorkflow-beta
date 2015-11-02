@@ -13,7 +13,7 @@ namespace app.core.nerve.dto
 
         public enum Status
         {
-            Starting, Stopped, Active, Installed, Stopping,System
+            Starting, Stopped, Active, Installed, Stopping, System, UnInstalled
         }
 
         private BundleDescriptorObject()
