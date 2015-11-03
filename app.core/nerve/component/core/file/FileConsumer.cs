@@ -39,6 +39,9 @@ namespace app.core.nerve.component.core.file
                 if (totalCount >= maxThreadCount)
                     continue;
 
+                if(!CanRun(_fileProcessor))
+                    continue;
+
                 var exchange = new Exchange(_fileProcessor.Route);
                 var fileData = "";
 

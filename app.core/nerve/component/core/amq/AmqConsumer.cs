@@ -64,7 +64,7 @@ namespace app.core.nerve.component.core.amq
         {
             try
             {
-                if (_processor.Route.BundleInfo.BundleStatus != BundleDescriptorObject.Status.Active)
+                if (!CanRun(_processor))
                 {
                     Console.WriteLine("Bundle [{0}]: not-active", _processor.Route.BundleInfo.Name);
                 }

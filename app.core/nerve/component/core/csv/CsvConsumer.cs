@@ -60,7 +60,7 @@ namespace app.core.nerve.component.core.csv
                     var pollInterval = _csvProcessor.UriInformation.GetUriProperty("poll", 500);
                     Thread.Sleep(pollInterval);
 
-                    if (_csvProcessor.Route.BundleInfo.BundleStatus != BundleDescriptorObject.Status.Active)
+                    if (!CanRun(_csvProcessor))
                     {
                         Console.WriteLine("Bundle [{0}]: not-active", _csvProcessor.Route.BundleInfo.Name);
                     }

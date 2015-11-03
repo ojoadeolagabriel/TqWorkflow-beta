@@ -64,7 +64,7 @@ namespace app.core.nerve.component.core.mongodb
                 try
                 {
                     var data = db.GetCollection(collection).FindOne();
-                    if (data != null)
+                    if (data != null && CanRun(_processor))
                     {
                         if (inparrallel)
                             Task.Factory.StartNew(() => HandleResult(data, exchange));

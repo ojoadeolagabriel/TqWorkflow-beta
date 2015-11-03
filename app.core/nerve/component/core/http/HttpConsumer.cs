@@ -79,7 +79,7 @@ namespace app.core.nerve.component.core.http
                 HttpListener = listener
             });
 
-            if (_httpProcessor.Route.BundleInfo.BundleStatus != BundleDescriptorObject.Status.Active)
+            if (!CanRun(_httpProcessor))
             {
                 Console.WriteLine("Bundle [{0}]: NotActive", _httpProcessor.Route.BundleInfo.Name);
             }
