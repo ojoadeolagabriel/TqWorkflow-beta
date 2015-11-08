@@ -55,11 +55,23 @@ function showBundleInfo(url) {
         success: function (result) {
 
             var route = result.Route;
-            $("#tdName").val(route.Name);
-            $("#tdGuid").val(route.GuidData);
-            $("#tdDev").val(route.Author);
-            $("#tdModel").val(route.Model);
-            $("#tdStatus").val(route.BundleState);
+            $("#tdName").html("<b>" + route.Name + "</b>");
+            $("#tdGuid").html(route.GuidData);
+            $("#tdDev").html(route.Author);
+            $("#tdModel").html(route.Model);
+            
+            if (route.BundleState == "Active") {
+                $("#tdStatus").html("<span class=\"label label-success\">Actve</span>");
+            }
+
+            if (route.BundleState == "Stopped") {
+                $("#tdStatus").html("<span class=\"label label-warning\">Paused</span>");
+            }
+            
+            if (route.BundleState == "UnInstalled") {
+                $("#tdStatus").html("<span class=\"label label-danger\">Un-installed</span>");
+            }
+            
             
             $('#myModal').on('shown.bs.modal', function () {
                 $('#myInput').focus();
@@ -116,7 +128,7 @@ $(document).ready(function () {
                 }
 
                 tdName.append("<input type='checkbox' style='vertical-align: middle;' class='btn-primary' /> - </span> <span style='width: 400px; text-decoration: underline'>" + route.Name + "</span>");
-                var version = "<button data-id=\"" + route.GuidData + "\" class=\"btn btn-primary\" type=\"button\" data-toggle='modal' data-target=\".bs-example-modal-lg\"  >" +
+                var version = "<button data-id=\"" + route.GuidData + "\" class=\"btn btn-primary\" type=\"button\" data-toggle='modal' data-target=\".bs-example-modal-lg\" onclick='showBundleInfo(\"" + route.GuidData + "\")'  >" +
                                   "<span class=\"badge\">" + route.Model + "</span>" +
                                "</button>";
                 

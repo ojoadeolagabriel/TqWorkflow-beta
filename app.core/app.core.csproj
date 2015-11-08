@@ -100,6 +100,10 @@
       <HintPath>..\packages\Quartz.2.3.3\lib\net40\Quartz.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RabbitMQ.Client, Version=3.5.6.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitMQ.Client.3.5.6\lib\net40\RabbitMQ.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="RedBranch.Hammock, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dependency\RedBranch.Hammock.dll</HintPath>
@@ -176,6 +180,7 @@
     <Compile Include="nerve\component\core\mongodb\MongoDbEndPoint.cs" />
     <Compile Include="nerve\component\core\mongodb\MongoDbProcessor.cs" />
     <Compile Include="nerve\component\core\mongodb\MongoDbProducer.cs" />
+    <Compile Include="nerve\component\core\rabbitmqclient\RabbitMqEndPoint.cs" />
     <Compile Include="nerve\dto\BundleDescriptorObject.cs" />
     <Compile Include="nerve\handlers\tag\LoopTag.cs" />
     <Compile Include="nerve\language\RouteBuilder.cs" />

@@ -112,3 +112,5 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\obj\De
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\obj\Debug\app.core.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\obj\Debug\app.core.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\obj\Debug\app.core.csprojResolveAssemblyReference.cache
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\RabbitMQ.Client.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\RabbitMQ.Client.xml

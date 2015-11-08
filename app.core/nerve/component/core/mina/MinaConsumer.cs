@@ -16,7 +16,16 @@ namespace app.core.nerve.component.core.mina
             public Exchange Exchange { get; set; }
         }
 
-        private MinaProcessor _processor;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override bool PauseConsumer()
+        {
+            return base.PauseConsumer();
+        }
+
+        private readonly MinaProcessor _processor;
 
         public MinaConsumer(MinaProcessor processor)
         {
@@ -39,7 +48,7 @@ namespace app.core.nerve.component.core.mina
                 var exchange = new Exchange(_processor.Route);
                 var initialDelay = _processor.UriInformation.GetUriProperty("initialDelay", 1000);
                 var poll = _processor.UriInformation.GetUriProperty("poll", 1000);
-                var parallel = _processor.UriInformation.GetUriProperty("parallel", true);
+                var parallel = _processor.UriInformation.GetUriProperty("parallel", false);
                 var timeout = _processor.UriInformation.GetUriProperty("timeout", 1000000, exchange);
                 var maxThreadCount = _processor.UriInformation.GetUriProperty("threadCount", 2, exchange);
                 var sync = _processor.UriInformation.GetUriProperty("sync", false);
@@ -72,14 +81,11 @@ namespace app.core.nerve.component.core.mina
 
         private void ProcessIncommingClientAsync(IAsyncResult res)
         {
-
-
             var passData = (PassData)res.AsyncState;
             var listener = passData.TcpListener;
 
             TcpListener.BeginAcceptTcpClient(ProcessIncommingClientAsync, new PassData { Exchange = new Exchange(_processor.Route), TcpListener = TcpListener });
             var exchange = passData.Exchange;
-
 
             if (!CanRun(_processor))
             {
@@ -89,11 +95,7 @@ namespace app.core.nerve.component.core.mina
 
             try
             {
-
                 var client = listener.EndAcceptTcpClient(res);
-
-                var messageBuilder = new StringBuilder();
-                var buffer = new byte[1];
 
                 using (var networkStream = client.GetStream())
                 {

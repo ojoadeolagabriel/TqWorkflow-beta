@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using app.core.nerve.component.core;
 using app.core.nerve.dto;
 using app.core.nerve.utility;
 using Newtonsoft.Json;
@@ -111,19 +112,29 @@ namespace app.core.nerve.management
         private static string HandleReStart(HttpListenerContext client, string body)
         {
             var id = client.Request.Url.Segments[5].Replace("/", "");
-            var bundle = Camel.RouteCollection.FirstOrDefault(c => c.Value.BundleInfo != null && c.Value.BundleInfo.GuidData == id);
+            //var bnsd = Camel.RouteCollection.FirstOrDefault(c => c.Value.BundleInfo != null && c.Value.BundleInfo.GuidData == id).Value.CurrentRouteStep;
 
-            if (!bundle.IsNull())
-            {
-                bundle.Value.BundleInfo.BundleStatus = BundleDescriptorObject.Status.UnInstalled;
-                var result = JsonConvert.SerializeObject(new
-                {
-                    ResponseMessage = "[BundleUnInstallComplete]",
-                    ResponseCode = "90000",
-                    InnerResponseDescription = "UnInstalled"
-                });
-                return PrepareResponse(result, client);
-            }
+            //var bundle = Camel.RouteCollection.FirstOrDefault(c => c.Value.BundleInfo != null && c.Value.BundleInfo.GuidData == id);
+            //var routes = Camel.EnPointCollection.Where(c=>c.Value.Route.BundleInfo.GuidData == id).Select(c => new {c.Key, c.Value});
+
+            //foreach (var route in routes)
+            //{
+            //    DefaultEndpoint removedItem;
+            //    Camel.EnPointCollection.TryRemove(route.Key, out removedItem);
+            //}
+
+
+            //if (!bundle.IsNull())
+            //{
+            //    bundle.Value.BundleInfo.BundleStatus = BundleDescriptorObject.Status.UnInstalled;
+            //    var result = JsonConvert.SerializeObject(new
+            //    {
+            //        ResponseMessage = "[BundleUnInstallComplete]",
+            //        ResponseCode = "90000",
+            //        InnerResponseDescription = "UnInstalled"
+            //    });
+            //    return PrepareResponse(result, client);
+            //}
 
             var res = JsonConvert.SerializeObject(new
             {
@@ -191,7 +202,7 @@ namespace app.core.nerve.management
 
         private static string HandleStatus(HttpListenerContext client, string body)
         {
-            
+
             var details = Camel.RouteCollection.Select(c => new
             {
                 Author = c.Value.BundleInfo.Author,
@@ -225,7 +236,7 @@ namespace app.core.nerve.management
                 Name = c.Value.BundleInfo.Name,
                 Priority = c.Value.BundleInfo.Priority,
                 BundleState = c.Value.BundleInfo.BundleStatus.ToString()
-            }).Distinct().FirstOrDefault(c=>c.GuidData == id);
+            }).Distinct().FirstOrDefault(c => c.GuidData == id);
 
             var res = JsonConvert.SerializeObject(new
             {

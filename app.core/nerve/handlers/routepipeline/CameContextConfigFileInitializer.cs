@@ -105,7 +105,6 @@ namespace app.core.nerve.handlers.routepipeline
 
                 //read handler.
                 var logProviderXml = leafContextXml.Attribute("logProvider");
-                var id = leafContextXml.Attribute("id");
 
                 if (logProviderXml != null && logProviderXml.Value != string.Empty)
                 {

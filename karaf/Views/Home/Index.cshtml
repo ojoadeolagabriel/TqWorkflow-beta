@@ -27,10 +27,27 @@
 
     <div class="panel panel-primary" style="margin: auto; width: 80%; ">
 
-        <div class="panel-heading">
-            <h3 class="panel-title">Bundle Configuration::</h3>
+        <div class="panel-heading clearfix">
+            <h4 class="panel-title pull-left" style="padding-top: 7.5px; padding-right: 1000px">Bundle Manager::</h4>
+
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search Bundles..." style="width: 300px">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-plus"> </span> &nbsp;Additional Actions
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Search</a></li>
+                        <li><a href="#">Install New Bundle</a></li>
+                        <li><a href="#">Un-install Selected</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        
+
+
+
         <!-- modal-->
         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
             <div class="modal-dialog bs-example-modal-lg" role="document">
@@ -46,7 +63,11 @@
                                 <td id="tdName"></td>
                             </tr>
                             <tr>
-                                <td >Guid: </td>
+                                <td>&nbsp;</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Guid: </td>
                                 <td id="tdGuid"></td>
                             </tr>
                             <tr>
@@ -96,7 +117,7 @@
                     </tr>
                 </table><br /><br />
             </div>
-            <div class="panel-footer">loaded bundles as at @DateTime.Now.ToString("dd-MMM-yyyy, hh:mm:ss tt")</div>
+            <div class="panel-footer">Loaded Bundles @@ @DateTime.Now.ToString("dd-MMM-yyyy, hh:mm:ss tt")</div>
 
         </div>
 
