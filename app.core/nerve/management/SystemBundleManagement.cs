@@ -112,29 +112,29 @@ namespace app.core.nerve.management
         private static string HandleReStart(HttpListenerContext client, string body)
         {
             var id = client.Request.Url.Segments[5].Replace("/", "");
-            //var bnsd = Camel.RouteCollection.FirstOrDefault(c => c.Value.BundleInfo != null && c.Value.BundleInfo.GuidData == id).Value.CurrentRouteStep;
+            var bnsd = Camel.RouteCollection.FirstOrDefault(c => c.Value.BundleInfo != null && c.Value.BundleInfo.GuidData == id).Value.CurrentRouteStep;
 
-            //var bundle = Camel.RouteCollection.FirstOrDefault(c => c.Value.BundleInfo != null && c.Value.BundleInfo.GuidData == id);
-            //var routes = Camel.EnPointCollection.Where(c=>c.Value.Route.BundleInfo.GuidData == id).Select(c => new {c.Key, c.Value});
+            var bundle = Camel.RouteCollection.FirstOrDefault(c => c.Value.BundleInfo != null && c.Value.BundleInfo.GuidData == id);
+            var routes = Camel.EnPointCollection.Where(c => c.Value.Route.BundleInfo.GuidData == id).Select(c => new { c.Key, c.Value });
 
-            //foreach (var route in routes)
-            //{
-            //    DefaultEndpoint removedItem;
-            //    Camel.EnPointCollection.TryRemove(route.Key, out removedItem);
-            //}
+            foreach (var route in routes)
+            {
+                DefaultEndpoint removedItem;
+                Camel.EnPointCollection.TryRemove(route.Key, out removedItem);
+            }
 
 
-            //if (!bundle.IsNull())
-            //{
-            //    bundle.Value.BundleInfo.BundleStatus = BundleDescriptorObject.Status.UnInstalled;
-            //    var result = JsonConvert.SerializeObject(new
-            //    {
-            //        ResponseMessage = "[BundleUnInstallComplete]",
-            //        ResponseCode = "90000",
-            //        InnerResponseDescription = "UnInstalled"
-            //    });
-            //    return PrepareResponse(result, client);
-            //}
+            if (!bundle.IsNull())
+            {
+                bundle.Value.BundleInfo.BundleStatus = BundleDescriptorObject.Status.UnInstalled;
+                var result = JsonConvert.SerializeObject(new
+                {
+                    ResponseMessage = "[BundleUnInstallComplete]",
+                    ResponseCode = "90000",
+                    InnerResponseDescription = "UnInstalled"
+                });
+                return PrepareResponse(result, client);
+            }
 
             var res = JsonConvert.SerializeObject(new
             {
@@ -180,7 +180,7 @@ namespace app.core.nerve.management
 
             if (!bundle.IsNull())
             {
-                bundle.Value.BundleInfo.BundleStatus = BundleDescriptorObject.Status.Stopped;
+                bundle.Value.BundleInfo.BundleStatus = BundleDescriptorObject.Status.Paused;
                 var result = JsonConvert.SerializeObject(new
                 {
                     ResponseMessage = "[BundleUpdateComplete]",

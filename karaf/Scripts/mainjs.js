@@ -64,7 +64,7 @@ function showBundleInfo(url) {
                 $("#tdStatus").html("<span class=\"label label-success\">Actve</span>");
             }
 
-            if (route.BundleState == "Stopped") {
+            if (route.BundleState == "Paused") {
                 $("#tdStatus").html("<span class=\"label label-warning\">Paused</span>");
             }
             
@@ -122,9 +122,15 @@ $(document).ready(function () {
                 if (route.BundleState == 'Active') {
                     color = "label label-success";
                     totalActiveBundle += 1;
-                } else {
-                    color = "label label-danger";
+                } 
+                
+                if (route.BundleState == "Paused") {
+                    color = "label label-warning";
                     totalPausedBundle += 1;
+                }
+                
+                if (route.BundleState == "UnInstalled") {
+                    color = "label label-danger";
                 }
 
                 tdName.append("<input type='checkbox' style='vertical-align: middle;' class='btn-primary' /> - </span> <span style='width: 400px; text-decoration: underline'>" + route.Name + "</span>");
@@ -160,7 +166,7 @@ $(document).ready(function () {
                               
                           "</div>";
                 }
-                if (route.BundleState == "Stopped") {
+                if (route.BundleState == "Paused") {
                     statusMsg = "<b>Start</b> - Bundle";
                     command = "unPauseBundle";
                     
@@ -183,7 +189,7 @@ $(document).ready(function () {
                     .append(tdAction));
             });
 
-            $("#spnSummary").append("Total Bundles Loaded: " + totalBundle + ", Paused: " + totalPausedBundle, ", Active: " + totalActiveBundle);
+            $("#spnSummary").append("total bundles found: " + totalBundle + ", paused: " + totalPausedBundle, ", active: " + totalActiveBundle + ", uninstalled: 0");
         }
     });
 });

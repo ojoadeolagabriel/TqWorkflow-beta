@@ -17,8 +17,8 @@
 <body style="margin: 0 auto; font-family: Roboto, 'Helvetica Neue', Helvetica, sans-serif; font-size: 13px; background-color: #F8F8F8;">
 
     <br /><br />
-    <div style="margin: auto; width: 80%; font-family: Roboto, 'Helvetica Neue', Helvetica, sans-serif; font-weight: bolder; line-height: 24px; font-size: 17px; ">
-        [ NERVE ] - Bundles Administrator Console
+    <div style="margin: auto; width: 80%; font-family: Roboto, 'Helvetica Neue', Helvetica, sans-serif; font-weight: bolder; line-height: 24px; font-size: 18px; ">
+        [ SYNAPSE ]
         <div style="text-align: right; color: brown">
             v1.0.10091
         </div>
@@ -28,22 +28,24 @@
     <div class="panel panel-primary" style="margin: auto; width: 80%; ">
 
         <div class="panel-heading clearfix">
-            <h4 class="panel-title pull-left" style="padding-top: 7.5px; padding-right: 1000px">Bundle Manager::</h4>
+            <h4 class="panel-title pull-left " style="padding-top: 7.5px; padding-right: 1000px">
+                <span class="glyphicon glyphicon-cog"></span> Bundle Manager::
+            </h4>
 
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search Bundles..." style="width: 300px">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="glyphicon glyphicon-plus"> </span> &nbsp;Additional Actions
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
+                <input type="text" class="form-control" aria-label="..." placeholder="search for components...">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right">
                         <li><a href="#">Search</a></li>
-                        <li><a href="#">Install New Bundle</a></li>
-                        <li><a href="#">Un-install Selected</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Install Component</a></li>
+                        <li><a href="#">Uninstall Selected</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Administartor Console</a></li>
                     </ul>
-                </div>
-            </div>
+                </div><!-- /btn-group -->
+            </div><!-- /input-group -->
         </div>
 
 
@@ -92,9 +94,10 @@
         </div>
 
         <br />
+
         <div class="well well-lg" style="margin-left: 30px; margin-right: 30px">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <b>NerveFabric</b> is Online: <span id="spnSummary"></span>
+            <b>Synapse</b> is online: <span id="spnSummary"></span>
         </div>
 
         <div class="panel panel-default" style="margin: 30px">
@@ -143,15 +146,18 @@
     </div>
 
     <br />
+    <br />
 
     <div class="panel panel-primary" style="margin: auto; width: 80%; ">
         <div class="panel-heading">
-            <h3 class="panel-title">System Logs::</h3>
+            <h3 class="panel-title">
+                <span class="glyphicon glyphicon-cog"></span> System Logs::
+            </h3>
         </div><br />
 
         <div class="panel panel-default" style="margin: 30px">
             <div class="panel-body">
-                Basic panel example
+                No logs found
             </div>
         </div>
 
