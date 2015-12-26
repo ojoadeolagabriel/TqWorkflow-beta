@@ -2,7 +2,7 @@
 <descriptor>
   
   <name>paydirect :: payment notification bundle</name>
-  <version>v0.9.0.98888</version>
+  <version>1.5.0.Release</version>
   <author>adeola.ojo</author>
   <groupid>nerve.core</groupid>
   <priority>high</priority>

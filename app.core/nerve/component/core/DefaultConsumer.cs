@@ -24,5 +24,9 @@ namespace app.core.nerve.component.core
             return null;
         }
 
+        public virtual bool UnLoad()
+        {
+            return true;
+        }
     }
 }

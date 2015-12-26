@@ -7,7 +7,7 @@ namespace app.core.nerve.pattern.eip
     {
         public static void Execute(XElement choicElement, Exchange exchange)
         {
-
+            
         }
     }
 }

@@ -30,6 +30,7 @@ namespace app.core.nerve.management
             Server = new HttpListener();
             Server.Prefixes.Add(uriPrefix);
             Server.Prefixes.Add(uriPrefix + "status/");
+            Server.Prefixes.Add(uriPrefix + "status.search/");
             Server.Prefixes.Add(uriPrefix + "bundle.pause/");
             Server.Prefixes.Add(uriPrefix + "bundle.restart/");
             Server.Prefixes.Add(uriPrefix + "bundle.start/");
@@ -76,6 +77,9 @@ namespace app.core.nerve.management
                 {
                     case "status":
                         return HandleStatus(client, body);
+                        break;
+                    case "status.search":
+                        return HandleStatusSearch(client, body);
                         break;
                     case "bundle.status":
                         return HandleBundleStatus(client, body);
@@ -213,6 +217,30 @@ namespace app.core.nerve.management
                 Priority = c.Value.BundleInfo.Priority,
                 BundleState = c.Value.BundleInfo.BundleStatus.ToString()
             }).Distinct();
+
+            var res = JsonConvert.SerializeObject(new
+            {
+                ResponseCode = "90000",
+                ResponseMessage = "",
+                Routes = details
+            });
+
+            return PrepareResponse(res, client);
+        }
+
+        private static string HandleStatusSearch(HttpListenerContext client, string body)
+        {
+            var id = client.Request.Url.Segments[5].Replace("/", "");
+            var details = Camel.RouteCollection.Select(c => new
+            {
+                Author = c.Value.BundleInfo.Author,
+                GroupId = c.Value.BundleInfo.GroupId,
+                GuidData = c.Value.BundleInfo.GuidData,
+                Model = c.Value.BundleInfo.ModelVersion,
+                Name = c.Value.BundleInfo.Name,
+                Priority = c.Value.BundleInfo.Priority,
+                BundleState = c.Value.BundleInfo.BundleStatus.ToString()
+            }).Distinct().Where(c => c.Name.Contains(id));
 
             var res = JsonConvert.SerializeObject(new
             {

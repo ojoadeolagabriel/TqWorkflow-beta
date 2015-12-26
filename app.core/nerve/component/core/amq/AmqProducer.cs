@@ -34,6 +34,7 @@ namespace app.core.nerve.component.core.amq
             {
                 var connection = CreateConnection(endPointDescriptor);
                 var queue = endPointDescriptor.GetUriProperty("queue", "test_queue." + DateTime.Now.Ticks);
+                var requestTimeOut = endPointDescriptor.GetUriProperty("timeout", new TimeSpan(0, 10, 0));
 
                 using (var session = connection.CreateSession())
                 {
@@ -41,7 +42,7 @@ namespace app.core.nerve.component.core.amq
 
                     var topic = session.GetQueue(queue);
                     var producer = session.CreateProducer(topic);
-                    producer.RequestTimeout = new TimeSpan(0, 10, 0);
+                    producer.RequestTimeout = requestTimeOut;
 
                     //create message
                     var messageSer = JsonConvert.SerializeObject(exchange);

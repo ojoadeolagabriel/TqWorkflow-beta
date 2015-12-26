@@ -183,6 +183,7 @@
     <Compile Include="nerve\component\core\rabbitmqclient\RabbitMqEndPoint.cs" />
     <Compile Include="nerve\dto\BundleDescriptorObject.cs" />
     <Compile Include="nerve\handlers\tag\LoopTag.cs" />
+    <Compile Include="nerve\language\FromBuilder.cs" />
     <Compile Include="nerve\language\RouteBuilder.cs" />
     <Compile Include="nerve\management\SystemBundleManagement.cs" />
     <Compile Include="nerve\strategy\AggregationStrategy.cs" />

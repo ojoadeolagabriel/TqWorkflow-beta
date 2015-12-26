@@ -33,13 +33,13 @@
             </h4>
 
             <div class="input-group">
-                <input type="text" class="form-control" aria-label="..." placeholder="search for components...">
+                <input type="text" class="form-control" aria-label="..." placeholder="search for components..." id="frmSearch" name="frmSearch">
                 <div class="input-group-btn">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
                     <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="#">Search</a></li>
+                        <li><a href="#" id="frmSearchBtn">Search</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Install Component</a></li>
+                        <li><a href="#">Install / Update Component</a></li>
                         <li><a href="#">Uninstall Selected</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Administartor Console</a></li>
@@ -59,7 +59,7 @@
                         <h4 class="modal-title" id="myModalLabel">Bundle Summary</h4>
                     </div>
                     <div class="modal-body">
-                        <table style="border-collapse: separate; border-spacing: 3px; ">
+                        <table style="border-collapse: separate; border-spacing: 3px; " id="tdRows">
                             <tr>
                                 <td style="width: 200px">Description: </td>
                                 <td id="tdName"></td>
