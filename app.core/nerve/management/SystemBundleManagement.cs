@@ -230,24 +230,38 @@ namespace app.core.nerve.management
 
         private static string HandleStatusSearch(HttpListenerContext client, string body)
         {
-            var id = client.Request.Url.Segments[5].Replace("/", "");
-            var details = Camel.RouteCollection.Select(c => new
+            var res = "";
+            if (client.Request.Url.Segments.Length <= 5)
             {
-                Author = c.Value.BundleInfo.Author,
-                GroupId = c.Value.BundleInfo.GroupId,
-                GuidData = c.Value.BundleInfo.GuidData,
-                Model = c.Value.BundleInfo.ModelVersion,
-                Name = c.Value.BundleInfo.Name,
-                Priority = c.Value.BundleInfo.Priority,
-                BundleState = c.Value.BundleInfo.BundleStatus.ToString()
-            }).Distinct().Where(c => c.Name.Contains(id));
+                res = JsonConvert.SerializeObject(new
+                {
+                    ResponseCode = "90000",
+                    ResponseMessage = "",
+                    Routes = "",
+                });
+            }
+            else
+            {
+                var id = client.Request.Url.Segments[5].Replace("/", "");
+                var details = Camel.RouteCollection.Select(c => new
+                {
+                    Author = c.Value.BundleInfo.Author,
+                    GroupId = c.Value.BundleInfo.GroupId,
+                    GuidData = c.Value.BundleInfo.GuidData,
+                    Model = c.Value.BundleInfo.ModelVersion,
+                    Name = c.Value.BundleInfo.Name,
+                    Priority = c.Value.BundleInfo.Priority,
+                    BundleState = c.Value.BundleInfo.BundleStatus.ToString()
+                }).Distinct().Where(c => c.Name.Contains(id));
 
-            var res = JsonConvert.SerializeObject(new
-            {
-                ResponseCode = "90000",
-                ResponseMessage = "",
-                Routes = details
-            });
+                res = JsonConvert.SerializeObject(new
+                {
+                    ResponseCode = "90000",
+                    ResponseMessage = "",
+                    Routes = details
+                });
+            }
+           
 
             return PrepareResponse(res, client);
         }

@@ -48,15 +48,22 @@ namespace app.core.nerve.facade
 
                     foreach (var namespaceToCheck in PermissibleNamespaces)
                     {
-                        var typeData = types.FirstOrDefault(c => c.FullName.Equals(string.Format("{0}.{1}.{2}", namespaceToCheck, leafDescriptor.ComponentName, leafDescriptor.ComponentName),
-                           StringComparison.InvariantCultureIgnoreCase) ||
-                           c.FullName.Equals(string.Format("{0}.{1}.{2}EndPoint", namespaceToCheck, leafDescriptor.ComponentName, leafDescriptor.ComponentName),
-                           StringComparison.InvariantCultureIgnoreCase));
+                        var typeData =
+                            types.FirstOrDefault(
+                                c =>
+                                    c.FullName.Equals(
+                                        string.Format("{0}.{1}.{2}", namespaceToCheck, leafDescriptor.ComponentName,
+                                            leafDescriptor.ComponentName),
+                                        StringComparison.InvariantCultureIgnoreCase) ||
+                                    c.FullName.Equals(
+                                        string.Format("{0}.{1}.{2}EndPoint", namespaceToCheck,
+                                            leafDescriptor.ComponentName, leafDescriptor.ComponentName),
+                                        StringComparison.InvariantCultureIgnoreCase));
 
                         if (typeData == null)
                             continue;
 
-                        endPoint = (DefaultEndpoint)Activator.CreateInstance(typeData, leafDescriptor.FullUri, route);
+                        endPoint = (DefaultEndpoint) Activator.CreateInstance(typeData, leafDescriptor.FullUri, route);
                         Camel.EnPointCollection.TryAdd(leafDescriptor.FullUri, endPoint);
                         break;
                     }
@@ -74,13 +81,22 @@ namespace app.core.nerve.facade
                 else
                     throw new AppCoreException("end-point not found: " + leafDescriptor.ComponentName);
             }
+            catch (AggregateException exception)
+            {
+                
+            }
             catch (Exception exception)
             {
                 throw new AppCoreException("error handling [from-tag] :" + exception.Message, exception);
             }
         }
 
-
+        /// <summary>
+        /// Handle To Method
+        /// </summary>
+        /// <param name="leafDescriptor"></param>
+        /// <param name="exchange"></param>
+        /// <param name="route"></param>
         public static void HandleTo(UriDescriptor leafDescriptor, Exchange exchange, Route route)
         {
             try
@@ -115,6 +131,10 @@ namespace app.core.nerve.facade
                     endPoint.Send(exchange, leafDescriptor);
                 else
                     throw new AppCoreException("end-point not found: " + leafDescriptor.ComponentName);
+            }
+            catch (AggregateException exception)
+            {
+
             }
             catch (Exception exception)
             {

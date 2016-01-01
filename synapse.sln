@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "autopay.ftp.consumer.bundle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "softalliance.processor.bundle", "softalliance.processor.bundle\softalliance.processor.bundle.csproj", "{FA0FCAF5-E0A2-4A19-AA07-2C7597E38150}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "karaf.console", "karaf.console\karaf.console.csproj", "{22B66A9C-AFC4-4CFE-BBBD-44E07AE2C444}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{FA0FCAF5-E0A2-4A19-AA07-2C7597E38150}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA0FCAF5-E0A2-4A19-AA07-2C7597E38150}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA0FCAF5-E0A2-4A19-AA07-2C7597E38150}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22B66A9C-AFC4-4CFE-BBBD-44E07AE2C444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22B66A9C-AFC4-4CFE-BBBD-44E07AE2C444}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22B66A9C-AFC4-4CFE-BBBD-44E07AE2C444}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22B66A9C-AFC4-4CFE-BBBD-44E07AE2C444}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

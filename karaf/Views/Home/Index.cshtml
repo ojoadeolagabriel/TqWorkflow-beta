@@ -48,8 +48,6 @@
             </div><!-- /input-group -->
         </div>
 
-
-
         <!-- modal-->
         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
             <div class="modal-dialog bs-example-modal-lg" role="document">
@@ -95,10 +93,12 @@
 
         <br />
 
-        <div class="well well-lg" style="margin-left: 30px; margin-right: 30px">
+        <div class="alert alert-success" style="margin-left: 30px; margin-right: 30px">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <b>Synapse</b> is online: <span id="spnSummary"></span>
         </div>
+
+        @Html.Partial("_navMenu")
 
         <div class="panel panel-default" style="margin: 30px">
             <div class="panel-body">

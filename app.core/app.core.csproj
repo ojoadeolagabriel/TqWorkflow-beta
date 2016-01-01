@@ -301,6 +301,10 @@
     <Compile Include="nerve\utility\PomReader.cs" />
     <Compile Include="nerve\utility\ReflectionHelper.cs" />
     <Compile Include="nerve\utility\XmlHelper.cs" />
+    <Compile Include="security\onetime\hmacsha1.cs" />
+    <Compile Include="security\onetime\memutil.cs" />
+    <Compile Include="security\onetime\otp.cs" />
+    <Compile Include="security\onetime\sha1.cs" />
     <Compile Include="utility\Blitz.cs" />
     <Compile Include="utility\CsvDao.cs" />
     <Compile Include="utility\XmlHelper.cs" />
