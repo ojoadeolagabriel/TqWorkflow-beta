@@ -14,12 +14,13 @@ namespace camelcontext.server.facade.util
         {
             public string Body { get; set; }
             public string ExchangeId { get; set; }
+
+      
         }
 
         public static void ProcessDb()
         {
-            var logger = ActivityLog.Init("AppLogDb");
-            var result = logger.ExecuteUniqueSp("usp_FetchLog", new List<SqlParameter> { new SqlParameter("@id", 1) });
+
         }
 
         /// <summary>
@@ -81,7 +82,7 @@ namespace camelcontext.server.facade.util
                 CsvDao.SafeFileWrite(rootFolder, @"SFX\ERROR", originalFileNameWtExt, export);
                 return;
             }
-             
+
             var secureRow = csvDao.FetchSingle(SecureHeaderField.SecureRowId);
 
             //get payment rows

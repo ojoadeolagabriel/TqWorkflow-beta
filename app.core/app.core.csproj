@@ -307,6 +307,7 @@
     <Compile Include="security\onetime\sha1.cs" />
     <Compile Include="utility\Blitz.cs" />
     <Compile Include="utility\CsvDao.cs" />
+    <Compile Include="utility\reflectivity\ReflectorSimple.cs" />
     <Compile Include="utility\XmlHelper.cs" />
   </ItemGroup>
   <ItemGroup>

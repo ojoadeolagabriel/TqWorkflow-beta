@@ -206,7 +206,6 @@ namespace app.core.nerve.management
 
         private static string HandleStatus(HttpListenerContext client, string body)
         {
-
             var details = Camel.RouteCollection.Select(c => new
             {
                 Author = c.Value.BundleInfo.Author,
