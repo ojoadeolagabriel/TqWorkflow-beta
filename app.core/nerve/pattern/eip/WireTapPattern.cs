@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using app.core.nerve.dto;
 using app.core.nerve.facade;
 
@@ -18,9 +19,9 @@ namespace app.core.nerve.pattern.eip
                 var leafNodeParts = UriDescriptor.Parse(path, exchange);
                 EndPointBuilder.HandleTo(leafNodeParts, exchange, route);
             }
-            catch
+            catch(Exception exception)
             {
-
+                Console.WriteLine(exception.Message);
             }
         }
     }

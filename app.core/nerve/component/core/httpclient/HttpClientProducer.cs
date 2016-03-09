@@ -36,6 +36,7 @@ namespace app.core.nerve.component.core.httpclient
             Camel.TryLog(exchange, "producer", descriptor.ComponentName);
 
             var connectionTimeOut = descriptor.GetUriProperty<int>("connectionTimeOut");
+            var noHeaderPolicy = descriptor.GetUriProperty<bool>("noHeaderPolicy");
             var httpMethod = exchange.InMessage.GetHeader(CamelConstant.HttpMethod) as string;
             var httpUri = exchange.InMessage.GetHeader(CamelConstant.HttpUri);
             var httpQuery = exchange.InMessage.GetHeader(CamelConstant.HttpQuery) as string;
@@ -61,6 +62,9 @@ namespace app.core.nerve.component.core.httpclient
                                     : string.Empty;
                                 client.Headers[HttpRequestHeader.ContentType] = httpContentType as string;
                                 client.ContentType = httpContentType;
+
+                                if(noHeaderPolicy)
+                                    client.Headers.Clear();
                                 client.UploadString(path, payLoad);
                             }
                             break;
@@ -70,6 +74,10 @@ namespace app.core.nerve.component.core.httpclient
                                 var payLoad = exchange.InMessage.Body != null
                                     ? exchange.InMessage.Body.ToString()
                                     : string.Empty;
+
+
+                                if (noHeaderPolicy)
+                                    client.Headers.Clear();
                                 client.UploadData(path, "PUT", Encoding.ASCII.GetBytes(payLoad));
                             }
                             break;
@@ -78,8 +86,24 @@ namespace app.core.nerve.component.core.httpclient
                             if (queryKeyValue != null)
                                 queryKeyValue.ForEach(c => client.QueryString.Add(c.Key, c.Value));
 
+
+                            if (noHeaderPolicy)
+                                client.Headers.Clear();
+
                             var response = client.DownloadString(path);
                             exchange.InMessage.Body = response;
+                            break;
+                        case "TRACE":
+                            var queryKeyValueTrace = UriDescriptor.BuildKeyValueListWithEquality(httpQuery);
+                            if (queryKeyValueTrace != null)
+                                queryKeyValueTrace.ForEach(c => client.QueryString.Add(c.Key, c.Value));
+
+
+                            if (noHeaderPolicy)
+                                client.Headers.Clear();
+
+                            var responsetrace = client.DownloadString(path);
+                            exchange.InMessage.Body = responsetrace;
                             break;
                     }
 

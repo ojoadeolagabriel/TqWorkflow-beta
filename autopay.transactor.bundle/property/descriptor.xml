@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<descriptor>
+  
+  <name>autopay.transactor.consumer</name>
+  <version>0.1.0</version>
+  <author>adeola.ojo</author>
+  <groupid>nerve.core</groupid>
+  <priority>high</priority>
+
+  <project>
+    <developer></developer>
+    <license></license>
+    <contributor></contributor>
+    <organisation></organisation>
+  </project>
+  
+</descriptor>

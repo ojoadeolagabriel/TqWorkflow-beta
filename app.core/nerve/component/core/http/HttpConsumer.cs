@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
@@ -88,6 +89,12 @@ namespace app.core.nerve.component.core.http
             {               
                 var exchange = passData.Exchange;
                 var body = new StreamReader(client.Request.InputStream).ReadToEnd();
+
+                foreach (var headerKey in client.Request.Headers.AllKeys)
+                {
+                    var kval = client.Request.Headers[headerKey];
+                    exchange.InMessage.HeaderCollection.Add(headerKey, kval);
+                }
 
                 BuildRequestMessage(client, exchange, body);
                 exchange.InMessage.Body = body;

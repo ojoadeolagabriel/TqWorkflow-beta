@@ -29,13 +29,18 @@
     </route>
 
     <route>
+      <from uri="http:127.0.0.1?port=5454;initialDelay=1000;path=api/v2/isoapitransformer"/>
+      <wiretap uri="direct:isoFieldProcessor"/>
+    </route>
+
+      <route>
       <from uri="direct:httpNonGenericProcessor"/>
     </route>
 
     <route>
       <from uri="http:127.0.0.1?port=${paydirectConfiguration.IntegrationPort};initialDelay=1000;path=${paydirectConfiguration.RestIntegrationPath}"/>
 
-      <choice>   
+      <choice>    
         <when>
           <processor-method bean="httpGenericChecker" method="IsHttpGenericRequest"/>
           <setheader name="IsHttpGeneric" value="true"/>

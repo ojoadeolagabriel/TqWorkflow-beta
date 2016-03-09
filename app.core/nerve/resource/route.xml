@@ -45,7 +45,8 @@
 
       <setProperty propertyName="Bankai" value="ichigo.orange"/>
       <to uri="log:show_bankai_config?groupsize=10;level=DEBUG;file=c:\Users\Adeola Ojo\Downloads\before-delay-log.log;message='in here';"/>
-      <wireTap uri="direct:tapDirect"/>
+      <wireTap uri="
+               tapDirect"/>
       <to uri="log:show_tap_direct_config?groupsize=10;level=DEBUG;logLevel=DEBUG;file=c:\Users\Adeola Ojo\Downloads\show_tap_direct_config-log.log;message='about to call test-me';"/>
       <to uri="amq:127.0.0.1:61616?queue=fileQueue"/>
 

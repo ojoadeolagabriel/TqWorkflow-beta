@@ -304,14 +304,15 @@ namespace app.core.nerve.facade
         {
             try
             {
-                var reference = step.Attribute("ref").Value;
+                var attr = step.Attribute("ref");
+                var reference = attr.Value;
                 var bean = Camel.Registry[reference] as ProcessorBase;
                 if (bean != null)
                     bean.Process(exchange);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                Console.WriteLine(e.StackTrace);
             }
         }
 
