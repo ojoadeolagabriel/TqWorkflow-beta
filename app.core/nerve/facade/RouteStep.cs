@@ -210,7 +210,8 @@ namespace app.core.nerve.facade
         private static void HandleRemoveHeader(XElement step, Route routeObj, Exchange exchange)
         {
             var headerName = step.Attribute("headerName").Value;
-            exchange.InMessage.HeaderCollection.Remove(headerName);
+            object removedValue;
+            exchange.InMessage.HeaderCollection.TryRemove(headerName, out removedValue);
         }
 
         private static void HandleTransform(XElement step, Route routeObj, Exchange exchange)

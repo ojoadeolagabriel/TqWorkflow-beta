@@ -2,7 +2,9 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transac
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transactor.bundle\bin\Debug\autopay.transactor.bundle.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transactor.bundle\bin\Debug\autopay.transactor.bundle.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transactor.bundle\bin\Debug\app.core.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transactor.bundle\bin\Debug\Cassandra.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transactor.bundle\bin\Debug\Google.Apis.Core.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transactor.bundle\bin\Debug\LZ4.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transactor.bundle\bin\Debug\Microsoft.Threading.Tasks.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transactor.bundle\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transactor.bundle\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
@@ -25,6 +27,7 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transac
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transactor.bundle\bin\Debug\Common.Logging.Core.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transactor.bundle\bin\Debug\Common.Logging.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transactor.bundle\bin\Debug\app.core.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transactor.bundle\bin\Debug\Cassandra.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transactor.bundle\bin\Debug\Google.Apis.Core.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transactor.bundle\bin\Debug\Google.Apis.Core.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\autopay.transactor.bundle\bin\Debug\Microsoft.Threading.Tasks.xml

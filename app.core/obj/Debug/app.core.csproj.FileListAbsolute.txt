@@ -57,6 +57,7 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\De
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\app.core.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Apache.NMS.ActiveMQ.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Apache.NMS.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Cassandra.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.Core.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Google.Apis.Core.dll
@@ -64,6 +65,7 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\De
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Google.Apis.PlatformServices.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\JWT.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\log4net.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\LZ4.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Microsoft.Threading.Tasks.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
@@ -84,6 +86,7 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\De
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Zlib.Portable.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Apache.NMS.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Apache.NMS.xml
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Cassandra.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\app.core\bin\Debug\Common.Logging.Core.pdb

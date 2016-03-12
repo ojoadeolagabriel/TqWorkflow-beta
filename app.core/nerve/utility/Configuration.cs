@@ -7,6 +7,8 @@
             public string Data { get; set; }
         }
 
+        public int Consumers { get; set; }
+
         public string CronConfig { get; set; }
         public HotConnection HeatConnection { get; set; }
         public string ApplicationConfigRootFolderPath { get; set; }

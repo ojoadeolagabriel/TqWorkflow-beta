@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <container xmlns:n="http://com.nerveinteract.camel/context">
 
+  <bean id="appConfig" class="app.core.nerve.utility.Configuration"/>
   <bean id="transactionDeciderBuilder" class="autopay.transactor.bundle.codebase.TransactionDecider"/>
 
   <routecontext>
     <route>
-      <from uri="http:127.0.0.1?port=4554;path=autopay.transactor/api2"/>
+      <from uri="http:127.0.0.1?port=4554;path=autopay.transactor/api2;consumers=${appConfig.Consumers}"/>
       <process ref="transactionDeciderBuilder"/>
     </route>
   </routecontext>

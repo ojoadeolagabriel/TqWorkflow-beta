@@ -3,6 +3,7 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf.console\b
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf.console\bin\Debug\karaf.console.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf.console\bin\Debug\app.core.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf.console\bin\Debug\camelcontext.server.exe
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf.console\bin\Debug\System.Net.Http.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf.console\bin\Debug\Quartz.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf.console\bin\Debug\MongoDB.Bson.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf.console\bin\Debug\MongoDB.Driver.dll
@@ -16,6 +17,7 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf.console\b
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf.console\bin\Debug\Common.Logging.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf.console\bin\Debug\app.core.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf.console\bin\Debug\camelcontext.server.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf.console\bin\Debug\System.Net.Http.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf.console\bin\Debug\Quartz.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf.console\bin\Debug\Quartz.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\karaf.console\bin\Debug\MongoDB.Bson.xml

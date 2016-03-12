@@ -23,6 +23,7 @@ namespace autopay.transactor.bundle.codebase
             var tranObj = JsonConvert.DeserializeObject<TransactionObj>(inBody as string);
 
             var processType = exchange.InMessage.GetHeader<string>("process_type");
+            var counter = exchange.InMessage.GetHeader<long>("counter");
             ITransactionTransformer transformer;
 
             switch (processType)

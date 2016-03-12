@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -6,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using app.core.nerve.dto;
+using app.core.nerve.utility;
 
 namespace app.core.nerve.component.core.http
 {
@@ -40,6 +42,7 @@ namespace app.core.nerve.component.core.http
                 var initialDelay = _httpProcessor.UriInformation.GetUriProperty("initialDelay", 1000);
                 var portId = _httpProcessor.UriInformation.GetUriProperty("port", 9000, exchange);
                 var path = _httpProcessor.UriInformation.GetUriProperty("path", "");
+                var consumers = _httpProcessor.UriInformation.GetUriProperty("consumers", 1);
 
                 if (initialDelay > 0)
                     Thread.Sleep(initialDelay);
@@ -53,15 +56,18 @@ namespace app.core.nerve.component.core.http
                 if (!uriPref.EndsWith("/"))
                     uriPref = uriPref + "/";
 
-                Console.WriteLine("Activiating HTTP Endpoint: {0}", uriPref);
+                Console.WriteLine("Activiating http endpoint: {0}", uriPref);
                 HttpListener.Prefixes.Add(uriPref);
-
                 HttpListener.Start();
-                HttpListener.BeginGetContext(ProcessIncommingClientAsync, new PassData
+
+                for (var i = 0; i < consumers; i++)
                 {
-                    Exchange = exchange,
-                    HttpListener = HttpListener
-                });
+                    HttpListener.BeginGetContext(ProcessIncommingClientAsync, new PassData
+                    {
+                        Exchange = exchange,
+                        HttpListener = HttpListener
+                    });
+                }
             }
             catch (Exception exception)
             {
@@ -71,57 +77,62 @@ namespace app.core.nerve.component.core.http
 
         private void ProcessIncommingClientAsync(IAsyncResult res)
         {
-            var passData = (PassData)res.AsyncState;
-            var listener = passData.HttpListener;
-            var client = listener.EndGetContext(res);
-            HttpListener.BeginGetContext(ProcessIncommingClientAsync, new PassData
+            using (var p = new ConsoleProfiler())
             {
-                Exchange = new Exchange(_httpProcessor.Route),
-                HttpListener = listener
-            });
+                var passData = (PassData) res.AsyncState;
+                var listener = passData.HttpListener;
+                var client = listener.EndGetContext(res);
 
-            if (!CanRun(_httpProcessor))
-            {
-                Console.WriteLine("Bundle [{0}]: NotActive", _httpProcessor.Route.BundleInfo.Name);
-            }
-
-            else
-            {               
-                var exchange = passData.Exchange;
-                var body = new StreamReader(client.Request.InputStream).ReadToEnd();
-
-                foreach (var headerKey in client.Request.Headers.AllKeys)
+                HttpListener.BeginGetContext(ProcessIncommingClientAsync, new PassData
                 {
-                    var kval = client.Request.Headers[headerKey];
-                    exchange.InMessage.HeaderCollection.Add(headerKey, kval);
+                    Exchange = new Exchange(_httpProcessor.Route),
+                    HttpListener = listener
+                });
+
+                if (!CanRun(_httpProcessor))
+                {
+                    Console.WriteLine("Bundle [{0}]: Suspended State!", _httpProcessor.Route.BundleInfo.Name);
                 }
 
-                BuildRequestMessage(client, exchange, body);
-                exchange.InMessage.Body = body;
-                Camel.TryLog(exchange, "consumer", _httpProcessor.UriInformation.ComponentName);
-                _httpProcessor.Process(exchange);
-                var b = Encoding.UTF8.GetBytes(exchange.InMessage.Body.ToString());
-                
-                foreach (var headers in exchange.InMessage.HeaderCollection)
+                else
                 {
-                    try
+                    var exchange = passData.Exchange;
+                    var body = new StreamReader(client.Request.InputStream).ReadToEnd();
+
+                    foreach (var headerKey in client.Request.Headers.AllKeys)
                     {
-                        client.Response.Headers.Add(headers.Key, WebUtility.HtmlEncode(headers.Value.ToString()));
+                        var kval = client.Request.Headers[headerKey];
+                        exchange.InMessage.SetHeader(headerKey, kval);
                     }
-                    catch (Exception exception)
+
+                    BuildRequestMessage(client, exchange, body);
+                    exchange.InMessage.Body = body;
+                    Camel.TryLog(exchange, "consumer", _httpProcessor.UriInformation.ComponentName);
+
+                    _httpProcessor.Process(exchange);
+                    var b = Encoding.UTF8.GetBytes(exchange.InMessage.Body.ToString());
+
+                    foreach (var headers in exchange.InMessage.HeaderCollection)
                     {
-                        exchange.Exception.Push(exception);
+                        try
+                        {
+                            client.Response.Headers.Add(headers.Key, WebUtility.HtmlEncode(headers.Value.ToString()));
+                        }
+                        catch (Exception exception)
+                        {
+                            exchange.Exception.Push(exception);
+                        }
                     }
+
+                    client.Response.ContentLength64 = b.Length;
+                    var output = client.Response.OutputStream;
+                    output.Write(b, 0, b.Length);
                 }
 
-                client.Response.ContentLength64 = b.Length;
-                var output = client.Response.OutputStream;
-                output.Write(b, 0, b.Length);
+                client.Response.StatusCode = 200;
+                client.Response.KeepAlive = false;
+                client.Response.Close();
             }
-
-            client.Response.StatusCode = 200;
-            client.Response.KeepAlive = false;
-            client.Response.Close();
         }
 
         private static void BuildRequestMessage(HttpListenerContext client, Exchange exchange, string body)

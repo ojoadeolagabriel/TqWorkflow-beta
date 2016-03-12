@@ -86,6 +86,9 @@ namespace app.core.nerve.handlers.routepipeline
                     var routeXml = GetBundleResourceTextFile(filePath);
                     bundleInDescriptorObject = GetDescriptorResourceTextFile(filePath);
                     routeConfigFile = XElement.Parse(routeXml);
+
+                    Console.WriteLine(Environment.NewLine + "({1}) === [ {0} ] ===========================================" + Environment.NewLine, Path.GetFileName(filePath), DateTime.Now.ToString(CultureInfo.InvariantCulture));
+                    Console.WriteLine(routeXml.ToString(CultureInfo.InvariantCulture));
                 }
             }
             catch (Exception exception)
@@ -93,6 +96,8 @@ namespace app.core.nerve.handlers.routepipeline
                 throw new AppCoreException("error loading route-config", exception);
             }
 
+
+            
             InjestContextBeans(routeConfigFile);
 
             //get context node

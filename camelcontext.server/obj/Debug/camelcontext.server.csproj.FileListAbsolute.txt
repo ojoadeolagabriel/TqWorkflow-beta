@@ -2,6 +2,8 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\camelcontext.se
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\camelcontext.server\bin\Debug\camelcontext.server.exe
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\camelcontext.server\bin\Debug\camelcontext.server.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\camelcontext.server\bin\Debug\app.core.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\camelcontext.server\bin\Debug\Cassandra.dll
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\camelcontext.server\bin\Debug\LZ4.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\camelcontext.server\bin\Debug\Quartz.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\camelcontext.server\bin\Debug\MongoDB.Bson.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\camelcontext.server\bin\Debug\MongoDB.Driver.dll
@@ -14,6 +16,7 @@ C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\camelcontext.se
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\camelcontext.server\bin\Debug\Common.Logging.Core.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\camelcontext.server\bin\Debug\Common.Logging.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\camelcontext.server\bin\Debug\app.core.pdb
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\camelcontext.server\bin\Debug\Cassandra.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\camelcontext.server\bin\Debug\Quartz.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\camelcontext.server\bin\Debug\Quartz.xml
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\camelcontext.server\bin\Debug\MongoDB.Bson.xml

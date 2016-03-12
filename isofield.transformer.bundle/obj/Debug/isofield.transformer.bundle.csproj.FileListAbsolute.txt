@@ -1,3 +1,4 @@
+C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\isofield.transformer.bundle\bin\Debug\isofield.transformer.bundle.dll.config
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\isofield.transformer.bundle\bin\Debug\isofield.transformer.bundle.dll
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\isofield.transformer.bundle\bin\Debug\isofield.transformer.bundle.pdb
 C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\isofield.transformer.bundle\bin\Debug\app.core.dll

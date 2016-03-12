@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 
 namespace app.core.nerve.dto
@@ -46,7 +47,7 @@ namespace app.core.nerve.dto
 
         public bool IsFault { get; set; }
 
-        public Dictionary<string, object> HeaderCollection = new Dictionary<string, object>();
+        public ConcurrentDictionary<string, object> HeaderCollection = new ConcurrentDictionary<string, object>();
 
         public Object Body  = new object();
 
