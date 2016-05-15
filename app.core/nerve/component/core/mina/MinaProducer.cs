@@ -37,7 +37,7 @@ namespace app.core.nerve.component.core.mina
 
                     client.Client.ReceiveTimeout = receivetimeout;
                     client.Client.SendTimeout = sendtimeout;
-                    var totalBytesSent = client.Client.Send(buffer);
+                    client.Client.Send(buffer);
 
                     using (var networkStream = client.GetStream())
                     {
