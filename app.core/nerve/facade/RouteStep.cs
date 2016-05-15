@@ -52,6 +52,7 @@ namespace app.core.nerve.facade
                 return "";
             }
         }
+        public XElement XmlRaw { get { return _currentStepXml; } }
 
         private readonly XElement _currentStepXml;
         public Route Route { get; set; }

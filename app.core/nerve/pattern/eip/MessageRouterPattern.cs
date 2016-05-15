@@ -13,6 +13,11 @@ namespace app.core.nerve.pattern.eip
     {
         public static void Execute(XElement choicElement, Exchange exchange)
         {
+            DoWhen(choicElement, exchange);
+        }
+
+        public static void DoWhen(XElement choicElement, Exchange exchange)
+        {
             var whenElements = choicElement.Elements("when");
 
             foreach (var whenElement in whenElements)

@@ -191,8 +191,11 @@
     <Compile Include="nerve\component\core\rabbitmqclient\RabbitMqEndPoint.cs" />
     <Compile Include="nerve\dto\BundleDescriptorObject.cs" />
     <Compile Include="nerve\handlers\tag\LoopTag.cs" />
-    <Compile Include="nerve\language\FromBuilder.cs" />
+    <Compile Include="nerve\language\Header.cs" />
+    <Compile Include="nerve\language\LanguageUtil.cs" />
     <Compile Include="nerve\language\RouteBuilder.cs" />
+    <Compile Include="nerve\language\ToUtil.cs" />
+    <Compile Include="nerve\language\WhenUtil.cs" />
     <Compile Include="nerve\management\SystemBundleManagement.cs" />
     <Compile Include="nerve\strategy\AggregationStrategy.cs" />
     <Compile Include="nerve\strategy\ISplitterStrategy.cs" />
@@ -325,6 +328,7 @@
     <Folder Include="brainiac\facade\" />
     <Folder Include="brainiac\utility\" />
     <Folder Include="nerve\component\core\http\util\" />
+    <Folder Include="nerve\component\core\logstash\" />
     <Folder Include="nerve\component\core\mina\util\" />
     <Folder Include="nerve\component\core\mssql\" />
     <Folder Include="nerve\component\core\restclient\" />

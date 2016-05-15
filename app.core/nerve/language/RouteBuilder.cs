@@ -2,26 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Xml.Linq;
+using app.core.nerve.dto;
 
 namespace app.core.nerve.language
 {
     public class RouteBuilder
     {
-        public XElement RouteXml  = new XElement("container",
-            new XElement("routecontext"));
-
-        public RouteBuilder From(string uri)
+        public static void To()
         {
             
-            return this;//from('uri')
-                            //.choice('$s=1')
-                                //to('uri')
         }
-        
-        public RouteBuilder To(string uri)
+
+        public static void Build(Action<Exchange> doAction)
         {
-            return this;
+            
         }
     }
 }
