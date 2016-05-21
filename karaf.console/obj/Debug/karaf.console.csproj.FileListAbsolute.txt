@@ -64,3 +64,42 @@ C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\karaf.c
 C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\karaf.console\obj\Debug\karaf.console.csprojResolveAssemblyReference.cache
 C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\karaf.console\obj\Debug\karaf.console.exe
 C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\karaf.console\obj\Debug\karaf.console.pdb
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\karaf.console.exe.config
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\karaf.console.exe
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\karaf.console.pdb
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\app.core.dll
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\camelcontext.server.exe
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\System.Net.Http.dll
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Quartz.dll
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\MongoDB.Bson.dll
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\MongoDB.Driver.dll
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Apache.NMS.dll
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Google.Apis.Core.dll
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Renci.SshNet.dll
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Apache.NMS.ActiveMQ.dll
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\RedBranch.Hammock.dll
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\JWT.dll
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Common.Logging.Core.dll
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Common.Logging.dll
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Microsoft.Threading.Tasks.dll
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\System.Net.Http.Primitives.dll
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\app.core.pdb
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\camelcontext.server.pdb
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\System.Net.Http.xml
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Quartz.pdb
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Quartz.xml
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\MongoDB.Bson.xml
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\MongoDB.Driver.xml
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Apache.NMS.pdb
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Apache.NMS.xml
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Google.Apis.Core.pdb
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Google.Apis.Core.xml
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Common.Logging.Core.pdb
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Common.Logging.Core.xml
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Common.Logging.pdb
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Common.Logging.xml
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\Microsoft.Threading.Tasks.xml
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\bin\Debug\System.Net.Http.Primitives.xml
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\obj\Debug\karaf.console.csprojResolveAssemblyReference.cache
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\obj\Debug\karaf.console.exe
+C:\Users\AdeolaOjo\Documents\workflow\karaf.console\obj\Debug\karaf.console.pdb
