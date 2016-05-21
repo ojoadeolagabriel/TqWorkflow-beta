@@ -7,10 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app.core", "app.core\app.co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "camelcontext.server", "camelcontext.server\camelcontext.server.csproj", "{45F5D6F1-09B3-409F-AA8A-2025DBD69BC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcp.consumer.bundle", "tcp.consumer.bundle\tcp.consumer.bundle.csproj", "{B76C6227-0AFC-4E2C-98F8-81CD947BE596}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mina.nibss.consumer.bundle", "mina.nibss.consumer.bunde\mina.nibss.consumer.bundle.csproj", "{EC478B8C-EEF4-4537-9150-F5DCDA34EFB7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "karaf", "karaf\karaf.csproj", "{DB633BFC-6915-468F-A786-3480973C07FB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "paymentnotification.generic.bundle", "ClassLibrary1\paymentnotification.generic.bundle.csproj", "{11792E9F-A17E-40B3-AFC6-6DBBD001751F}"
@@ -20,17 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Performance1.psess = Performance1.psess
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "autopay.ftp.consumer.bundle", "autopay.ftp.consumer.bundle\autopay.ftp.consumer.bundle.csproj", "{0760EE7F-0738-46F4-A020-B9A9DD5071EF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "softalliance.processor.bundle", "softalliance.processor.bundle\softalliance.processor.bundle.csproj", "{FA0FCAF5-E0A2-4A19-AA07-2C7597E38150}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "karaf.console", "karaf.console\karaf.console.csproj", "{22B66A9C-AFC4-4CFE-BBBD-44E07AE2C444}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "isofield.transformer.bundle", "isofield.transformer.bundle\isofield.transformer.bundle.csproj", "{3991B7F7-2E5B-47FF-9647-9181B0B889FB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "autopay.transactor.bundle", "autopay.transactor.bundle\autopay.transactor.bundle.csproj", "{0B38ABF5-9C92-4E26-A57A-42B705120B53}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "paydirect.rabbitmq.processor", "paydirect.rabbitmq.processor\paydirect.rabbitmq.processor.csproj", "{BF31BE98-8906-4AAD-BCE3-6294BDF48D2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,14 +32,6 @@ Global
 		{45F5D6F1-09B3-409F-AA8A-2025DBD69BC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45F5D6F1-09B3-409F-AA8A-2025DBD69BC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45F5D6F1-09B3-409F-AA8A-2025DBD69BC6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B76C6227-0AFC-4E2C-98F8-81CD947BE596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B76C6227-0AFC-4E2C-98F8-81CD947BE596}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B76C6227-0AFC-4E2C-98F8-81CD947BE596}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B76C6227-0AFC-4E2C-98F8-81CD947BE596}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EC478B8C-EEF4-4537-9150-F5DCDA34EFB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC478B8C-EEF4-4537-9150-F5DCDA34EFB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC478B8C-EEF4-4537-9150-F5DCDA34EFB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC478B8C-EEF4-4537-9150-F5DCDA34EFB7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DB633BFC-6915-468F-A786-3480973C07FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DB633BFC-6915-468F-A786-3480973C07FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB633BFC-6915-468F-A786-3480973C07FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -62,30 +40,10 @@ Global
 		{11792E9F-A17E-40B3-AFC6-6DBBD001751F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11792E9F-A17E-40B3-AFC6-6DBBD001751F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11792E9F-A17E-40B3-AFC6-6DBBD001751F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0760EE7F-0738-46F4-A020-B9A9DD5071EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0760EE7F-0738-46F4-A020-B9A9DD5071EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0760EE7F-0738-46F4-A020-B9A9DD5071EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0760EE7F-0738-46F4-A020-B9A9DD5071EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FA0FCAF5-E0A2-4A19-AA07-2C7597E38150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FA0FCAF5-E0A2-4A19-AA07-2C7597E38150}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FA0FCAF5-E0A2-4A19-AA07-2C7597E38150}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FA0FCAF5-E0A2-4A19-AA07-2C7597E38150}.Release|Any CPU.Build.0 = Release|Any CPU
 		{22B66A9C-AFC4-4CFE-BBBD-44E07AE2C444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{22B66A9C-AFC4-4CFE-BBBD-44E07AE2C444}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22B66A9C-AFC4-4CFE-BBBD-44E07AE2C444}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22B66A9C-AFC4-4CFE-BBBD-44E07AE2C444}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3991B7F7-2E5B-47FF-9647-9181B0B889FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3991B7F7-2E5B-47FF-9647-9181B0B889FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3991B7F7-2E5B-47FF-9647-9181B0B889FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3991B7F7-2E5B-47FF-9647-9181B0B889FB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B38ABF5-9C92-4E26-A57A-42B705120B53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B38ABF5-9C92-4E26-A57A-42B705120B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B38ABF5-9C92-4E26-A57A-42B705120B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B38ABF5-9C92-4E26-A57A-42B705120B53}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF31BE98-8906-4AAD-BCE3-6294BDF48D2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF31BE98-8906-4AAD-BCE3-6294BDF48D2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF31BE98-8906-4AAD-BCE3-6294BDF48D2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF31BE98-8906-4AAD-BCE3-6294BDF48D2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

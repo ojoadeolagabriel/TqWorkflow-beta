@@ -49,16 +49,16 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\app.core\app.core.csproj">
-      <Project>{c8c59f6c-6169-4c61-88c1-4ca8dd1fec2f}</Project>
-      <Name>app.core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="property\route\route.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\app.core\app.core.csproj">
+      <Project>{c8c59f6c-6169-4c61-88c1-4ca8dd1fec2f}</Project>
+      <Name>app.core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

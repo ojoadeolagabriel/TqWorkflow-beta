@@ -56,3 +56,4 @@ C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\mina.ni
 C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\mina.nibss.consumer.bunde\obj\Debug\mina.nibss.consumer.bundle.csprojResolveAssemblyReference.cache
 C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\mina.nibss.consumer.bunde\obj\Debug\mina.nibss.consumer.bundle.dll
 C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\mina.nibss.consumer.bunde\obj\Debug\mina.nibss.consumer.bundle.pdb
+C:\Users\AdeolaOjo\Documents\workflow\mina.nibss.consumer.bunde\obj\Debug\mina.nibss.consumer.bundle.csprojResolveAssemblyReference.cache

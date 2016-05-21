@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="data\UserDto.cs" />
     <Compile Include="facade\network\BasicTcpProcessor.cs" />
     <Compile Include="facade\strategy\CsvSplitter.cs" />
     <Compile Include="facade\util\CsvProcessor.cs" />
@@ -63,7 +64,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="route\camel.xml">

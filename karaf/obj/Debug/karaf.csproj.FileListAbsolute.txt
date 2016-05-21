@@ -195,13 +195,10 @@ C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\Microsoft.Web.Mvc.FixedDisplayMo
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\Microsoft.Web.WebPages.OAuth.dll
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\Newtonsoft.Json.dll
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Net.Http.dll
-C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Net.Http.Formatting.dll
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Net.Http.WebRequest.dll
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Spatial.dll
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Web.Helpers.dll
-C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Web.Http.dll
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Web.Http.OData.dll
-C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Web.Http.WebHost.dll
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Web.Mvc.dll
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Web.Optimization.dll
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Web.Razor.dll
@@ -214,11 +211,8 @@ C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\WebMatrix.WebData.dll
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\EntityFramework.xml
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\Newtonsoft.Json.xml
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Net.Http.xml
-C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Net.Http.Formatting.xml
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Net.Http.WebRequest.xml
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Web.Helpers.xml
-C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Web.Http.xml
-C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Web.Http.WebHost.xml
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Web.Mvc.xml
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Web.Razor.xml
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\System.Web.WebPages.xml
@@ -264,6 +258,5 @@ C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\ko\System.Spatial.resources.dll
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\ru\System.Spatial.resources.dll
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\AdeolaOjo\Documents\workflow\karaf\bin\zh-Hant\System.Spatial.resources.dll
-C:\Users\AdeolaOjo\Documents\workflow\karaf\obj\Debug\karaf.csprojResolveAssemblyReference.cache
 C:\Users\AdeolaOjo\Documents\workflow\karaf\obj\Debug\karaf.dll
 C:\Users\AdeolaOjo\Documents\workflow\karaf\obj\Debug\karaf.pdb

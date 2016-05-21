@@ -56,3 +56,4 @@ C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\tcp.con
 C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\tcp.consumer.bundle\obj\Debug\tcp.consumer.bundle.csprojResolveAssemblyReference.cache
 C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\tcp.consumer.bundle\obj\Debug\tcp.consumer.bundle.dll
 C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\tcp.consumer.bundle\obj\Debug\tcp.consumer.bundle.pdb
+C:\Users\AdeolaOjo\Documents\workflow\tcp.consumer.bundle\obj\Debug\tcp.consumer.bundle.csprojResolveAssemblyReference.cache

@@ -243,6 +243,5 @@ C:\Users\AdeolaOjo\Documents\workflow\app.core\bin\Debug\System.Runtime.xml
 C:\Users\AdeolaOjo\Documents\workflow\app.core\bin\Debug\System.Threading.Tasks.xml
 C:\Users\AdeolaOjo\Documents\workflow\app.core\bin\Debug\Zlib.Portable.xml
 C:\Users\AdeolaOjo\Documents\workflow\app.core\obj\Debug\app.core.csproj.App.config
-C:\Users\AdeolaOjo\Documents\workflow\app.core\obj\Debug\app.core.csprojResolveAssemblyReference.cache
 C:\Users\AdeolaOjo\Documents\workflow\app.core\obj\Debug\app.core.dll
 C:\Users\AdeolaOjo\Documents\workflow\app.core\obj\Debug\app.core.pdb

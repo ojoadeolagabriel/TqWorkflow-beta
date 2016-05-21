@@ -26,3 +26,4 @@ C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\paydire
 C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\paydirect.rabbitmq.processor\bin\Debug\Common.Logging.xml
 C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\paydirect.rabbitmq.processor\obj\Debug\paydirect.rabbitmq.processor.dll
 C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\paydirect.rabbitmq.processor\obj\Debug\paydirect.rabbitmq.processor.pdb
+C:\Users\AdeolaOjo\Documents\workflow\paydirect.rabbitmq.processor\obj\Debug\paydirect.rabbitmq.processor.csprojResolveAssemblyReference.cache

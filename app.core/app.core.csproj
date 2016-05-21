@@ -171,8 +171,10 @@
   <ItemGroup>
     <Compile Include="application\error\AppCoreException.cs" />
     <Compile Include="brainiac\RuleEngineCore.cs" />
-    <Compile Include="data\BasicAdo\Blitz.cs" />
-    <Compile Include="data\CoreDao.cs" />
+    <Compile Include="data\lightfoot\contracts\IDto.cs" />
+    <Compile Include="data\lightfoot\ILightFootDao.cs" />
+    <Compile Include="data\lightfoot\LightFootDao.cs" />
+    <Compile Include="data\lightfoot\LightFootMetadataAttribute.cs" />
     <Compile Include="nerve\bundle\BundleInfo.cs" />
     <Compile Include="nerve\component\core\cache\CacheEndpoint.cs" />
     <Compile Include="nerve\component\core\cache\CacheProducer.cs" />
@@ -320,6 +322,7 @@
     <Compile Include="utility\Blitz.cs" />
     <Compile Include="utility\CsvDao.cs" />
     <Compile Include="utility\reflectivity\ReflectorSimple.cs" />
+    <Compile Include="utility\SqlDataReaderUtil.cs" />
     <Compile Include="utility\XmlHelper.cs" />
   </ItemGroup>
   <ItemGroup>

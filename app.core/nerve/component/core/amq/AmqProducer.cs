@@ -53,7 +53,7 @@ namespace app.core.nerve.component.core.amq
                     producer.Send(message);
                 }
             }
-            catch (AggregateException aggregateException)
+            catch (AggregateException)
             {
 
             }

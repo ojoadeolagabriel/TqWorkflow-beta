@@ -7,3 +7,7 @@ C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\softall
 C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\softalliance.processor.bundle\obj\Debug\softalliance.processor.bundle.dll
 C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\softalliance.processor.bundle\obj\Debug\softalliance.processor.bundle.pdb
 C:\Users\AdeolaOjo\Documents\Visual Studio 2013\Projects\TqWorkflow-beta\softalliance.processor.bundle\obj\Debug\softalliance.processor.bundle.csprojResolveAssemblyReference.cache
+C:\Users\AdeolaOjo\Documents\workflow\softalliance.processor.bundle\bin\Debug\softalliance.processor.bundle.dll
+C:\Users\AdeolaOjo\Documents\workflow\softalliance.processor.bundle\bin\Debug\softalliance.processor.bundle.pdb
+C:\Users\AdeolaOjo\Documents\workflow\softalliance.processor.bundle\obj\Debug\softalliance.processor.bundle.dll
+C:\Users\AdeolaOjo\Documents\workflow\softalliance.processor.bundle\obj\Debug\softalliance.processor.bundle.pdb
