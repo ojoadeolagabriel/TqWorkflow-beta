@@ -12,6 +12,7 @@ namespace app.core.nerve.component.core.file
 
         }
 
+
         public override Exchange Process(Exchange exchange, UriDescriptor endPointDescriptor)
         {
             var fileData = exchange.OutMessage.Body != null ? exchange.OutMessage.Body.ToString() : "";

@@ -27,6 +27,8 @@ namespace app.core.nerve.handlers.routepipeline
             string result;
 
             var assembly = Assembly.LoadFile(bundleDllPath);
+
+            var m = assembly.GetManifestResourceNames();
             using (var stream = assembly.GetManifestResourceStream(routePath))
             {
                 if (stream == null)
@@ -45,6 +47,8 @@ namespace app.core.nerve.handlers.routepipeline
             var routePath = string.Format("{0}.property.descriptor.xml", assemblyName);
 
             var assembly = Assembly.LoadFile(bundleDllPath);
+
+            var m = assembly.GetManifestResourceNames();
             using (var stream = assembly.GetManifestResourceStream(routePath))
             {
                 if (stream == null)
@@ -96,15 +100,15 @@ namespace app.core.nerve.handlers.routepipeline
                 throw new AppCoreException("error loading route-config", exception);
             }
 
-
-            
             InjestContextBeans(routeConfigFile);
 
             //get context node
             var leafContextXml = routeConfigFile.Element(CamelConstant.LeafContext);
+            if (leafContextXml == null)
+                throw new Exception("route context not found");
 
             //get first route
-            if (leafContextXml != null)
+            if (CamelValidator.IsCamelXmlValid(leafContextXml).Status == CamelValidator.CamelValidatorStatus.ValidationStatus.Good)
             {
                 ISystemLogProvider logProvider = null;
 
@@ -123,7 +127,7 @@ namespace app.core.nerve.handlers.routepipeline
                     }
                     catch (Exception exception)
                     {
-
+                        var msg = exception.Message;
                     }
                 }
 

@@ -1,4 +1,0 @@
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\softalliance.processor.bundle\bin\Release\softalliance.processor.bundle.dll
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\softalliance.processor.bundle\bin\Release\softalliance.processor.bundle.pdb
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\softalliance.processor.bundle\obj\Release\softalliance.processor.bundle.dll
-C:\Users\Adeola Ojo\Documents\Visual Studio 2013\TqWorkflow-beta\softalliance.processor.bundle\obj\Release\softalliance.processor.bundle.pdb

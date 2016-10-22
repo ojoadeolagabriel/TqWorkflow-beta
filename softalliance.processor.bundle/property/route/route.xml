@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<container xmlns:n="http://com.nerveinteract.camel/context">
-  <routecontext>
-    <route>
-      <from uri="direct:httpDudProcessor"/>
-      <process ref="httpGenericUtil"/>
-    </route>
-  </routecontext>
-</container>

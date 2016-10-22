@@ -17,7 +17,7 @@ namespace camelcontext.server.facade.network
             if (body.EndsWith("\\r\\n"))
                 body = body.Replace("\\r\\n", "");
 
-            
+            var msg = $"http://{body}";
             var xml = XElement.Parse(body);
             xml.Add(new XElement("response", "00"));
             exchange.InMessage.Body = xml.ToString();

@@ -52,6 +52,11 @@ namespace app.core.nerve
             }
         }
 
+        /// <summary>
+        /// Load Bundle.
+        /// </summary>
+        /// <param name="bundleDllPaths"></param>
+        /// <param name="namespaces"></param>
         public static void LoadBundle(List<string> bundleDllPaths, List<string> namespaces = null)
         {
             InitDependencyLibs(namespaces ?? new List<string> { AppCoreDefaultNamespace });
@@ -65,7 +70,7 @@ namespace app.core.nerve
                 }
                 catch (Exception exception)
                 {
-                    Console.WriteLine(exception.StackTrace);
+                    Console.WriteLine($"{exception.Message} : {exception.StackTrace}");
                 }
             }
         }
@@ -158,7 +163,7 @@ namespace app.core.nerve
         public static void StartAllRoutes()
         {
             Console.WriteLine(Environment.NewLine);
-            Console.WriteLine("Starting all components...");
+            Console.WriteLine("Moving all rabbits into position...");
             RouteCollection.ToList().ForEach(c => c.Value.CurrentRouteStep.ProcessChannel());
         }
     }

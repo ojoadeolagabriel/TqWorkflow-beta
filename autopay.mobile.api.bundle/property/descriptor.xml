@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<descriptor>
+  <name>autopay.mobile.api.bundle</name>
+  <version>0.1.1</version>
+  <author>adeola.ojo</author>
+  <groupid>com.synapse.disbursements</groupid>
+  <priority>1</priority>
+</descriptor>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<container xmlns:n="http://com.nerveinteract.camel/context">
+
+  <bean id="loginHandler" class="autopay.mobile.api.bundle.code.AutoPayLoginHandler"/>
+  <bean id="authhandler" class="autopay.mobile.api.bundle.code.AutoPayAuthApiHandler"/>
+  
+  <properties>
+    <dev-port>4550</dev-port>
+    <dev-failoverport>4551</dev-failoverport>
+    <dev-processor-port>4552</dev-processor-port>
+  </properties>
+  
+  <routecontext>
+    <route>
+      <from uri="http:127.0.0.1?port=4554;path=api/v3/mobile/autopayapi/bankstatus"/>
+      <process ref="loginHandler"/>
+    </route>
+    <route>
+      <from uri="http:127.0.0.1?port=4553;path=api/v3/mobile/autopayapi/bankstatus"/>
+      <process ref="loginHandler"/>
+    </route>
+    <route>
+      <from uri="http:127.0.0.1?port=4553;path=api/v3/mobile/autopayapi/auth"/>
+      <process ref="authhandler"/>
+    </route>
+    <route>
+      <from uri="http:127.0.0.1?port=4551;path=api/v3/mobile/autopayapi/bankstatus"/>
+      <process ref="loginHandler"/>
+    </route>
+  </routecontext>
+  
+</container>

@@ -56,9 +56,9 @@
       <Project>{c8c59f6c-6169-4c61-88c1-4ca8dd1fec2f}</Project>
       <Name>app.core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\camelcontext.server\camelcontext.server.csproj">
+    <ProjectReference Include="..\camelcontext.server\backgroundserver.csproj">
       <Project>{45F5D6F1-09B3-409F-AA8A-2025DBD69BC6}</Project>
-      <Name>camelcontext.server</Name>
+      <Name>backgroundserver</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

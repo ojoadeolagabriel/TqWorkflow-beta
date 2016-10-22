@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>app.core</RootNamespace>
     <AssemblyName>app.core</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>47c92d3c</NuGetPackageImportStamp>
@@ -42,6 +42,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dependency\Apache.NMS.ActiveMQ.dll</HintPath>
     </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.1\lib\BouncyCastle.Crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Cassandra, Version=3.0.0.0, Culture=neutral, PublicKeyToken=10b231fbfc8c4b4d, processorArchitecture=MSIL">
       <HintPath>..\packages\CassandraCSharpDriver.3.0.3\lib\net40\Cassandra.dll</HintPath>
       <Private>True</Private>
@@ -52,18 +56,6 @@
     </Reference>
     <Reference Include="Common.Logging.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Google.Apis, Version=1.9.3.19379, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.1.9.3\lib\net40\Google.Apis.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Google.Apis.Core, Version=1.9.3.19379, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.Core.1.9.3\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Google.Apis.PlatformServices, Version=1.9.3.19381, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.1.9.3\lib\net40\Google.Apis.PlatformServices.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="JWT, Version=1.3.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -125,10 +117,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.IO, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.dll</HintPath>
@@ -146,15 +134,7 @@
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Runtime, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Threading.Tasks, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
@@ -171,10 +151,7 @@
   <ItemGroup>
     <Compile Include="application\error\AppCoreException.cs" />
     <Compile Include="brainiac\RuleEngineCore.cs" />
-    <Compile Include="data\lightfoot\contracts\IDto.cs" />
-    <Compile Include="data\lightfoot\ILightFootDao.cs" />
     <Compile Include="data\lightfoot\LightFootDao.cs" />
-    <Compile Include="data\lightfoot\LightFootMetadataAttribute.cs" />
     <Compile Include="nerve\bundle\BundleInfo.cs" />
     <Compile Include="nerve\component\core\cache\CacheEndpoint.cs" />
     <Compile Include="nerve\component\core\cache\CacheProducer.cs" />
@@ -192,6 +169,7 @@
     <Compile Include="nerve\component\core\mongodb\MongoDbProducer.cs" />
     <Compile Include="nerve\component\core\rabbitmqclient\RabbitMqEndPoint.cs" />
     <Compile Include="nerve\dto\BundleDescriptorObject.cs" />
+    <Compile Include="nerve\facade\CamelValidator.cs" />
     <Compile Include="nerve\handlers\tag\LoopTag.cs" />
     <Compile Include="nerve\language\Header.cs" />
     <Compile Include="nerve\language\LanguageUtil.cs" />
@@ -347,6 +325,7 @@
     <Content Include="dependency\Newtonsoft.Json.dll" />
     <Content Include="dependency\RedBranch.Hammock.dll" />
     <Content Include="dependency\Renci.SshNet.dll" />
+    <EmbeddedResource Include="resources\route.xml" />
     <Content Include="script_migration\first_script.sql" />
     <Content Include="nerve\resource\pom.xml" />
     <Content Include="nerve\resource\route.xml">
@@ -354,7 +333,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>

@@ -1,22 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app.core", "app.core\app.core.csproj", "{C8C59F6C-6169-4C61-88C1-4CA8DD1FEC2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "camelcontext.server", "camelcontext.server\camelcontext.server.csproj", "{45F5D6F1-09B3-409F-AA8A-2025DBD69BC6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backgroundserver", "camelcontext.server\backgroundserver.csproj", "{45F5D6F1-09B3-409F-AA8A-2025DBD69BC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "karaf", "karaf\karaf.csproj", "{DB633BFC-6915-468F-A786-3480973C07FB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "paymentnotification.generic.bundle", "ClassLibrary1\paymentnotification.generic.bundle.csproj", "{11792E9F-A17E-40B3-AFC6-6DBBD001751F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "synapse.console", "karaf\synapse.console.csproj", "{DB633BFC-6915-468F-A786-3480973C07FB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0467BC47-17C2-4541-ACA0-536514E30894}"
 	ProjectSection(SolutionItems) = preProject
 		Performance1.psess = Performance1.psess
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "karaf.console", "karaf.console\karaf.console.csproj", "{22B66A9C-AFC4-4CFE-BBBD-44E07AE2C444}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "autopay.mobile.api.bundle", "autopay.mobile.api.bundle\autopay.mobile.api.bundle.csproj", "{FE68EF2C-D9FA-4A91-B2C3-A4D8A5BBC03C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,19 +34,12 @@ Global
 		{DB633BFC-6915-468F-A786-3480973C07FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB633BFC-6915-468F-A786-3480973C07FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB633BFC-6915-468F-A786-3480973C07FB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11792E9F-A17E-40B3-AFC6-6DBBD001751F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11792E9F-A17E-40B3-AFC6-6DBBD001751F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11792E9F-A17E-40B3-AFC6-6DBBD001751F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11792E9F-A17E-40B3-AFC6-6DBBD001751F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{22B66A9C-AFC4-4CFE-BBBD-44E07AE2C444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{22B66A9C-AFC4-4CFE-BBBD-44E07AE2C444}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{22B66A9C-AFC4-4CFE-BBBD-44E07AE2C444}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{22B66A9C-AFC4-4CFE-BBBD-44E07AE2C444}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE68EF2C-D9FA-4A91-B2C3-A4D8A5BBC03C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE68EF2C-D9FA-4A91-B2C3-A4D8A5BBC03C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE68EF2C-D9FA-4A91-B2C3-A4D8A5BBC03C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE68EF2C-D9FA-4A91-B2C3-A4D8A5BBC03C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal

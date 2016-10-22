@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using app.core.data.lightfoot;
-using app.core.data.lightfoot.contracts;
 
 namespace camelcontext.server.data
 {
-    public class UserDto : Dto
+    public class UserDto
     {
-        [LightFootMetadata(MapsTo = "InstitutionId", MapsToSp = "uspGetInstitutionById", MapsToSpParam = "institutionID")]
         public UserInstitution InstitutionUser { get; set; }
         public long Id { get; set; }
         public string Username { get; set; }
@@ -19,7 +16,7 @@ namespace camelcontext.server.data
         public long InstitutionId { get; set; }
         public bool IsEnabled { get; set; }
 
-        public class UserInstitution : Dto
+        public class UserInstitution
         {
             public string InstitutionDescription { get; set; }
         }

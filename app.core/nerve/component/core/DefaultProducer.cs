@@ -13,7 +13,6 @@ namespace app.core.nerve.component.core
             _uriInformation = uriInformation;
             _route = route;
         }
-
         public virtual Exchange Process(Exchange exchange, UriDescriptor endPointDescriptor)
         {
             return null;
